@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="referrer" content="no-referrer">
+  <title>Meal</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link rel="icon" type="image/png" href="files/favicon.png">
+  <link rel="icon" sizes="16x16" href="images/favicon.ico">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/slick.css">
+  <link rel="stylesheet" href="css/styles5.css">
+  <!-- Facebook Pixel Code -->
+  <script async="" src="js/fbevents.js"></script><script>
+    ! function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '428356138271660');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=428356138271660&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Facebook Pixel Code -->
+  <style>
+    .button {
+      background-color: #E40F3A    }
+  </style>
+</head>
+
+<body cz-shortcut-listen="true">
+  <picture>
+    <source srcset="images/bg-mob.jpg" media="(max-width: 600px)">
+    <source srcset="images/bg-tablet.jpg" media="(max-width: 900px)">
+    <img src="images/bg.jpg" class="bg" alt="image">
+  </picture>
+
+  <div class="container">
+    <img src="images/property_logo.png" class="logo" alt="logo">
+
+    <picture>
+      <source srcset="images/redlobster2.png" media="(max-width: 600px)">
+      <source srcset="images/redlobster2.png" media="(max-width: 900px)">
+      <img src="images/redlobster2.png" class="main" alt="image">
+    </picture>
+
+    <div class="wrapper">
+      <h1 class="header__title">Welcome</h1>
+      <div class="final__text hide">
+        <h1>Congratulations!</h1>
+        Click the button below and fill in your shipping details to continue.
+      </div>
+      <p class="header__text">
+        Answer these simple questions to claim your gift.
+      </p>
+
+      <div class="test">
+        <div id="question1" class="quest">
+          <p class="quest__text question" data-question-id="1"></p>
+          <div>
+            <button class="button btn qes">Yes</button>
+            <button class="button btn qes">No</button>
+          </div>
+        </div>
+        <div id="question2" class="quest">
+          <p class="quest__text question" data-question-id="2"></p>
+          <div>
+            <button class="button btn qes">Yes</button>
+            <button class="button btn qes">No</button>
+          </div>
+        </div>
+        <div id="question3" class="quest">
+          <p class="quest__text question" data-question-id="3"></p>
+          <div>
+            <button class="button btn qes">Yes</button>
+            <button class="button btn qes">No</button>
+          </div>
+        </div>
+        <div id="question4" class="quest">
+          <p class="quest__text question" data-question-id="4"></p>
+          <div>
+            <button class="button btn qes">Yes</button>
+            <button class="button btn qes">No</button>
+          </div>
+        </div>
+        <div class="quest">
+          <a href="https://go.itson-thehouse.com/?zrid=OR&utm_content=redlobster2&utm_source=pgm_facebook_oth5&utm_campaign=%7B%7Bcampaign.id%7D%7D&utm_medium=%7B%7Badset.id%7D%7D&utm_term=%7B%7Bad.id%7D%7D&fbclid=c1752335efc8219ebb8786bc105cf251" class="button btn btn-final">Continue</a>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="">
+        <a target="_blank" href="privacy.php">Privacy policy</a>
+        <a target="_blank" href="terms.php">Terms of Use</a>
+        <p>
+          NO PURCHASE NECESSARY. Open only to legal United States residents
+          residing in the 50 U.S./D.C., at least 18 & the age of majority
+          in their jurisdiction of residence. Prize pictured are for
+          illustrative purposes only. See Official Rules for information on
+          who can play, deadlines for getting your prize, your odds of
+          winning, prize information, and complete details. TrendnDaily will
+          cover the cost of shipping the prizes to qualified winners. Void
+          where prohibited.
+        </p>
+        <p>
+          All third-party brand names, logos, icons, and images appearing on
+          our website are trademarks, registered trademarks or property of
+          their respective owners.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/slick.min.js"></script>
+  <script src="js/questions5.js"></script>
+  <script>
+    $(document).ready(function() {
+      if ($(".test").hasClass("slick-initialized")) {
+        $(".test").slick("unslick");
+      }
+
+      $(".test").removeClass("slick-initialized slick-slider slick-dotted");
+
+      $(".test").slick({
+        infinite: false,
+        arrows: false,
+        swipe: false,
+        dots: true,
+        adaptiveHeight: true,
+      });
+
+      $(".test").on("afterChange", function(event, slick, currentSlide) {
+        if (slick.$slides.length - 1 === currentSlide) {
+          $(".header__text").addClass("hide");
+          $(".header__title").addClass("hide");
+          $(".final__text").removeClass("hide").addClass("show");
+        }
+      });
+
+      $(".qes").click(function(e) {
+        e.preventDefault();
+        $(".test").slick("slickNext");
+
+        var check = $(".slick-dots .slick-active").prev("li");
+        if (check.length) {
+          check.addClass("check");
+        }
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof questions === "undefined" || questions.length === 0) {
+        console.error("Questions array is not defined or empty.");
+        return;
+      }
+
+      const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      };
+
+      const shuffledQuestions = shuffleArray([...questions]);
+      const randomQuestions = shuffledQuestions.slice(0, 4);
+
+      const setQuestionText = (id, questionObj) => {
+        let questionElement = document.querySelector(`#${id} .question`);
+        if (questionElement) {
+          questionElement.innerText = questionObj.question;
+        } else {
+          console.error(`Element #${id} .question not found`);
+        }
+      };
+
+      setQuestionText("question1", randomQuestions[0]);
+      setQuestionText("question2", randomQuestions[1]);
+      setQuestionText("question3", randomQuestions[2]);
+      setQuestionText("question4", randomQuestions[3]);
+    });
+  </script>
+  <script src="js/init.js"></script>
+
+
+</body></html>
