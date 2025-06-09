@@ -1,0 +1,78 @@
+.hide {
+  display:none;
+}
+
+.go {
+  max-width: 700px;
+}
+
+.question {
+  font-size: 23px;
+  font-weight: 700;
+  text-align: center;
+  margin: 10px 0 20px 0;
+}
+
+.btn-go {
+  background-color: #ffef02;
+  width:300px;
+  border-radius: 15px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.16);
+  padding:10px;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 15px 8px 15px;
+}
+
+.btn-go:hover {
+  background-color: #eadb00;
+}
+
+.progress-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.progress-step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.h100 {
+  height: 800px;
+}
+
+.progress-step.active {
+  background-color: #fff;
+  color: #000;
+}
+
+.progress-step.complete {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 22px;
+}
+
+/* footer */
+.bzfoot {
+  font-size:12px;
+  color: #999;
+  margin-top:500px;
+}
+
+.bzfoot a {
+  color: #fff;
+}
+/* end footer */
