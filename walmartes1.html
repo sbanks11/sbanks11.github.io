@@ -1,11 +1,33 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Winner</title>
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="css/core.css" rel="stylesheet">
-    <script src="js/sript.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Winner</title>
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="css/core.css" rel="stylesheet">
+  <script src="js/sript.js"></script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src='https://connect.facebook.net/en_US/fbevents.js';
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script');
+    fbq('init', '1293186855766688');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" 
+    src="https://www.facebook.com/tr?id=1293186855766688&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
 </head>
 <body>
 
@@ -18,7 +40,6 @@
     <div class="progress-step" id="step2">2</div>
     <div class="progress-step" id="step3">3</div>
   </div>
-
 
   <div class="container h100">
     <!-- q1 -->
@@ -65,24 +86,28 @@
       <h3 class="question">¡Gracias por tu respuesta!</h3>
       <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
         <div class="mb-2 mb-md-0 me-md-2">
-          <a href="https://www.ps06hg9t.com/HCZ3GL/P66JJ4/?source_id=18" class="btn btn-go" target="_blank">Continuar »</a>
+          <a href="https://www.ps06hg9t.com/HCZ3GL/P66JJ4/?source_id=18"
+             class="btn btn-go"
+             target="_blank"
+             onclick="fbq('track', 'Lead');">
+             Continuar »
+          </a>
         </div>
       </div>
     </div>
-</div>
+  </div>
 
-    <section id="footer" class="p-3 border-top bg-dark bzfoot">
-        <div class="container">
-            <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a>
-            <p class="my-1">The trademarks and brands featured on the website are the property of the third parties that own these trademarks and brands. There is no endorsement, association, or affiliation with these parties when their properties are utilized. We do not assure the availability of the offers you seek as they are subject to availability and typically provided by other entities. Offers distributed are in limited supply, and our partners may replace offers depending on their availability. Offers that are not distributed by our partners are managed by other companies, and we are not liable if such offers are unavailable, altered, if you do not receive them, if you are ineligible for them, or if other complications occur. The names, logos, brands, and trademarks of third-party products displayed on this website belong to their respective owners.</p>
-        </div>
-    </section>
-    <script type="text/javascript" src="js/track.js"></script>
+  <section id="footer" class="p-3 border-top bg-dark bzfoot">
+    <div class="container">
+      <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a>
+      <p class="my-1">
+        The trademarks and brands featured on the website are the property of the third parties that own these trademarks and brands. There is no endorsement, association, or affiliation with these parties when their properties are utilized. We do not assure the availability of the offers you seek as they are subject to availability and typically provided by other entities. Offers distributed are in limited supply, and our partners may replace offers depending on their availability. Offers that are not distributed by our partners are managed by other companies, and we are not liable if such offers are unavailable, altered, if you do not receive them, if you are ineligible for them, or if other complications occur. The names, logos, brands, and trademarks of third-party products displayed on this website belong to their respective owners.
+      </p>
+    </div>
+  </section>
 
+  <script type="text/javascript" src="js/track.js"></script>
+  <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-
-    
-    <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
-
-</body></html><!-- Bootstrap JS -->
+</body>
+</html>
