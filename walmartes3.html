@@ -109,5 +109,83 @@
   <script type="text/javascript" src="js/track.js"></script>
   <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
+<script>
+        // Notification system
+        const names = [
+            'Amelia H.', 'John S.', 'Emma W.', 'Michael B.', 'Olivia P.', 
+            'James K.', 'Ava M.', 'Robert L.', 'Sophia C.', 'William T.',
+            'Isabella R.', 'David G.', 'Mia J.', 'Richard F.', 'Charlotte D.',
+            'Joseph A.', 'Harper N.', 'Thomas Z.', 'Elizabeth Y.', 'Charles V.'
+        ];
+
+        const locations = [
+            'Dallas', 'New York', 'Los Angeles', 'Chicago', 'Houston',
+            'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Miami',
+            'Seattle', 'Denver', 'Boston', 'Atlanta', 'Portland',
+            'Las Vegas', 'Nashville', 'Austin', 'Orlando', 'San Francisco'
+        ];
+
+        // Generate random amount between $1,000 and $1,400
+        function getRandomAmount() {
+            const amount = Math.floor(Math.random() * 401) + 1000; // 1000 to 1400
+            return `$${amount.toLocaleString()}`;
+        }
+
+        function createNotification() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomLocation = locations[Math.floor(Math.random() * locations.length)];
+            const randomAmount = getRandomAmount();
+            
+            const notificationElement = document.createElement('div');
+            notificationElement.className = 'notification';
+            
+            notificationElement.innerHTML = `
+                <div class="notification-avatar">${randomName.charAt(0)}</div>
+                <div class="notification-content">
+                    <p>
+                        <strong>${randomName}</strong> from ${randomLocation} just received
+                        <br>
+                        <span class="notification-amount">${randomAmount}</span>
+                    </p>
+                </div>
+            `;
+            
+            const container = document.getElementById('notifications-container');
+            container.appendChild(notificationElement);
+            
+            // Make notification visible after a small delay (for animation)
+            setTimeout(() => {
+                notificationElement.classList.add('visible');
+            }, 10);
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notificationElement.classList.remove('visible');
+                notificationElement.classList.add('hidden');
+                
+                // Remove from DOM after animation completes
+                setTimeout(() => {
+                    notificationElement.remove();
+                }, 1000);
+            }, 5000);
+        }
+
+        // Show first notification immediately
+        createNotification();
+        
+        // Show new notification every 10 seconds
+        setInterval(createNotification, 10000);
+    </script>
+
+
+<script>
+  function trackAndRedirect() {
+    fbq('track', 'Lead');
+    setTimeout(() => {
+      window.open('https://www.ps06hg9t.com/HCZ3GL/CHD91P/?sub1=18', '_blank');
+    }, 300);
+  }
+</script>
+
 </body>
 </html>
