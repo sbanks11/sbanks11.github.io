@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free AirPods Pro for 45+</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f7fc;
+      color: #1a1a1a;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 16px;
+      margin-bottom: 24px;
+      font-weight: normal;
+    }
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .features button {
+      padding: 14px;
+      font-size: 15px;
+      background-color: #ffffff;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .features button:hover {
+      background-color: #e6f0ff;
+    }
+    .cta-button {
+      background-color: #0056ff;
+      color: #fff;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .footer {
+      font-size: 11px;
+      color: #777;
+      margin-top: 40px;
+    }
+    img.airpods {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Are You 45+? You Can Get Free AirPods</h1>
+    <h2>Choose which feature matters the most to you</h2>
+    <img src="/mnt/data/A_promotional_digital_advertisement_targeted_at_in.png" alt="AirPods Pro" class="airpods">
+
+    <div class="features">
+      <button>🔇 Noise Cancellation</button>
+      <button>🔋 Battery Life</button>
+      <button>🎧 Comfort</button>
+      <button>📞 Call Clarity</button>
+    </div>
+
+    <a href="https://your-offer-link.com" class="cta-button" onclick="fbq('track', 'Lead');">
+      👉 Claim Your Free AirPods Now
+    </a>
+
+    <div class="footer">
+      <p>Terms & Conditions | Privacy Policy</p>
+    </div>
+  </div>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+     
+    fbq('init', 'YOUR_PIXEL_ID'); 
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" 
+         src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
+</body>
+</html>

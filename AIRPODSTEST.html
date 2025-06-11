@@ -1,0 +1,466 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stimulus Check Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+        }
+
+        .app-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header {
+            background-color: #2962FF;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .green-text {
+            color: #4CAF50;
+        }
+
+        .red-text {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        .steps-container {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .step {
+            display: flex;
+            padding: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            background-color: #2962FF;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .check-eligibility-button {
+            background-color: #2962FF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .check-eligibility-button:hover {
+            background-color: #1E88E5;
+        }
+
+        .join-banner {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .testimonials {
+            margin-bottom: 20px;
+        }
+
+        .testimonial {
+            background-color: #f8f9ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2962FF;
+        }
+
+        .testimonial-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-name {
+            font-weight: bold;
+            color: #2962FF;
+        }
+
+        .testimonial-date {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .stars {
+            color: #FFC107;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .trust-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f4ff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .disclaimer {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            padding: 15px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        /* Notification styles */
+        .notifications-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .notification {
+            display: flex;
+            align-items: center;
+            background-color: #2962FF;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .notification.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .notification.hidden {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .notification-avatar {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            color: #2962FF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .notification-content {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .notification-amount {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .step-content h2 {
+                font-size: 16px;
+            }
+            
+            .trust-indicators {
+                gap: 20px;
+            }
+            
+            .trust-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .notifications-container {
+                max-width: 250px;
+            }
+        }
+    </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1073358408004383');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1073358408004383&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1><span class="green-text">$1,000</span> STIMULUS CHECKS NOW AVAILABLE</h1>
+            <p>This assistance program helps eligible Americans with groceries, rent, and everyday expenses</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2>Verify your eligibility in minutes</h2>
+                    <p>Quick and easy qualification check</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2>Confirm your information securely</h2>
+                    <p>Protected submission process</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h2>Review personalized assistance options</h2>
+                    <p>Tailored to your specific needs</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h2>Receive your <span class="green-text">$1000</span> Stimulus Check</h2>
+                    <p>Direct payment to eligible recipients</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="check-eligibility-button" onclick="trackAndRedirect()">
+            Check Eligibility Now
+        </button>
+
+        <div class="join-banner">
+            Join over 1 million Americans who have already checked their eligibility
+        </div>
+
+        <div class="testimonials">
+            <div class="testimonial">
+                <div class="testimonial-header">
+                    <div class="testimonial-name">Sarah J.</div>
+                    <div class="testimonial-date">March 15, 2025</div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"I was skeptical at first, but the process was incredibly easy. I received my check within 10 days of applying. This came at the perfect time when I needed help with rent."</p>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-header">
+                    <div class="testimonial-name">Michael T.</div>
+                    <div class="testimonial-date">February 28, 2025</div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"The eligibility check took less than 5 minutes. The only reason I'm giving 5 stars is because the verification process took as long as 5 Minutes! Insane Right?"</p>
+            </div>
+        </div>
+
+        <div class="trust-indicators">
+            <div class="trust-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1E88E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <div class="trust-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1E88E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+            </div>
+            <div class="trust-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1E88E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <p>This site is <span class="red-text">not affiliated</span> with any government agency. Eligibility for assistance programs varies and results are subject to verification.</p>
+        </div>
+
+        <!-- Notification popups container -->
+        <div id="notifications-container" class="notifications-container"></div>
+    </div>
+
+    <script>
+        // Notification system
+        const names = [
+            'Amelia H.', 'John S.', 'Emma W.', 'Michael B.', 'Olivia P.', 
+            'James K.', 'Ava M.', 'Robert L.', 'Sophia C.', 'William T.',
+            'Isabella R.', 'David G.', 'Mia J.', 'Richard F.', 'Charlotte D.',
+            'Joseph A.', 'Harper N.', 'Thomas Z.', 'Elizabeth Y.', 'Charles V.'
+        ];
+
+        const locations = [
+            'Dallas', 'New York', 'Los Angeles', 'Chicago', 'Houston',
+            'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Miami',
+            'Seattle', 'Denver', 'Boston', 'Atlanta', 'Portland',
+            'Las Vegas', 'Nashville', 'Austin', 'Orlando', 'San Francisco'
+        ];
+
+        // Generate random amount between $1,000 and $1,400
+        function getRandomAmount() {
+            const amount = Math.floor(Math.random() * 401) + 1000; // 1000 to 1400
+            return `$${amount.toLocaleString()}`;
+        }
+
+        function createNotification() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomLocation = locations[Math.floor(Math.random() * locations.length)];
+            const randomAmount = getRandomAmount();
+            
+            const notificationElement = document.createElement('div');
+            notificationElement.className = 'notification';
+            
+            notificationElement.innerHTML = `
+                <div class="notification-avatar">${randomName.charAt(0)}</div>
+                <div class="notification-content">
+                    <p>
+                        <strong>${randomName}</strong> from ${randomLocation} just received
+                        <br>
+                        <span class="notification-amount">${randomAmount}</span>
+                    </p>
+                </div>
+            `;
+            
+            const container = document.getElementById('notifications-container');
+            container.appendChild(notificationElement);
+            
+            // Make notification visible after a small delay (for animation)
+            setTimeout(() => {
+                notificationElement.classList.add('visible');
+            }, 10);
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notificationElement.classList.remove('visible');
+                notificationElement.classList.add('hidden');
+                
+                // Remove from DOM after animation completes
+                setTimeout(() => {
+                    notificationElement.remove();
+                }, 1000);
+            }, 5000);
+        }
+
+        // Show first notification immediately
+        createNotification();
+        
+        // Show new notification every 10 seconds
+        setInterval(createNotification, 10000);
+    </script>
+
+
+<script>
+  function trackAndRedirect() {
+    fbq('track', 'Lead');
+    setTimeout(() => {
+      window.open('https://www.ps06hg9t.com/HCZ3GL/CHD91P/?sub1=18', '_blank');
+    }, 300);
+  }
+</script>
+
+</body></html>
