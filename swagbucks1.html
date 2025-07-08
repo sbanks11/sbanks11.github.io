@@ -5,30 +5,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Meta Pixel Code -->
-    <script async="" defer="" src="js/t.js"></script><script async="" src="js/fbevents.js"></script><script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1257093056007108');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1257093056007108&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    <!--Optional, send client hints to get accurate device data-->
-<meta http-equiv="delegate-ch" content="sec-ch-ua https://trx.rwrdtime.com; sec-ch-ua-mobile https://trx.rwrdtime.com; sec-ch-ua-arch https://trx.rwrdtime.com; sec-ch-ua-model https://trx.rwrdtime.com; sec-ch-ua-platform https://trx.rwrdtime.com; sec-ch-ua-platform-version https://trx.rwrdtime.com; sec-ch-ua-bitness https://trx.rwrdtime.com; sec-ch-ua-full-version-list https://trx.rwrdtime.com; sec-ch-ua-full-version https://trx.rwrdtime.com">
+<script>
+  (function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const ttclid = urlParams.get('ttclid');
+    if (ttclid) {
+      document.cookie = `ttclid=${ttclid}; path=/; max-age=2592000`; // store for 30 days
+    }
+  })();
+</script>
 
-<!-- MaxConv Tracking Script Base Code-->
-<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="https://trx.rwrdtime.com/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
-<noscript><link rel="stylesheet" href="https://trx.rwrdtime.com/t/t.css?mc_ns=1" /></noscript>
-<!-- End MaxConv Tracking Script Base Code-->
+<!-- TikTok Pixel Code -->
+<script>
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject = t;
+    var ttq = w[t] = w[t] || [];
+    ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie"];
+    ttq.setAndDefer = function (t, e) {
+      t[e] = function () {
+        t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+      }
+    };
+    for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+    ttq.instance = function (t) {
+      for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++
+      ) ttq.setAndDefer(e, ttq.methods[n]);
+      return e
+    };
+    ttq.load = function (e, n) {
+      var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
+      ttq._i = ttq._i || {};
+      ttq._i[e] = [];
+      ttq._i[e]._u = i;
+      ttq._t = ttq._t || {};
+      ttq._t[e] = +new Date;
+      ttq._o = ttq._o || {};
+      ttq._o[e] = n || {};
+      var o = document.createElement("script");
+      o.type = "text/javascript";
+      o.async = !0;
+      o.src = i + "?sdkid=" + e + "&lib=" + t;
+      var a = document.getElementsByTagName("script")[0];
+      a.parentNode.insertBefore(o, a)
+    };
+
+    ttq.load('D1MMF93C77UCN6B64F1G');
+    ttq.page();
+  }(window, document, 'ttq');
+</script>
+<!-- End TikTok Pixel Code -->
  
     <style>
         body {
@@ -186,7 +211,7 @@
                 </li>
             </ul>
         </div>
-        <a href="https://rewarrdsgiant.com/aff_c?offer_id=1897&aff_id=54313" class="start-earning-btn" onclick="fbq('track', 'AddToCart')">START EARNING NOW</a>
+        <a href="https://rewardsgiant.com/..." class="start-earning-btn" onclick="ttq.track('Lead')">START EARNING NOW</a>
         <div class="footer-text">
             <span class="lock-icon">🛡️</span> Secure & Confidential
         </div>
