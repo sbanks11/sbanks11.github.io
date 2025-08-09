@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Warm up offer domain -->
+  <!-- Warm up offer origin (fix: origin only, not full path) -->
   <link rel="preconnect" href="https://www.phef6trk.com" crossorigin>
   <link rel="dns-prefetch" href="https://www.phef6trk.com">
 
@@ -151,11 +151,11 @@
       </ul>
     </div>
 
-    <!-- CTA (same-tab; optimized for TikTok webview) -->
+    <!-- CTA (same-tab; keep referrer and tracking params) -->
     <a id="cta"
-       href="https://www.phef6trk.com/HCZ3GL/2GWFGW2/"
+       href="https://www.phef6trk.com/HCZ3GL/2GWFGW2/?sub1=AD1"
        class="start-earning-btn"
-       rel="noopener noreferrer">
+       rel="noopener">
       START EARNING NOW
     </a>
 
@@ -164,7 +164,7 @@
     </div>
   </div>
 
-  <!-- CTA logic: fire pixels non-blocking, then navigate quickly inside same tab -->
+  <!-- CTA logic: non-blocking pixel fires; quick same-tab handoff; safer binding -->
   <script>
     (function () {
       var cta = document.getElementById('cta');
@@ -175,26 +175,19 @@
       var value = parseFloat(qp.get('value')) || 0;
       var currency = (qp.get('currency') || 'USD').toUpperCase();
 
-      function firePixels() {
-        try { if (typeof fbq === 'function') fbq('trackCustom', 'CTA_Click'); } catch (e) {}
-        try { if (typeof ttq !== 'undefined') ttq.track('ClickButton', { value: value, currency: currency }); } catch (e) {}
-
-        // Example: durable click log to your server (optional)
-        // try { navigator.sendBeacon('/click', JSON.stringify({ ts: Date.now() })); } catch(e) {}
-      }
-
       cta.addEventListener('click', function (e) {
-        e.preventDefault();
         var url = cta.getAttribute('href');
 
-        // Fire tracking without waiting on network
-        firePixels();
+        // Fire tracking (intent) without blocking navigation
+        try { if (typeof fbq === 'function') fbq('trackCustom', 'CTA_Click'); } catch (err) {}
+        try { if (typeof ttq !== 'undefined') ttq.track('ClickButton', { value: value, currency: currency }); } catch (err) {}
 
-        // Tiny delay improves reliability in TikTok webview without feeling laggy
+        // Now prevent default and hand off quickly (lower delay for less bounce)
+        e.preventDefault();
         setTimeout(function () {
-          // replace() prevents an extra back step (reduces pogo-sticking)
+          // replace() avoids an extra back step; keeps user in TikTok webview
           location.replace(url);
-        }, 120);
+        }, 80);
       }, { passive: false });
 
       // Keyboard activation fallback
@@ -207,4 +200,7 @@
   <!-- Cloudflare Beacon (left as-is) -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
           data-cf-beacon='{"rayId":"950d47d2ebc195ab","version":"2025.6.2","r":1,"token":"d6d13852736e41b884e696d6d0c5c544",
-          "servertiming":{"name":{"cfextpri":true,"cfedge":true,"cforigin":true,"cfl4":true,"cfspeedbrain":true,"cfcachestatus":true}}}
+          "servertiming":{"name":{"cfextpri":true,"cfedge":true,"cforigin":true,"cfl4":true,"cfspeedbrain":true,"cfcachestatus":true}}}'
+          crossorigin="anonymous"></script>
+</body>
+</html>
