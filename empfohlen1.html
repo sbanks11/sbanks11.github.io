@@ -1,13 +1,20 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reward Claim</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Meta Pixel Code -->
+  <!-- Warm up offer domain -->
+  <link rel="preconnect" href="https://www.phef6trk.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.phef6trk.com">
+
+  <!-- Meta Pixel (Facebook) -->
   <script async defer src="js/t.js"></script>
   <script async src="js/fbevents.js"></script>
   <script>
@@ -25,12 +32,12 @@
     <img height="1" width="1" style="display:none"
          src="https://www.facebook.com/tr?id=1257093056007108&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
+  <!-- End Meta Pixel -->
 
-  <!--Optional, send client hints to get accurate device data-->
+  <!-- Optional: client hints for device data -->
   <meta http-equiv="delegate-ch" content="sec-ch-ua https://trx.rwrdtime.com; sec-ch-ua-mobile https://trx.rwrdtime.com; sec-ch-ua-arch https://trx.rwrdtime.com; sec-ch-ua-model https://trx.rwrdtime.com; sec-ch-ua-platform https://trx.rwrdtime.com; sec-ch-ua-platform-version https://trx.rwrdtime.com; sec-ch-ua-bitness https://trx.rwrdtime.com; sec-ch-ua-full-version-list https://trx.rwrdtime.com; sec-ch-ua-full-version https://trx.rwrdtime.com">
 
-  <!-- MaxConv Tracking Script Base Code-->
+  <!-- MaxConv Tracking Script -->
   <script>
     !function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};
       var s=d.createElement(n),t=d.getElementsByTagName(n)[0];
@@ -39,7 +46,7 @@
     }(window,document,"maxconv","script");
   </script>
   <noscript><link rel="stylesheet" href="https://trx.rwrdtime.com/t/t.css?mc_ns=1" /></noscript>
-  <!-- End MaxConv Tracking Script Base Code-->
+  <!-- End MaxConv -->
 
   <!-- TikTok Pixel -->
   <script>
@@ -57,19 +64,22 @@
         var o = d.createElement("script"); o.type = "text/javascript"; o.async = !0; o.src = i;
         var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(o, a);
       };
-      ttq.load('D2BRNK3C77U7U0ICUE80');   // Your TikTok Pixel ID
+      ttq.load('D2BRNK3C77U7U0ICUE80');  // Your TikTok Pixel ID
       ttq.page();
     })(window, document, 'ttq');
   </script>
   <!-- End TikTok Pixel -->
 
   <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom right, #333333, #e53935);
       margin: 0; padding: 20px;
       display: flex; justify-content: center; align-items: center;
-      min-height: 100vh; box-sizing: border-box; color: #fff;
+      min-height: 100vh; color: #fff;
+      -webkit-tap-highlight-color: transparent;
     }
     .container {
       background: #1a1a1a; border-radius: 16px;
@@ -78,10 +88,10 @@
       padding: 25px 20px; text-align: center;
     }
     .main-display-image { width: 100%; border-radius: 12px; margin-bottom: 20px; }
-    .reward-progress p { font-size: .95em; margin-bottom: 8px; color: #fff; font-weight: 600; }
+    .reward-progress p { font-size: .95em; margin-bottom: 8px; font-weight: 600; }
     .progress-bar-container { background-color: #333; border-radius: 5px; height: 10px; overflow: hidden; }
     .progress-bar { background-color: #e53935; width: 33%; height: 100%; }
-    .instructions-header { font-size: 1.4em; font-weight: 700; margin: 25px 0 20px; color: #fff; }
+    .instructions-header { font-size: 1.4em; font-weight: 700; margin: 25px 0 20px; }
     .quick-start-guide { background: #232323; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: left; }
     .quick-start-guide h3 { font-size: 1.1em; margin-bottom: 15px; font-weight: 600; color: #e53935; }
     .quick-start-guide ul { list-style: none; padding: 0; margin: 0; }
@@ -91,13 +101,16 @@
       width: 24px; height: 24px; display:flex; justify-content:center; align-items:center;
       margin-right: 12px; font-size: .8em;
     }
-    .text-main { font-weight: 600; color:#fff; }
+    .text-main { font-weight: 600; }
     .text-sub { font-size: .85em; color:#bdbdbd; }
     .start-earning-btn {
       display:block; background: linear-gradient(to right, #007bff, #0056b3);
-      color:#fff; padding: 15px; border-radius: 30px; font-weight: bold; font-size: 1.1em;
+      color:#fff; padding: 15px; border-radius: 30px; font-weight: 700; font-size: 1.1em;
       text-decoration:none; margin: 0 auto 20px; transition: background .2s;
+      -webkit-user-select:none; user-select:none;
+      touch-action: manipulation;
     }
+    .start-earning-btn:active { transform: translateY(1px); }
     .start-earning-btn:hover { background: linear-gradient(to right, #0056b3, #007bff); }
     .footer-text { font-size:.8em; color:#bdbdbd; text-align:center; }
     .footer-text .lock-icon { font-size:1em; margin-right:5px; }
@@ -105,7 +118,7 @@
 </head>
 <body>
   <div class="container">
-    <img src="images/empfohlen.png" alt="PP Logo" class="main-display-image">
+    <img src="images/empfohlen.png" alt="Empfohlen" class="main-display-image" loading="eager" decoding="async">
     <div class="reward-progress">
       <p>Reward Progress</p>
       <div class="progress-bar-container"><div class="progress-bar"></div></div>
@@ -131,63 +144,67 @@
         <li>
           <span class="icon">✓</span>
           <div>
-            <span class="text-main">Pro tip: Make in-app purchases on <br>the games to earn faster</span><br>
+            <span class="text-main">Pro tip: Make in-app purchases on the games to earn faster</span><br>
             <span class="text-sub">They reimburse you for anything you spend!</span>
           </div>
         </li>
       </ul>
     </div>
 
-    <!-- Button WITHOUT inline onclick -->
-    <a href="https://www.phef6trk.com/HCZ3GL/2GWFGW2/?sub1=AD1" 
-   class="start-earning-btn" 
-   rel="noopener noreferrer">
-   START EARNING NOW
-</a>
-
+    <!-- CTA (same-tab; optimized for TikTok webview) -->
+    <a id="cta"
+       href="https://www.phef6trk.com/HCZ3GL/2GWFGW2/?sub1=AD1"
+       class="start-earning-btn"
+       rel="noopener noreferrer">
+      START EARNING NOW
+    </a>
 
     <div class="footer-text">
       <span class="lock-icon">🛡️</span> Secure & Confidential
     </div>
   </div>
 
-  <!-- Click handler: fires FB AddToCart + TikTok CompletePayment, then navigates -->
+  <!-- CTA logic: fire pixels non-blocking, then navigate quickly inside same tab -->
   <script>
     (function () {
-      var btn = document.querySelector('.start-earning-btn');
-      if (!btn) return;
+      var cta = document.getElementById('cta');
+      if (!cta) return;
 
-      // Optionally pull value/currency from URL (?value= & ?currency=); defaults below
-      function getParam(n){ return new URLSearchParams(location.search).get(n); }
-      var purchaseValue   = parseFloat(getParam('value')) || 0;
-      var purchaseCurrency= (getParam('currency') || 'USD').toUpperCase();
+      // Optional: map ?value=&currency= to event payloads
+      var qp = new URLSearchParams(location.search);
+      var value = parseFloat(qp.get('value')) || 0;
+      var currency = (qp.get('currency') || 'USD').toUpperCase();
 
-      btn.addEventListener('click', function (e) {
+      function firePixels() {
+        try { if (typeof fbq === 'function') fbq('trackCustom', 'CTA_Click'); } catch (e) {}
+        try { if (typeof ttq !== 'undefined') ttq.track('ClickButton', { value: value, currency: currency }); } catch (e) {}
+
+        // Example: durable click log to your server (optional)
+        // try { navigator.sendBeacon('/click', JSON.stringify({ ts: Date.now() })); } catch(e) {}
+      }
+
+      cta.addEventListener('click', function (e) {
         e.preventDefault();
-        var url = btn.getAttribute('href');
+        var url = cta.getAttribute('href');
 
-        // Facebook AddToCart (you can switch to 'Purchase' if you prefer)
-        try { if (typeof fbq === 'function') fbq('track', 'AddToCart'); } catch (err) {}
+        // Fire tracking without waiting on network
+        firePixels();
 
-        // TikTok Purchase equivalent
-        try {
-          if (typeof ttq !== 'undefined') {
-            ttq.track('CompletePayment', {
-              value: purchaseValue,
-              currency: purchaseCurrency
-            });
-          }
-        } catch (err) {}
+        // Tiny delay improves reliability in TikTok webview without feeling laggy
+        setTimeout(function () {
+          // replace() prevents an extra back step (reduces pogo-sticking)
+          location.replace(url);
+        }, 120);
+      }, { passive: false });
 
-        // Give pixels a moment to fire, then continue
-        setTimeout(function(){ window.location.href = url; }, 250);
+      // Keyboard activation fallback
+      cta.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.keyCode === 13) cta.click();
       });
     })();
   </script>
 
-  <!-- Cloudflare Beacon (kept; corrected attribute formatting) -->
+  <!-- Cloudflare Beacon (left as-is) -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
           data-cf-beacon='{"rayId":"950d47d2ebc195ab","version":"2025.6.2","r":1,"token":"d6d13852736e41b884e696d6d0c5c544",
-          "servertiming":{"name":{"cfextpri":true,"cfedge":true,"cforigin":true,"cfl4":true,"cfspeedbrain":true,"cfcachestatus":true}}}'
-          crossorigin="anonymous"></script>
-</body></html>
+          "servertiming":{"name":{"cfextpri":true,"cfedge":true,"cforigin":true,"cfl4":true,"cfspeedbrain":true,"cfcachestatus":true}}}
