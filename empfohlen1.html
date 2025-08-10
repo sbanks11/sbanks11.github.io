@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Warm up offer origin (fix: origin only, not full path) -->
+  <!-- Warm up offer origin (origin only) -->
   <link rel="preconnect" href="https://www.phef6trk.com" crossorigin>
   <link rel="dns-prefetch" href="https://www.phef6trk.com">
 
@@ -48,24 +48,32 @@
   <noscript><link rel="stylesheet" href="https://trx.rwrdtime.com/t/t.css?mc_ns=1" /></noscript>
   <!-- End MaxConv -->
 
-  <!-- TikTok Pixel -->
+  <!-- TikTok Pixel (hardened) -->
   <script>
-    !(function (w, d, t) {
+    (function (w, d, t) {
       w.TiktokAnalyticsObject = t;
       var ttq = w[t] = w[t] || [];
       ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
-      ttq.setAndDefer = function(t, e){ t[e] = function(){ t.push([e].concat([].slice.call(arguments))) } };
+      ttq.setAndDefer = function(ttqObj, method){ ttqObj[method] = function(){ ttq.push([method].concat([].slice.call(arguments))) } };
       for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
-      ttq.instance = function(t){ var e = ttq._i[t] || []; for (var n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]); return e; };
-      ttq.load = function(e, n){ var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
-        ttq._i = ttq._i || {}; ttq._i[e] = [];
-        ttq._i[e]._u = i; ttq._t = ttq._t || {}; ttq._t[e] = +new Date;
-        ttq._o = ttq._o || {}; ttq._o[e] = n || {};
-        var o = d.createElement("script"); o.type = "text/javascript"; o.async = !0; o.src = i;
-        var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(o, a);
+      ttq.instance = function(id){ var inst = ttq._i[id] || []; for (var n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(inst, ttq.methods[n]); return inst; };
+      ttq.load = function(pid, opts){
+        var u = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        ttq._i = ttq._i || {}; ttq._i[pid] = []; ttq._i[pid]._u = u;
+        ttq._t = ttq._t || {}; ttq._t[pid] = +new Date;
+        ttq._o = ttq._o || {}; ttq._o[pid] = opts || {};
+        var s = d.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = u;
+        var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(s, a);
       };
-      ttq.load('D2BRNK3C77U7U0ICUE80');  // Your TikTok Pixel ID
-      ttq.page();
+
+      // Load + guaranteed PageView
+      var PIXEL_ID = 'D2BRNK3C77U7U0ICUE80';
+      ttq.load(PIXEL_ID);
+
+      // Fire pageview when the library is ready; also set a hard fallback
+      ttq.ready(function(){ try { ttq.page(); } catch(e){} });
+      // Fallback in case ready never fires due to blockers/race conditions
+      setTimeout(function(){ try { ttq.page(); } catch(e){} }, 1500);
     })(window, document, 'ttq');
   </script>
   <!-- End TikTok Pixel -->
@@ -164,13 +172,13 @@
     </div>
   </div>
 
-  <!-- CTA logic: non-blocking pixel fires; quick same-tab handoff; safer binding -->
+  <!-- CTA logic: fires Purchase on click (your request) + fast handoff -->
   <script>
     (function () {
       var cta = document.getElementById('cta');
       if (!cta) return;
 
-      // Optional: map ?value=&currency= to event payloads
+      // Optional payload from URL (?value=&currency=)
       var qp = new URLSearchParams(location.search);
       var value = parseFloat(qp.get('value')) || 0;
       var currency = (qp.get('currency') || 'USD').toUpperCase();
@@ -178,26 +186,24 @@
       cta.addEventListener('click', function (e) {
         var url = cta.getAttribute('href');
 
-        // Fire tracking (intent) without blocking navigation
+        // FB: click intent
         try { if (typeof fbq === 'function') fbq('trackCustom', 'CTA_Click'); } catch (err) {}
-        try { if (typeof ttq !== 'undefined') ttq.track('ClickButton', { value: value, currency: currency }); } catch (err) {}
 
-        // Now prevent default and hand off quickly (lower delay for less bounce)
+        // TikTok: PURCHASE on click (testing only; best practice is S2S on real conversion)
+        try {
+          if (typeof ttq !== 'undefined') {
+            ttq.track('CompletePayment', { value: value, currency: currency });
+          }
+        } catch (err) {}
+
+        // Hand off quickly; stay inside TikTok webview
         e.preventDefault();
-        setTimeout(function () {
-          // replace() avoids an extra back step; keeps user in TikTok webview
-          location.replace(url);
-        }, 80);
+        setTimeout(function () { location.replace(url); }, 80);
       }, { passive: false });
-
-      // Keyboard activation fallback
-      cta.addEventListener('keydown', function(e){
-        if (e.key === 'Enter' || e.keyCode === 13) cta.click();
-      });
     })();
   </script>
 
-  <!-- Cloudflare Beacon (left as-is) -->
+  <!-- Cloudflare Beacon -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
           data-cf-beacon='{"rayId":"950d47d2ebc195ab","version":"2025.6.2","r":1,"token":"d6d13852736e41b884e696d6d0c5c544",
           "servertiming":{"name":{"cfextpri":true,"cfedge":true,"cforigin":true,"cfl4":true,"cfspeedbrain":true,"cfcachestatus":true}}}'
