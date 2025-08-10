@@ -5,33 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reward Claim</title>
 
+  <!-- Warm up offer origin -->
+  <link rel="preconnect" href="https://www.phef6trk.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.phef6trk.com">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Warm up offer origin -->
-  <link rel="preconnect" href="https://www.phef6trk.com" crossorigin>
-  <link rel="dns-prefetch" href="https://www.phef6trk.com">
-
-  <!-- TikTok Pixel (official, single block) -->
+  <!-- TikTok Pixel (official; FIRST; single block) -->
   <script>
     !(function (w, d, t) {
       w.TiktokAnalyticsObject = t;
       var ttq = w[t] = w[t] || [];
       ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
-      ttq.setAndDefer = function(t, e){ t[e] = function(){ t.push([e].concat([].slice.call(arguments))) } };
+      ttq.setAndDefer = function(obj, method){ obj[method] = function(){ ttq.push([method].concat([].slice.call(arguments))) } };
       for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
-      ttq.instance = function(t){ var e = ttq._i[t] || []; for (var n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]); return e; };
-      ttq.load = function(e, n){ var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
-        ttq._i = ttq._i || {}; ttq._i[e] = [];
-        ttq._i[e]._u = i; ttq._t = ttq._t || {}; ttq._t[e] = +new Date;
-        ttq._o = ttq._o || {}; ttq._o[e] = n || {};
-        var o = d.createElement("script"); o.type = "text/javascript"; o.async = !0; o.src = i;
-        var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(o, a);
+      ttq.instance = function(id){ var inst = ttq._i[id] || []; for (var n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(inst, ttq.methods[n]); return inst; };
+      ttq.load = function(pixelId, opts){
+        var u = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        ttq._i = ttq._i || {}; ttq._i[pixelId] = []; ttq._i[pixelId]._u = u;
+        ttq._t = ttq._t || {}; ttq._t[pixelId] = +new Date;
+        ttq._o = ttq._o || {}; ttq._o[pixelId] = opts || {};
+        var s = d.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = u;
+        var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(s, a);
       };
-      ttq.load('D2BRNK3C77U7U0ICUE80');  /* your 20-char Pixel ID */
-      ttq.page();                        /* PageView on first access */
+      ttq.load('D2BRNK3C77U7U0ICUE80');  /* YOUR 20-char Pixel ID */
+      ttq.page();                        /* PageView on load */
+      // Hard fallback in case ready hook is skipped by blockers/race:
+      setTimeout(function(){ try{ ttq.page(); }catch(e){} }, 1500);
     })(window, document, 'ttq');
   </script>
   <!-- End TikTok Pixel -->
@@ -53,12 +56,11 @@
     <img height="1" width="1" style="display:none"
          src="https://www.facebook.com/tr?id=1257093056007108&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel -->
 
-  <!-- Optional: client hints for device data -->
+  <!-- Optional device hints for your other tracker -->
   <meta http-equiv="delegate-ch" content="sec-ch-ua https://trx.rwrdtime.com; sec-ch-ua-mobile https://trx.rwrdtime.com; sec-ch-ua-arch https://trx.rwrdtime.com; sec-ch-ua-model https://trx.rwrdtime.com; sec-ch-ua-platform https://trx.rwrdtime.com; sec-ch-ua-platform-version https://trx.rwrdtime.com; sec-ch-ua-bitness https://trx.rwrdtime.com; sec-ch-ua-full-version-list https://trx.rwrdtime.com; sec-ch-ua-full-version https://trx.rwrdtime.com">
 
-  <!-- MaxConv Tracking Script -->
+  <!-- MaxConv (after TikTok so it can't call ttq before load) -->
   <script>
     !function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};
       var s=d.createElement(n),t=d.getElementsByTagName(n)[0];
@@ -162,13 +164,13 @@
     </div>
   </div>
 
-  <!-- CTA logic: append ttclid, fire Purchase on click, fast handoff in same webview -->
+  <!-- CTA logic: append ttclid, fire Purchase on click, fast handoff -->
   <script>
     (function () {
       var cta = document.getElementById('cta');
       if (!cta) return;
 
-      // Capture ttclid from URL (or cookie/localStorage), keep for a week
+      // Persist/forward ttclid (7 days)
       var TTL_DAYS = 7;
       function setCookie(n, v, days){
         var d = new Date(); d.setTime(d.getTime() + days*24*60*60*1000);
@@ -187,7 +189,6 @@
       }
       var ttclid = getTTCLID();
 
-      // Optional payload from URL (?value=&currency=)
       var qp = new URLSearchParams(location.search);
       var value = parseFloat(qp.get('value')) || 0;
       var currency = (qp.get('currency') || 'USD').toUpperCase();
@@ -195,20 +196,14 @@
       cta.addEventListener('click', function (e) {
         var urlObj = new URL(cta.getAttribute('href'), location.href);
 
-        // Forward ttclid to the offer
         if (ttclid) {
           urlObj.searchParams.set('ttclid', ttclid);
-          // If your network reads subs, you can mirror:
-          // urlObj.searchParams.set('sub2', ttclid);
+          // urlObj.searchParams.set('sub2', ttclid); // optional mirror
         }
 
-        // FB: click intent
         try { if (typeof fbq === 'function') fbq('trackCustom', 'CTA_Click'); } catch (err) {}
-
-        // TikTok: PURCHASE on click (testing only; best practice = S2S on real conversion)
         try { if (typeof ttq !== 'undefined') ttq.track('CompletePayment', { value: value, currency: currency }); } catch (err) {}
 
-        // Handoff quickly; stay in TikTok webview
         e.preventDefault();
         setTimeout(function(){ location.replace(urlObj.toString()); }, 80);
       }, { passive: false });
