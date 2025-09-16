@@ -159,7 +159,7 @@
           <span class="icon">✓</span>
           <div>
             <span class="text-main">Mehr verdienen durch Testen mehrerer Spiele</span><br>
-            <span class="text-sub">Über 100 €/Tag möglich</span>
+            <span class="text-sub">Über 200 €/Tag möglich</span>
           </div>
         </li>
         <li>
@@ -223,6 +223,161 @@
         e.preventDefault();
         setTimeout(function(){ location.replace(urlObj.toString()); }, 80);
       }, { passive: false });
+    })();
+  </script>
+
+  <!-- Notification Container -->
+  <div id="notification-container"></div>
+
+  <!-- Notification System -->
+  <style>
+    #notification-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 320px;
+      pointer-events: none;
+    }
+
+    .notification {
+      background: #1a1a1a;
+      border: 1px solid #e53935;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 20px rgba(229, 57, 53, 0.3);
+      transform: translateX(100%);
+      opacity: 0;
+      transition: all 0.4s ease-out;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .notification.slide-in {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .notification.slide-out {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .notification-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #e53935, #c62828);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .notification-content {
+      flex: 1;
+    }
+
+    .notification-text {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .notification-amount {
+      color: #4caf50;
+      font-weight: 700;
+    }
+
+    @media (max-width: 480px) {
+      #notification-container {
+        width: 280px;
+        right: 10px;
+        top: 10px;
+      }
+      
+      .notification {
+        padding: 12px;
+      }
+      
+      .notification-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+      }
+      
+      .notification-text {
+        font-size: 13px;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const germanNames = [
+        'Lukas', 'Anna', 'Maximilian', 'Lea', 'Jonas', 'Sophie', 'Paul', 'Mia', 
+        'Felix', 'Laura', 'Niklas', 'Lena', 'Tim', 'Julia', 'David', 'Sarah', 
+        'Leon', 'Emma', 'Jan', 'Marie', 'Tobias', 'Clara', 'Daniel', 'Lisa', 
+        'Alexander', 'Hannah', 'Philipp', 'Nina', 'Sebastian', 'Katharina'
+      ];
+
+      function getRandomName() {
+        return germanNames[Math.floor(Math.random() * germanNames.length)];
+      }
+
+      function getRandomAmount() {
+        return Math.floor(Math.random() * (1000 - 200 + 1)) + 200;
+      }
+
+      function createNotification() {
+        const container = document.getElementById('notification-container');
+        if (!container) return;
+
+        const name = getRandomName();
+        const amount = getRandomAmount();
+        
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        
+        notification.innerHTML = `
+          <div class="notification-icon">💰</div>
+          <div class="notification-content">
+            <p class="notification-text">
+              <strong>${name}</strong> hat erfolgreich <span class="notification-amount">${amount} €</span> eingezahlt.
+            </p>
+          </div>
+        `;
+
+        container.appendChild(notification);
+
+        // Trigger slide-in animation
+        setTimeout(() => {
+          notification.classList.add('slide-in');
+        }, 50);
+
+        // Remove notification after 4 seconds
+        setTimeout(() => {
+          notification.classList.add('slide-out');
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+          }, 400);
+        }, 4000);
+      }
+
+      // Start notifications after page loads
+      setTimeout(() => {
+        createNotification(); // First notification
+        setInterval(createNotification, 5000); // Every 5 seconds
+      }, 2000);
     })();
   </script>
 
