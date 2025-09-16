@@ -1,197 +1,390 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reward Claim</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Meta Pixel Code -->
-    <script async="" defer="" src="js/t.js"></script><script async="" src="js/fbevents.js"></script><script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reward Claim</title>
+
+  <!-- Warm up offer origin -->
+  <link rel="preconnect" href="https://www.phef6trk.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.phef6trk.com">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TikTok Pixel (official; FIRST; single block) -->
+  <script>
+    !(function (w, d, t) {
+      w.TiktokAnalyticsObject = t;
+      var ttq = w[t] = w[t] || [];
+      ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
+      ttq.setAndDefer = function(obj, method){ obj[method] = function(){ ttq.push([method].concat([].slice.call(arguments))) } };
+      for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+      ttq.instance = function(id){ var inst = ttq._i[id] || []; for (var n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(inst, ttq.methods[n]); return inst; };
+      ttq.load = function(pixelId, opts){
+        var u = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        ttq._i = ttq._i || {}; ttq._i[pixelId] = []; ttq._i[pixelId]._u = u;
+        ttq._t = ttq._t || {}; ttq._t[pixelId] = +new Date;
+        ttq._o = ttq._o || {}; ttq._o[pixelId] = opts || {};
+        var s = d.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = u;
+        var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(s, a);
+      };
+      ttq.load('D2BRNK3C77U7U0ICUE80');  /* YOUR 20-char Pixel ID */
+      ttq.page();                        /* PageView on load */
+      // Hard fallback in case ready hook is skipped by blockers/race:
+      setTimeout(function(){ try{ ttq.page(); }catch(e){} }, 1500);
+    })(window, document, 'ttq');
+  </script>
+  <!-- End TikTok Pixel -->
+
+  <!-- Meta Pixel (Facebook) -->
+  <script async src="https://connect.facebook.net/en_US/fbevents.js"></script>
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
+      n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)
+    };
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1257093056007108');
     fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1257093056007108&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    <!--Optional, send client hints to get accurate device data-->
-<meta http-equiv="delegate-ch" content="sec-ch-ua https://trx.rwrdtime.com; sec-ch-ua-mobile https://trx.rwrdtime.com; sec-ch-ua-arch https://trx.rwrdtime.com; sec-ch-ua-model https://trx.rwrdtime.com; sec-ch-ua-platform https://trx.rwrdtime.com; sec-ch-ua-platform-version https://trx.rwrdtime.com; sec-ch-ua-bitness https://trx.rwrdtime.com; sec-ch-ua-full-version-list https://trx.rwrdtime.com; sec-ch-ua-full-version https://trx.rwrdtime.com">
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1257093056007108&ev=PageView&noscript=1"/>
+  </noscript>
 
-<!-- MaxConv Tracking Script Base Code-->
-<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="https://trx.rwrdtime.com/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
-<noscript><link rel="stylesheet" href="https://trx.rwrdtime.com/t/t.css?mc_ns=1" /></noscript>
-<!-- End MaxConv Tracking Script Base Code-->
- 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom right, #333333, #e53935);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
-            color: #fff;
-        }
-        .container {
-            background: #1a1a1a;
-            border-radius: 16px;
-            box-shadow: 0 0 15px rgba(229, 57, 53, 0.10);
-            max-width: 420px;
-            width: 100%;
-            padding: 25px 20px;
-            text-align: center;
-        }
-        .main-display-image {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-        .reward-progress p {
-            font-size: 0.95em;
-            margin-bottom: 8px;
-            color: #fff;
-            font-weight: 600;
-        }
-        .progress-bar-container {
-            background-color: #333;
-            border-radius: 5px;
-            height: 10px;
-            overflow: hidden;
-        }
-        .progress-bar {
-            background-color: #e53935;
-            width: 33%;
-            height: 100%;
-        }
-        .instructions-header {
-            font-size: 1.4em;
-            font-weight: 700;
-            margin: 25px 0 20px;
-            color: #fff;
-        }
-        .quick-start-guide {
-            background: #232323;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-            text-align: left;
-        }
-        .quick-start-guide h3 {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            font-weight: 600;
-            color: #e53935;
-        }
-        .quick-start-guide ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .quick-start-guide li {
-            display: flex;
-            align-items: start;
-            margin-bottom: 15px;
-        }
-        .quick-start-guide .icon {
-            background-color: #e53935;
-            color: #fff;
-            font-weight: bold;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 12px;
-            font-size: 0.8em;
-        }
-        .text-main {
-            font-weight: 600;
-            color: #fff;
-        }
-        .text-sub {
-            font-size: 0.85em;
-            color: #bdbdbd;
-        }
-        .start-earning-btn {
-            display: block;
-            background: linear-gradient(to right, #007bff, #0056b3);
-            color: #fff;
-            padding: 15px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1em;
-            text-decoration: none;
-            margin: 0 auto 20px;
-            transition: background 0.2s;
-        }
-        .start-earning-btn:hover {
-            background: linear-gradient(to right, #0056b3, #007bff);
-        }
-        .footer-text {
-            font-size: 0.8em;
-            color: #bdbdbd;
-            text-align: center;
-        }
-        .footer-text .lock-icon {
-            font-size: 1em;
-            margin-right: 5px;
-        }
-    </style>
+  <!-- Optional device hints for your other tracker -->
+  <meta http-equiv="delegate-ch" content="sec-ch-ua https://trx.rwrdtime.com; sec-ch-ua-mobile https://trx.rwrdtime.com; sec-ch-ua-arch https://trx.rwrdtime.com; sec-ch-ua-model https://trx.rwrdtime.com; sec-ch-ua-platform https://trx.rwrdtime.com; sec-ch-ua-platform-version https://trx.rwrdtime.com; sec-ch-ua-bitness https://trx.rwrdtime.com; sec-ch-ua-full-version-list https://trx.rwrdtime.com; sec-ch-ua-full-version https://trx.rwrdtime.com">
+
+  <!-- MaxConv (after TikTok so it can't call ttq before load) -->
+  <script>
+    !function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};
+      var s=d.createElement(n),t=d.getElementsByTagName(n)[0];
+      s.async=!0;s.defer=!0;s.src="https://trx.rwrdtime.com/t/t.js";
+      t.parentNode.insertBefore(s,t);
+    }(window,document,"maxconv","script");
+  </script>
+  <noscript><link rel="stylesheet" href="https://trx.rwrdtime.com/t/t.css?mc_ns=1" /></noscript>
+
+  <style>
+.quick-start-guide li {
+  display: flex;
+  align-items: flex-start; /* (same as before, just explicit) */
+}
+
+.quick-start-guide .icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;   /* don’t grow, don’t shrink, fixed basis */
+  flex-shrink: 0;   /* extra safety */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #e53935;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 16px;  /* fixed size so the ✓ stays consistent */
+  line-height: 24px;
+}
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #333333, #e53935);
+      margin: 0; padding: 20px;
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; color: #fff;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .container {
+      background: #1a1a1a; border-radius: 16px;
+      box-shadow: 0 0 15px rgba(229, 57, 53, 0.10);
+      max-width: 420px; width: 100%;
+      padding: 25px 20px; text-align: center;
+    }
+    .main-display-image { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+    .reward-progress p { font-size: .95em; margin-bottom: 8px; font-weight: 600; }
+    .progress-bar-container { background-color: #333; border-radius: 5px; height: 10px; overflow: hidden; }
+    .progress-bar { background-color: #e53935; width: 33%; height: 100%; }
+    .instructions-header { font-size: 1.4em; font-weight: 700; margin: 25px 0 20px; }
+    .quick-start-guide { background: #232323; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: left; }
+    .quick-start-guide h3 { font-size: 1.1em; margin-bottom: 15px; font-weight: 600; color: #e53935; }
+    .quick-start-guide ul { list-style: none; padding: 0; margin: 0; }
+    .quick-start-guide li { display: flex; align-items: start; margin-bottom: 15px; }
+    .quick-start-guide .icon {
+      background-color: #e53935; color:#fff; font-weight: bold; border-radius: 50%;
+      width: 24px; height: 24px; display:flex; justify-content:center; align-items:center;
+      margin-right: 12px; font-size: .8em;
+    }
+    .text-main { font-weight: 600; }
+    .text-sub { font-size: .85em; color:#bdbdbd; }
+    .start-earning-btn {
+      display:block; background: linear-gradient(to right, #007bff, #0056b3);
+      color:#fff; padding: 15px; border-radius: 30px; font-weight: 700; font-size: 1.1em;
+      text-decoration:none; margin: 0 auto 20px; transition: background .2s;
+      -webkit-user-select:none; user-select:none;
+      touch-action: manipulation;
+    }
+    .start-earning-btn:active { transform: translateY(1px); }
+    .start-earning-btn:hover { background: linear-gradient(to right, #0056b3, #007bff); }
+    .footer-text { font-size:.8em; color:#bdbdbd; text-align:center; }
+    .footer-text .lock-icon { font-size:1em; margin-right:5px; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <img src="images/empfohlen.png" alt="PP Logo" class="main-display-image">
-        <div class="reward-progress">
-            <p>Reward Progress</p>
-            <div class="progress-bar-container">
-                <div class="progress-bar"></div>
-            </div>
-        </div>
-        <div class="instructions-header">Follow the instructions<br>to start earning today!</div>
-        <div class="quick-start-guide">
-            <h3>Quick Start Guide →</h3>
-            <ul>
-                <li>
-                    <span class="icon">✓</span>
-                    <div>
-                        <span class="text-main">Download the Empfohlen app</span><br>
-                        <span class="text-sub">Click the button below</span>
-                    </div>
-                </li>
-                <li>
-                    <span class="icon">✓</span>
-                    <div>
-                        <span class="text-main">Earn More by Testing Multiple Games</span><br>
-                        <span class="text-sub">Make over $100/day</span>
-                    </div>
-                </li>
-                <li>
-                    <span class="icon">✓</span>
-                    <div>
-                        <span class="text-main">Pro tip: Make in-app purchases on <br>the games to earn faster</span><br>
-                        <span class="text-sub">They reimburse you for anything you spend!</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <a href="https://www.phef6trk.com/HCZ3GL/2GWFGW2/?sub1=AD3" class="start-earning-btn" onclick="fbq('track', 'AddToCart')">START EARNING NOW</a>
-        <div class="footer-text">
-            <span class="lock-icon">🛡️</span> Secure & Confidential
-        </div>
+  <div class="container">
+    <img src="images/empfohlen.png" alt="Empfohlen" class="main-display-image" loading="eager" decoding="async">
+    <div class="reward-progress">
+      <p>Belohnungsfortschritt</p>
+      <div class="progress-bar-container"><div class="progress-bar"></div></div>
     </div>
-<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" data-cf-beacon="{" rayid":"950d47d2ebc195ab","version":"2025.6.2","r":1,"token":"d6d13852736e41b884e696d6d0c5c544","servertiming":{"name":{"cfextpri":true,"cfedge":true,"cforigin":true,"cfl4":true,"cfspeedbrain":true,"cfcachestatus":true}}}"="" crossorigin="anonymous"></script>
+    <div class="instructions-header">Folge den Schritten<br>und starte noch heute mit dem Verdienen!</div>
+    <div class="quick-start-guide">
+      <h3>Schnellstart →</h3>
+      <ul>
+        <li>
+          <span class="icon">✓</span>
+          <div>
+            <span class="text-main">App „Empfohlen“ herunterladen</span><br>
+            <span class="text-sub">Klicke auf den Button unten</span>
+          </div>
+        </li>
+        <li>
+          <span class="icon">✓</span>
+          <div>
+            <span class="text-main">Mehr verdienen durch Testen mehrerer Spiele</span><br>
+            <span class="text-sub">Über 100 €/Tag möglich</span>
+          </div>
+        </li>
+        <li>
+          <span class="icon">✓</span>
+          <div>
+            <span class="text-main">Tipp: In-App-Käufe machen, um schneller zu verdienen</span><br>
+            <span class="text-sub">Alles, was du ausgibst, wird dir erstattet!</span>
+          </div>
+        </li>
+      </ul>
+    </div>
 
+    <!-- CTA -->
+       <a href="https://www.phef6trk.com/HCZ3GL/2GWFGW2/?sub1=AD3" class="start-earning-btn" onclick="fbq('track', 'AddToCart')">JETZT VERDIENEN STARTEN</a>
+    
+    <div class="footer-text">
+      <span class="lock-icon">🛡️</span> Sicher & vertraulich
+    </div>
+  </div>
 
-</body></html>
+  <!-- CTA logic: append ttclid, fire Purchase on click, fast handoff -->
+  <script>
+    (function () {
+      var cta = document.getElementById('cta');
+      if (!cta) return;
+
+      // Persist/forward ttclid (7 days)
+      var TTL_DAYS = 7;
+      function setCookie(n, v, days){
+        var d = new Date(); d.setTime(d.getTime() + days*24*60*60*1000);
+        document.cookie = n + "=" + encodeURIComponent(v) + "; expires=" + d.toUTCString() + "; path=/; SameSite=Lax";
+      }
+      function getCookie(n){
+        return (document.cookie.split('; ').find(r => r.startsWith(n + '=')) || '').split('=').slice(1).join('=') || '';
+      }
+      function getTTCLID(){
+        var p = new URLSearchParams(location.search);
+        var id = p.get('ttclid') || p.get('tt_clickid') || '';
+        if (id) { setCookie('ttclid', id, TTL_DAYS); try{ localStorage.setItem('ttclid', id); }catch(e){} }
+        if (!id) id = getCookie('ttclid');
+        if (!id) { try { id = localStorage.getItem('ttclid') || ''; } catch(e){} }
+        return id;
+      }
+      var ttclid = getTTCLID();
+
+      var qp = new URLSearchParams(location.search);
+      var value = parseFloat(qp.get('value')) || 0;
+      var currency = (qp.get('currency') || 'USD').toUpperCase();
+
+      cta.addEventListener('click', function (e) {
+        var urlObj = new URL(cta.getAttribute('href'), location.href);
+
+        if (ttclid) {
+          urlObj.searchParams.set('ttclid', ttclid);
+          // urlObj.searchParams.set('sub2', ttclid); // optional mirror
+        }
+
+        try { if (typeof fbq === 'function') fbq('trackCustom', 'CTA_Click'); } catch (err) {}
+        try { if (typeof ttq !== 'undefined') ttq.track('CompletePayment', { value: value, currency: currency }); } catch (err) {}
+
+        e.preventDefault();
+        setTimeout(function(){ location.replace(urlObj.toString()); }, 80);
+      }, { passive: false });
+    })();
+  </script>
+
+  <!-- Notification Container -->
+  <div id="notification-container"></div>
+
+  <!-- Notification System -->
+  <style>
+    #notification-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 320px;
+      pointer-events: none;
+    }
+
+    .notification {
+      background: #1a1a1a;
+      border: 1px solid #e53935;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 20px rgba(229, 57, 53, 0.3);
+      transform: translateX(100%);
+      opacity: 0;
+      transition: all 0.4s ease-out;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .notification.slide-in {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .notification.slide-out {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .notification-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #e53935, #c62828);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .notification-content {
+      flex: 1;
+    }
+
+    .notification-text {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .notification-amount {
+      color: #4caf50;
+      font-weight: 700;
+    }
+
+    @media (max-width: 480px) {
+      #notification-container {
+        width: 280px;
+        right: 10px;
+        top: 10px;
+      }
+      
+      .notification {
+        padding: 12px;
+      }
+      
+      .notification-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+      }
+      
+      .notification-text {
+        font-size: 13px;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const germanNames = [
+        'Lukas', 'Anna', 'Maximilian', 'Lea', 'Jonas', 'Sophie', 'Paul', 'Mia', 
+        'Felix', 'Laura', 'Niklas', 'Lena', 'Tim', 'Julia', 'David', 'Sarah', 
+        'Leon', 'Emma', 'Jan', 'Marie', 'Tobias', 'Clara', 'Daniel', 'Lisa', 
+        'Alexander', 'Hannah', 'Philipp', 'Nina', 'Sebastian', 'Katharina'
+      ];
+
+      function getRandomName() {
+        return germanNames[Math.floor(Math.random() * germanNames.length)];
+      }
+
+      function getRandomAmount() {
+        return Math.floor(Math.random() * (1000 - 200 + 1)) + 200;
+      }
+
+      function createNotification() {
+        const container = document.getElementById('notification-container');
+        if (!container) return;
+
+        const name = getRandomName();
+        const amount = getRandomAmount();
+        
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        
+        notification.innerHTML = `
+          <div class="notification-icon">💰</div>
+          <div class="notification-content">
+            <p class="notification-text">
+              <strong>${name}</strong> hat erfolgreich <span class="notification-amount">${amount} €</span> eingezahlt.
+            </p>
+          </div>
+        `;
+
+        container.appendChild(notification);
+
+        // Trigger slide-in animation
+        setTimeout(() => {
+          notification.classList.add('slide-in');
+        }, 50);
+
+        // Remove notification after 4 seconds
+        setTimeout(() => {
+          notification.classList.add('slide-out');
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+          }, 400);
+        }, 4000);
+      }
+
+      // Start notifications after page loads
+      setTimeout(() => {
+        createNotification(); // First notification
+        setInterval(createNotification, 5000); // Every 5 seconds
+      }, 2000);
+    })();
+  </script>
+
+  <!-- Cloudflare Beacon -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+          data-cf-beacon='{"rayId":"950d47d2ebc195ab","version":"2025.6.2","r":1,"token":"d6d13852736e41b884e696d6d0c5c544",
+          "servertiming":{"name":{"cfextpri":true,"cfedge":true,"cforigin":true,"cfl4":true,"cfspeedbrain":true,"cfcachestatus":true}}}'
+          crossorigin="anonymous"></script>
+</body>
+</html>
