@@ -198,4 +198,161 @@
                     </svg>
                 </div>
                 
-          
+                <!-- Steps -->
+                <div class="space-y-3 md:space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center mt-1" 
+                             style="background-color: hsl(var(--coral));">
+                            <svg class="w-3 h-3 md:w-4 md:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-white font-semibold text-lg md:text-xl">App „Empfohlen" herunterladen</p>
+                            <p class="text-muted-foreground text-base md:text-lg">Klicke auf den Button unten</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center mt-1" 
+                             style="background-color: hsl(var(--coral));">
+                            <svg class="w-3 h-3 md:w-4 md:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-white font-semibold text-lg md:text-xl">Mehr verdienen durch Testen mehrerer Spiele</p>
+                            <p class="text-muted-foreground text-base md:text-lg">Über 200 €/Tag möglich</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center mt-1" 
+                             style="background-color: hsl(var(--coral));">
+                            <svg class="w-3 h-3 md:w-4 md:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-white font-semibold text-lg md:text-xl">Tipp: In-App-Käufe machen, um schneller zu verdienen</p>
+                            <p class="text-muted-foreground text-base md:text-lg">Alles, was du ausgibst, wird dir erstattet!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <a href="https://www.phef6trk.com/HCZ3GL/2GWFGW2/?sub1=AD3" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-cta mb-4 text-base md:text-lg">
+                DOWNLOADEN & VERDIENEN
+            </a>
+            
+            <!-- Security badge -->
+            <div class="flex items-center justify-center space-x-2 text-xs md:text-sm" style="color: hsl(var(--muted-foreground));">
+                <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                <span>Sicher & vertraulich</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Floating Coins Component
+        function createFloatingCoins() {
+            const container = document.getElementById('floating-coins');
+            const columns = 8;
+            const bagsPerColumn = 8;
+            
+            for (let col = 0; col < columns; col++) {
+                const columnPosition = (col / (columns - 1)) * 95 + 2.5;
+                
+                for (let row = 0; row < bagsPerColumn; row++) {
+                    const rowPosition = (row / (bagsPerColumn - 1)) * 95 + 2.5;
+                    const offsetX = (Math.random() - 0.5) * 3;
+                    const offsetY = (Math.random() - 0.5) * 4;
+                    
+                    const coin = document.createElement('div');
+                    coin.textContent = '💰';
+                    coin.className = 'absolute opacity-60 md:opacity-50';
+                    coin.style.cssText = `
+                        left: ${Math.max(1, Math.min(99, columnPosition + offsetX))}%;
+                        top: ${Math.max(1, Math.min(99, rowPosition + offsetY))}%;
+                        transform: translate(-50%, -50%);
+                        font-size: ${18 + Math.random() * 10}px;
+                        animation: coinFloat ${3 + Math.random() * 4}s ease-in-out infinite;
+                        animation-delay: ${Math.random() * 1}s;
+                        filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3));
+                    `;
+                    
+                    container.appendChild(coin);
+                }
+            }
+        }
+
+        // Deposit Notifications Component
+        const names = [
+            'Alexander H.', 'Benedikt S.', 'Christian T.', 'Daniel K.', 'Elias M.',
+            'Fabian R.', 'Georg P.', 'Henrik L.', 'Jonas B.', 'Kai D.',
+            'Leon F.', 'Maximilian G.', 'Niklas W.', 'Oliver V.', 'Tobias J.',
+            'Anna C.', 'Beatrix R.', 'Clara V.', 'Daniela H.', 'Eva W.',
+            'Friederike L.', 'Greta N.', 'Hannah T.', 'Isabel F.', 'Johanna P.',
+            'Katharina M.', 'Lara S.', 'Miriam G.', 'Sophia D.', 'Theresa K.'
+        ];
+
+        function createNotification() {
+            const notificationsContainer = document.getElementById('notifications');
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomAmount = Math.floor(Math.random() * (999 - 25 + 1)) + 25;
+            
+            const notification = document.createElement('div');
+            notification.className = 'border rounded-lg p-4 shadow-lg max-w-sm animate-slide-in-right';
+            notification.style.cssText = `
+                background-color: hsl(var(--card));
+                border-color: hsl(var(--success) / 0.2);
+            `;
+            
+            notification.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 flex-shrink-0" style="color: hsl(var(--success));" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <div class="text-sm">
+                        <span class="font-semibold text-foreground">${randomName}</span>
+                        <span class="text-muted-foreground"> hat erfolgreich </span>
+                        <span class="font-bold" style="color: hsl(var(--success));">${randomAmount} €</span>
+                        <span class="text-muted-foreground"> eingezahlt</span>
+                    </div>
+                </div>
+            `;
+            
+            notificationsContainer.appendChild(notification);
+            
+            // Remove notification after 4 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.className = notification.className.replace('animate-slide-in-right', 'animate-slide-out-right');
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 300);
+                }
+            }, 4000);
+        }
+
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', function() {
+            createFloatingCoins();
+            
+            // Show first notification after 2 seconds
+            setTimeout(createNotification, 2000);
+            
+            // Then show notifications every 12 seconds
+            setInterval(createNotification, 12000);
+        });
+    </script>
+</body>
+</html>
