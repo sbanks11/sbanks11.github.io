@@ -65,21 +65,6 @@
         }
 
         /* Custom animations */
-        @keyframes coinFloat {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg) scale(1);
-            }
-            25% { 
-                transform: translateY(-30px) rotate(5deg) scale(1.05);
-            }
-            50% { 
-                transform: translateY(-15px) rotate(-3deg) scale(1.02);
-            }
-            75% { 
-                transform: translateY(-35px) rotate(7deg) scale(1.03);
-            }
-        }
-
         @keyframes slideInRight {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
@@ -90,8 +75,60 @@
             to { transform: translateX(100%); opacity: 0; }
         }
 
-        .coin-float {
-            animation: coinFloat 6s ease-in-out infinite;
+        @keyframes gradientShift1 {
+            0%, 100% { 
+                transform: scale(1) translate(0, 0);
+                opacity: 0.2;
+            }
+            33% { 
+                transform: scale(1.2) translate(-10%, -10%);
+                opacity: 0.3;
+            }
+            66% { 
+                transform: scale(0.8) translate(10%, 5%);
+                opacity: 0.15;
+            }
+        }
+
+        @keyframes gradientShift2 {
+            0%, 100% { 
+                transform: scale(1) translate(0, 0);
+                opacity: 0.15;
+            }
+            50% { 
+                transform: scale(1.3) translate(-15%, 10%);
+                opacity: 0.25;
+            }
+        }
+
+        @keyframes gradientShift3 {
+            0%, 100% { 
+                transform: scale(1) translate(0, 0);
+                opacity: 0.1;
+            }
+            25% { 
+                transform: scale(1.1) translate(5%, -5%);
+                opacity: 0.2;
+            }
+            75% { 
+                transform: scale(0.9) translate(-5%, 10%);
+                opacity: 0.05;
+            }
+        }
+
+        @keyframes gradientShift4 {
+            0%, 100% { 
+                transform: scale(1) translate(0, 0);
+                opacity: 0.25;
+            }
+            40% { 
+                transform: scale(1.15) translate(5%, -15%);
+                opacity: 0.35;
+            }
+            80% { 
+                transform: scale(0.85) translate(-10%, 5%);
+                opacity: 0.15;
+            }
         }
 
         .animate-slide-in-right {
@@ -155,8 +192,73 @@
 </head>
 
 <body class="min-h-screen">
-    <!-- Floating coins background -->
-    <div id="floating-coins" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+    <!-- Gradient background -->
+    <div id="gradient-background" class="fixed inset-0 -z-10">
+        <!-- Base dark background -->
+        <div class="absolute inset-0" style="background: linear-gradient(135deg, rgb(2, 6, 23), rgb(15, 23, 42), rgb(2, 6, 23));"></div>
+        
+        <!-- Animated gradient orbs with heavy blur for smoothness -->
+        <div class="absolute inset-0" style="filter: blur(60px);">
+            <!-- Top left glow -->
+            <div style="
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                opacity: 0.15;
+                background: radial-gradient(ellipse, hsl(220, 70%, 50%) 0%, hsl(220, 70%, 30%) 25%, transparent 50%);
+                animation: gradientShift1 4s ease-in-out infinite;
+                filter: blur(40px);
+            "></div>
+            
+            <!-- Top right glow -->
+            <div style="
+                position: absolute;
+                top: -33.333333%;
+                right: -33.333333%;
+                width: 80%;
+                height: 80%;
+                border-radius: 50%;
+                opacity: 0.12;
+                background: radial-gradient(ellipse, hsl(180, 60%, 45%) 0%, hsl(180, 60%, 25%) 30%, transparent 60%);
+                animation: gradientShift2 5s ease-in-out infinite;
+                filter: blur(50px);
+            "></div>
+            
+            <!-- Bottom left glow -->
+            <div style="
+                position: absolute;
+                bottom: -33.333333%;
+                left: -33.333333%;
+                width: 80%;
+                height: 80%;
+                border-radius: 50%;
+                opacity: 0.08;
+                background: radial-gradient(ellipse, hsl(270, 50%, 40%) 0%, hsl(270, 50%, 20%) 35%, transparent 65%);
+                animation: gradientShift3 3.5s ease-in-out infinite;
+                filter: blur(45px);
+            "></div>
+            
+            <!-- Bottom right glow -->
+            <div style="
+                position: absolute;
+                bottom: -50%;
+                right: -50%;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                opacity: 0.1;
+                background: radial-gradient(ellipse, hsl(200, 65%, 35%) 0%, hsl(200, 65%, 15%) 28%, transparent 55%);
+                animation: gradientShift4 6s ease-in-out infinite;
+                filter: blur(55px);
+            "></div>
+        </div>
+        
+        <!-- Additional subtle overlay for extra smoothness -->
+        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(2, 6, 23, 0.2), transparent, rgba(2, 6, 23, 0.2));"></div>
+    </div>
     
     <!-- Deposit notifications -->
     <div id="notifications" class="fixed top-4 right-4 z-50 space-y-2"></div>
@@ -168,7 +270,7 @@
             
             <!-- Logo -->
             <div class="flex items-center justify-center mb-6 md:mb-8">
-                <img src="/empfohlen-logo-transparent.png" 
+                <img src="/empfohlen-logo-final.png" 
                      alt="empfohlen.de" 
                      class="w-full max-w-none h-auto rounded-lg shadow-lg" 
                      style="transform: scale(1.1); transform-origin: center;">
@@ -258,39 +360,8 @@
             </div>
         </div>
     </div>
-
+    
     <script>
-        // Floating Coins Component
-        function createFloatingCoins() {
-            const container = document.getElementById('floating-coins');
-            const columns = 8;
-            const bagsPerColumn = 8;
-            
-            for (let col = 0; col < columns; col++) {
-                const columnPosition = (col / (columns - 1)) * 95 + 2.5;
-                
-                for (let row = 0; row < bagsPerColumn; row++) {
-                    const rowPosition = (row / (bagsPerColumn - 1)) * 95 + 2.5;
-                    const offsetX = (Math.random() - 0.5) * 3;
-                    const offsetY = (Math.random() - 0.5) * 4;
-                    
-                    const coin = document.createElement('div');
-                    coin.textContent = '💰';
-                    coin.className = 'absolute opacity-60 md:opacity-50';
-                    coin.style.cssText = `
-                        left: ${Math.max(1, Math.min(99, columnPosition + offsetX))}%;
-                        top: ${Math.max(1, Math.min(99, rowPosition + offsetY))}%;
-                        transform: translate(-50%, -50%);
-                        font-size: ${18 + Math.random() * 10}px;
-                        animation: coinFloat ${3 + Math.random() * 4}s ease-in-out infinite;
-                        animation-delay: ${Math.random() * 1}s;
-                        filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3));
-                    `;
-                    
-                    container.appendChild(coin);
-                }
-            }
-        }
 
         // Deposit Notifications Component
         const names = [
@@ -345,8 +416,6 @@
 
         // Initialize components
         document.addEventListener('DOMContentLoaded', function() {
-            createFloatingCoins();
-            
             // Show first notification after 2 seconds
             setTimeout(createNotification, 2000);
             
