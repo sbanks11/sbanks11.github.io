@@ -31,9 +31,8 @@
         var s = d.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = u;
         var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(s, a);
       };
-      ttq.load('D2BRNK3C77U7U0ICUE80');  /* YOUR 20-char Pixel ID */
-      ttq.page();                        /* PageView on load */
-      // Hard fallback in case ready hook is skipped by blockers/race:
+      ttq.load('D2BRNK3C77U7U0ICUE80');
+      ttq.page();
       setTimeout(function(){ try{ ttq.page(); }catch(e){} }, 1500);
     })(window, document, 'ttq');
   </script>
@@ -73,14 +72,14 @@
   <style>
 .quick-start-guide li {
   display: flex;
-  align-items: flex-start; /* (same as before, just explicit) */
+  align-items: flex-start;
 }
 
 .quick-start-guide .icon {
   width: 24px;
   height: 24px;
-  flex: 0 0 24px;   /* don’t grow, don’t shrink, fixed basis */
-  flex-shrink: 0;   /* extra safety */
+  flex: 0 0 24px;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,7 +88,7 @@
   color: #fff;
   border-radius: 50%;
   font-weight: 700;
-  font-size: 16px;  /* fixed size so the ✓ stays consistent */
+  font-size: 16px;
   line-height: 24px;
 }
     :root { color-scheme: dark; }
@@ -109,9 +108,26 @@
       padding: 25px 20px; text-align: center;
     }
     .main-display-image { width: 100%; border-radius: 12px; margin-bottom: 20px; }
-    .reward-progress p { font-size: .95em; margin-bottom: 8px; font-weight: 600; }
-    .progress-bar-container { background-color: #333; border-radius: 5px; height: 10px; overflow: hidden; }
-    .progress-bar { background-color: #e53935; width: 33%; height: 100%; }
+    
+    /* Updated counter section */
+    .reward-counter {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .counter-amount {
+      font-size: 4em;
+      font-weight: 700;
+      color: #e53935;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .counter-description {
+      font-size: 1em;
+      font-weight: 600;
+      color: #fff;
+    }
+    
     .instructions-header { font-size: 1.4em; font-weight: 700; margin: 25px 0 20px; }
     .quick-start-guide { background: #232323; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: left; }
     .quick-start-guide h3 { font-size: 1.1em; margin-bottom: 15px; font-weight: 600; color: #e53935; }
@@ -133,40 +149,63 @@
     }
     .start-earning-btn:active { transform: translateY(1px); }
     .start-earning-btn:hover { background: linear-gradient(to right, #0056b3, #007bff); }
-    .footer-text { font-size:.8em; color:#bdbdbd; text-align:center; }
+    .footer-text { font-size:.8em; color:#bdbdbd; text-align:center; margin-bottom: 15px; }
     .footer-text .lock-icon { font-size:1em; margin-right:5px; }
+    
+    .trustpilot-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 8px;
+    }
+    .trustpilot-section img {
+      max-width: 125px;
+      height: auto;
+    }
+    
+    @media (max-width: 640px) {
+      .counter-amount {
+        font-size: 3em;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <img src="images/freecash.jpeg" alt="Freecash" class="main-display-image" loading="eager" decoding="async">
-    <div class="reward-progress">
-      <p>Progression de votre récompense</p>
-      <div class="progress-bar-container"><div class="progress-bar"></div></div>
+    
+    <!-- Updated counter section -->
+    <div class="reward-counter">
+      <p class="counter-amount" id="counter">100 €</p>
+      <p class="counter-description">Envoyés instantanément sur ton compte</p>
     </div>
-    <div class="instructions-header">Suivez les étapes<br>et commencez à gagner dès aujourd’hui !</div>
+    
+    <div class="instructions-header">Suivez les étapes<br>et commencez à gagner dès aujourd'hui !</div>
     <div class="quick-start-guide">
       <h3>Démarrage rapide →</h3>
       <ul>
         <li>
           <span class="icon">✓</span>
           <div>
-            <span class="text-main">Créez votre compte Freecash</span><br>
-            <span class="text-sub">Cliquez sur le bouton ci-dessous pour commencer</span>
+            <span class="text-main">Clique sur le bouton ci-dessous</span>
           </div>
         </li>
         <li>
           <span class="icon">✓</span>
           <div>
-            <span class="text-main">Réalisez 3 à 4 missions simples</span><br>
-            <span class="text-sub">Gagnez facilement plus de 100 € par jour</span>
+            <span class="text-main">Inscris-toi sur Freecash</span>
           </div>
         </li>
         <li>
           <span class="icon">✓</span>
           <div>
-            <span class="text-main">Encaissez sur PayPal ou directement sur votre compte bancaire !</span><br>
-            <span class="text-sub">Astuce de pro : joue à plus de jeux pour gagner encore plus !</span>
+            <span class="text-main">Gagne encore plus en testant plusieurs jeux</span>
+          </div>
+        </li>
+        <li>
+          <span class="icon">✓</span>
+          <div>
+            <span class="text-main">Astuce : fais des achats intégrés dans les jeux pour gagner plus vite</span>
           </div>
         </li>
       </ul>
@@ -178,7 +217,35 @@
     <div class="footer-text">
       <span class="lock-icon">🛡️</span> 100 % sécurisé et confidentiel
     </div>
+    
+    <!-- Trustpilot Badge -->
+    <div class="trustpilot-section">
+      <img src="images/trustpilot-rating.png" alt="Trustpilot Rating">
+    </div>
   </div>
+
+  <!-- Counter animation script -->
+  <script>
+    (function() {
+      const duration = 2000;
+      const steps = 60;
+      const increment = 100 / steps;
+      const stepDuration = duration / steps;
+
+      let currentStep = 0;
+      const counterElement = document.getElementById('counter');
+
+      const timer = setInterval(() => {
+        currentStep++;
+        if (currentStep <= steps) {
+          const value = Math.min(Math.round(currentStep * increment), 100);
+          counterElement.textContent = value + ' €';
+        } else {
+          clearInterval(timer);
+        }
+      }, stepDuration);
+    })();
+  </script>
 
   <!-- CTA logic: append ttclid, fire Purchase on click, fast handoff -->
   <script>
