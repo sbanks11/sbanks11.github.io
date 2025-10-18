@@ -31,8 +31,9 @@
         var s = d.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = u;
         var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(s, a);
       };
-      ttq.load('D2BRNK3C77U7U0ICUE80');
-      ttq.page();
+      ttq.load('D2BRNK3C77U7U0ICUE80');  /* YOUR 20-char Pixel ID */
+      ttq.page();                        /* PageView on load */
+      // Hard fallback in case ready hook is skipped by blockers/race:
       setTimeout(function(){ try{ ttq.page(); }catch(e){} }, 1500);
     })(window, document, 'ttq');
   </script>
@@ -72,14 +73,14 @@
   <style>
 .quick-start-guide li {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-start; /* (same as before, just explicit) */
 }
 
 .quick-start-guide .icon {
   width: 24px;
   height: 24px;
-  flex: 0 0 24px;
-  flex-shrink: 0;
+  flex: 0 0 24px;   /* don't grow, don't shrink, fixed basis */
+  flex-shrink: 0;   /* extra safety */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,7 +89,7 @@
   color: #fff;
   border-radius: 50%;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 16px;  /* fixed size so the ✓ stays consistent */
   line-height: 24px;
 }
     :root { color-scheme: dark; }
@@ -107,26 +108,10 @@
       max-width: 420px; width: 100%;
       padding: 25px 20px; text-align: center;
     }
-    .main-display-image { width: 100%; border-radius: 12px; margin-bottom: -25px; }
-    
-    /* Updated counter section */
-    .reward-counter {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-    .counter-amount {
-      font-size: 4em;
-      font-weight: 700;
-      color: #e53935;
-      font-variant-numeric: tabular-nums;
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-    .counter-description {
-      font-size: 1em;
-      font-weight: 600;
-      color: #fff;
-    }
+    .main-display-image { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+    .reward-progress p { font-size: .95em; margin-bottom: 8px; font-weight: 600; }
+    .progress-bar-container { background-color: #333; border-radius: 5px; height: 10px; overflow: hidden; }
+    .progress-bar { background-color: #e53935; width: 33%; height: 100%; }
     
     .instructions-header { font-size: 1.4em; font-weight: 700; margin: 10px 0 10px; }
     .quick-start-guide { background: #232323; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: left; }
@@ -163,21 +148,14 @@
       height: auto;
     }
     
-    @media (max-width: 640px) {
-      .counter-amount {
-        font-size: 3em;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <img src="images/freecash.jpeg" alt="Freecash" class="main-display-image" loading="eager" decoding="async">
-    
-    <!-- Updated counter section -->
-    <div class="reward-counter">
-      <p class="counter-amount" id="counter">100 €</p>
-      <p class="counter-description">Envoyés instantanément sur ton compte</p>
+    <div class="reward-progress">
+      <p>Progression de votre récompense</p>
+      <div class="progress-bar-container"><div class="progress-bar"></div></div>
     </div>
     
     <div class="instructions-header">Suivez les étapes<br>et commencez à gagner dès aujourd'hui !</div>
@@ -218,29 +196,6 @@
       <span class="lock-icon">🛡️</span> 100 % sécurisé et confidentiel
     </div>
   </div>
-
-  <!-- Counter animation script -->
-  <script>
-    (function() {
-      const duration = 2000;
-      const steps = 60;
-      const increment = 100 / steps;
-      const stepDuration = duration / steps;
-
-      let currentStep = 0;
-      const counterElement = document.getElementById('counter');
-
-      const timer = setInterval(() => {
-        currentStep++;
-        if (currentStep <= steps) {
-          const value = Math.min(Math.round(currentStep * increment), 100);
-          counterElement.textContent = value + ' €';
-        } else {
-          clearInterval(timer);
-        }
-      }, stepDuration);
-    })();
-  </script>
 
   <!-- CTA logic: append ttclid, fire Purchase on click, fast handoff -->
   <script>
