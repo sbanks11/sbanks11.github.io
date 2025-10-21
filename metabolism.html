@@ -54,9 +54,9 @@
             padding: 0 16px;
             display: flex;
             justify-content: space-between;
-                    .header {
+                   .header {
             background-color: var(--primary);
-            padding: 10px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 50;
@@ -77,6 +77,7 @@
             font-weight: 700;
             font-family: 'Merriweather', serif;
             color: white;
+            margin: 0;
         }
 
         @media (max-width: 768px) {
@@ -93,6 +94,21 @@
 
         @media (max-width: 768px) {
             .header-nav {
+                gap: 12px;
+                font-size: 12px;
+            }
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-nav a:hover {
+            color: var(--accent);
+        }
+
                 gap: 12px;
                 font-size: 12px;
             }
@@ -597,8 +613,6 @@
             margin: 48px 0;
         }
     </style>
-</head>
-<body class="scroll-smooth">
     <!-- Header -->
     <header class="header">
         <div class="header-container">
@@ -610,6 +624,7 @@
             </nav>
         </div>
     </header>
+
 
     <!-- Main Content -->
     <main class="container">
