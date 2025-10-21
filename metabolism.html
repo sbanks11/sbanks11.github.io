@@ -8,1708 +8,1468 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         :root {
-            --background: 0 0% 100%;
-            --foreground: 222.2 84% 4.9%;
-            --card: 0 0% 100%;
-            --card-foreground: 222.2 84% 4.9%;
-            --popover: 0 0% 100%;
-            --popover-foreground: 222.2 84% 4.9%;
-            --primary: 24 60% 53%;
-            --primary-foreground: 210 40% 98%;
-            --secondary: 210 40% 96.1%;
-            --secondary-foreground: 222.2 47.4% 11.2%;
-            --muted: 210 40% 96.1%;
-            --muted-foreground: 215.4 16.3% 46.9%;
-            --accent: 24 60% 53%;
-            --accent-foreground: 222.2 47.4% 11.2%;
-            --destructive: 0 84.2% 60.2%;
-            --destructive-foreground: 210 40% 98%;
-            --border: 214.3 31.8% 91.4%;
-            --input: 214.3 31.8% 91.4%;
-            --ring: 222.2 84% 4.9%;
-            --radius: 0.5rem;
-            --editorial-nav: 30 20% 15%;
-            --editorial-tag: 24 60% 53%;
-            --article-heading: 222.2 47.4% 11.2%;
-            --article-text: 215.4 16.3% 26.9%;
-            --editorial-testimonial: 210 40% 96.1%;
+            --background: hsl(0, 0%, 100%);
+            --foreground: hsl(0, 0%, 15%);
+            --primary: hsl(210, 100%, 26%);
+            --primary-foreground: hsl(0, 0%, 100%);
+            --secondary: hsl(0, 0%, 96%);
+            --secondary-foreground: hsl(0, 0%, 15%);
+            --muted-foreground: hsl(0, 0%, 40%);
+            --accent: hsl(45, 95%, 55%);
+            --accent-foreground: hsl(0, 0%, 15%);
+            --border: hsl(0, 0%, 90%);
+            --article-text: hsl(0, 0%, 20%);
+            --article-heading: hsl(0, 0%, 10%);
+            --editorial-tag: hsl(0, 85%, 50%);
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: hsl(var(--background));
-            color: hsl(var(--foreground));
             line-height: 1.6;
+            color: var(--foreground);
+            background-color: var(--background);
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        .max-w-4xl {
-            max-width: 56rem;
-        }
-        
-        /* Header */
-        header {
-            background-color: hsl(var(--editorial-nav));
-            color: hsl(var(--primary-foreground));
-            padding: 0.75rem 0;
+
+        .header {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 50;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .header-content {
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
-        
+
         .header-title {
-            font-size: 1.25rem;
+            font-size: 20px;
             font-weight: 700;
             font-family: 'Merriweather', serif;
         }
-        
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 18px;
+            }
+        }
+
         .header-nav {
             display: flex;
-            gap: 1.5rem;
-            font-size: 0.875rem;
+            gap: 24px;
+            font-size: 14px;
         }
-        
+
+        @media (max-width: 768px) {
+            .header-nav {
+                gap: 12px;
+                font-size: 12px;
+            }
+        }
+
         .header-nav a {
-            color: inherit;
+            color: var(--primary-foreground);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
-        
+
         .header-nav a:hover {
-            color: hsl(var(--accent));
+            color: var(--accent);
         }
-        
-        /* Badge */
+
+        .container {
+            max-width: 896px;
+            margin: 0 auto;
+            padding: 32px 16px;
+        }
+
         .badge {
             display: inline-block;
-            background-color: hsl(var(--editorial-tag));
+            background-color: var(--editorial-tag);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
         }
-        
-        /* Typography */
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-family: 'Merriweather', serif;
-            color: hsl(var(--article-heading));
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
+
+        .text-muted {
+            color: var(--muted-foreground);
+            font-size: 14px;
+            margin-top: 8px;
         }
-        
-        h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            font-family: 'Merriweather', serif;
-            color: hsl(var(--article-heading));
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: hsl(var(--article-heading));
-            margin-bottom: 0.75rem;
-        }
-        
-        p {
-            color: hsl(var(--article-text));
-            margin-bottom: 1rem;
-            line-height: 1.75;
-        }
-        
-        .text-xl {
-            font-size: 1.25rem;
-        }
-        
-        .text-lg {
-            font-size: 1.125rem;
-        }
-        
-        .text-sm {
-            font-size: 0.875rem;
-        }
-        
-        .text-xs {
-            font-size: 0.75rem;
-        }
-        
-        .font-semibold {
-            font-weight: 600;
-        }
-        
-        .font-bold {
-            font-weight: 700;
-        }
-        
-        .italic {
-            font-style: italic;
-        }
-        
-        /* Images */
-        img {
-            max-width: 100%;
+
+        .hero-image {
+            width: 100%;
             height: auto;
-            display: block;
+            border-radius: 8px;
+            margin: 32px 0;
         }
-        
-        .rounded-lg {
-            border-radius: 0.5rem;
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--article-heading);
+            margin-bottom: 24px;
         }
-        
-        .rounded-full {
-            border-radius: 9999px;
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
         }
-        
-        /* Author Info */
+
+        .subtitle {
+            font-size: 20px;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
         .author-info {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid hsl(var(--border));
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
         }
-        
-        .author-img {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 9999px;
+
+        .author-image {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
             object-fit: cover;
         }
-        
-        /* Callout Box */
+
+        .author-name {
+            font-weight: 600;
+            color: var(--article-heading);
+        }
+
+        .author-title {
+            font-size: 14px;
+            color: var(--muted-foreground);
+        }
+
         .callout {
-            background-color: hsl(var(--secondary));
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid hsl(var(--primary));
-            margin: 2rem 0;
+            background-color: var(--secondary);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 32px 0;
+            border-left: 4px solid var(--primary);
         }
-        
-        .callout-accent {
-            background-color: hsl(var(--accent) / 0.1);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid hsl(var(--accent));
-            margin: 1.5rem 0;
+
+        .callout p {
+            color: var(--article-text);
+            line-height: 1.6;
+            font-weight: 500;
         }
-        
-        /* Lists */
-        ul, ol {
-            margin: 1.5rem 0;
-            padding-left: 2rem;
-            color: hsl(var(--article-text));
+
+        p {
+            color: var(--article-text);
+            line-height: 1.8;
+            margin-bottom: 16px;
         }
-        
+
+        h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--article-heading);
+            margin: 48px 0 24px 0;
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 24px;
+            }
+        }
+
+        h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--article-heading);
+            margin-bottom: 16px;
+        }
+
+        ol, ul {
+            margin-left: 24px;
+            margin-bottom: 24px;
+        }
+
         li {
-            margin-bottom: 0.75rem;
-            line-height: 1.75;
+            color: var(--article-text);
+            line-height: 1.8;
+            margin-bottom: 12px;
         }
-        
-        /* Separator */
+
         .separator {
             height: 1px;
-            background-color: hsl(var(--border));
-            margin: 3rem 0;
+            background-color: var(--border);
+            margin: 48px 0;
         }
-        
-        /* CTA Box */
+
         .cta-box {
-            background-color: hsl(var(--accent) / 0.1);
-            padding: 2rem;
-            border-radius: 0.5rem;
-            margin: 3rem 0;
-            border: 2px solid hsl(var(--accent));
+            background-color: rgba(45, 95%, 55%, 0.1);
+            padding: 32px;
+            border-radius: 8px;
+            margin: 48px 0;
+            border: 2px solid var(--accent);
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.2s;
         }
-        
+
         .cta-box:hover {
-            background-color: hsl(var(--accent) / 0.05);
+            background-color: rgba(45, 95%, 55%, 0.05);
         }
-        
+
         .cta-title {
-            font-size: 1.25rem;
+            font-size: 20px;
             font-weight: 600;
-            color: hsl(var(--article-heading));
-            margin-bottom: 0.75rem;
+            color: var(--article-heading);
+            margin-bottom: 12px;
         }
-        
-        /* Timeline Boxes */
-        .timeline-box {
-            background-color: hsl(var(--secondary));
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
+
+        .cta-subtitle {
+            color: var(--article-text);
+            line-height: 1.6;
         }
-        
-        .timeline-box-primary {
-            background-color: hsl(var(--secondary));
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid hsl(var(--primary));
-            margin-bottom: 1.5rem;
+
+        .info-box {
+            background-color: var(--secondary);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
         }
-        
-        /* Testimonial Card */
+
+        .info-box h3 {
+            margin-bottom: 8px;
+        }
+
+        .product-image {
+            max-width: 448px;
+            width: 100%;
+            height: auto;
+            margin: 40px auto;
+            display: block;
+        }
+
         .testimonial-card {
-            background-color: hsl(var(--editorial-testimonial));
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border: 1px solid hsl(var(--border));
-            margin-bottom: 1.5rem;
+            background-color: hsl(210, 40%, 98%);
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
         }
-        
+
         .testimonial-name {
             font-weight: 600;
-            color: hsl(var(--article-heading));
+            color: var(--article-heading);
         }
-        
-        /* Pricing Cards */
+
+        .testimonial-location {
+            font-size: 14px;
+            color: var(--muted-foreground);
+            margin-bottom: 16px;
+        }
+
+        .testimonial-content {
+            color: var(--article-text);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
+            gap: 24px;
+            margin: 48px 0;
         }
-        
-        .pricing-card {
-            background-color: hsl(var(--card));
-            border: 2px solid hsl(214.3 31.8% 91.4%);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .pricing-card-featured {
-            border: 2px solid #9CA3AF;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .pricing-card-best {
-            border: 4px solid #f97316;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .pricing-badge {
-            position: absolute;
-            top: -0.75rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #374151;
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-        
-        .pricing-badge-best {
-            background-color: #f97316;
-        }
-        
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            padding-top: 0.5rem;
-        }
-        
-        .pricing-price {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .pricing-price-large {
-            font-size: 3rem;
-            font-weight: 700;
-            color: hsl(var(--article-heading));
-        }
-        
-        .pricing-features {
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        
-        .pricing-feature {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .checkmark {
-            color: #16a34a;
-            font-size: 1.125rem;
-        }
-        
-        .pricing-total {
-            text-align: center;
-            padding-top: 1rem;
-            margin-bottom: 1rem;
-            border-top: 1px solid hsl(var(--border));
-        }
-        
-        .pricing-button {
-            width: 100%;
-            background-color: #1f2937;
-            color: white;
-            padding: 1.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 700;
-            font-size: 1rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .pricing-button:hover {
-            background-color: #111827;
-        }
-        
-        .pricing-button-best {
-            background-color: #16a34a;
-        }
-        
-        .pricing-button-best:hover {
-            background-color: #15803d;
-        }
-        
-        /* Alert Box */
-        .alert-box {
-            background-color: hsl(var(--destructive) / 0.1);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid hsl(var(--destructive));
-            margin: 2rem 0;
-        }
-        
-        /* Two Column Grid */
-        .two-col-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        /* FAQ */
-        .faq-item {
-            border-bottom: 1px solid hsl(var(--border));
-            padding: 1rem 0;
-        }
-        
-        .faq-question {
-            font-weight: 600;
-            color: hsl(var(--article-heading));
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-        }
-        
-        .faq-question:hover {
-            color: hsl(var(--primary));
-        }
-        
-        .faq-answer {
-            display: none;
-            padding: 1rem 0;
-            color: hsl(var(--article-text));
-            line-height: 1.75;
-        }
-        
-        .faq-answer.active {
-            display: block;
-        }
-        
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-        
-        .mt-2 { margin-top: 0.5rem; }
-        .mt-4 { margin-top: 1rem; }
-        .mt-6 { margin-top: 1.5rem; }
-        .mt-8 { margin-top: 2rem; }
-        .mt-12 { margin-top: 3rem; }
-        
-        .mb-2 { margin-bottom: 0.5rem; }
-        .mb-3 { margin-bottom: 0.75rem; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mb-8 { margin-bottom: 2rem; }
-        .mb-12 { margin-bottom: 3rem; }
-        
-        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-        
-        .line-through {
-            text-decoration: line-through;
-        }
-        
-        /* Responsive */
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .header-nav {
-                gap: 0.75rem;
-            }
-            
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
         }
+
+        .pricing-card {
+            background-color: white;
+            border: 2px solid hsl(0, 0%, 85%);
+            border-radius: 8px;
+            padding: 24px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid hsl(0, 0%, 60%);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.best-value {
+            border: 4px solid hsl(20, 100%, 50%);
+            box-shadow: 0 10px 30px rgba(255,100,0,0.2);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: hsl(0, 0%, 30%);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .pricing-badge.best {
+            background-color: hsl(20, 100%, 50%);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-top: 8px;
+        }
+
+        .pricing-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--article-heading);
+            margin-bottom: 8px;
+        }
+
+        .pricing-bottles {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--article-heading);
+            margin-bottom: 4px;
+        }
+
+        .pricing-supply {
+            font-size: 12px;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-price {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .price-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .price-amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--article-heading);
+        }
+
+        .price-unit {
+            font-size: 12px;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        .pricing-features {
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--article-heading);
+        }
+
+        .pricing-total {
+            text-align: center;
+            margin-bottom: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .total-label {
+            font-size: 14px;
+            color: var(--muted-foreground);
+        }
+
+        .total-original {
+            text-decoration: line-through;
+            color: var(--muted-foreground);
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .total-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--article-heading);
+        }
+
+        .shipping-info {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .shipping-free {
+            color: hsl(120, 60%, 40%);
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 20px;
+            background-color: hsl(0, 0%, 20%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .buy-button:hover {
+            background-color: hsl(0, 0%, 10%);
+        }
+
+        .buy-button.best {
+            background-color: hsl(120, 60%, 40%);
+        }
+
+        .buy-button.best:hover {
+            background-color: hsl(120, 60%, 35%);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .faq-section {
+            margin: 48px 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--article-heading);
+            cursor: pointer;
+            padding: 12px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--article-text);
+            line-height: 1.6;
+            padding: 12px 0;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .checkmark {
+            color: hsl(120, 60%, 40%);
+            font-size: 20px;
+        }
+
+        .xmark {
+            color: hsl(0, 85%, 50%);
+            font-size: 20px;
+        }
+
+        .warning-box {
+            background-color: rgba(0, 85%, 50%, 0.1);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 32px 0;
+            border-left: 4px solid hsl(0, 85%, 50%);
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: var(--muted-foreground);
+            font-style: italic;
+            margin-top: 48px;
+            padding: 24px;
+            background-color: var(--secondary);
+            border-radius: 8px;
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        .phase-box {
+            background-color: var(--secondary);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .accent-quote {
+            background-color: rgba(45, 95%, 55%, 0.1);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .accent-quote p {
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .results-image {
+            background-color: rgba(45, 95%, 55%, 0.05);
+            padding: 32px;
+            border-radius: 8px;
+            margin: 48px 0;
+        }
     </style>
 </head>
-<body>
+<body class="scroll-smooth">
     <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <h2 class="header-title">The Health Wave</h2>
-                <nav class="header-nav">
-                    <a href="#">Health</a>
-                    <a href="#">Wellness</a>
-                    <a href="#">Nutrition</a>
-                </nav>
-            </div>
+    <header class="header">
+        <div class="header-container">
+            <h2 class="header-title">The Health Wave</h2>
+            <nav class="header-nav">
+                <a href="#">Health</a>
+                <a href="#">Wellness</a>
+                <a href="#">Nutrition</a>
+            </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container max-w-4xl py-8">
+    <main class="container">
         <!-- Category Tag -->
-        <div class="mb-6">
+        <div style="margin-bottom: 24px;">
             <span class="badge">HEALTH & WELLNESS</span>
-            <p class="text-sm mt-2" style="color: hsl(var(--muted-foreground));">Published: October 15, 2025</p>
+            <p class="text-muted">Published: October 15, 2025</p>
         </div>
 
         <!-- Hero Image -->
-        <div class="mb-8">
-            <img src="https://pxyoetmslvmnmbpwzkmh.supabase.co/storage/v1/object/public/images/hero-woman.png" alt="Woman over 40 concerned about metabolism and weight management" class="rounded-lg">
+        <img src="assets/hero-woman.png" alt="Woman over 40 concerned about metabolism and weight management" class="hero-image">
+
+        <!-- Hero Title -->
+        <h1>Women Over 40: Your Metabolism Isn't Broken—It's Just Stuck</h1>
+
+        <p class="subtitle">Discover How Thousands of Women Are Using This 10-Second Morning Ritual To Flip Their "Fat-to-Fuel Switch" And Finally See Their Stubborn Belly Shrink Without Stimulants, Strict Diets, Or Exhausting Workouts</p>
+
+        <!-- Author Info -->
+        <div class="author-info">
+            <img src="assets/sarah-profile.jpg" alt="Sarah Lowes" class="author-image">
+            <div>
+                <p class="author-name">Sarah Lowes</p>
+                <p class="author-title">Health & Wellness Writer</p>
+            </div>
         </div>
 
-        <article>
-            <h1>Women Over 40: Your Metabolism Isn't Broken—It's Just Stuck</h1>
+        <div class="callout">
+            <p>Did you know that after age 40, your body can become "metabolically rigid"—meaning it gets stuck burning sugar for energy instead of fat?</p>
+        </div>
+
+        <p>This isn't about a slow metabolism.</p>
+        <p>It's not about eating too much or exercising too little.</p>
+        <p>And it's definitely not about lacking willpower.</p>
+        <p style="margin-bottom: 24px;">It's about your body being locked into the wrong fuel source.</p>
+
+        <p>Think about it like this: Your body is like a hybrid car that can run on two types of fuel—sugar or fat.</p>
+
+        <p>When you're younger, your body switches between these fuel sources effortlessly. Carbs for quick energy. Fat stores when you need sustained fuel.</p>
+
+        <p>But after 40—especially during perimenopause and menopause—something shifts.</p>
+
+        <p style="font-weight: 600; margin-bottom: 24px;">Your body gets "stuck" in sugar-burning mode.</p>
+
+        <h2>And when you're constantly burning sugar for fuel, three things happen:</h2>
+
+        <ol>
+            <li>You experience afternoon energy crashes (because sugar burns fast and leaves you empty)</li>
+            <li>Evening cravings become overwhelming (your body is desperately searching for more quick fuel)</li>
+            <li>Stubborn belly fat refuses to budge (because your body never gets the signal to tap into fat stores)</li>
+        </ol>
+
+        <p>This is what I call "Metabolic Rigidity."</p>
+
+        <p>And if you're a woman over 40 who's been doing "everything right"—eating healthy, staying active, drinking your water—yet still struggling with that frustrating midsection weight and zero energy by 3pm...</p>
+
+        <p style="font-weight: 600; font-size: 18px; margin-bottom: 48px;">This is very likely what's happening inside your body right now.</p>
+
+        <!-- CTA 1 -->
+        <div class="cta-box" onclick="scrollToPricing()">
+            <p class="cta-title">👉 See How Thousands of Women Are "Unsticking" Their Metabolism</p>
+            <p class="cta-subtitle">Discover the simple 10-second ritual that helps your body burn fat again →</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <h2>The Moment I Realized My Metabolism Wasn't Broken—Just Rigidly Stuck</h2>
+
+        <p>My name is Sarah, and I'm 52 years old.</p>
+
+        <p>For years, I thought my metabolism was just... done. Broken. Dead. Never coming back.</p>
+
+        <p>I'd wake up exhausted, drag myself through the day, and by 8pm I'd be standing in front of the pantry, hand reaching for crackers or cookies—even though I'd promised myself that morning I'd "be good."</p>
+
+        <p>I'd try everything: cutting calories, eating more salads, going for walks, even those intense HIIT workouts my daughter swore by.</p>
+
+        <p>And maybe I'd lose 3 or 4 pounds.</p>
+        <p style="margin-bottom: 24px;">Then gain back 6.</p>
+
+        <p>The scale became my enemy. My jeans stopped fitting. I started avoiding photos.</p>
+
+        <p>And the worst part? I felt invisible.</p>
+
+        <p>My husband wasn't cruel about it—he never said anything mean—but I could feel the distance. The spark we used to have felt... dimmed.</p>
+
+        <p>I'd look in the mirror and see someone I didn't recognize anymore. Someone tired. Heavy. Older than her years.</p>
+
+        <p style="margin-bottom: 24px;">I felt like a stranger trapped in someone else's body.</p>
+
+        <p style="font-style: italic; margin-bottom: 48px;">Maybe you know that feeling too.</p>
+
+        <h2>But here's what I didn't understand back then—and what changed everything once I finally learned it:</h2>
+
+        <p style="font-weight: 600;">My metabolism wasn't broken.</p>
+        <p style="font-weight: 600;">It was just stuck.</p>
+
+        <p style="margin-bottom: 24px;">And the reason nothing worked—not the diets, not the workouts, not even cutting out my favorite foods—was because I was fighting the wrong battle.</p>
+
+        <p>I was trying to force my body to burn fat...</p>
+        <p style="margin-bottom: 24px;">...while it was still locked into sugar-burning mode.</p>
+
+        <p>It's like trying to switch your car to electric mode when it's stuck in gas-only gear.</p>
+        <p style="margin-bottom: 48px;">No matter how hard you press the pedal, it won't shift.</p>
+
+        <div class="separator"></div>
+
+        <h2>The Mentor Who Finally Explained What Was Really Going On</h2>
+
+        <p>Everything changed when I met Dr. Patricia Holloway, a menopause and metabolism specialist, at a friend's wellness event.</p>
+
+        <p>I almost didn't go. I was tired, bloated, and honestly didn't want to be around all those "fit, happy women" who seemed to have it all figured out.</p>
+
+        <p>But my friend dragged me.</p>
+        <p style="margin-bottom: 24px;">And I'm so grateful she did.</p>
+
+        <p>Dr. Holloway was giving a talk on metabolic health after 40, and something she said stopped me cold:</p>
+
+        <div class="accent-quote">
+            <p>"If you're over 40 and your belly fat won't budge no matter what you do, your metabolism isn't broken—it's metabolically rigid. And the harder you diet and push yourself, the MORE rigid it becomes."</p>
+        </div>
+
+        <p style="margin-bottom: 24px;">I felt like she was speaking directly to me.</p>
+
+        <p>After her talk, I approached her, almost in tears. I told her everything: the weight gain, the exhaustion, the cravings, the frustration of "doing everything right" and still failing.</p>
+
+        <p>She smiled—not in a pitying way, but in an understanding way—and said something I'll never forget:</p>
+
+        <div class="accent-quote">
+            <p>"Sarah, your body isn't against you. It's just stuck using the wrong fuel. And once we help it remember how to burn fat again, everything changes."</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <h2>What Is "Metabolic Rigidity" And Why Does It Happen After 40?</h2>
+
+        <p style="margin-bottom: 24px;">Dr. Holloway explained it to me like this:</p>
+
+        <p>When you're younger, your body is metabolically flexible. It switches easily between burning carbs (sugar) and burning fat depending on what you eat and what you need.</p>
+
+        <p style="margin-bottom: 24px;">But as we age—especially women during perimenopause and menopause—our hormones shift.</p>
+
+        <ul>
+            <li>Insulin sensitivity decreases.</li>
+            <li>Cortisol (the stress hormone) stays elevated longer.</li>
+            <li>And your body starts favoring sugar as its primary fuel source... because it's easier and faster.</li>
+        </ul>
+
+        <p>The problem?</p>
+
+        <p>Sugar burns fast. It gives you a quick spike, then crashes you hard.</p>
+
+        <p>And when your body is stuck in sugar-burning mode, it never gets the signal to tap into your fat stores.</p>
+
+        <p style="margin-bottom: 24px;">So that stubborn belly fat? Those love handles? That softness around your hips? Your body is literally ignoring them as a fuel source.</p>
+
+        <p style="font-weight: 600; margin-bottom: 48px;">And no amount of calorie cutting or cardio is going to change that—because you're not addressing the real problem. You're trying to lose fat while your body is stuck burning sugar.</p>
+
+        <div class="separator"></div>
+
+        <h2>"So How Do I Get My Body Unstuck?"</h2>
+
+        <p>That's exactly what I asked Dr. Holloway.</p>
+        <p style="margin-bottom: 24px;">And her answer surprised me.</p>
+
+        <p style="margin-bottom: 24px;">She said, "You need to give your body a gentle signal—a metabolic nudge—that helps it remember how to access fat for fuel again."</p>
+
+        <p style="margin-bottom: 24px;">She explained that one of the most effective ways to do this is through something called <strong>exogenous ketones</strong>.</p>
+
+        <p>Now, if you've heard of the keto diet and immediately thought, "Oh no, not another restrictive diet," I get it. That was my first thought too.</p>
+
+        <p style="font-weight: 600; margin-bottom: 48px;">But here's the thing: You don't have to do a full keto diet to get the benefits of ketones.</p>
+
+        <p>Ketones are natural molecules your body produces when it burns fat for fuel. They're like a "premium fuel" for your brain and muscles—clean, steady, no crashes.</p>
+
+        <p style="margin-bottom: 24px;">But when your metabolism is rigid and stuck in sugar-burning mode, your body isn't making enough ketones on its own.</p>
+
+        <p>That's where exogenous ketones come in.</p>
+
+        <p style="margin-bottom: 24px;">Exogenous just means "from outside your body."</p>
+
+        <p>So instead of forcing yourself into a strict, no-carb diet to produce ketones naturally (which is hard, unsustainable, and honestly miserable), you can take a supplement that provides your body with ketones directly.</p>
+
+        <p style="margin-bottom: 24px;">And when you do that—when you give your body that gentle metabolic signal every morning—something shifts.</p>
+
+        <div class="info-box">
+            <p style="font-weight: 500;">Your body starts to remember: "Oh. I can burn fat for fuel. I don't have to rely on sugar all day."</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <h2>The 10-Second Morning Ritual That Changed Everything</h2>
+
+        <p>Dr. Holloway recommended I try a specific type of exogenous ketone supplement—one that combined three forms of BHB (Beta-Hydroxybutyrate) mineral salts: magnesium, calcium, and sodium.</p>
+
+        <p style="margin-bottom: 24px;">She called it "The Fat-to-Fuel Switch."</p>
+
+        <p>Every morning, I'd take one capsule with a glass of water.</p>
+        <p>That's it.</p>
+        <p style="margin-bottom: 24px;">10 seconds.</p>
+
+        <p>No meal prep. No calorie counting. No giving up my morning coffee.</p>
+
+        <p style="margin-bottom: 32px;">Just one simple capsule to help signal my body: "Hey, let's start burning fat today."</p>
+
+        <p>Now, I'm not going to lie and tell you I lost 20 pounds in a week. That didn't happen.</p>
+
+        <p style="margin-bottom: 24px;">But here's what DID happen—and it happened fast:</p>
+
+        <div class="info-box">
+            <h3>Day 3:</h3>
+            <p>I noticed I wasn't as ravenously hungry by mid-morning. Usually, I'd be eyeing the break room donuts by 10am. But I just... didn't feel the pull.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Day 7:</h3>
+            <p>My energy felt different. Not jittery like coffee or diet pills—just steady. I made it through my afternoon without that brutal 3pm crash where I'd normally want to curl up under my desk.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Day 10:</h3>
+            <p>The evening cravings—the ones that had sabotaged me for YEARS—were... quieter. I'd finish dinner and actually feel satisfied. No more prowling the kitchen at 9pm looking for something sweet or salty.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Week 3:</h3>
+            <p>My jeans felt looser. Not dramatically, but noticeably. I wasn't weighing myself obsessively anymore, but I could feel it—my belly felt less bloated, less puffy. My husband noticed too. He said, "You seem lighter. Like, happier."</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Week 6:</h3>
+            <p>I stepped on the scale. Down 11 pounds.</p>
+            <p>But honestly? The number wasn't even the best part.</p>
+            <p>The best part was feeling like myself again. I had energy to play with my grandkids. I didn't dread getting dressed in the morning. I stopped avoiding mirrors and photos. I felt... in control again.</p>
+        </div>
+
+        <!-- CTA 2 -->
+        <div class="cta-box" onclick="scrollToPricing()">
+            <p class="cta-title">🌸 Start Your Own 10-Second Morning Ritual Today</p>
+            <p class="cta-subtitle">Feel the difference in your energy, cravings, and confidence — backed by a 60-day guarantee →</p>
+        </div>
+
+        <!-- Before and After Results -->
+        <div class="results-image">
+            <img src="assets/before-after.png" alt="Real women showing dramatic before and after weight loss transformation results" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 24px;">
+            <p style="text-align: center; font-style: italic;"><strong>Real Results from Real Women:</strong> These incredible transformations show what's possible when you finally unlock your body's ability to burn fat for fuel. Results may vary, but thousands of women over 40 are experiencing similar life-changing outcomes with the Fat-to-Fuel Switch approach.</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <h2>"But Sarah, What Exactly Was In That Capsule?"</h2>
+
+        <p style="margin-bottom: 24px;">Great question.</p>
+
+        <p style="margin-bottom: 24px;">The supplement Dr. Holloway recommended—and the one I still use every single morning—is called <strong>BurnPeak</strong>.</p>
+
+        <p>It's not a diet pill. It's not a stimulant (no caffeine, no jitters, no racing heart).</p>
+
+        <p style="margin-bottom: 24px;">It's a pure BHB ketone formula specifically designed to help women over 40 flip their Fat-to-Fuel Switch.</p>
+
+        <!-- Product Image -->
+        <img src="assets/burnpeak-product.png" alt="BurnPeak supplement bottles - BHB ketone formula for women over 40" class="product-image">
+
+        <p style="font-weight: 600;">Here's what's inside each capsule:</p>
+
+        <div class="info-box">
+            <h3>1. Magnesium Beta-Hydroxybutyrate (BHB)</h3>
+            <p>Provides your body with exogenous ketones to help signal fat-burning mode. Magnesium also supports muscle function and helps reduce bloating.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>2. Calcium Beta-Hydroxybutyrate (BHB)</h3>
+            <p>Another ketone source that works synergistically with magnesium to help your body access stored fat more efficiently—especially around the belly, hips, and thighs.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>3. Sodium Beta-Hydroxybutyrate (BHB)</h3>
+            <p>Supports steady energy and mental clarity throughout the day. Sodium is also an important electrolyte that helps prevent fatigue and brain fog.</p>
+        </div>
+
+        <p>That's it.</p>
+
+        <p style="margin-bottom: 48px;">No herbal fillers. No harsh stimulants. No mystery ingredients you can't pronounce. Just three clean, researched forms of BHB to help your body remember how to burn fat again.</p>
+
+        <div class="separator"></div>
+
+        <h2>Why BHB Works So Well For Women Over 40 (Especially If You've Tried Everything Else)</h2>
+
+        <p style="margin-bottom: 24px;">Here's the thing most weight loss supplements get wrong:</p>
+
+        <p style="margin-bottom: 24px;">They try to force your body to do something it's not ready to do.</p>
+
+        <p>They pump you full of caffeine to "speed up your metabolism" (which just makes you jittery and crashes you later).</p>
+
+        <p style="margin-bottom: 24px;">Or they use appetite suppressants that make you feel sick and miserable.</p>
+
+        <p style="font-weight: 600;">BurnPeak works differently.</p>
+
+        <p style="margin-bottom: 24px;">Instead of forcing or fighting your body, it works WITH your body's natural biology.</p>
+
+        <p style="margin-bottom: 24px;">When you take BHB ketones in the morning, you're giving your body a gentle signal: "Here's some premium fuel. You can use fat for energy. You don't need to rely on sugar all day."</p>
+
+        <p style="margin-bottom: 24px;">And over time—sometimes as quickly as 7-10 days—your body starts to respond.</p>
+
+        <ul>
+            <li>It remembers how to access fat stores.</li>
+            <li>Your energy stabilizes.</li>
+            <li>Your cravings quiet down.</li>
+            <li>And that stubborn belly fat? It finally starts to shrink.</li>
+        </ul>
+
+        <p>Not because you're starving yourself.</p>
+        <p>Not because you're punishing yourself with brutal workouts.</p>
+        <p style="font-weight: 600; margin-bottom: 48px;">But because your metabolism is finally UNSTUCK.</p>
+
+        <div class="separator"></div>
+
+        <h2>"Okay Sarah, But Does This Really Work For Women Like Me?"</h2>
+
+        <p style="margin-bottom: 24px;">I had the exact same question.</p>
+
+        <p style="margin-bottom: 32px;">So let me share a few stories from women who felt just as skeptical as you might feel right now...</p>
+
+        <div class="testimonial-card">
+            <p class="testimonial-name">Linda, 58</p>
+            <p class="testimonial-location">Ohio</p>
+            <p class="testimonial-content">"I've been post-menopausal for 6 years, and I thought my weight was just... permanent. I tried BurnPeak because my sister wouldn't stop raving about it. Within 2 weeks, I noticed my evening snacking just stopped. I wasn't white-knuckling it—I just didn't want it anymore. I'm down 14 pounds in 5 weeks and I feel like I'm finally getting my body back."</p>
+        </div>
+
+        <div class="testimonial-card">
+            <p class="testimonial-name">Jennifer, 46</p>
+            <p class="testimonial-location">Texas</p>
+            <p class="testimonial-content">"I'm a nurse, so I'm on my feet all day. But by the time I got home, I was SO exhausted I'd just collapse and eat whatever was easy—usually junk. BurnPeak gave me steady energy that lasted through my shift. No crash. No jitters. And the weight around my midsection is finally coming off. My scrubs fit again!"</p>
+        </div>
+
+        <div class="testimonial-card">
+            <p class="testimonial-name">Michelle, 61</p>
+            <p class="testimonial-location">California</p>
+            <p class="testimonial-content">"I was skeptical because I've wasted so much money on supplements that did nothing. But BurnPeak is different. It's not dramatic or flashy—it just works quietly. My cravings are manageable, my energy is better, and I've lost 9 pounds without changing much else. I'm a believer now."</p>
+        </div>
+
+        <p>These women aren't fitness influencers. They're not getting paid to say this.</p>
+
+        <p style="margin-bottom: 48px;">They're just real women who were stuck... and finally got unstuck. Just like I did.</p>
+
+        <!-- CTA 3 -->
+        <div class="cta-box" onclick="scrollToPricing()">
+            <p class="cta-title">💪 Join 120,000+ Women Who've Already Flipped Their Fat-to-Fuel Switch</p>
+            <p class="cta-subtitle">Real results. No stimulants. No strict diets. Just one simple morning step →</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <h2>"But Sarah, I've Tried Keto Before And It Was Miserable. Do I Have To Do That Again?"</h2>
+
+        <p style="font-weight: 600; margin-bottom: 24px;">Absolutely not.</p>
+
+        <p style="margin-bottom: 24px;">And I'm so glad you asked, because this is one of the biggest misconceptions about BurnPeak.</p>
+
+        <p style="font-weight: 600; margin-bottom: 24px;">You do NOT have to follow a strict keto diet to see results.</p>
+
+        <p style="margin-bottom: 24px;">Let me explain why.</p>
+
+        <p style="margin-bottom: 24px;">When people think "keto," they think of cutting out all carbs, eating bacon and butter for every meal, and suffering through the dreaded "keto flu" for weeks.</p>
+
+        <p style="margin-bottom: 24px;">And yes—if you're trying to force your body into ketosis through diet alone, it's hard. Really hard.</p>
+
+        <p style="font-weight: 600; margin-bottom: 24px;">But here's the beauty of exogenous ketones like the ones in BurnPeak:</p>
+
+        <p style="margin-bottom: 24px;">They give your body ketones WITHOUT requiring you to eliminate carbs entirely.</p>
+
+        <p>So you can still eat real food. You can still enjoy your morning toast or a sensible pasta dinner.</p>
+
+        <p style="margin-bottom: 24px;">You're not depriving yourself or living on lettuce and chicken breast.</p>
+
+        <p style="margin-bottom: 24px;">BurnPeak simply helps your body become more metabolically flexible again—so it can burn both carbs AND fat efficiently, instead of being stuck in one mode.</p>
+
+        <p>Think of it like this:</p>
+
+        <div class="info-box">
+            <p>A strict keto diet is like forcing your car to only run on electric power—no gas allowed, ever.</p>
+            <p>BurnPeak is like helping your hybrid car remember it CAN switch to electric mode—while still being able to use gas when it needs to.</p>
+        </div>
+
+        <p style="margin-bottom: 48px;">You get the benefits of fat-burning without the misery of restriction.</p>
+
+        <div class="separator"></div>
+
+        <h2>"What If I'm Sensitive To Supplements? Will This Make Me Feel Weird?"</h2>
+
+        <p style="margin-bottom: 24px;">This was one of MY biggest concerns.</p>
+
+        <p style="margin-bottom: 24px;">I've tried fat burners before that made my heart race. I felt jittery, anxious, couldn't sleep. It was awful.</p>
+
+        <p style="font-weight: 600; margin-bottom: 24px;">BurnPeak contains ZERO stimulants.</p>
+
+        <p style="margin-bottom: 24px;">No caffeine. No green tea extract. No sketchy herbal blends. Just pure BHB mineral salts.</p>
+
+        <p>For most women, the transition is smooth. You might notice:</p>
+
+        <ul>
+            <li>Slightly less appetite (but not in a sick, nauseous way—just a natural "I'm satisfied" feeling)</li>
+            <li>Steadier energy (no jitters, no crash)</li>
+            <li>Better focus (BHB is incredible brain fuel)</li>
+        </ul>
+
+        <p style="margin-bottom: 24px;">Some women do experience mild digestive adjustment in the first few days—maybe a little bloating or loose stools—but it's usually temporary as your body adapts.</p>
+
+        <p style="margin-bottom: 24px;">And if you're ever concerned, you can start with just half a capsule for the first few days to let your body ease in.</p>
+
+        <p style="margin-bottom: 48px;">Dr. Holloway always said: "Listen to your body. This should feel supportive, not stressful."</p>
+
+        <div class="separator"></div>
+
+        <h2>"How Long Does It Actually Take To See Results?"</h2>
+
+        <p style="margin-bottom: 24px;">Here's the honest truth, based on my experience and the hundreds of women I've now talked to who've tried BurnPeak:</p>
+
+        <p style="font-weight: 600; font-size: 18px; margin-bottom: 32px;">Early wins happen fast. Real transformation takes consistency.</p>
+
+        <p>Here's what you can realistically expect:</p>
+
+        <div class="phase-box">
+            <h3 style="font-size: 20px; margin-bottom: 12px;">Week 1: The "Something's Different" Phase</h3>
+            <p>Most women notice within 7-10 days that:</p>
+            <ul>
+                <li>Evening cravings are quieter</li>
+                <li>Energy feels steadier (no 3pm crash)</li>
+                <li>They feel less bloated and puffy</li>
+            </ul>
+            <p style="margin-top: 16px;">These aren't dramatic changes, but they're noticeable. And they matter—because they prove your body is responding.</p>
+        </div>
+
+        <div class="phase-box">
+            <h3 style="font-size: 20px; margin-bottom: 12px;">Weeks 2-4: The "Oh, This Is Really Working" Phase</h3>
+            <p>This is when you start seeing physical changes:</p>
+            <ul>
+                <li>Clothes fitting looser around the waist</li>
+                <li>Scale dropping 5-8 pounds (sometimes more)</li>
+                <li>Friends and family saying, "You look great—what are you doing?"</li>
+            </ul>
+            <p style="margin-top: 16px;">Your body is now actively accessing fat stores. The Fat-to-Fuel Switch is ON.</p>
+        </div>
+
+        <div class="phase-box">
+            <h3 style="font-size: 20px; margin-bottom: 12px;">Weeks 6-12: The "I Feel Like Myself Again" Phase</h3>
+            <p>This is where the real transformation happens:</p>
+            <ul>
+                <li>15-25+ pounds lost (depending on your starting point)</li>
+                <li>Sustained energy all day, every day</li>
+                <li>Cravings are manageable—you're in control, not food</li>
+                <li>Confidence is back. You feel proud when you look in the mirror.</li>
+            </ul>
+        </div>
+
+        <p style="font-weight: 600;">And here's the best part:</p>
+
+        <p>Because you're not starving or depriving yourself, the results actually stick.</p>
+
+        <p style="margin-bottom: 48px;">You're not white-knuckling your way through some miserable diet you'll quit in 3 weeks. You're retraining your metabolism to work the way it's supposed to.</p>
+
+        <div class="separator"></div>
+
+        <h2>"Okay, I'm Interested. But How Do I Know This Isn't Just Another Scam?"</h2>
+
+        <p style="margin-bottom: 24px;">I'm so glad you're asking this question.</p>
+
+        <p style="margin-bottom: 24px;">Because if you're a woman over 40 who's tried supplement after supplement that promised the world and delivered nothing... You have every right to be skeptical.</p>
+
+        <p style="margin-bottom: 24px;">I was too.</p>
+
+        <p style="margin-bottom: 24px;">So let me be completely transparent with you about BurnPeak—the good, the bad, and the honest truth.</p>
+
+        <div class="feature-grid">
+            <div class="info-box">
+                <h3 style="display: flex; align-items: center; gap: 8px;"><span class="checkmark">✓</span> What BurnPeak IS:</h3>
+                <ul style="margin-top: 16px;">
+                    <li style="display: flex; align-items: start; gap: 8px; margin-bottom: 12px;"><span class="checkmark" style="flex-shrink: 0;">✓</span><span>A clean, stimulant-free BHB ketone formula designed to help your body access fat for fuel</span></li>
+                    <li style="display: flex; align-items: start; gap: 8px; margin-bottom: 12px;"><span class="checkmark" style="flex-shrink: 0;">✓</span><span>A tool to support appetite control, steady energy, and gradual fat loss</span></li>
+                    <li style="display: flex; align-items: start; gap: 8px; margin-bottom: 12px;"><span class="checkmark" style="flex-shrink: 0;">✓</span><span>Manufactured in a GMP-certified facility in the USA</span></li>
+                    <li style="display: flex; align-items: start; gap: 8px;"><span class="checkmark" style="flex-shrink: 0;">✓</span><span>Backed by a 60-day money-back guarantee</span></li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3 style="display: flex; align-items: center; gap: 8px;"><span class="xmark">✗</span> What BurnPeak is NOT:</h3>
+                <ul style="margin-top: 16px;">
+                    <li style="display: flex; align-items: start; gap: 8px; margin-bottom: 12px;"><span class="xmark" style="flex-shrink: 0;">✗</span><span>A magic pill that melts 30 pounds in a week</span></li>
+                    <li style="display: flex; align-items: start; gap: 8px; margin-bottom: 12px;"><span class="xmark" style="flex-shrink: 0;">✗</span><span>A replacement for healthy eating and movement</span></li>
+                    <li style="display: flex; align-items: start; gap: 8px; margin-bottom: 12px;"><span class="xmark" style="flex-shrink: 0;">✗</span><span>A stimulant-packed fat burner that makes you jittery</span></li>
+                    <li style="display: flex; align-items: start; gap: 8px;"><span class="xmark" style="flex-shrink: 0;">✗</span><span>A subscription trap with hidden charges</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <p>BurnPeak works best when you pair it with simple, sustainable habits:</p>
+
+        <ul>
+            <li>Drinking plenty of water throughout the day</li>
+            <li>Eating balanced meals with protein at breakfast</li>
+            <li>Moving your body gently (even just 20-minute walks)</li>
+        </ul>
+
+        <p style="margin-bottom: 48px;">It's not about perfection. It's about progress. And BurnPeak helps make that progress feel effortless instead of exhausting.</p>
+
+        <div class="separator"></div>
+
+        <h2>"What If It Doesn't Work For Me?"</h2>
+
+        <p style="margin-bottom: 24px;">Here's where BurnPeak is different from so many other supplements I've wasted money on:</p>
+
+        <div class="cta-box">
+            <p style="font-weight: 600; font-size: 18px; margin-bottom: 16px;">They offer a 60-day, 100% money-back guarantee.</p>
+            <p>Not 30 days. Not "only if the bottle is unopened." 60 full days. Even if you've used every single capsule.</p>
+        </div>
+
+        <p style="font-weight: 600;">Here's how it works:</p>
+
+        <ol>
+            <li>You order BurnPeak and start using it</li>
+            <li>You give it an honest try for up to 60 days</li>
+            <li>If you don't feel it's working—if your energy isn't better, if your cravings aren't quieter, if you're not seeing progress—you contact their support team</li>
+            <li>You send back your bottles (even if they're empty)</li>
+            <li>You get a full refund. No hassle. No questions asked.</li>
+        </ol>
+
+        <p style="margin-bottom: 24px;">That's how confident they are that this works.</p>
+
+        <p style="margin-bottom: 48px;">And honestly? That's the only reason I tried it in the first place. I figured, "What do I have to lose? If it doesn't work, I get my money back. If it DOES work... I get my life back." Turns out, it was the best risk I ever took.</p>
+
+        <div class="separator"></div>
+
+        <!-- Pricing Section -->
+        <div id="pricing" style="margin: 64px 0;">
+            <h2>How To Get Started With BurnPeak (And Save Big While You're At It)</h2>
             
-            <p class="text-xl mb-8" style="color: hsl(var(--muted-foreground));">
-                Discover How Thousands of Women Are Using This 10-Second Morning Ritual To Flip Their "Fat-to-Fuel Switch" And Finally See Their Stubborn Belly Shrink Without Stimulants, Strict Diets, Or Exhausting Workouts
-            </p>
+            <p style="margin-bottom: 24px;">Okay, so here's where I need to be real with you about pricing.</p>
 
-            <!-- Author Info -->
-            <div class="author-info">
-                <img src="https://pxyoetmslvmnmbpwzkmh.supabase.co/storage/v1/object/public/images/sarah-profile.jpg" alt="Sarah Lowes" class="author-img">
-                <div>
-                    <p class="testimonial-name">Sarah Lowes</p>
-                    <p class="text-sm" style="color: hsl(var(--muted-foreground));">Health & Wellness Writer</p>
-                </div>
-            </div>
+            <p>BurnPeak isn't the cheapest supplement on the market. A single bottle (30-day supply) retails for $69.</p>
 
-            <div class="callout">
-                <p class="font-semibold">
-                    Did you know that after age 40, your body can become "metabolically rigid"—meaning it gets stuck burning sugar for energy instead of fat?
-                </p>
-            </div>
+            <p style="margin-bottom: 24px;">And honestly? When I first saw that price, I hesitated.</p>
 
-            <p>This isn't about a slow metabolism.</p>
-            <p>It's not about eating too much or exercising too little.</p>
-            <p>And it's definitely not about lacking willpower.</p>
-            <p class="mb-6">It's about your body being locked into the wrong fuel source.</p>
-
-            <p class="mb-4">
-                Think about it like this: Your body is like a hybrid car that can run on two types of fuel—sugar or fat.
-            </p>
-
-            <p class="mb-4">
-                When you're younger, your body switches between these fuel sources effortlessly. Carbs for quick energy. Fat stores when you need sustained fuel.
-            </p>
-
-            <p class="mb-4">
-                But after 40—especially during perimenopause and menopause—something shifts.
-            </p>
-
-            <p class="mb-12 font-semibold">
-                Your body gets "stuck" in sugar-burning mode.
-            </p>
-
-            <h2>And when you're constantly burning sugar for fuel, three things happen:</h2>
-
-            <ol>
-                <li>You experience afternoon energy crashes (because sugar burns fast and leaves you empty)</li>
-                <li>Evening cravings become overwhelming (your body is desperately searching for more quick fuel)</li>
-                <li>Stubborn belly fat refuses to budge (because your body never gets the signal to tap into fat stores)</li>
-            </ol>
-
-            <p class="mb-4">This is what I call "Metabolic Rigidity."</p>
-
-            <p class="mb-8">
-                And if you're a woman over 40 who's been doing "everything right"—eating healthy, staying active, drinking your water—yet still struggling with that frustrating midsection weight and zero energy by 3pm...
-            </p>
-
-            <p class="text-lg font-semibold mb-12">
-                This is very likely what's happening inside your body right now.
-            </p>
-
-            <!-- CTA 1 -->
-            <div class="cta-box" onclick="scrollToPricing()">
-                <p class="cta-title">
-                    👉 See How Thousands of Women Are "Unsticking" Their Metabolism
-                </p>
-                <p>Discover the simple 10-second ritual that helps your body burn fat again →</p>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>The Moment I Realized My Metabolism Wasn't Broken—Just Rigidly Stuck</h2>
-
-            <p class="mb-4">My name is Sarah, and I'm 52 years old.</p>
-
-            <p class="mb-4">
-                For years, I thought my metabolism was just... done. Broken. Dead. Never coming back.
-            </p>
-
-            <p class="mb-4">
-                I'd wake up exhausted, drag myself through the day, and by 8pm I'd be standing in front of the pantry, hand reaching for crackers or cookies—even though I'd promised myself that morning I'd "be good."
-            </p>
-
-            <p class="mb-4">
-                I'd try everything: cutting calories, eating more salads, going for walks, even those intense HIIT workouts my daughter swore by.
-            </p>
-
-            <p class="mb-4">And maybe I'd lose 3 or 4 pounds.</p>
-            <p class="mb-6">Then gain back 6.</p>
-
-            <p class="mb-4">
-                The scale became my enemy. My jeans stopped fitting. I started avoiding photos.
-            </p>
-
-            <p class="mb-4">And the worst part? I felt invisible.</p>
-
-            <p class="mb-4">
-                My husband wasn't cruel about it—he never said anything mean—but I could feel the distance. The spark we used to have felt... dimmed.
-            </p>
-
-            <p class="mb-4">
-                I'd look in the mirror and see someone I didn't recognize anymore. Someone tired. Heavy. Older than her years.
-            </p>
-
-            <p class="mb-6">I felt like a stranger trapped in someone else's body.</p>
-
-            <p class="italic mb-12">Maybe you know that feeling too.</p>
-
-            <h2>But here's what I didn't understand back then—and what changed everything once I finally learned it:</h2>
-
-            <p class="mb-4 font-semibold">My metabolism wasn't broken.</p>
-            <p class="mb-4 font-semibold">It was just stuck.</p>
-
-            <p class="mb-6">
-                And the reason nothing worked—not the diets, not the workouts, not even cutting out my favorite foods—was because I was fighting the wrong battle.
-            </p>
-
-            <p class="mb-4">I was trying to force my body to burn fat...</p>
-            <p class="mb-6">...while it was still locked into sugar-burning mode.</p>
-
-            <p class="mb-4">
-                It's like trying to switch your car to electric mode when it's stuck in gas-only gear.
-            </p>
-            <p class="mb-12">
-                No matter how hard you press the pedal, it won't shift.
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>The Mentor Who Finally Explained What Was Really Going On</h2>
-
-            <p class="mb-4">
-                Everything changed when I met Dr. Patricia Holloway, a menopause and metabolism specialist, at a friend's wellness event.
-            </p>
-
-            <p class="mb-4">
-                I almost didn't go. I was tired, bloated, and honestly didn't want to be around all those "fit, happy women" who seemed to have it all figured out.
-            </p>
-
-            <p class="mb-4">But my friend dragged me.</p>
-            <p class="mb-6">And I'm so grateful she did.</p>
-
-            <p class="mb-4">
-                Dr. Holloway was giving a talk on metabolic health after 40, and something she said stopped me cold:
-            </p>
-
-            <div class="callout-accent">
-                <p class="italic font-semibold">
-                    "If you're over 40 and your belly fat won't budge no matter what you do, your metabolism isn't broken—it's metabolically rigid. And the harder you diet and push yourself, the MORE rigid it becomes."
-                </p>
-            </div>
-
-            <p class="mb-6">I felt like she was speaking directly to me.</p>
-
-            <p class="mb-4">
-                After her talk, I approached her, almost in tears. I told her everything: the weight gain, the exhaustion, the cravings, the frustration of "doing everything right" and still failing.
-            </p>
-
-            <p class="mb-4">
-                She smiled—not in a pitying way, but in an understanding way—and said something I'll never forget:
-            </p>
-
-            <div class="callout-accent">
-                <p class="italic font-semibold">
-                    "Sarah, your body isn't against you. It's just stuck using the wrong fuel. And once we help it remember how to burn fat again, everything changes."
-                </p>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>What Is "Metabolic Rigidity" And Why Does It Happen After 40?</h2>
-
-            <p class="mb-6">Dr. Holloway explained it to me like this:</p>
-
-            <p class="mb-4">
-                When you're younger, your body is metabolically flexible. It switches easily between burning carbs (sugar) and burning fat depending on what you eat and what you need.
-            </p>
-
-            <p class="mb-6">
-                But as we age—especially women during perimenopause and menopause—our hormones shift.
-            </p>
+            <p style="margin-bottom: 24px;">But then I thought about all the money I'd wasted on:</p>
 
             <ul>
-                <li>Insulin sensitivity decreases.</li>
-                <li>Cortisol (the stress hormone) stays elevated longer.</li>
-                <li>And your body starts favoring sugar as its primary fuel source... because it's easier and faster.</li>
+                <li>Gym memberships I never used ($50/month)</li>
+                <li>Meal delivery services that left me hungry ($200/month)</li>
+                <li>Other supplements that did absolutely nothing ($30-$60 each)</li>
             </ul>
 
-            <p class="mb-4">The problem?</p>
-
-            <p class="mb-4">
-                Sugar burns fast. It gives you a quick spike, then crashes you hard.
-            </p>
-
-            <p class="mb-4">
-                And when your body is stuck in sugar-burning mode, it never gets the signal to tap into your fat stores.
-            </p>
-
-            <p class="mb-6">
-                So that stubborn belly fat? Those love handles? That softness around your hips? Your body is literally ignoring them as a fuel source.
-            </p>
-
-            <p class="font-semibold mb-12">
-                And no amount of calorie cutting or cardio is going to change that—because you're not addressing the real problem. You're trying to lose fat while your body is stuck burning sugar.
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>"So How Do I Get My Body Unstuck?"</h2>
-
-            <p class="mb-4">That's exactly what I asked Dr. Holloway.</p>
-            <p class="mb-6">And her answer surprised me.</p>
-
-            <p class="mb-6">
-                She said, "You need to give your body a gentle signal—a metabolic nudge—that helps it remember how to access fat for fuel again."
-            </p>
-
-            <p class="mb-6">
-                She explained that one of the most effective ways to do this is through something called <strong>exogenous ketones</strong>.
-            </p>
-
-            <p class="mb-4">
-                Now, if you've heard of the keto diet and immediately thought, "Oh no, not another restrictive diet," I get it. That was my first thought too.
-            </p>
-
-            <p class="font-semibold mb-12">
-                But here's the thing: You don't have to do a full keto diet to get the benefits of ketones.
-            </p>
-
-            <p class="mb-4">
-                Ketones are natural molecules your body produces when it burns fat for fuel. They're like a "premium fuel" for your brain and muscles—clean, steady, no crashes.
-            </p>
-
-            <p class="mb-6">
-                But when your metabolism is rigid and stuck in sugar-burning mode, your body isn't making enough ketones on its own.
-            </p>
-
-            <p class="mb-4">That's where exogenous ketones come in.</p>
-
-            <p class="mb-6">
-                Exogenous just means "from outside your body."
-            </p>
-
-            <p class="mb-4">
-                So instead of forcing yourself into a strict, no-carb diet to produce ketones naturally (which is hard, unsustainable, and honestly miserable), you can take a supplement that provides your body with ketones directly.
-            </p>
-
-            <p class="mb-6">And when you do that—when you give your body that gentle metabolic signal every morning—something shifts.</p>
-
-            <div class="callout-accent">
-                <p class="font-semibold">
-                    Your body starts to remember: "Oh. I can burn fat for fuel. I don't have to rely on sugar all day."
-                </p>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>The 10-Second Morning Ritual That Changed Everything</h2>
-
-            <p class="mb-4">
-                Dr. Holloway recommended I try a specific type of exogenous ketone supplement—one that combined three forms of BHB (Beta-Hydroxybutyrate) mineral salts: magnesium, calcium, and sodium.
-            </p>
-
-            <p class="mb-6">She called it "The Fat-to-Fuel Switch."</p>
-
-            <p class="mb-4">Every morning, I'd take one capsule with a glass of water.</p>
-            <p class="mb-4">That's it.</p>
-            <p class="mb-6">10 seconds.</p>
-
-            <p class="mb-4">
-                No meal prep. No calorie counting. No giving up my morning coffee.
-            </p>
-
-            <p class="mb-8">
-                Just one simple capsule to help signal my body: "Hey, let's start burning fat today."
-            </p>
-
-            <p class="mb-4">
-                Now, I'm not going to lie and tell you I lost 20 pounds in a week. That didn't happen.
-            </p>
-
-            <p class="mb-6">But here's what DID happen—and it happened fast:</p>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Day 3:</h3>
-                <p>
-                    I noticed I wasn't as ravenously hungry by mid-morning. Usually, I'd be eyeing the break room donuts by 10am. But I just... didn't feel the pull.
-                </p>
-            </div>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Day 7:</h3>
-                <p>
-                    My energy felt different. Not jittery like coffee or diet pills—just steady. I made it through my afternoon without that brutal 3pm crash where I'd normally want to curl up under my desk.
-                </p>
-            </div>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Day 10:</h3>
-                <p>
-                    The evening cravings—the ones that had sabotaged me for YEARS—were... quieter. I'd finish dinner and actually feel satisfied. No more prowling the kitchen at 9pm looking for something sweet or salty.
-                </p>
-            </div>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Week 3:</h3>
-                <p>
-                    My jeans felt looser. Not dramatically, but noticeably. I wasn't weighing myself obsessively anymore, but I could feel it—my belly felt less bloated, less puffy. My husband noticed too. He said, "You seem lighter. Like, happier."
-                </p>
-            </div>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Week 6:</h3>
-                <p class="mb-4">
-                    I stepped on the scale. Down 11 pounds.
-                </p>
-                <p class="mb-4">
-                    But honestly? The number wasn't even the best part.
-                </p>
-                <p>
-                    The best part was feeling like myself again. I had energy to play with my grandkids. I didn't dread getting dressed in the morning. I stopped avoiding mirrors and photos. I felt... in control again.
-                </p>
-            </div>
-
-            <!-- CTA 2 -->
-            <div class="cta-box" onclick="scrollToPricing()">
-                <p class="cta-title">
-                    🌸 Start Your Own 10-Second Morning Ritual Today
-                </p>
-                <p>Feel the difference in your energy, cravings, and confidence — backed by a 60-day guarantee →</p>
-            </div>
-
-            <!-- Before and After Results -->
-            <div class="mb-12 mt-12" style="background-color: hsl(var(--accent) / 0.05); padding: 2rem; border-radius: 0.5rem;">
-                <div class="mb-6">
-                    <img src="https://pxyoetmslvmnmbpwzkmh.supabase.co/storage/v1/object/public/images/before-after.png" alt="Real women showing dramatic before and after weight loss transformation results" class="rounded-lg">
-                </div>
-                <p class="text-center italic">
-                    <strong>Real Results from Real Women:</strong> These incredible transformations show what's possible when you finally unlock your body's ability to burn fat for fuel. Results may vary, but thousands of women over 40 are experiencing similar life-changing outcomes with the Fat-to-Fuel Switch approach.
-                </p>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>"But Sarah, What Exactly Was In That Capsule?"</h2>
-
-            <p class="mb-6">Great question.</p>
-
-            <p class="mb-6">
-                The supplement Dr. Holloway recommended—and the one I still use every single morning—is called <strong>BurnPeak</strong>.
-            </p>
-
-            <p class="mb-4">
-                It's not a diet pill. It's not a stimulant (no caffeine, no jitters, no racing heart).
-            </p>
-
-            <p class="mb-6">
-                It's a pure BHB ketone formula specifically designed to help women over 40 flip their Fat-to-Fuel Switch.
-            </p>
-
-            <!-- Product Image -->
-            <div class="text-center my-8">
-                <div style="max-width: 28rem; margin: 0 auto;">
-                    <img src="https://pxyoetmslvmnmbpwzkmh.supabase.co/storage/v1/object/public/images/burnpeak-product.png" alt="BurnPeak supplement bottles - BHB ketone formula for women over 40" class="rounded-lg">
-                </div>
-            </div>
-
-            <p class="mb-4 font-semibold">Here's what's inside each capsule:</p>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">1. Magnesium Beta-Hydroxybutyrate (BHB)</h3>
-                <p>
-                    Provides your body with exogenous ketones to help signal fat-burning mode. Magnesium also supports muscle function and helps reduce bloating.
-                </p>
-            </div>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">2. Calcium Beta-Hydroxybutyrate (BHB)</h3>
-                <p>
-                    Another ketone source that works synergistically with magnesium to help your body access stored fat more efficiently—especially around the belly, hips, and thighs.
-                </p>
-            </div>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">3. Sodium Beta-Hydroxybutyrate (BHB)</h3>
-                <p>
-                    Supports steady energy and mental clarity throughout the day. Sodium is also an important electrolyte that helps prevent fatigue and brain fog.
-                </p>
-            </div>
-
-            <p class="mb-4">That's it.</p>
-
-            <p class="mb-12">
-                No herbal fillers. No harsh stimulants. No mystery ingredients you can't pronounce. Just three clean, researched forms of BHB to help your body remember how to burn fat again.
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>Why BHB Works So Well For Women Over 40 (Especially If You've Tried Everything Else)</h2>
-
-            <p class="mb-6">Here's the thing most weight loss supplements get wrong:</p>
-
-            <p class="mb-6">
-                They try to force your body to do something it's not ready to do.
-            </p>
-
-            <p class="mb-4">
-                They pump you full of caffeine to "speed up your metabolism" (which just makes you jittery and crashes you later).
-            </p>
-
-            <p class="mb-6">
-                Or they use appetite suppressants that make you feel sick and miserable.
-            </p>
-
-            <p class="mb-4 font-semibold">BurnPeak works differently.</p>
-
-            <p class="mb-6">
-                Instead of forcing or fighting your body, it works WITH your body's natural biology.
-            </p>
-
-            <p class="mb-6">
-                When you take BHB ketones in the morning, you're giving your body a gentle signal: "Here's some premium fuel. You can use fat for energy. You don't need to rely on sugar all day."
-            </p>
-
-            <p class="mb-6">
-                And over time—sometimes as quickly as 7-10 days—your body starts to respond.
-            </p>
-
-            <ul>
-                <li>It remembers how to access fat stores.</li>
-                <li>Your energy stabilizes.</li>
-                <li>Your cravings quiet down.</li>
-                <li>And that stubborn belly fat? It finally starts to shrink.</li>
-            </ul>
-
-            <p class="mb-4">Not because you're starving yourself.</p>
-            <p class="mb-4">Not because you're punishing yourself with brutal workouts.</p>
-            <p class="font-semibold mb-12">
-                But because your metabolism is finally UNSTUCK.
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>"Okay Sarah, But Does This Really Work For Women Like Me?"</h2>
-
-            <p class="mb-6">I had the exact same question.</p>
-
-            <p class="mb-8">
-                So let me share a few stories from women who felt just as skeptical as you might feel right now...
-            </p>
-
-            <div class="testimonial-card">
-                <div class="mb-4">
-                    <h4 class="testimonial-name">Linda, 58</h4>
-                    <p class="text-sm" style="color: hsl(var(--muted-foreground));">Ohio</p>
-                </div>
-                <p class="italic">"I've been post-menopausal for 6 years, and I thought my weight was just... permanent. I tried BurnPeak because my sister wouldn't stop raving about it. Within 2 weeks, I noticed my evening snacking just stopped. I wasn't white-knuckling it—I just didn't want it anymore. I'm down 14 pounds in 5 weeks and I feel like I'm finally getting my body back."</p>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="mb-4">
-                    <h4 class="testimonial-name">Jennifer, 46</h4>
-                    <p class="text-sm" style="color: hsl(var(--muted-foreground));">Texas</p>
-                </div>
-                <p class="italic">"I'm a nurse, so I'm on my feet all day. But by the time I got home, I was SO exhausted I'd just collapse and eat whatever was easy—usually junk. BurnPeak gave me steady energy that lasted through my shift. No crash. No jitters. And the weight around my midsection is finally coming off. My scrubs fit again!"</p>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="mb-4">
-                    <h4 class="testimonial-name">Michelle, 61</h4>
-                    <p class="text-sm" style="color: hsl(var(--muted-foreground));">California</p>
-                </div>
-                <p class="italic">"I was skeptical because I've wasted so much money on supplements that did nothing. But BurnPeak is different. It's not dramatic or flashy—it just works quietly. My cravings are manageable, my energy is better, and I've lost 9 pounds without changing much else. I'm a believer now."</p>
-            </div>
-
-            <p class="mb-4">
-                These women aren't fitness influencers. They're not getting paid to say this.
-            </p>
-
-            <p class="mb-12">
-                They're just real women who were stuck... and finally got unstuck. Just like I did.
-            </p>
-
-            <!-- CTA 3 -->
-            <div class="cta-box" onclick="scrollToPricing()">
-                <p class="cta-title">
-                    💪 Join 120,000+ Women Who've Already Flipped Their Fat-to-Fuel Switch
-                </p>
-                <p>Real results. No stimulants. No strict diets. Just one simple morning step →</p>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>"But Sarah, I've Tried Keto Before And It Was Miserable. Do I Have To Do That Again?"</h2>
-
-            <p class="mb-6 font-semibold">Absolutely not.</p>
-
-            <p class="mb-6">
-                And I'm so glad you asked, because this is one of the biggest misconceptions about BurnPeak.
-            </p>
-
-            <p class="mb-6 font-semibold">
-                You do NOT have to follow a strict keto diet to see results.
-            </p>
-
-            <p class="mb-6">Let me explain why.</p>
-
-            <p class="mb-6">
-                When people think "keto," they think of cutting out all carbs, eating bacon and butter for every meal, and suffering through the dreaded "keto flu" for weeks.
-            </p>
-
-            <p class="mb-6">
-                And yes—if you're trying to force your body into ketosis through diet alone, it's hard. Really hard.
-            </p>
-
-            <p class="mb-6 font-semibold">
-                But here's the beauty of exogenous ketones like the ones in BurnPeak:
-            </p>
-
-            <p class="mb-6">
-                They give your body ketones WITHOUT requiring you to eliminate carbs entirely.
-            </p>
-
-            <p class="mb-4">
-                So you can still eat real food. You can still enjoy your morning toast or a sensible pasta dinner.
-            </p>
-
-            <p class="mb-6">You're not depriving yourself or living on lettuce and chicken breast.</p>
-
-            <p class="mb-6">
-                BurnPeak simply helps your body become more metabolically flexible again—so it can burn both carbs AND fat efficiently, instead of being stuck in one mode.
-            </p>
-
-            <p class="mb-4">Think of it like this:</p>
-
-            <div class="timeline-box">
-                <p class="mb-4">
-                    A strict keto diet is like forcing your car to only run on electric power—no gas allowed, ever.
-                </p>
-                <p>
-                    BurnPeak is like helping your hybrid car remember it CAN switch to electric mode—while still being able to use gas when it needs to.
-                </p>
-            </div>
-
-            <p class="mb-12">
-                You get the benefits of fat-burning without the misery of restriction.
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>"What If I'm Sensitive To Supplements? Will This Make Me Feel Weird?"</h2>
-
-            <p class="mb-6">This was one of MY biggest concerns.</p>
-
-            <p class="mb-6">
-                I've tried fat burners before that made my heart race. I felt jittery, anxious, couldn't sleep. It was awful.
-            </p>
-
-            <p class="mb-6 font-semibold">
-                BurnPeak contains ZERO stimulants.
-            </p>
-
-            <p class="mb-6">
-                No caffeine. No green tea extract. No sketchy herbal blends. Just pure BHB mineral salts.
-            </p>
-
-            <p class="mb-4">For most women, the transition is smooth. You might notice:</p>
-
-            <ul>
-                <li>Slightly less appetite (but not in a sick, nauseous way—just a natural "I'm satisfied" feeling)</li>
-                <li>Steadier energy (no jitters, no crash)</li>
-                <li>Better focus (BHB is incredible brain fuel)</li>
-            </ul>
-
-            <p class="mb-6">
-                Some women do experience mild digestive adjustment in the first few days—maybe a little bloating or loose stools—but it's usually temporary as your body adapts.
-            </p>
-
-            <p class="mb-6">
-                And if you're ever concerned, you can start with just half a capsule for the first few days to let your body ease in.
-            </p>
-
-            <p class="mb-12">
-                Dr. Holloway always said: "Listen to your body. This should feel supportive, not stressful."
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>"How Long Does It Actually Take To See Results?"</h2>
-
-            <p class="mb-6">
-                Here's the honest truth, based on my experience and the hundreds of women I've now talked to who've tried BurnPeak:
-            </p>
-
-            <p class="text-lg font-semibold mb-8">
-                Early wins happen fast. Real transformation takes consistency.
-            </p>
-
-            <p class="mb-4">Here's what you can realistically expect:</p>
-
-            <div class="timeline-box-primary">
-                <h3 class="font-bold text-xl mb-3">Week 1: The "Something's Different" Phase</h3>
-                <p class="mb-4">Most women notice within 7-10 days that:</p>
-                <ul>
-                    <li>Evening cravings are quieter</li>
-                    <li>Energy feels steadier (no 3pm crash)</li>
-                    <li>They feel less bloated and puffy</li>
-                </ul>
-                <p class="mt-4">
-                    These aren't dramatic changes, but they're noticeable. And they matter—because they prove your body is responding.
-                </p>
-            </div>
-
-            <div class="timeline-box-primary">
-                <h3 class="font-bold text-xl mb-3">Weeks 2-4: The "Oh, This Is Really Working" Phase</h3>
-                <p class="mb-4">This is when you start seeing physical changes:</p>
-                <ul>
-                    <li>Clothes fitting looser around the waist</li>
-                    <li>Scale dropping 5-8 pounds (sometimes more)</li>
-                    <li>Friends and family saying, "You look great—what are you doing?"</li>
-                </ul>
-                <p class="mt-4">
-                    Your body is now actively accessing fat stores. The Fat-to-Fuel Switch is ON.
-                </p>
-            </div>
-
-            <div class="timeline-box-primary">
-                <h3 class="font-bold text-xl mb-3">Weeks 6-12: The "I Feel Like Myself Again" Phase</h3>
-                <p class="mb-4">This is where the real transformation happens:</p>
-                <ul>
-                    <li>15-25+ pounds lost (depending on your starting point)</li>
-                    <li>Sustained energy all day, every day</li>
-                    <li>Cravings are manageable—you're in control, not food</li>
-                    <li>Confidence is back. You feel proud when you look in the mirror.</li>
-                </ul>
-            </div>
-
-            <p class="mb-4 font-semibold">And here's the best part:</p>
-
-            <p class="mb-4">
-                Because you're not starving or depriving yourself, the results actually stick.
-            </p>
-
-            <p class="mb-12">
-                You're not white-knuckling your way through some miserable diet you'll quit in 3 weeks. You're retraining your metabolism to work the way it's supposed to.
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>"Okay, I'm Interested. But How Do I Know This Isn't Just Another Scam?"</h2>
-
-            <p class="mb-6">I'm so glad you're asking this question.</p>
-
-            <p class="mb-6">
-                Because if you're a woman over 40 who's tried supplement after supplement that promised the world and delivered nothing... You have every right to be skeptical.
-            </p>
-
-            <p class="mb-6">I was too.</p>
-
-            <p class="mb-6">
-                So let me be completely transparent with you about BurnPeak—the good, the bad, and the honest truth.
-            </p>
-
-            <div class="two-col-grid">
-                <div class="timeline-box">
-                    <h3 class="font-bold text-xl mb-4" style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span class="checkmark">✓</span>
-                        What BurnPeak IS:
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span class="checkmark" style="margin-top: 0.125rem;">✓</span>
-                            <span>A clean, stimulant-free BHB ketone formula designed to help your body access fat for fuel</span>
-                        </li>
-                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span class="checkmark" style="margin-top: 0.125rem;">✓</span>
-                            <span>A tool to support appetite control, steady energy, and gradual fat loss</span>
-                        </li>
-                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span class="checkmark" style="margin-top: 0.125rem;">✓</span>
-                            <span>Manufactured in a GMP-certified facility in the USA</span>
-                        </li>
-                        <li style="display: flex; align-items: start; gap: 0.5rem;">
-                            <span class="checkmark" style="margin-top: 0.125rem;">✓</span>
-                            <span>Backed by a 60-day money-back guarantee</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="timeline-box">
-                    <h3 class="font-bold text-xl mb-4" style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="color: #dc2626;">✗</span>
-                        What BurnPeak is NOT:
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: #dc2626; margin-top: 0.125rem;">✗</span>
-                            <span>A magic pill that melts 30 pounds in a week</span>
-                        </li>
-                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: #dc2626; margin-top: 0.125rem;">✗</span>
-                            <span>A replacement for healthy eating and movement</span>
-                        </li>
-                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: #dc2626; margin-top: 0.125rem;">✗</span>
-                            <span>A stimulant-packed fat burner that makes you jittery</span>
-                        </li>
-                        <li style="display: flex; align-items: start; gap: 0.5rem;">
-                            <span style="color: #dc2626; margin-top: 0.125rem;">✗</span>
-                            <span>A subscription trap with hidden charges</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <p class="mb-4">
-                BurnPeak works best when you pair it with simple, sustainable habits:
-            </p>
-
-            <ul>
-                <li>Drinking plenty of water throughout the day</li>
-                <li>Eating balanced meals with protein at breakfast</li>
-                <li>Moving your body gently (even just 20-minute walks)</li>
-            </ul>
-
-            <p class="mb-12">
-                It's not about perfection. It's about progress. And BurnPeak helps make that progress feel effortless instead of exhausting.
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>"What If It Doesn't Work For Me?"</h2>
-
-            <p class="mb-6">
-                Here's where BurnPeak is different from so many other supplements I've wasted money on:
-            </p>
-
-            <div class="callout-accent" style="padding: 2rem; border: 2px solid hsl(var(--accent));">
-                <p class="text-lg font-semibold mb-4">
-                    They offer a 60-day, 100% money-back guarantee.
-                </p>
-                <p>
-                    Not 30 days. Not "only if the bottle is unopened." 60 full days. Even if you've used every single capsule.
-                </p>
-            </div>
-
-            <p class="mb-4 font-semibold">Here's how it works:</p>
-
-            <ol>
-                <li>You order BurnPeak and start using it</li>
-                <li>You give it an honest try for up to 60 days</li>
-                <li>If you don't feel it's working—if your energy isn't better, if your cravings aren't quieter, if you're not seeing progress—you contact their support team</li>
-                <li>You send back your bottles (even if they're empty)</li>
-                <li>You get a full refund. No hassle. No questions asked.</li>
-            </ol>
-
-            <p class="mb-6">That's how confident they are that this works.</p>
-
-            <p class="mb-12">
-                And honestly? That's the only reason I tried it in the first place. I figured, "What do I have to lose? If it doesn't work, I get my money back. If it DOES work... I get my life back." Turns out, it was the best risk I ever took.
-            </p>
-
-            <div class="separator"></div>
-
-            <!-- Pricing Section -->
-            <div id="pricing" style="margin: 4rem 0;">
-                <h2>How To Get Started With BurnPeak (And Save Big While You're At It)</h2>
-                
-                <p class="mb-6">
-                    Okay, so here's where I need to be real with you about pricing.
-                </p>
-
-                <p class="mb-4">
-                    BurnPeak isn't the cheapest supplement on the market. A single bottle (30-day supply) retails for $69.
-                </p>
-
-                <p class="mb-6">
-                    And honestly? When I first saw that price, I hesitated.
-                </p>
-
-                <p class="mb-6">But then I thought about all the money I'd wasted on:</p>
-
-                <ul>
-                    <li>Gym memberships I never used ($50/month)</li>
-                    <li>Meal delivery services that left me hungry ($200/month)</li>
-                    <li>Other supplements that did absolutely nothing ($30-$60 each)</li>
-                </ul>
-
-                <p class="mb-8">
-                    And I realized: if this actually works, $69 is nothing compared to what I've already thrown away.
-                </p>
-
-                <p class="mb-6 font-semibold">But here's the good news:</p>
-
-                <p class="mb-12">
-                    Right now, BurnPeak is running a special offer for first-time customers. Instead of paying $69 for a single bottle, you can get:
-                </p>
-
-                <div class="pricing-grid">
-                    <!-- 6 Bottle Package -->
-                    <div class="pricing-card pricing-card-best">
-                        <span class="pricing-badge pricing-badge-best">BEST VALUE!</span>
-                        
-                        <div class="pricing-header">
-                            <p class="text-sm font-bold mb-2" style="text-transform: uppercase;">BEST VALUE!</p>
-                            <p class="text-2xl font-bold mb-1">6 BOTTLES</p>
-                            <p class="text-xs" style="text-transform: uppercase; letter-spacing: 0.05em; color: hsl(var(--muted-foreground));">180 DAY SUPPLY</p>
-                        </div>
-                        
-                        <div class="pricing-price">
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1rem;">
-                                <span class="pricing-price-large">$49</span>
-                                <div style="text-align: left;">
-                                    <p class="text-xs" style="text-transform: uppercase; line-height: 1.2; color: hsl(var(--muted-foreground));">per</p>
-                                    <p class="text-xs" style="text-transform: uppercase; line-height: 1.2; color: hsl(var(--muted-foreground));">bottle</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="pricing-features">
-                            <div class="pricing-feature">
-                                <span class="checkmark">☑</span>
-                                <p class="text-sm font-semibold">YOU SAVE $780!</p>
-                            </div>
-                            <div class="pricing-feature">
-                                <span class="checkmark">☑</span>
-                                <p class="text-sm font-semibold">BIGGEST DISCOUNT</p>
-                            </div>
-                            <div class="pricing-feature">
-                                <span class="checkmark">☑</span>
-                                <p class="text-sm font-semibold">60 DAYS GUARANTEE</p>
-                            </div>
-                        </div>
-                        
-                        <div class="pricing-total">
-                            <div class="mb-2">
-                                <span class="text-sm" style="color: hsl(var(--muted-foreground));">Total: </span>
-                                <span class="line-through text-sm mr-2" style="color: hsl(var(--muted-foreground));">$1074</span>
-                                <span class="text-2xl font-bold">$294</span>
-                            </div>
-                            <p class="text-sm font-semibold" style="color: #16a34a;">+ FREE SHIPPING</p>
-                        </div>
-                        
-                        <button class="pricing-button pricing-button-best" onclick="window.open('https://tryburnpeak.org/burnpeak.html', '_blank')">
-                            🛒 Buy Now
-                        </button>
+            <p style="margin-bottom: 32px;">And I realized: if this actually works, $69 is nothing compared to what I've already thrown away.</p>
+
+            <p style="font-weight: 600; margin-bottom: 24px;">But here's the good news:</p>
+
+            <p style="margin-bottom: 48px;">Right now, BurnPeak is running a special offer for first-time customers. Instead of paying $69 for a single bottle, you can get:</p>
+
+            <div class="pricing-grid">
+                <!-- 6 Bottle Package -->
+                <div class="pricing-card best-value">
+                    <div class="pricing-badge best">BEST VALUE!</div>
+                    <div class="pricing-header">
+                        <p class="pricing-title">BEST VALUE!</p>
+                        <p class="pricing-bottles">6 BOTTLES</p>
+                        <p class="pricing-supply">180 DAY SUPPLY</p>
                     </div>
-
-                    <!-- 3 Bottle Package -->
-                    <div class="pricing-card pricing-card-featured">
-                        <span class="pricing-badge">Most Popular</span>
-                        
-                        <div class="pricing-header">
-                            <p class="text-sm font-bold mb-2" style="text-transform: uppercase;">Most Popular</p>
-                            <p class="text-2xl font-bold mb-1">3 BOTTLES</p>
-                            <p class="text-xs" style="text-transform: uppercase; letter-spacing: 0.05em; color: hsl(var(--muted-foreground));">90 DAY SUPPLY</p>
-                        </div>
-                        
-                        <div class="pricing-price">
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1rem;">
-                                <span class="pricing-price-large">$69</span>
-                                <div style="text-align: left;">
-                                    <p class="text-xs" style="text-transform: uppercase; line-height: 1.2; color: hsl(var(--muted-foreground));">per</p>
-                                    <p class="text-xs" style="text-transform: uppercase; line-height: 1.2; color: hsl(var(--muted-foreground));">bottle</p>
-                                </div>
+                    <div class="pricing-price">
+                        <div class="price-display">
+                            <span class="price-amount">$49</span>
+                            <div class="price-unit">
+                                <p>per</p>
+                                <p>bottle</p>
                             </div>
                         </div>
-                        
-                        <div class="pricing-features">
-                            <div class="pricing-feature">
-                                <span class="checkmark">☑</span>
-                                <p class="text-sm font-semibold">YOU SAVE $330!</p>
-                            </div>
-                            <div class="pricing-feature">
-                                <span class="checkmark">☑</span>
-                                <p class="text-sm font-semibold">60 DAYS GUARANTEE</p>
-                            </div>
-                        </div>
-                        
-                        <div class="pricing-total">
-                            <div class="mb-2">
-                                <span class="text-sm" style="color: hsl(var(--muted-foreground));">Total: </span>
-                                <span class="line-through text-sm mr-2" style="color: hsl(var(--muted-foreground));">$537</span>
-                                <span class="text-2xl font-bold">$207</span>
-                            </div>
-                            <p class="text-sm font-semibold" style="color: #16a34a;">+ FREE SHIPPING</p>
-                        </div>
-                        
-                        <button class="pricing-button" onclick="window.open('https://tryburnpeak.org/burnpeak.html', '_blank')">
-                            🛒 Buy Now
-                        </button>
                     </div>
-
-                    <!-- 2 Bottle Package -->
-                    <div class="pricing-card">
-                        <span class="pricing-badge">Basic</span>
-                        
-                        <div class="pricing-header">
-                            <p class="text-sm font-bold mb-2" style="text-transform: uppercase;">Basic</p>
-                            <p class="text-2xl font-bold mb-1">2 BOTTLES</p>
-                            <p class="text-xs" style="text-transform: uppercase; letter-spacing: 0.05em; color: hsl(var(--muted-foreground));">60 DAY SUPPLY</p>
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <span class="checkmark">☑</span>
+                            <p class="feature-text">YOU SAVE $780!</p>
                         </div>
-                        
-                        <div class="pricing-price">
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1rem;">
-                                <span class="pricing-price-large">$79</span>
-                                <div style="text-align: left;">
-                                    <p class="text-xs" style="text-transform: uppercase; line-height: 1.2; color: hsl(var(--muted-foreground));">per</p>
-                                    <p class="text-xs" style="text-transform: uppercase; line-height: 1.2; color: hsl(var(--muted-foreground));">bottle</p>
-                                </div>
-                            </div>
+                        <div class="feature-item">
+                            <span class="checkmark">☑</span>
+                            <p class="feature-text">BIGGEST DISCOUNT</p>
                         </div>
-                        
-                        <div class="pricing-features">
-                            <div class="pricing-feature">
-                                <span class="checkmark">☑</span>
-                                <p class="text-sm font-semibold">YOU SAVE $198!</p>
-                            </div>
-                            <div class="pricing-feature">
-                                <span class="checkmark">☑</span>
-                                <p class="text-sm font-semibold">60 DAYS GUARANTEE</p>
-                            </div>
+                        <div class="feature-item">
+                            <span class="checkmark">☑</span>
+                            <p class="feature-text">60 DAYS GUARANTEE</p>
                         </div>
-                        
-                        <div class="pricing-total">
-                            <div class="mb-2">
-                                <span class="text-sm" style="color: hsl(var(--muted-foreground));">Total: </span>
-                                <span class="line-through text-sm mr-2" style="color: hsl(var(--muted-foreground));">$356</span>
-                                <span class="text-2xl font-bold">$158</span>
-                            </div>
-                            <p class="text-sm font-semibold">+$9.99 SHIPPING</p>
-                        </div>
-                        
-                        <button class="pricing-button" onclick="window.open('https://tryburnpeak.org/burnpeak.html', '_blank')">
-                            🛒 Buy Now
-                        </button>
                     </div>
+                    <div class="pricing-total">
+                        <div style="margin-bottom: 8px;">
+                            <span class="total-label">Total: </span>
+                            <span class="total-original">$1074</span>
+                            <span class="total-price">$294</span>
+                        </div>
+                        <p class="shipping-info shipping-free">+ FREE SHIPPING</p>
+                    </div>
+                    <button class="buy-button best" onclick="window.open('https://tryburnpeak.org/burnpeak.html', '_blank')">🛒 BUY NOW</button>
                 </div>
 
-                <div class="timeline-box mt-8">
-                    <h3 class="font-bold text-xl mb-4">Here's my honest recommendation:</h3>
-                    <p class="mb-4">
-                        If you're committed to finally getting unstuck and seeing real change, go with the 6-bottle option.
-                    </p>
-                    <p class="mb-3">Here's why:</p>
-                    <ul>
-                        <li>It takes 6-12 weeks to see your best results. One bottle might give you early wins, but you won't see the full transformation.</li>
-                        <li>You'll save $120 compared to buying one bottle at a time.</li>
-                        <li>You lock in this price. Once this promotion ends, prices go back up.</li>
-                        <li>You're still protected by the 60-day guarantee—so even if you order 6 bottles, you can get your money back if it doesn't work.</li>
-                    </ul>
-                    <p class="mt-4 italic">
-                        I ordered 3 bottles to start. Then after 8 weeks, I was kicking myself for not ordering 6, because I had to reorder and pay more. Don't make my mistake.
-                    </p>
+                <!-- 3 Bottle Package -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <p class="pricing-title">Most Popular</p>
+                        <p class="pricing-bottles">3 BOTTLES</p>
+                        <p class="pricing-supply">90 DAY SUPPLY</p>
+                    </div>
+                    <div class="pricing-price">
+                        <div class="price-display">
+                            <span class="price-amount">$69</span>
+                            <div class="price-unit">
+                                <p>per</p>
+                                <p>bottle</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <span class="checkmark">☑</span>
+                            <p class="feature-text">YOU SAVE $330!</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="checkmark">☑</span>
+                            <p class="feature-text">60 DAYS GUARANTEE</p>
+                        </div>
+                    </div>
+                    <div class="pricing-total">
+                        <div style="margin-bottom: 8px;">
+                            <span class="total-label">Total: </span>
+                            <span class="total-original">$537</span>
+                            <span class="total-price">$207</span>
+                        </div>
+                        <p class="shipping-info shipping-free">+ FREE SHIPPING</p>
+                    </div>
+                    <button class="buy-button" onclick="window.open('https://tryburnpeak.org/burnpeak.html', '_blank')">🛒 BUY NOW</button>
+                </div>
+
+                <!-- 2 Bottle Package -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">Basic</div>
+                    <div class="pricing-header">
+                        <p class="pricing-title">Basic</p>
+                        <p class="pricing-bottles">2 BOTTLES</p>
+                        <p class="pricing-supply">60 DAY SUPPLY</p>
+                    </div>
+                    <div class="pricing-price">
+                        <div class="price-display">
+                            <span class="price-amount">$79</span>
+                            <div class="price-unit">
+                                <p>per</p>
+                                <p>bottle</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <span class="checkmark">☑</span>
+                            <p class="feature-text">YOU SAVE $198!</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="checkmark">☑</span>
+                            <p class="feature-text">60 DAYS GUARANTEE</p>
+                        </div>
+                    </div>
+                    <div class="pricing-total">
+                        <div style="margin-bottom: 8px;">
+                            <span class="total-label">Total: </span>
+                            <span class="total-original">$356</span>
+                            <span class="total-price">$158</span>
+                        </div>
+                        <p class="shipping-info" style="color: var(--article-heading);">+$9.99 SHIPPING</p>
+                    </div>
+                    <button class="buy-button" onclick="window.open('https://tryburnpeak.org/burnpeak.html', '_blank')">🛒 BUY NOW</button>
                 </div>
             </div>
 
-            <div class="separator"></div>
-
-            <h2>"Okay Sarah, I'm Ready. What Do I Do Next?"</h2>
-
-            <p class="mb-6">Here's exactly what to do right now:</p>
-
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Step 1: Click the button above to visit the official BurnPeak website</h3>
-                <p class="text-sm">
-                    (Make sure you're ordering from the official site—there are knockoff versions floating around that don't contain real BHB)
-                </p>
+            <div class="info-box">
+                <h3>Here's my honest recommendation:</h3>
+                <p>If you're committed to finally getting unstuck and seeing real change, go with the 6-bottle option.</p>
+                <p>Here's why:</p>
+                <ul>
+                    <li>It takes 6-12 weeks to see your best results. One bottle might give you early wins, but you won't see the full transformation.</li>
+                    <li>You'll save $120 compared to buying one bottle at a time.</li>
+                    <li>You lock in this price. Once this promotion ends, prices go back up.</li>
+                    <li>You're still protected by the 60-day guarantee—so even if you order 6 bottles, you can get your money back if it doesn't work.</li>
+                </ul>
+                <p style="font-style: italic; margin-top: 16px;">I ordered 3 bottles to start. Then after 8 weeks, I was kicking myself for not ordering 6, because I had to reorder and pay more. Don't make my mistake.</p>
             </div>
+        </div>
 
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Step 2: Choose your package</h3>
-                <p class="text-sm">
-                    I recommend the 6-bottle option for best results and biggest savings.
-                </p>
-            </div>
+        <div class="separator"></div>
 
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Step 3: Enter your shipping information</h3>
-                <p class="text-sm">
-                    Your order will arrive discreetly in 5-7 business days.
-                </p>
-            </div>
+        <h2>"Okay Sarah, I'm Ready. What Do I Do Next?"</h2>
 
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Step 4: Start your first capsule tomorrow morning</h3>
-                <p class="text-sm">
-                    Take one capsule with water first thing in the morning. That's it. Then go about your day.
-                </p>
-            </div>
+        <p style="margin-bottom: 24px;">Here's exactly what to do right now:</p>
 
-            <div class="timeline-box">
-                <h3 class="font-bold mb-2">Step 5: Notice the shifts</h3>
-                <p class="text-sm">
-                    Pay attention over the next 7-10 days. How's your energy? Your cravings? How do you feel?
-                </p>
-            </div>
+        <div class="info-box">
+            <h3>Step 1: Click the button above to visit the official BurnPeak website</h3>
+            <p style="font-size: 14px;">(Make sure you're ordering from the official site—there are knockoff versions floating around that don't contain real BHB)</p>
+        </div>
 
-            <p class="mb-6">And then keep going.</p>
+        <div class="info-box">
+            <h3>Step 2: Choose your package</h3>
+            <p style="font-size: 14px;">I recommend the 6-bottle option for best results and biggest savings.</p>
+        </div>
 
-            <p class="mb-12">
-                Because the magic isn't in one week—it's in the consistency. It's in showing up for yourself every single morning and giving your body the support it needs to finally get unstuck.
-            </p>
+        <div class="info-box">
+            <h3>Step 3: Enter your shipping information</h3>
+            <p style="font-size: 14px;">Your order will arrive discreetly in 5-7 business days.</p>
+        </div>
 
-            <div class="separator"></div>
+        <div class="info-box">
+            <h3>Step 4: Start your first capsule tomorrow morning</h3>
+            <p style="font-size: 14px;">Take one capsule with water first thing in the morning. That's it. Then go about your day.</p>
+        </div>
 
-            <h2>A Final Word From My Heart To Yours</h2>
+        <div class="info-box">
+            <h3>Step 5: Notice the shifts</h3>
+            <p style="font-size: 14px;">Pay attention over the next 7-10 days. How's your energy? Your cravings? How do you feel?</p>
+        </div>
 
-            <p class="mb-4">I know what it's like to feel trapped.</p>
+        <p style="margin-bottom: 24px;">And then keep going.</p>
 
-            <p class="mb-4">
-                To look in the mirror and not recognize yourself anymore.
-            </p>
+        <p style="margin-bottom: 48px;">Because the magic isn't in one week—it's in the consistency. It's in showing up for yourself every single morning and giving your body the support it needs to finally get unstuck.</p>
 
-            <p class="mb-6">
-                To feel exhausted, frustrated, and invisible. To think, "Maybe this is just how it is now. Maybe I'm just... done."
-            </p>
+        <div class="separator"></div>
 
-            <p class="text-lg font-semibold mb-4">But here's what I learned:</p>
+        <h2>A Final Word From My Heart To Yours</h2>
 
-            <p class="mb-4">You're not done.</p>
-            <p class="mb-6">Your metabolism isn't broken. It's just stuck.</p>
+        <p>I know what it's like to feel trapped.</p>
 
-            <p class="mb-6">
-                And with the right support—with a simple, 10-second morning ritual that works WITH your body instead of against it—you can get unstuck.
-            </p>
+        <p>To look in the mirror and not recognize yourself anymore.</p>
 
-            <ul style="list-style: none; padding: 0;">
-                <li>You can feel like yourself again.</li>
-                <li>You can have energy that lasts all day.</li>
-                <li>You can finally stop fighting food and start feeling in control.</li>
-                <li>You can look in the mirror and feel proud.</li>
-            </ul>
+        <p style="margin-bottom: 24px;">To feel exhausted, frustrated, and invisible. To think, "Maybe this is just how it is now. Maybe I'm just... done."</p>
 
-            <p class="mb-6">You deserve that.</p>
+        <p style="font-weight: 600; font-size: 18px;">But here's what I learned:</p>
 
-            <p class="mb-6">And BurnPeak can help you get there.</p>
+        <p>You're not done.</p>
+        <p style="margin-bottom: 24px;">Your metabolism isn't broken. It's just stuck.</p>
 
-            <p class="mb-6 font-semibold">But you have to take the first step.</p>
+        <p style="margin-bottom: 24px;">And with the right support—with a simple, 10-second morning ritual that works WITH your body instead of against it—you can get unstuck.</p>
 
-            <p class="mb-4">You have to decide that you're worth it.</p>
-            <p class="mb-4">That you're tired of waiting.</p>
-            <p class="mb-12">That you're ready to feel like YOU again.</p>
+        <ul>
+            <li>You can feel like yourself again.</li>
+            <li>You can have energy that lasts all day.</li>
+            <li>You can finally stop fighting food and start feeling in control.</li>
+            <li>You can look in the mirror and feel proud.</li>
+        </ul>
 
-            <!-- CTA 4 -->
-            <div class="cta-box" onclick="scrollToPricing()">
-                <p class="cta-title">
-                    ❤️ Try BurnPeak Risk-Free for 60 Days
-                </p>
-                <p>Take the first step toward feeling like yourself again — you have nothing to lose and everything to gain →</p>
-            </div>
+        <p style="margin-bottom: 24px;">You deserve that.</p>
+        <p style="margin-bottom: 24px;">And BurnPeak can help you get there.</p>
 
-            <div class="alert-box">
-                <p class="font-semibold">
-                    ⏰ Important: This special pricing is only available for a limited time. Once this promotion ends, prices return to $69 per bottle. Don't wait—your future self will thank you.
-                </p>
-            </div>
+        <p style="font-weight: 600; margin-bottom: 24px;">But you have to take the first step.</p>
 
-            <div class="separator"></div>
+        <p>You have to decide that you're worth it.</p>
+        <p>That you're tired of waiting.</p>
+        <p style="margin-bottom: 48px;">That you're ready to feel like YOU again.</p>
 
-            <!-- FAQ Section -->
-            <h2>Still Have Questions?</h2>
+        <!-- CTA 4 -->
+        <div class="cta-box" onclick="scrollToPricing()">
+            <p class="cta-title">❤️ Try BurnPeak Risk-Free for 60 Days</p>
+            <p class="cta-subtitle">Take the first step toward feeling like yourself again — you have nothing to lose and everything to gain →</p>
+        </div>
 
+        <div class="warning-box">
+            <p style="font-weight: 600;">⏰ Important: This special pricing is only available for a limited time. Once this promotion ends, prices return to $69 per bottle. Don't wait—your future self will thank you.</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <!-- FAQ Section -->
+        <h2 style="margin-bottom: 32px;">Still Have Questions?</h2>
+
+        <div class="faq-section">
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>How many capsules do I take per day?</span>
-                    <span>▼</span>
+                    <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    Just one capsule in the morning with water. That's it.
+                    <p>Just one capsule in the morning with water. That's it.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>Can I take this if I'm on medication?</span>
-                    <span>▼</span>
+                    <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    BurnPeak is made with natural BHB salts, but if you're on prescription medication (especially for blood pressure, diabetes, or thyroid), check with your doctor first. Always better to be safe.
+                    <p>BurnPeak is made with natural BHB salts, but if you're on prescription medication (especially for blood pressure, diabetes, or thyroid), check with your doctor first. Always better to be safe.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>Will I have to follow a strict diet?</span>
-                    <span>▼</span>
+                    <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    No. You don't have to go keto or cut out entire food groups. Just focus on balanced meals with protein, stay hydrated, and move your body gently. BurnPeak does the heavy lifting.
+                    <p>No. You don't have to go keto or cut out entire food groups. Just focus on balanced meals with protein, stay hydrated, and move your body gently. BurnPeak does the heavy lifting.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>What if I don't see results in 60 days?</span>
-                    <span>▼</span>
+                    <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    Then you get a full refund. Simple as that. Just contact support, send back your bottles, and you'll get your money back.
+                    <p>Then you get a full refund. Simple as that. Just contact support, send back your bottles, and you'll get your money back.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>Is this safe for women over 60?</span>
-                    <span>▼</span>
+                    <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    Yes! Many women in their 60s, 70s, and beyond use BurnPeak successfully. As always, check with your doctor if you have any concerns.
+                    <p>Yes! Many women in their 60s, 70s, and beyond use BurnPeak successfully. As always, check with your doctor if you have any concerns.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>How long will my order take to arrive?</span>
-                    <span>▼</span>
+                    <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    Most orders arrive within 5-7 business days in the U.S. You'll get tracking information via email.
+                    <p>Most orders arrive within 5-7 business days in the U.S. You'll get tracking information via email.</p>
                 </div>
             </div>
+        </div>
 
-            <div class="separator"></div>
+        <div class="separator"></div>
 
-            <div class="timeline-box mt-12">
-                <h2 class="text-2xl font-bold mb-6" style="font-family: 'Merriweather', serif;">One More Thing...</h2>
-                
-                <p class="mb-4">
-                    Remember Linda, the 58-year-old from Ohio I mentioned earlier?
-                </p>
+        <div class="info-box">
+            <h2 style="font-size: 24px; margin-bottom: 24px;">One More Thing...</h2>
+            
+            <p>Remember Linda, the 58-year-old from Ohio I mentioned earlier?</p>
 
-                <p class="mb-6">
-                    She sent me a message last week that made me cry. She said:
-                </p>
+            <p style="margin-bottom: 24px;">She sent me a message last week that made me cry. She said:</p>
 
-                <div class="callout-accent">
-                    <p class="italic">
-                        "Sarah, I just got back from my daughter's wedding. I wore a dress I haven't been able to fit into in 10 years. My husband held my hand the whole night and whispered, 'You look beautiful.' I felt beautiful. I felt ALIVE. Thank you for sharing your story. It gave me the courage to try one more time. And this time, it worked."
-                    </p>
-                </div>
-
-                <p class="mb-6">That's why I'm sharing this with you.</p>
-
-                <p class="mb-4">Not to sell you something.</p>
-
-                <p class="mb-6">
-                    But because I know what it's like to feel stuck. And I know what it's like to finally get free.
-                </p>
-
-                <ul style="list-style: none; padding: 0;">
-                    <li>You deserve to feel alive again.</li>
-                    <li>You deserve to feel beautiful.</li>
-                    <li>You deserve to feel like YOU.</li>
-                </ul>
-
-                <p class="mb-4">BurnPeak helped me get there.</p>
-                <p class="mb-8">And it can help you too.</p>
+            <div class="accent-quote">
+                <p>"Sarah, I just got back from my daughter's wedding. I wore a dress I haven't been able to fit into in 10 years. My husband held my hand the whole night and whispered, 'You look beautiful.' I felt beautiful. I felt ALIVE. Thank you for sharing your story. It gave me the courage to try one more time. And this time, it worked."</p>
             </div>
 
-            <p class="text-center text-lg mb-4">
-                To your health, your happiness, and your transformation,
-            </p>
-            <p class="text-center text-xl font-semibold mb-12" style="font-family: 'Merriweather', serif;">
-                Sarah ❤️
-            </p>
+            <p style="margin-bottom: 24px;">That's why I'm sharing this with you.</p>
 
-            <div class="separator"></div>
+            <p>Not to sell you something.</p>
 
-            <div class="timeline-box">
-                <p class="mb-4 font-semibold">
-                    P.S. — Remember, this special pricing won't last forever. And with the 60-day money-back guarantee, you have nothing to lose and everything to gain. Click the button above and start your journey today.
-                </p>
-                <p class="font-semibold">
-                    P.P.S. — If you're still on the fence, ask yourself this: "Where will I be 60 days from now if I don't try this?" Probably in the same place you are right now—frustrated, tired, stuck. But if you DO try it? You could be 15 pounds lighter, full of energy, and finally feeling like yourself again. The choice is yours. Choose YOU. 💪
-                </p>
-            </div>
+            <p style="margin-bottom: 24px;">But because I know what it's like to feel stuck. And I know what it's like to finally get free.</p>
 
-            <div class="text-sm italic mt-12" style="padding: 1.5rem; background-color: hsl(var(--secondary)); border-radius: 0.5rem; color: hsl(var(--muted-foreground));">
-                <p>
-                    These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. BurnPeak is a dietary supplement designed to support metabolic health and should be used in conjunction with a balanced diet and regular physical activity. Always consult with a healthcare professional before starting any new supplement regimen, especially if you are pregnant, nursing, taking medication, or have a medical condition.
-                </p>
-            </div>
-        </article>
+            <ul>
+                <li>You deserve to feel alive again.</li>
+                <li>You deserve to feel beautiful.</li>
+                <li>You deserve to feel like YOU.</li>
+            </ul>
+
+            <p>BurnPeak helped me get there.</p>
+            <p style="margin-bottom: 32px;">And it can help you too.</p>
+        </div>
+
+        <p style="text-align: center; font-size: 18px; margin-bottom: 16px;">To your health, your happiness, and your transformation,</p>
+        <p style="text-align: center; font-size: 20px; font-family: 'Merriweather', serif; font-weight: 600; margin-bottom: 48px;">Sarah ❤️</p>
+
+        <div class="separator"></div>
+
+        <div class="info-box">
+            <p style="font-weight: 600; margin-bottom: 16px;">P.S. — Remember, this special pricing won't last forever. And with the 60-day money-back guarantee, you have nothing to lose and everything to gain. Click the button above and start your journey today.</p>
+            <p style="font-weight: 600;">P.P.S. — If you're still on the fence, ask yourself this: "Where will I be 60 days from now if I don't try this?" Probably in the same place you are right now—frustrated, tired, stuck. But if you DO try it? You could be 15 pounds lighter, full of energy, and finally feeling like yourself again. The choice is yours. Choose YOU. 💪</p>
+        </div>
+
+        <div class="disclaimer">
+            <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. BurnPeak is a dietary supplement designed to support metabolic health and should be used in conjunction with a balanced diet and regular physical activity. Always consult with a healthcare professional before starting any new supplement regimen, especially if you are pregnant, nursing, taking medication, or have a medical condition.</p>
+        </div>
     </main>
 
     <script>
@@ -1721,25 +1481,16 @@
         }
 
         function toggleFAQ(element) {
-            const answer = element.nextElementSibling;
-            const arrow = element.querySelector('span:last-child');
+            const faqItem = element.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
             
-            if (answer.classList.contains('active')) {
-                answer.classList.remove('active');
-                arrow.textContent = '▼';
-            } else {
-                // Close all other FAQs
-                document.querySelectorAll('.faq-answer').forEach(item => {
+            allItems.forEach(item => {
+                if (item !== faqItem) {
                     item.classList.remove('active');
-                });
-                document.querySelectorAll('.faq-question span:last-child').forEach(item => {
-                    item.textContent = '▼';
-                });
-                
-                // Open clicked FAQ
-                answer.classList.add('active');
-                arrow.textContent = '▲';
-            }
+                }
+            });
+            
+            faqItem.classList.toggle('active');
         }
     </script>
 </body>
