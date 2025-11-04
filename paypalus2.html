@@ -395,5 +395,21 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             </div>
         </div>
     </footer>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all "Start My Journey" buttons (safe in case you have multiple)
+    const ctaButtons = document.querySelectorAll('.btn-hero');
+    ctaButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        ttq.track('ClickButton', {
+          content_name: 'Start My Journey',
+          event_type: 'Outbound',
+          destination: 'Affiliate Offer',
+          page_url: window.location.href
+        });
+      });
+    });
+  });
+</script>
 </body>
 </html>
