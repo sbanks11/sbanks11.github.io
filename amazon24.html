@@ -33,7 +33,7 @@
       font-size: 17px;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
       font-family: 'Playfair Display', Georgia, serif;
       font-weight: 600;
       line-height: 1.3;
@@ -48,7 +48,7 @@
     /* Hero Section */
     .hero {
       background: linear-gradient(180deg, var(--sage-light) 0%, var(--white) 100%);
-      padding: 80px 24px 60px;
+      padding: 64px 24px 48px;
       text-align: center;
     }
 
@@ -66,7 +66,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(32px, 5vw, 48px);
+      font-size: clamp(28px, 5vw, 48px);
       color: var(--forest);
       max-width: 800px;
       margin: 0 auto 24px;
@@ -76,12 +76,63 @@
       font-size: 18px;
       color: var(--text-muted);
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0 auto 24px;
+    }
+
+    /* Author Section */
+    .author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .author-image {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--forest);
+    }
+
+    .author-info {
+      text-align: left;
+    }
+
+    .author-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .author-name {
+      font-weight: 600;
+      color: var(--forest);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .author-title {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Hero Image */
+    .hero-image {
+      max-width: 400px;
+      margin: 32px auto 0;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
     }
 
     /* Opening Section */
     .opening {
-      padding: 60px 24px;
+      padding: 48px 24px 64px;
       background: var(--white);
     }
 
@@ -95,25 +146,30 @@
       color: var(--forest);
     }
 
-    .opening .italic-intro {
+    .italic-intro {
       font-style: italic;
       color: var(--text-muted);
-      border-left: 3px solid var(--sage);
+      border-left: 4px solid var(--sage);
       padding-left: 20px;
-      margin: 32px 0;
+      margin-bottom: 32px;
+    }
+
+    .italic-intro p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
     }
 
     .highlight-box {
       background: var(--sage-light);
       border-radius: 12px;
-      padding: 32px;
-      margin: 40px 0;
+      padding: 24px 32px;
+      margin: 32px 0;
     }
 
     .highlight-box h3 {
       color: var(--forest);
       margin-bottom: 20px;
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .highlight-box ul {
@@ -157,13 +213,13 @@
       content: "✗";
       position: absolute;
       left: 0;
-      color: #C45C5C;
+      color: #EF4444;
       font-weight: 600;
     }
 
     /* Listicle Items */
     .listicle-item {
-      padding: 60px 24px;
+      padding: 48px 24px 64px;
       border-bottom: 1px solid var(--sage-light);
     }
 
@@ -192,20 +248,24 @@
     }
 
     .listicle-item h2 {
-      font-size: clamp(24px, 4vw, 32px);
-      color: var(--forest);
+      font-size: clamp(24px, 4vw, 30px);
+      color: var(--forest-light);
       margin-bottom: 32px;
       line-height: 1.4;
+      font-style: italic;
     }
 
-    .listicle-item h2 .quote {
-      color: var(--forest-light);
-      font-style: italic;
+    .listicle-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 16px;
+      margin: 32px 0;
     }
 
     .image-placeholder {
       width: 100%;
-      height: 300px;
+      aspect-ratio: 1;
       background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
       border-radius: 16px;
       display: flex;
@@ -249,8 +309,8 @@
       font-weight: 600;
     }
 
-    .listicle-item .subhead {
-      font-size: 14px;
+    .subhead {
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--text-muted);
@@ -281,20 +341,14 @@
       background: var(--white);
       border: 2px solid var(--sage);
       border-radius: 12px;
-      padding: 32px;
+      padding: 24px 32px;
       margin: 32px 0;
     }
 
     .timeline-box h4 {
-      font-family: 'Playfair Display', serif;
       font-size: 18px;
       color: var(--forest);
-      margin-bottom: 8px;
-    }
-
-    .timeline-box p {
-      margin-bottom: 8px;
-      font-size: 15px;
+      margin-bottom: 16px;
     }
 
     .timeline-box .week {
@@ -305,10 +359,21 @@
       margin-bottom: 0;
     }
 
+    .timeline-box .week strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .timeline-box .week p {
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
     .quote-block {
       background: var(--forest);
       color: var(--white);
-      padding: 32px;
+      padding: 24px 32px;
       border-radius: 12px;
       margin: 32px 0;
       font-style: italic;
@@ -316,18 +381,22 @@
       text-align: center;
     }
 
+    .quote-block span {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
     .price-box {
       background: linear-gradient(135deg, var(--sage-light) 0%, var(--white) 100%);
       border: 2px solid var(--sage);
       border-radius: 16px;
-      padding: 40px;
+      padding: 32px;
       margin: 32px 0;
       text-align: center;
     }
 
     .price-box h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
+      font-size: 20px;
       color: var(--forest);
       margin-bottom: 24px;
     }
@@ -353,7 +422,7 @@
     .price-option.featured {
       background: var(--forest);
       color: var(--white);
-      margin: 16px -20px;
+      margin: 16px -16px;
       padding: 20px;
       border-radius: 8px;
     }
@@ -363,11 +432,75 @@
       color: var(--white);
     }
 
+    /* Mid-Content CTA */
+    .mid-cta {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+      color: var(--white);
+      padding: 64px 24px 80px;
+      text-align: center;
+    }
+
+    .mid-cta .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+
+    .mid-cta h3 {
+      font-size: clamp(24px, 4vw, 30px);
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+
+    .mid-cta p {
+      opacity: 0.9;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+
+    .mid-cta-image {
+      max-width: 400px;
+      margin: 0 auto 32px;
+    }
+
+    .mid-cta-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--sage);
+      color: var(--forest);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    .cta-guarantee {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-top: 16px;
+    }
+
     /* Closing Section */
     .closing {
       background: var(--forest);
       color: var(--white);
-      padding: 80px 24px;
+      padding: 64px 24px 80px;
       text-align: center;
     }
 
@@ -386,49 +519,114 @@
     .closing .emphasis {
       font-size: 20px;
       font-weight: 500;
-      margin: 40px 0;
+      margin: 40px auto;
     }
 
-    .cta-button {
-      display: inline-block;
-      background: var(--sage);
-      color: var(--forest);
-      padding: 20px 48px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 16px;
-      text-decoration: none;
+    .closing-image {
+      max-width: 360px;
+      margin: 48px auto;
+    }
+
+    .closing-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+
+    .closing .cta-button {
+      padding: 20px 40px;
       margin: 32px 0;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
     }
 
-    .cta-button:hover {
-      background: var(--white);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    }
-
-    .guarantee {
+    .closing .guarantee {
       font-size: 14px;
       opacity: 0.7;
       margin-top: 16px;
     }
 
     .final-line {
-      font-family: 'Playfair Display', serif;
       font-size: 24px;
       font-style: italic;
       margin-top: 48px;
       opacity: 0.9;
     }
 
+    /* Sticky CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--sage);
+      border-top: 1px solid rgba(47, 94, 84, 0.2);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+      z-index: 50;
+      padding: 12px 16px;
+    }
+
+    .sticky-cta-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .sticky-cta-text {
+      font-weight: 600;
+      color: var(--forest);
+      font-size: 14px;
+    }
+
+    .sticky-cta-button {
+      flex-shrink: 0;
+      background: var(--forest);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .sticky-cta-button:hover {
+      background: var(--forest-light);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Spacer for sticky CTA */
+    .sticky-spacer {
+      height: 80px;
+    }
+
     /* Responsive */
-    @media (max-width: 640px) {
+    @media (min-width: 768px) {
       .hero {
-        padding: 60px 20px 40px;
+        padding: 80px 24px 60px;
       }
 
+      .sticky-cta {
+        padding: 16px 24px;
+      }
+
+      .sticky-cta-text {
+        font-size: 16px;
+      }
+
+      .sticky-cta-button {
+        padding: 12px 32px;
+        font-size: 16px;
+      }
+
+      .sticky-spacer {
+        height: 96px;
+      }
+    }
+
+    @media (max-width: 640px) {
       .listicle-item {
         padding: 40px 20px;
       }
@@ -436,12 +634,26 @@
       .highlight-box,
       .timeline-box,
       .price-box {
-        padding: 24px;
+        padding: 20px;
       }
 
-      .image-placeholder {
-        height: 220px;
+      .sticky-cta-text {
+        font-size: 12px;
       }
+
+      .sticky-cta-button {
+        padding: 12px 16px;
+        font-size: 12px;
+      }
+    }
+
+    ul {
+      padding-left: 24px;
+      margin: 20px 0;
+    }
+
+    li {
+      margin-bottom: 8px;
     }
   </style>
 </head>
@@ -451,6 +663,21 @@
     <span class="hero-badge">Science-Backed Scalp Care</span>
     <h1>10 Reasons Your Scalp Keeps Flaking (And Why Nevelle Actually Works When Nothing Else Has)</h1>
     <p class="hero-subtitle">Finally understand what's really happening—and how to fix it for good.</p>
+    
+    <!-- Author -->
+    <div class="author">
+      <img src="YOUR_AUTHOR_IMAGE_URL" alt="Dr. Jennifer Chen" class="author-image">
+      <div class="author-info">
+        <p class="author-label">Written by</p>
+        <p class="author-name">Dr. Jennifer Chen</p>
+        <p class="author-title">Certified Board Dermatologist</p>
+      </div>
+    </div>
+    
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img src="YOUR_HERO_IMAGE_URL" alt="Nevelle Scalp Renewal Elixir - targets flaking, itching and redness">
+    </div>
   </header>
 
   <!-- Opening Section -->
@@ -474,7 +701,7 @@
 
       <div class="highlight-box">
         <h3>The Root Causes</h3>
-        <ul>
+        <ul style="list-style: none; padding: 0;">
           <li><strong>A damaged scalp barrier</strong> (letting irritants in and moisture out)</li>
           <li><strong>An unbalanced microbiome</strong> (yeast and bacteria out of control)</li>
           <li><strong>A stuck inflammation loop</strong> (your scalp thinks it's under attack and won't calm down)</li>
@@ -499,13 +726,13 @@
     </div>
   </section>
 
-  <!-- Listicle Items -->
+  <!-- Item 1 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">1</span>
-      <h2><span class="quote">"I've Already Tried Everything—Why Would Nevelle Be Any Different?"</span></h2>
+      <h2>"I've Already Tried Everything—Why Would Nevelle Be Any Different?"</h2>
       
-      <div class="image-placeholder"></div>
+      <img src="YOUR_LISTICLE_1_IMAGE_URL" alt="Various scalp treatment products" class="listicle-image">
 
       <p class="subhead">The pattern you know too well:</p>
       <p>You try a medicated shampoo. It works for a week. Maybe two. Then the flakes come roaring back.</p>
@@ -514,10 +741,10 @@
 
       <h3>Here's why Nevelle is different:</h3>
       <p>Most treatments only target <strong>one</strong> of the three root causes:</p>
-      <ul style="margin: 20px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">Medicated shampoos kill yeast but strip your barrier</li>
-        <li style="margin-bottom: 8px;">Natural oils soothe inflammation but don't rebalance your microbiome</li>
-        <li style="margin-bottom: 8px;">Steroids suppress symptoms but don't fix why your scalp keeps freaking out</li>
+      <ul>
+        <li>Medicated shampoos kill yeast but strip your barrier</li>
+        <li>Natural oils soothe inflammation but don't rebalance your microbiome</li>
+        <li>Steroids suppress symptoms but don't fix why your scalp keeps freaking out</li>
       </ul>
 
       <p><strong>Nevelle targets all three at once:</strong></p>
@@ -532,12 +759,13 @@
     </div>
   </article>
 
+  <!-- Item 2 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">2</span>
-      <h2><span class="quote">"What If It Works for a Few Weeks, Then Stops Like Everything Else?"</span></h2>
+      <h2>"What If It Works for a Few Weeks, Then Stops Like Everything Else?"</h2>
       
-      <div class="image-placeholder"></div>
+      <img src="YOUR_LISTICLE_2_IMAGE_URL" alt="Calendar tracking scalp treatment progress" class="listicle-image">
 
       <p class="subhead">The fear is real:</p>
       <p>You've experienced temporary relief so many times that you don't trust it anymore.</p>
@@ -545,15 +773,14 @@
 
       <h3>Why other products stop working:</h3>
       <p>Most treatments create <strong>dependency without creating healing.</strong></p>
-      <ul style="margin: 20px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">Medicated shampoos suppress symptoms as long as you use them—but the moment you stop, everything returns because your barrier is still broken</li>
-        <li style="margin-bottom: 8px;">Steroid creams reduce inflammation artificially, but they don't teach your immune system to calm down on its own</li>
-        <li style="margin-bottom: 8px;">Natural remedies might soothe, but they don't address the microbiome imbalance driving the flare-ups</li>
+      <ul>
+        <li>Medicated shampoos suppress symptoms as long as you use them—but the moment you stop, everything returns because your barrier is still broken</li>
+        <li>Steroid creams reduce inflammation artificially, but they don't teach your immune system to calm down on its own</li>
+        <li>Natural remedies might soothe, but they don't address the microbiome imbalance driving the flare-ups</li>
       </ul>
 
       <h3>Why Nevelle is designed for long-term results:</h3>
       <p><strong>Nevelle doesn't just mask symptoms—it restores function.</strong></p>
-      <p>By rebuilding your barrier, rebalancing your microbiome, and calming chronic inflammation, your scalp learns to regulate itself again.</p>
 
       <div class="timeline-box">
         <h4>Most customers notice:</h4>
@@ -576,12 +803,13 @@
     </div>
   </article>
 
+  <!-- Item 3 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">3</span>
-      <h2><span class="quote">"How Is This Different From the 'Natural' Products I've Already Wasted Money On?"</span></h2>
+      <h2>"How Is This Different From the 'Natural' Products I've Already Wasted Money On?"</h2>
       
-      <div class="image-placeholder"></div>
+      <img src="YOUR_LISTICLE_3_IMAGE_URL" alt="Natural remedies vs clinically formulated Nevelle" class="listicle-image">
 
       <p class="subhead">The frustration is valid:</p>
       <p>You've tried tea tree oil. ACV rinses. Coconut oil. Aloe vera. Maybe even expensive "scalp serums" from influencer brands.</p>
@@ -589,12 +817,11 @@
 
       <h3>Why most natural products don't work:</h3>
       <p><strong>Being "natural" doesn't mean it's effective or formulated correctly.</strong></p>
-      <ul style="margin: 20px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">Tea tree oil and ACV can actually worsen inflammation if they're too concentrated or disrupt your scalp's pH</li>
-        <li style="margin-bottom: 8px;">Coconut oil can feed Malassezia yeast (the main culprit in seb derm)</li>
-        <li style="margin-bottom: 8px;">Random essential oil blends aren't targeting the actual mechanisms—they're just... smelling nice</li>
+      <ul>
+        <li>Tea tree oil and ACV can actually worsen inflammation if they're too concentrated or disrupt your scalp's pH</li>
+        <li>Coconut oil can feed Malassezia yeast (the main culprit in seb derm)</li>
+        <li>Random essential oil blends aren't targeting the actual mechanisms—they're just... smelling nice</li>
       </ul>
-      <p>Most "natural" scalp products are unformulated guesses—no clinical backing, no proper pH balance, no synergistic ingredient combinations.</p>
 
       <h3>What makes Nevelle different:</h3>
       <p>Nevelle uses <strong>clinically-studied natural actives at effective concentrations:</strong></p>
@@ -606,15 +833,15 @@
       </div>
       <p>Every ingredient is there for a scientific reason—not because it sounds trendy.</p>
       <p>It's formulated at <strong>pH 4.5-5.0</strong> (your scalp's natural pH) so it supports your acid mantle instead of disrupting it.</p>
-      <p>And it's been tested by dermatologists and formulation experts—not thrown together by a wellness blogger.</p>
       <p><strong>Natural AND science-backed. That's the difference.</strong></p>
     </div>
   </article>
 
+  <!-- Item 4 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">4</span>
-      <h2><span class="quote">"I Can't Keep Up With Complicated Routines—I'm Already Exhausted"</span></h2>
+      <h2>"I Can't Keep Up With Complicated Routines—I'm Already Exhausted"</h2>
       
       <div class="image-placeholder"></div>
 
@@ -629,15 +856,15 @@
       <p>It's a lightweight leave-on serum—not another 10-step regimen.</p>
 
       <div class="highlight-box">
-        <h3>How to use it:</h3>
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; margin-bottom: 16px;">How to use it:</h4>
         <ol style="padding-left: 20px;">
-          <li style="margin-bottom: 8px;">Start with clean, dry or slightly damp hair</li>
-          <li style="margin-bottom: 8px;">Part your hair into sections</li>
-          <li style="margin-bottom: 8px;">Apply 1 full dropper directly to the scalp</li>
-          <li style="margin-bottom: 8px;">Gently massage for 30–60 seconds</li>
-          <li style="margin-bottom: 8px;"><strong>Leave it on — do not rinse</strong></li>
+          <li>Start with clean, dry or slightly damp hair</li>
+          <li>Part your hair into sections</li>
+          <li>Apply 1 full dropper directly to the scalp</li>
+          <li>Gently massage for 30–60 seconds</li>
+          <li><strong>Leave it on — do not rinse</strong></li>
         </ol>
-        <p style="margin-top: 16px;"><strong>No rinsing. No waiting. No layering 5 other products.</strong></p>
+        <p style="margin-top: 16px; margin-bottom: 0;"><strong>No rinsing. No waiting. No layering 5 other products.</strong></p>
       </div>
 
       <p><strong>Time commitment:</strong> Less than 60 seconds.</p>
@@ -647,10 +874,11 @@
     </div>
   </article>
 
+  <!-- Item 5 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">5</span>
-      <h2><span class="quote">"Will This Make My Hair Greasy or Cause More Buildup?"</span></h2>
+      <h2>"Will This Make My Hair Greasy or Cause More Buildup?"</h2>
       
       <div class="image-placeholder"></div>
 
@@ -660,10 +888,10 @@
 
       <h3>Why this happens with other products:</h3>
       <p><strong>Most scalp oils and treatments are formulated for hair, not scalp.</strong></p>
-      <ul style="margin: 20px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">Coconut oil, castor oil, heavy carrier oils—they sit on the surface, clog follicles, and feed yeast</li>
-        <li style="margin-bottom: 8px;">Thick creams don't absorb and leave residue that traps dead skin</li>
-        <li style="margin-bottom: 8px;">Silicone-based serums create a barrier that suffocates your scalp</li>
+      <ul>
+        <li>Coconut oil, castor oil, heavy carrier oils—they sit on the surface, clog follicles, and feed yeast</li>
+        <li>Thick creams don't absorb and leave residue that traps dead skin</li>
+        <li>Silicone-based serums create a barrier that suffocates your scalp</li>
       </ul>
 
       <h3>Nevelle is different—here's why:</h3>
@@ -671,42 +899,53 @@
       <div class="check-list">
         <p><strong>Non-comedogenic</strong> (won't clog pores or follicles)</p>
         <p><strong>Silicone-free</strong> (no suffocating film)</p>
-        <p><strong>Oil-balanced</strong> (contains light, skin-identical lipids that your scalp actually needs—not heavy oils that sit on top)</p>
+        <p><strong>Oil-balanced</strong> (contains light, skin-identical lipids that your scalp actually needs)</p>
       </div>
 
       <p><strong>When you apply it:</strong></p>
-      <ul style="margin: 16px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">It feels slightly cooling and soothing</li>
-        <li style="margin-bottom: 8px;">It absorbs within 30-60 seconds</li>
-        <li style="margin-bottom: 8px;">Your hair doesn't look greasy, shiny, or "wet"</li>
-        <li style="margin-bottom: 8px;">No residue on your pillowcase</li>
-        <li style="margin-bottom: 8px;">No second-day buildup</li>
+      <ul>
+        <li>It feels slightly cooling and soothing</li>
+        <li>It absorbs within 30-60 seconds</li>
+        <li>Your hair doesn't look greasy, shiny, or "wet"</li>
+        <li>No residue on your pillowcase</li>
+        <li>No second-day buildup</li>
       </ul>
 
       <p><strong>If anything, your scalp will produce less oil over time</strong>—because a balanced scalp doesn't overproduce sebum to compensate for dryness.</p>
     </div>
   </article>
 
+  <!-- Mid-Content CTA -->
+  <section class="mid-cta">
+    <p class="label">Ready to try something different?</p>
+    <h3>Your Scalp Deserves Better Than Temporary Fixes</h3>
+    <p>Join over 10,000 people who finally found relief with Nevelle's science-backed formula.</p>
+    <div class="mid-cta-image">
+      <img src="YOUR_BUNDLE_IMAGE_URL" alt="Nevelle Scalp Renewal Elixir Bundle">
+    </div>
+    <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Try Nevelle Risk-Free</a>
+    <p class="cta-guarantee">30-Day Money-Back Guarantee</p>
+  </section>
+
+  <!-- Item 6 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">6</span>
-      <h2><span class="quote">"My Dermatologist Just Gave Me Steroids Without Explaining Anything. Why Should I Trust This?"</span></h2>
+      <h2>"My Dermatologist Just Gave Me Steroids Without Explaining Anything. Why Should I Trust This?"</h2>
       
       <div class="image-placeholder"></div>
 
       <p class="subhead">The frustration is real:</p>
-      <p>You sat in a dermatologist's office for 5 minutes.</p>
-      <p>They glanced at your scalp, said "seb derm," wrote a prescription for a steroid cream or medicated shampoo, and sent you on your way.</p>
+      <p>You sat in a dermatologist's office for 5 minutes. They glanced at your scalp, said "seb derm," wrote a prescription for a steroid cream or medicated shampoo, and sent you on your way.</p>
       <p>No explanation of why you have this. No discussion of root causes. No long-term plan.</p>
 
       <h3>Here's the truth:</h3>
       <p>Most dermatologists are trained to <strong>suppress symptoms, not address root causes.</strong></p>
-      <p>Steroid creams do work—temporarily. They shut down inflammation fast.</p>
-      <p>But they don't:</p>
-      <ul style="margin: 16px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">Repair your barrier</li>
-        <li style="margin-bottom: 8px;">Rebalance your microbiome</li>
-        <li style="margin-bottom: 8px;">Teach your immune system to stop overreacting</li>
+      <p>Steroid creams do work—temporarily. They shut down inflammation fast. But they don't:</p>
+      <ul>
+        <li>Repair your barrier</li>
+        <li>Rebalance your microbiome</li>
+        <li>Teach your immune system to stop overreacting</li>
       </ul>
 
       <h3>Nevelle was created because of this gap:</h3>
@@ -715,58 +954,58 @@
       <p><strong>That's how Nevelle was born.</strong></p>
 
       <p>It's built on the research dermatologists know but don't always have time to explain:</p>
-      <ul style="margin: 16px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">Scalp barrier dysfunction drives chronic inflammation</li>
-        <li style="margin-bottom: 8px;">Microbiome dysbiosis (yeast overgrowth) perpetuates flare-ups</li>
-        <li style="margin-bottom: 8px;">You need to restore balance, not just suppress symptoms</li>
+      <ul>
+        <li>Scalp barrier dysfunction drives chronic inflammation</li>
+        <li>Microbiome dysbiosis (yeast overgrowth) perpetuates flare-ups</li>
+        <li>You need to restore balance, not just suppress symptoms</li>
       </ul>
 
       <p><strong>Nevelle gives you what your dermatologist should have:</strong> an explanation, a plan, and a treatment that actually addresses the root cause.</p>
     </div>
   </article>
 
+  <!-- Item 7 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">7</span>
-      <h2><span class="quote">"What If I'm Not Even Sure What I Have? Will This Still Work?"</span></h2>
+      <h2>"What If I'm Not Even Sure What I Have? Will This Still Work?"</h2>
       
       <div class="image-placeholder"></div>
 
       <p class="subhead">The confusion is understandable:</p>
-      <p>Maybe you've never been officially diagnosed.</p>
-      <p>Maybe one doctor said dandruff, another said eczema, another said "just dry scalp."</p>
+      <p>Maybe you've never been officially diagnosed. Maybe one doctor said dandruff, another said eczema, another said "just dry scalp."</p>
 
       <h3>Here's the good news: you don't need a diagnosis for Nevelle to work.</h3>
       <p>Because whether it's seborrheic dermatitis, chronic dandruff, scalp eczema, or mild scalp psoriasis—they all share the same core dysfunctions:</p>
-      <ul style="margin: 16px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">Damaged barrier</li>
-        <li style="margin-bottom: 8px;">Microbiome imbalance (usually Malassezia yeast overgrowth)</li>
-        <li style="margin-bottom: 8px;">Chronic low-grade inflammation</li>
+      <ul>
+        <li>Damaged barrier</li>
+        <li>Microbiome imbalance (usually Malassezia yeast overgrowth)</li>
+        <li>Chronic low-grade inflammation</li>
       </ul>
       <p><strong>And Nevelle targets all three.</strong></p>
 
       <div class="highlight-box">
-        <h3>What customers with different "labels" have reported:</h3>
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; margin-bottom: 16px;">What customers with different "labels" have reported:</h4>
         <p style="margin-bottom: 12px;"><em>"I was told I just had bad dandruff"</em> → Flakes gone in 3 weeks</p>
         <p style="margin-bottom: 12px;"><em>"My derm said scalp eczema"</em> → Redness and itch cleared</p>
         <p style="margin-bottom: 12px;"><em>"I think it's seb derm but I was never diagnosed"</em> → Finally feels normal again</p>
-        <p><em>"I have mild scalp psoriasis"</em> → Saw improvement in thickness and flaking</p>
+        <p style="margin-bottom: 0;"><em>"I have mild scalp psoriasis"</em> → Saw improvement in thickness and flaking</p>
       </div>
 
       <p><strong>You're not treating a label. You're treating the biology.</strong></p>
     </div>
   </article>
 
+  <!-- Item 8 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">8</span>
-      <h2><span class="quote">"How Long Until I See Results? I Can't Wait Months for This to Work"</span></h2>
+      <h2>"How Long Until I See Results? I Can't Wait Months for This to Work"</h2>
       
       <div class="image-placeholder"></div>
 
       <p class="subhead">The desperation is real:</p>
-      <p>Every day of flaking feels like social torture.</p>
-      <p>You've already waited years for something to work.</p>
+      <p>Every day of flaking feels like social torture. You've already waited years for something to work.</p>
 
       <h3>Here's the honest timeline:</h3>
       <p>Nevelle isn't an overnight miracle. But it's also not a 6-month guessing game.</p>
@@ -775,24 +1014,19 @@
         <h4>What most customers experience:</h4>
         <div class="week">
           <strong>Week 1:</strong>
-          <p>Noticeable reduction in itch (often within the first 2-3 days)</p>
-          <p>Scalp feels less "angry" and irritated</p>
-          <p>Redness starts to calm</p>
+          <p>Noticeable reduction in itch (often within the first 2-3 days). Scalp feels less "angry" and irritated. Redness starts to calm.</p>
         </div>
         <div class="week">
           <strong>Week 2-3:</strong>
-          <p>Visible reduction in flaking</p>
-          <p>"Snow" moments become rare or stop entirely</p>
+          <p>Visible reduction in flaking. "Snow" moments become rare or stop entirely.</p>
         </div>
         <div class="week">
           <strong>Week 4-6:</strong>
-          <p>Flakes are mostly gone or significantly reduced</p>
-          <p>Itch is rare or nonexistent</p>
+          <p>Flakes are mostly gone or significantly reduced. Itch is rare or nonexistent.</p>
         </div>
         <div class="week">
           <strong>Week 8-12:</strong>
-          <p>Scalp feels truly healed, not just "managed"</p>
-          <p>You can reduce usage to 2-3x per week for maintenance</p>
+          <p>Scalp feels truly healed, not just "managed." You can reduce usage to 2-3x per week for maintenance.</p>
         </div>
       </div>
 
@@ -800,15 +1034,16 @@
 
       <div class="quote-block">
         "I wish I'd started this 6 months ago."<br>
-        <span style="font-size: 14px; opacity: 0.8;">— Most Nevelle customers</span>
+        <span>— Most Nevelle customers</span>
       </div>
     </div>
   </article>
 
+  <!-- Item 9 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">9</span>
-      <h2><span class="quote">"This Feels Expensive for Something That Might Not Work for Me"</span></h2>
+      <h2>"This Feels Expensive for Something That Might Not Work for Me"</h2>
       
       <div class="image-placeholder"></div>
 
@@ -818,11 +1053,11 @@
       <h3>Let's be honest about the money:</h3>
       <p>A single bottle of Nevelle is <strong>$39.</strong></p>
       <p>But let's put that in perspective:</p>
-      <ul style="margin: 16px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">A dermatologist visit (with insurance): $30-$75 co-pay</li>
-        <li style="margin-bottom: 8px;">Prescription medicated shampoo: $25-$40</li>
-        <li style="margin-bottom: 8px;">"Natural" scalp serum from a trendy brand: $45-$80</li>
-        <li style="margin-bottom: 8px;">Expensive hair salon scalp treatment: $75-$150</li>
+      <ul>
+        <li>A dermatologist visit (with insurance): $30-$75 co-pay</li>
+        <li>Prescription medicated shampoo: $25-$40</li>
+        <li>"Natural" scalp serum from a trendy brand: $45-$80</li>
+        <li>Expensive hair salon scalp treatment: $75-$150</li>
       </ul>
       <p><strong>You've probably already spent $200+ this year on things that didn't work.</strong></p>
 
@@ -847,16 +1082,16 @@
     </div>
   </article>
 
+  <!-- Item 10 -->
   <article class="listicle-item">
     <div class="listicle-inner">
       <span class="item-number">10</span>
-      <h2><span class="quote">"What If It Doesn't Work for Me? What If My Scalp Is Just 'Unfixable'?"</span></h2>
+      <h2>"What If It Doesn't Work for Me? What If My Scalp Is Just 'Unfixable'?"</h2>
       
       <div class="image-placeholder"></div>
 
       <p class="subhead">The deepest fear:</p>
-      <p>After years of trying everything, a part of you has started to believe:</p>
-      <p><em>"Maybe I'm just broken. Maybe my scalp will never be normal. Maybe I'm the exception where nothing works."</em></p>
+      <p>After years of trying everything, a part of you has started to believe: <em>"Maybe I'm just broken. Maybe my scalp will never be normal. Maybe I'm the exception where nothing works."</em></p>
 
       <h3>Here's what I need you to hear:</h3>
       <p><strong>Your scalp is not unfixable.</strong></p>
@@ -869,20 +1104,20 @@
       <p>Thousands of people who thought they were "unfixable" are now living with calm, clear scalps because they finally used something that addressed all three root causes.</p>
 
       <div class="highlight-box">
-        <h3>But here's the safety net:</h3>
-        <p>If you try Nevelle for 30 days and it doesn't work for you—<strong>you get a full refund. No questions asked.</strong></p>
-        <p><strong>If you're not happy, you get your money back.</strong></p>
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; margin-bottom: 16px;">But here's the safety net:</h4>
+        <p style="margin-bottom: 16px;">If you try Nevelle for 30 days and it doesn't work for you—<strong>you get a full refund. No questions asked.</strong></p>
+        <p style="margin-bottom: 0;"><strong>If you're not happy, you get your money back.</strong></p>
       </div>
 
       <p>So the real question isn't "What if it doesn't work?"</p>
       <p>The real question is: <strong>"What if it does?"</strong></p>
 
       <p>What if, 6 weeks from now, you wake up and realize:</p>
-      <ul style="margin: 16px 0; padding-left: 24px;">
-        <li style="margin-bottom: 8px;">You didn't scratch your scalp once yesterday</li>
-        <li style="margin-bottom: 8px;">You wore a black shirt without checking for flakes</li>
-        <li style="margin-bottom: 8px;">You booked a haircut without feeling anxious</li>
-        <li style="margin-bottom: 8px;">You looked in the mirror and felt... normal</li>
+      <ul>
+        <li>You didn't scratch your scalp once yesterday</li>
+        <li>You wore a black shirt without checking for flakes</li>
+        <li>You booked a haircut without feeling anxious</li>
+        <li>You looked in the mirror and felt... normal</li>
       </ul>
 
       <p><strong>What if you finally get your life back?</strong> <em>That's worth finding out.</em></p>
@@ -899,6 +1134,11 @@
       You've spent enough money on temporary fixes.<br>
       You've felt enough shame, exhaustion, and frustration.</p>
       <p class="emphasis">You deserve a scalp that doesn't control your life.</p>
+      
+      <div class="closing-image">
+        <img src="YOUR_CTA_IMAGE_URL" alt="Nevelle Scalp Renewal Elixir - calms, repairs, restores">
+      </div>
+      
       <p>Nevelle was built for people just like you—people who've been let down by everything else and need something that actually works.</p>
       <p>It's not a miracle. It's just science, done right.</p>
       <p><strong>Barrier repair. Microbiome balance. Inflammation control.</strong></p>
@@ -912,5 +1152,16 @@
       <p class="final-line">Your scalp has been waiting for this.</p>
     </div>
   </section>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta">
+    <div class="sticky-cta-inner">
+      <p class="sticky-cta-text">Get Nevelle — 30-Day Money-Back Guarantee</p>
+      <a href="https://nevelle.co/products/scalp-renewal-elixr" class="sticky-cta-button">Claim Your Bottle →</a>
+    </div>
+  </div>
+
+  <!-- Spacer for sticky CTA -->
+  <div class="sticky-spacer"></div>
 </body>
 </html>
