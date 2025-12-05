@@ -173,26 +173,44 @@
       padding: 0;
     }
 
-    .highlight-box li {
-      padding: 12px 0;
-      padding-left: 32px;
-      position: relative;
-      border-bottom: 1px solid rgba(47, 94, 84, 0.1);
-    }
+  .highlight-box ul li {
+  padding: 12px 0;
+  padding-left: 32px;
+  position: relative;
+  border-bottom: 1px solid rgba(47, 94, 84, 0.1);
+}
+
+.highlight-box ul li:last-child {
+  border-bottom: none;
+}
 
     .highlight-box li:last-child {
       border-bottom: none;
     }
 
-    .highlight-box li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 18px;
-      width: 16px;
-      height: 16px;
-      background: var(--forest);
-      border-radius: 50%;
+ .highlight-box ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 16px;
+  height: 16px;
+  background: var(--forest);
+  border-radius: 50%;
+}
+
+.highlight-box ol {
+  list-style: decimal;
+}
+
+.highlight-box ol li {
+  padding-left: 8px;
+}
+
+.highlight-box ol li::before {
+  display: none;
+}
+
     }
 
     .problem-list {
