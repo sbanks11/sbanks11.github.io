@@ -443,75 +443,101 @@
       opacity: 0.7;
     }
 
-    /* Testimonials Section */
-    .testimonials {
-      background: var(--sage-light);
-      padding: 64px 24px;
-      text-align: center;
-    }
+/* Testimonials Section */
+.testimonials {
+  background: var(--sage-light);
+  padding: 64px 24px;
+  text-align: center;
+  overflow: hidden;
+}
 
-    .testimonials h3 {
-      font-size: clamp(24px, 4vw, 32px);
-      color: var(--forest);
-      margin-bottom: 8px;
-    }
+.testimonials h3 {
+  font-size: clamp(24px, 4vw, 32px);
+  color: var(--forest);
+  margin-bottom: 8px;
+}
 
-    .testimonials .subtitle {
-      color: var(--text-muted);
-      margin-bottom: 40px;
-    }
+.testimonials .subtitle {
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
 
-    .testimonials-grid {
-      display: flex;
-      gap: 24px;
-      overflow-x: auto;
-      padding-bottom: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.testimonials-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
 
-    .testimonial-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      min-width: 280px;
-      flex-shrink: 0;
-    }
+.testimonials-track {
+  display: flex;
+  gap: 24px;
+  animation: testimonialScroll 30s linear infinite;
+  width: max-content;
+}
 
-    .testimonial-card img {
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 16px;
-    }
+.testimonials-carousel-wrapper:hover .testimonials-track,
+.testimonials-carousel-wrapper:active .testimonials-track {
+  animation-play-state: paused;
+}
 
-    .testimonial-card .stars {
-      display: flex;
-      justify-content: center;
-      gap: 4px;
-      margin-bottom: 12px;
-    }
+@keyframes testimonialScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
-    .testimonial-card .stars svg {
-      width: 16px;
-      height: 16px;
-      fill: #F59E0B;
-    }
+.testimonial-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  flex-shrink: 0;
+}
 
-    .testimonial-card .quote {
-      font-style: italic;
-      color: var(--forest);
-      margin-bottom: 12px;
-      font-size: 14px;
-    }
+.testimonial-card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
 
-    .testimonial-card .name {
-      font-weight: 600;
-      color: var(--forest);
-      font-size: 14px;
-    }
+.testimonial-card .stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.testimonial-card .stars svg {
+  width: 16px;
+  height: 16px;
+  fill: #F59E0B;
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  color: var(--forest);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.testimonial-card .name {
+  font-weight: 600;
+  color: var(--forest);
+  font-size: 14px;
+}
+
+.hold-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 24px;
+  opacity: 0.7;
+}
 
     /* Closing Section */
     .closing {
@@ -742,13 +768,68 @@
     </div>
   </article>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <div class="container" style="max-width: 1200px;">
-      <h3>Before & After from Nevelle Customers</h3>
-      <p class="subtitle">lifechanging results in under a month</p>
-      
-      <div class="testimonials-grid">
+  <!-- Testimonials Section - Replace the existing one -->
+<section class="testimonials">
+  <div class="container" style="max-width: 1200px;">
+    <h3>Before & After from Nevelle Customers</h3>
+    <p class="subtitle">lifechanging results in under a month</p>
+    
+    <div class="testimonials-carousel-wrapper">
+      <div class="testimonials-track">
+        <!-- First set -->
+        <div class="testimonial-card">
+          <img src="images/PLACEHOLDER_BEFORE_AFTER_1.jpg" alt="Before and after results from Sarah M.">
+          <div class="stars">
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="quote">"After 15 years of trying everything, Nevelle finally gave me my life back. I can wear black again!"</p>
+          <p class="name">— Sarah M.</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <img src="images/PLACEHOLDER_BEFORE_AFTER_2.jpg" alt="Before and after results from Jade K.">
+          <div class="stars">
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="quote">"The itch stopped within the first week. I actually sleep through the night now."</p>
+          <p class="name">— Jade K.</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <img src="images/PLACEHOLDER_BEFORE_AFTER_3.jpg" alt="Before and after results from Jennifer L.">
+          <div class="stars">
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="quote">"My dermatologist couldn't believe the difference. The plaques are almost completely gone."</p>
+          <p class="name">— Jennifer L.</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <img src="images/PLACEHOLDER_BEFORE_AFTER_4.jpg" alt="Before and after results from Martha L.">
+          <div class="stars">
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="quote">"I was skeptical after so many failed products, but Nevelle actually works. Life-changing."</p>
+          <p class="name">— Martha L.</p>
+        </div>
+        
+        <!-- Duplicate set for seamless loop -->
         <div class="testimonial-card">
           <img src="images/PLACEHOLDER_BEFORE_AFTER_1.jpg" alt="Before and after results from Sarah M.">
           <div class="stars">
@@ -802,7 +883,10 @@
         </div>
       </div>
     </div>
-  </section>
+    
+    <p class="hold-text">Hold to pause</p>
+  </div>
+</section>
 
   <!-- Item 2 -->
   <article class="listicle-item">
