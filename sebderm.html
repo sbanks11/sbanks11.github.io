@@ -142,6 +142,19 @@ src="https://www.facebook.com/tr?id=1367745871708982&ev=PageView&noscript=1"
       background: var(--forest);
       border-radius: 50%;
     }
+
+    .highlight-box ul.simple-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.highlight-box ul.simple-list li {
+  padding-left: 0;
+}
+
+.highlight-box ul.simple-list li::before {
+  display: none;
+}
     
     /* Listicle Items */
     .listicle-item {
@@ -708,11 +721,11 @@ src="https://www.facebook.com/tr?id=1367745871708982&ev=PageView&noscript=1"
       <h3>Nevelle was designed for real life:</h3>
       <p>A lightweight leave-on serum. Not another 10-step regimen.</p>
       <div class="highlight-box">
-        <ul style="list-style: disc; padding-left: 20px;">
-          <li>Apply 1 dropper to a damp or dry scalp.</li>
-          <li>Massage 30-60 seconds</li>
-          <li>Leave on—don't rinse</li>
-        </ul>
+        <ul class="simple-list">
+  <li>Apply 1 dropper to a damp or dry scalp.</li>
+  <li>Massage 30–60 seconds</li>
+  <li>Leave on—don't rinse</li>
+      </ul>
       </div>
       <p><strong>Less than 60 seconds.</strong> Most customers say it's easier than brushing their teeth.</p>
       <p><strong>You shouldn't build your life around your scalp. With Nevelle, you don't have to.</strong></p>
