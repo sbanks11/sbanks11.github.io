@@ -65,6 +65,15 @@
     .prose { font-size: 1.125rem; }
     .prose p { margin-bottom: 1.5rem; }
     .prose .highlight { font-size: 1.25rem; font-weight: 600; }
+
+    /* Sticky CTA - hidden by default */
+.sticky-cta {
+  display: none; /* <-- hide until product section is visible */
+}
+
+.sticky-cta.is-visible {
+  display: flex; /* restores your existing flex layout */
+}
     
     /* Callout Box */
     .callout-box { margin: 2rem 0; padding: 1.5rem; background: var(--callout-bg); border-left: 4px solid var(--callout-border); border-radius: 0 0.5rem 0.5rem 0; }
@@ -717,6 +726,7 @@
   </article>
 
   <!-- Sticky CTA -->
+  <div class="sticky-cta" id="sticky-cta">
   <div class="sticky-cta">
     <div class="sticky-cta-text">
       <p class="title">Ready to reset your scalp?</p>
@@ -724,5 +734,27 @@
     </div>
     <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get Nevelle™ Now →</a>
   </div>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const productSection = document.getElementById("product"); // your product reveal section
+    const stickyCta = document.getElementById("sticky-cta");
+
+    if (!productSection || !stickyCta) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Show only when product section is visible
+        stickyCta.classList.toggle("is-visible", entry.isIntersecting);
+      },
+      {
+        // Adjust these to control when it counts as "in the section"
+        root: null,
+        threshold: 0.15, // 15% of the product section visible
+      }
+    );
+
+    observer.observe(productSection);
+  });
+</script>
 </body>
 </html>
