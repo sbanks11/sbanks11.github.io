@@ -11,6 +11,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-width: 0; border-style: solid; }
     :root {
@@ -32,22 +33,23 @@
       --article-background: hsl(0 0% 99%);
       --radius: 0.5rem;
     }
+
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--article-background); color: var(--foreground); line-height: 1.6; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
     .max-w-4xl { max-width: 56rem; }
-    
+
     /* Header */
     header { background: var(--background); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     header .container { padding: 1rem; display: flex; align-items: center; justify-content: space-between; }
     header h1 { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
     .badge { display: inline-flex; padding: 0.25rem 0.75rem; font-size: 0.75rem; border: 1px solid var(--border); border-radius: 9999px; background: var(--background); }
-    
+
     /* Article */
     article { padding: 3rem 1rem; }
     h1.headline { font-size: 1.875rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
     @media (min-width: 768px) { h1.headline { font-size: 2.25rem; } }
     .subheadline { font-size: 1.25rem; color: var(--muted-foreground); line-height: 1.5; }
-    
+
     /* Author */
     .author-section { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; align-items: center; }
     .author-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; border: 2px solid var(--primary); }
@@ -56,47 +58,38 @@
     .author-info p { margin: 0; }
     .author-info .name { font-weight: 600; }
     .author-info .role { font-size: 0.875rem; color: var(--muted-foreground); }
-    
+
     /* Hero Image */
     .hero-image { margin: 2rem 0; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
     .hero-image img { width: 100%; height: auto; max-height: 500px; object-fit: cover; object-position: center 0%; }
-    
+
     /* Prose */
     .prose { font-size: 1.125rem; }
     .prose p { margin-bottom: 1.5rem; }
     .prose .highlight { font-size: 1.25rem; font-weight: 600; }
 
-    /* Sticky CTA - hidden by default */
-.sticky-cta {
-  display: none; /* <-- hide until product section is visible */
-}
-
-.sticky-cta.is-visible {
-  display: flex; /* restores your existing flex layout */
-}
-    
     /* Callout Box */
     .callout-box { margin: 2rem 0; padding: 1.5rem; background: var(--callout-bg); border-left: 4px solid var(--callout-border); border-radius: 0 0.5rem 0.5rem 0; }
     .callout-box p { margin-bottom: 1rem; }
     .callout-box p:last-child { margin-bottom: 0; }
     .callout-box .title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
-    
+
     /* Section Headers */
     h2 { font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; }
     h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
-    
+
     /* Blockquote */
     blockquote { border-left: 4px solid var(--secondary); padding-left: 1.5rem; font-style: italic; font-size: 1.25rem; margin: 2rem 0; }
-    
+
     /* Garden Analogy Section */
     .garden-section { background: var(--callout-bg); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--callout-border); margin: 3rem 0; }
     .garden-section ul { margin-left: 1.5rem; margin-top: 1rem; }
     .garden-section li { margin-bottom: 0.5rem; list-style: disc; }
-    
+
     /* Warning Box */
     .warning-box { background: var(--background); padding: 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; border-left: 4px solid var(--destructive); }
     .warning-box .title { font-weight: 600; margin-bottom: 0.5rem; }
-    
+
     /* Steps Box */
     .steps-box { background: var(--background); padding: 2rem; border-radius: 0.5rem; margin: 2rem 0; border: 1px solid var(--border); }
     .steps-box .title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
@@ -104,7 +97,7 @@
     .step-number { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
     .step-title { font-weight: 600; }
     .step-desc { color: var(--muted-foreground); }
-    
+
     /* Product Section */
     .product-section { background: linear-gradient(135deg, var(--accent), var(--background)); padding: 2rem; border-radius: 1rem; border: 2px solid var(--secondary); box-shadow: 0 25px 50px rgba(0,0,0,0.1); margin: 3rem 0; }
     @media (min-width: 768px) { .product-section { padding: 3rem; } }
@@ -112,14 +105,14 @@
     .product-section .subtitle { font-size: 1.25rem; margin-bottom: 1.5rem; }
     .product-image { margin: 2rem 0; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
     .product-image img { width: 100%; height: auto; max-height: 500px; object-fit: contain; }
-    
+
     /* Ingredient List */
     .ingredient-list { background: var(--background); padding: 1.5rem; border-radius: 0.5rem; }
     .ingredient { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
     .ingredient:last-child { border-bottom: none; }
     .ingredient-name { font-weight: 600; }
     .ingredient-desc { color: var(--muted-foreground); }
-    
+
     /* Timeline */
     .timeline { background: var(--background); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 3rem 0; }
     .timeline h3 { text-align: center; }
@@ -130,7 +123,7 @@
     .timeline-title.weeks { color: var(--secondary); }
     .timeline ul { margin-left: 1.5rem; }
     .timeline li { list-style: disc; margin-bottom: 0.25rem; }
-    
+
     /* Testimonials */
     .testimonials { margin: 3rem 0; overflow: hidden; }
     .testimonials h2 { text-align: center; }
@@ -140,14 +133,14 @@
     .testimonial-placeholder { aspect-ratio: 1; background: var(--muted); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: var(--muted-foreground); margin-bottom: 1rem; }
     .testimonial-quote { font-style: italic; margin-bottom: 1rem; }
     .testimonial-author { font-size: 0.875rem; font-weight: 500; color: var(--muted-foreground); }
-    
+
     /* Vision Section */
     .vision-section { margin: 3rem 0; }
     .vision-section .callout-box { display: flex; flex-direction: column; gap: 1rem; }
     .vision-section h3 { display: flex; align-items: center; gap: 0.75rem; }
     .vision-section ul { margin-left: 1.5rem; }
     .vision-section li { list-style: disc; margin-bottom: 0.25rem; }
-    
+
     /* Pricing */
     .pricing-section { margin: 3rem 0; }
     .pricing-section h2 { text-align: center; font-size: 2rem; }
@@ -156,7 +149,7 @@
     .pricing-image img { width: 100%; height: auto; }
     .pricing-grid { display: grid; gap: 2rem; max-width: 64rem; margin: 0 auto; }
     @media (min-width: 768px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
-    
+
     /* Pricing Card */
     .pricing-card { background: var(--background); padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--border); position: relative; }
     .pricing-card.popular { border: 2px solid var(--secondary); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
@@ -170,19 +163,19 @@
     .pricing-feature { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.875rem; margin-bottom: 0.5rem; }
     .pricing-feature .check { color: var(--secondary); margin-top: 0.125rem; }
     .pricing-note { text-align: center; font-size: 0.875rem; color: var(--muted-foreground); margin-top: 3rem; }
-    
+
     /* CTA Button */
     .cta-button { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; background: var(--secondary); color: var(--secondary-foreground); font-weight: 600; border-radius: 0.5rem; text-decoration: none; cursor: pointer; border: none; font-size: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease; width: 100%; }
     .cta-button:hover { background: hsl(145 60% 40%); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
     .cta-button.large { padding: 1rem 2rem; font-size: 1.125rem; }
-    
+
     /* Guarantee */
     .guarantee-section { background: hsl(210 65% 45% / 0.1); padding: 2rem; border-radius: 0.5rem; border: 2px solid var(--primary); margin: 3rem 0; }
     .guarantee-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
     .guarantee-header h3 { font-size: 1.5rem; }
     .guarantee-section ul { margin-left: 1.5rem; margin-top: 1rem; }
     .guarantee-section li { list-style: disc; margin-bottom: 0.5rem; }
-    
+
     /* Final CTA */
     .final-cta { background: linear-gradient(135deg, hsl(145 60% 45% / 0.2), hsl(210 65% 45% / 0.2)); padding: 2rem; border-radius: 1rem; text-align: center; margin: 3rem 0; padding-bottom: 6rem; }
     @media (min-width: 768px) { .final-cta { padding: 3rem; padding-bottom: 5rem; } }
@@ -192,22 +185,47 @@
     .final-cta .highlight { font-size: 1.25rem; font-weight: 600; }
     .final-cta .big { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; }
     .final-cta .note { font-size: 0.875rem; color: var(--muted-foreground); margin-top: 1.5rem; }
-    
+
     /* Disclaimer */
     .disclaimer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.75rem; color: var(--muted-foreground); }
-    
-    /* Sticky CTA */
-    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: hsl(0 0% 100% / 0.95); backdrop-filter: blur(8px); border-top: 1px solid var(--border); box-shadow: 0 -4px 12px rgba(0,0,0,0.1); padding: 0.75rem 1rem; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+    /* Sticky CTA (hidden until product section is visible) */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: hsl(0 0% 100% / 0.95);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+      padding: 0.75rem 1rem;
+      z-index: 40;
+
+      /* KEY: hidden by default */
+      display: none;
+
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .sticky-cta.is-visible { display: flex; }
+
     .sticky-cta-text { display: none; }
-    @media (min-width: 640px) { .sticky-cta-text { display: block; } .sticky-cta-text p { margin: 0; } .sticky-cta-text .title { font-size: 0.875rem; font-weight: 500; } .sticky-cta-text .subtitle { font-size: 0.75rem; color: var(--muted-foreground); } }
+    @media (min-width: 640px) {
+      .sticky-cta-text { display: block; }
+      .sticky-cta-text p { margin: 0; }
+      .sticky-cta-text .title { font-size: 0.875rem; font-weight: 500; }
+      .sticky-cta-text .subtitle { font-size: 0.75rem; color: var(--muted-foreground); }
+    }
     .sticky-cta .cta-button { width: 100%; }
     @media (min-width: 640px) { .sticky-cta .cta-button { width: auto; } }
-    
+
     /* Icons (SVG inline) */
     .icon { width: 32px; height: 32px; flex-shrink: 0; }
     @media (min-width: 768px) { .icon { width: 36px; height: 36px; } }
     .icon.large { width: 40px; height: 40px; }
-    
+
     /* Scrolling Animation for Testimonials */
     @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .testimonial-scroll { display: flex; gap: 1.5rem; animation: scroll 30s linear infinite; width: max-content; }
@@ -216,6 +234,7 @@
     @media (min-width: 768px) { .testimonial-scroll .testimonial-card { width: 350px; } }
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header>
@@ -231,7 +250,7 @@
     <div style="margin-bottom: 2rem;">
       <h1 class="headline">10 Years of Flakes, Shame, and Failed Shampoos… Until a Dermatologist Finally Told Me What Was Actually Wrong</h1>
       <p class="subheadline">The simple explanation that finally fixed 10 years of flares, flakes, itching, redness and failed treatments.</p>
-      
+
       <!-- Author Section -->
       <div class="author-section">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -260,7 +279,7 @@
     <!-- Opening Section -->
     <div class="prose">
       <p>I know what it's like to pretend you're fine when your scalp feels like it's on fire.</p>
-      
+
       <p>I know the humiliation of brushing flakes off your shoulders every five minutes… the panic when someone stands too close… the dread before every salon appointment, wondering if the stylist will see… the way your heart races when you see white specks on your black clothes… the way you hold your breath when someone leans in close.</p>
 
       <p>I know the itch you can't ignore. The redness. The shame that nobody talks about.</p>
@@ -294,7 +313,7 @@
     <!-- The Garden Analogy Section -->
     <div style="margin: 4rem 0;">
       <h2>The Day Someone Finally Made It Make Sense</h2>
-      
+
       <div class="prose">
         <p>I was scrolling one night — itchy, flaking, frustrated — when a dermatologist said something so simple I actually sat up:</p>
 
@@ -307,7 +326,7 @@
     <!-- Garden Analogy Explained -->
     <div class="garden-section">
       <h2>🌱 The Garden Analogy — The REAL Root Cause Nobody Told You</h2>
-      
+
       <p>Think of your scalp like a garden.</p>
       <ul>
         <li>Every hair follicle is a tiny patch of soil.</li>
@@ -347,14 +366,14 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         The "All-Clear Reset" — How You Actually Teach the Gardener to Chill Out
       </h2>
-      
+
       <div class="prose">
         <p>If your immune system (the gardener) keeps spraying weed-killer on healthy soil… You can't fix that with washing, scrubbing, detoxing, coal tar, steroids, antifungals, oils, acids, or "cooling sprays."</p>
 
         <p class="highlight">None of these calm the gardener. Most irritate him even more.</p>
 
         <p>The ONLY real solution? You have to teach the gardener:</p>
-        
+
         <blockquote style="border-color: var(--primary);">"You're safe. Stop spraying. The soil is fine."</blockquote>
 
         <div class="steps-box">
@@ -394,7 +413,7 @@
     <!-- Product Development Story -->
     <div style="margin: 4rem 0;">
       <h2>The Product Nobody Was Making</h2>
-      
+
       <div class="prose">
         <p>Once I understood the gardener and the garden — the true biology under the scalp — I went looking for something that supported all four steps.</p>
 
@@ -429,7 +448,7 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--secondary);"><path d="M12 3l1.5 4.5h4.5l-3.5 2.5 1.5 4.5-4-3-4 3 1.5-4.5-3.5-2.5h4.5z"/></svg>
         Introducing Nevelle™ Scalp Renewal Elixir
       </h2>
-      
+
       <p class="subtitle">The world's first "Gardener-Calming" Scalp Serum</p>
 
       <div class="product-image">
@@ -455,7 +474,7 @@
         <p style="margin-top: 1.5rem;">When I looked at the ingredient list, I almost couldn't believe it. No sulfates. No coal tar. No steroids. Instead: ceramides to rebuild the barrier, PEA to calm the itch at the nerve level, fermented probiotics for the microbiome. Every single ingredient mapped to one of the four steps.</p>
 
         <h3 style="margin-top: 2rem;">This is what made it different from everything else I'd tried:</h3>
-        
+
         <div class="ingredient-list">
           <div class="ingredient">
             <p class="ingredient-name">Ceramide NP + Cholesterol + Linoleic Acid</p>
@@ -534,7 +553,7 @@
     <!-- Testimonials -->
     <div class="testimonials">
       <h2 style="text-align: center;">Real Stories From "I've Tried Everything" Sufferers</h2>
-      
+
       <div style="overflow: hidden; margin-top: 2rem;">
         <div class="testimonial-scroll">
           <div class="testimonial-card">
@@ -557,6 +576,7 @@
             <p class="testimonial-quote">"15 years of this. I stopped wearing my hair down. Stopped letting anyone touch it. For the first time, my scalp isn't punishing me. I feel like myself again."</p>
             <p class="testimonial-author">— Michelle K., 42</p>
           </div>
+
           <!-- Duplicated for seamless scroll -->
           <div class="testimonial-card">
             <div class="testimonial-placeholder">Before & After</div>
@@ -613,7 +633,7 @@
       <div class="pricing-image">
         <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=400&fit=crop" alt="Nevelle product bundles">
       </div>
-      
+
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3 class="pricing-title">1 Month Supply</h3>
@@ -629,7 +649,7 @@
           </div>
           <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get 1 Month Supply</a>
         </div>
-        
+
         <div class="pricing-card">
           <h3 class="pricing-title">3 Month Supply</h3>
           <p class="pricing-desc">Save 60% — Buy 2 Get 1 Free</p>
@@ -645,7 +665,7 @@
           </div>
           <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get 3 Month Supply</a>
         </div>
-        
+
         <div class="pricing-card popular">
           <span class="popular-badge">Most Popular</span>
           <h3 class="pricing-title">5 Month Supply</h3>
@@ -673,12 +693,12 @@
         <svg class="icon large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <h3>30-Day "Calmer Scalp or It's Free" Guarantee</h3>
       </div>
-      
+
       <div class="prose">
         <p>I know you've wasted money on things that didn't work. I have too.</p>
-        
+
         <p><strong>So here's the deal:</strong></p>
-        
+
         <ul>
           <li>Try Nevelle™ for up to 30 days</li>
           <li>Use the bottles, see how your scalp responds</li>
@@ -697,10 +717,10 @@
     <!-- Final CTA -->
     <div class="final-cta">
       <h2>Final Word — From One Sufferer To Another</h2>
-      
+
       <div class="prose">
         <p>If no one has told you this yet, let me be the first:</p>
-        
+
         <p class="highlight">You're not dirty. You're not broken. You're not doing anything wrong. Your scalp isn't failing you.</p>
 
         <p>Your gardener just needs help.</p>
@@ -727,34 +747,26 @@
 
   <!-- Sticky CTA -->
   <div class="sticky-cta" id="sticky-cta">
-  <div class="sticky-cta">
     <div class="sticky-cta-text">
       <p class="title">Ready to reset your scalp?</p>
       <p class="subtitle">30-Day Money-Back Guarantee</p>
     </div>
     <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get Nevelle™ Now →</a>
   </div>
-    <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const productSection = document.getElementById("product"); // your product reveal section
-    const stickyCta = document.getElementById("sticky-cta");
 
-    if (!productSection || !stickyCta) return;
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const productSection = document.getElementById("product");
+      const stickyCta = document.getElementById("sticky-cta");
+      if (!productSection || !stickyCta) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Show only when product section is visible
-        stickyCta.classList.toggle("is-visible", entry.isIntersecting);
-      },
-      {
-        // Adjust these to control when it counts as "in the section"
-        root: null,
-        threshold: 0.15, // 15% of the product section visible
-      }
-    );
+      const observer = new IntersectionObserver(
+        ([entry]) => stickyCta.classList.toggle("is-visible", entry.isIntersecting),
+        { threshold: 0.15 }
+      );
 
-    observer.observe(productSection);
-  });
-</script>
+      observer.observe(productSection);
+    });
+  </script>
 </body>
 </html>
