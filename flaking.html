@@ -6,723 +6,998 @@
   <title>I Thought My Scalp Was Broken - The Health Wave</title>
   <meta name="description" content="Discover the garden analogy that finally explains scalp psoriasis and seborrheic dermatitis - and the breakthrough solution that helped thousands find lasting relief.">
   <meta name="author" content="Sarah Mitchell, The Health Wave">
-  <meta property="og:title" content="I Thought My Scalp Was Broken - The Health Wave">
-  <meta property="og:description" content="The surprising truth about why nothing works for your scalp - and what actually does.">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-width: 0; border-style: solid; }
     :root {
-      --background: hsl(0 0% 100%);
-      --foreground: hsl(210 20% 15%);
-      --primary: hsl(210 65% 45%);
-      --primary-foreground: hsl(0 0% 100%);
-      --secondary: hsl(145 60% 45%);
-      --secondary-foreground: hsl(0 0% 100%);
-      --muted: hsl(210 30% 96%);
-      --muted-foreground: hsl(210 15% 50%);
-      --accent: hsl(145 50% 95%);
-      --accent-foreground: hsl(145 60% 30%);
-      --destructive: hsl(0 84.2% 60.2%);
-      --border: hsl(210 25% 88%);
-      --callout-bg: hsl(145 40% 96%);
-      --callout-border: hsl(145 50% 75%);
-      --testimonial-bg: hsl(210 30% 97%);
-      --article-background: hsl(0 0% 99%);
-      --radius: 0.5rem;
+      --background: 45 30% 96%;
+      --foreground: 30 20% 20%;
+      --primary: 142 45% 35%;
+      --primary-foreground: 45 30% 96%;
+      --secondary: 45 25% 88%;
+      --muted: 45 15% 75%;
+      --muted-foreground: 30 15% 45%;
+      --accent: 30 60% 50%;
+      --border: 45 20% 85%;
+      --card: 45 30% 98%;
     }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--article-background); color: var(--foreground); line-height: 1.6; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-    .max-w-4xl { max-width: 56rem; }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      line-height: 1.7;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
     
     /* Header */
-    header { background: var(--background); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    header .container { padding: 1rem; display: flex; align-items: center; justify-content: space-between; }
-    header h1 { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-    .badge { display: inline-flex; padding: 0.25rem 0.75rem; font-size: 0.75rem; border: 1px solid var(--border); border-radius: 9999px; background: var(--background); }
+    .header {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
     
-    /* Article */
-    article { padding: 3rem 1rem; }
-    h1.headline { font-size: 1.875rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
-    @media (min-width: 768px) { h1.headline { font-size: 2.25rem; } }
-    .subheadline { font-size: 1.25rem; color: var(--muted-foreground); line-height: 1.5; }
+    .header-title {
+      font-size: 1.5rem;
+      color: hsl(var(--primary));
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
     
-    /* Author */
-    .author-section { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; align-items: center; }
-    .author-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; border: 2px solid var(--primary); }
-    .author-avatar.initials { background: hsl(210 65% 45% / 0.1); color: var(--primary); }
-    .author-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .author-info p { margin: 0; }
-    .author-info .name { font-weight: 600; }
-    .author-info .role { font-size: 0.875rem; color: var(--muted-foreground); }
+    .badge {
+      display: inline-block;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: hsl(var(--foreground));
+    }
+    
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Author Section */
+    .author-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid hsl(var(--border));
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    
+    @media (min-width: 768px) {
+      .author-section {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+    
+    .author-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .author-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid hsl(var(--primary));
+    }
+    
+    .author-info {
+      text-align: left;
+    }
+    
+    .author-label {
+      font-size: 0.75rem;
+      color: hsl(var(--muted-foreground));
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .author-name {
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+    
+    .author-title {
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+    }
+    
+    /* Content Sections */
+    .content-section {
+      padding: 3rem 0;
+    }
+    
+    .content-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: hsl(var(--foreground));
+    }
+    
+    .content-section p {
+      margin-bottom: 1.5rem;
+      font-size: 1.125rem;
+    }
+    
+    .content-section ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .content-section li {
+      margin-bottom: 0.75rem;
+      font-size: 1.125rem;
+    }
     
     /* Hero Image */
-    .hero-image { margin: 2rem 0; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    .hero-image img { width: 100%; height: auto; max-height: 500px; object-fit: cover; object-position: center 0%; }
-    
-    /* Prose */
-    .prose { font-size: 1.125rem; }
-    .prose p { margin-bottom: 1.5rem; }
-    .prose .highlight { font-size: 1.25rem; font-weight: 600; }
+    .hero-image {
+      width: 100%;
+      border-radius: 1rem;
+      margin: 2rem 0;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
     
     /* Callout Box */
-    .callout-box { margin: 2rem 0; padding: 1.5rem; background: var(--callout-bg); border-left: 4px solid var(--callout-border); border-radius: 0 0.5rem 0.5rem 0; }
-    .callout-box p { margin-bottom: 1rem; }
-    .callout-box p:last-child { margin-bottom: 0; }
-    .callout-box .title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .callout-box {
+      background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1));
+      border-left: 4px solid hsl(var(--primary));
+      padding: 1.5rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 2rem 0;
+    }
     
-    /* Section Headers */
-    h2 { font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; }
-    h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+    .callout-box h3 {
+      color: hsl(var(--primary));
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
     
-    /* Blockquote */
-    blockquote { border-left: 4px solid var(--secondary); padding-left: 1.5rem; font-style: italic; font-size: 1.25rem; margin: 2rem 0; }
+    .callout-box p {
+      margin-bottom: 0;
+      color: hsl(var(--foreground));
+    }
     
     /* Garden Analogy Section */
-    .garden-section { background: var(--callout-bg); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--callout-border); margin: 3rem 0; }
-    .garden-section ul { margin-left: 1.5rem; margin-top: 1rem; }
-    .garden-section li { margin-bottom: 0.5rem; list-style: disc; }
+    .garden-section {
+      background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--background)));
+      padding: 4rem 0;
+      margin: 2rem 0;
+    }
     
-    /* Warning Box */
-    .warning-box { background: var(--background); padding: 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; border-left: 4px solid var(--destructive); }
-    .warning-box .title { font-weight: 600; margin-bottom: 0.5rem; }
+    .garden-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
     
-    /* Steps Box */
-    .steps-box { background: var(--background); padding: 2rem; border-radius: 0.5rem; margin: 2rem 0; border: 1px solid var(--border); }
-    .steps-box .title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
-    .step { display: flex; gap: 1rem; margin-bottom: 1rem; }
-    .step-number { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-    .step-title { font-weight: 600; }
-    .step-desc { color: var(--muted-foreground); }
+    @media (min-width: 768px) {
+      .garden-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .garden-card {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .garden-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .garden-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
+    }
+    
+    .garden-card p {
+      color: hsl(var(--muted-foreground));
+    }
+    
+    /* Steps Section */
+    .steps-section {
+      padding: 4rem 0;
+    }
+    
+    .step-card {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: hsl(var(--card));
+      border-radius: 1rem;
+      border: 1px solid hsl(var(--border));
+    }
+    
+    .step-number {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    
+    .step-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: hsl(var(--foreground));
+    }
+    
+    .step-content p {
+      color: hsl(var(--muted-foreground));
+      margin: 0;
+    }
     
     /* Product Section */
-    .product-section { background: linear-gradient(135deg, var(--accent), var(--background)); padding: 2rem; border-radius: 1rem; border: 2px solid var(--secondary); box-shadow: 0 25px 50px rgba(0,0,0,0.1); margin: 3rem 0; }
-    @media (min-width: 768px) { .product-section { padding: 3rem; } }
-    .product-section h2 { font-size: 2rem; display: flex; align-items: center; gap: 0.75rem; }
-    .product-section .subtitle { font-size: 1.25rem; margin-bottom: 1.5rem; }
-    .product-image { margin: 2rem 0; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-    .product-image img { width: 100%; height: auto; max-height: 500px; object-fit: contain; }
+    .product-section {
+      background: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--accent) / 0.05));
+      padding: 4rem 0;
+      text-align: center;
+    }
     
-    /* Ingredient List */
-    .ingredient-list { background: var(--background); padding: 1.5rem; border-radius: 0.5rem; }
-    .ingredient { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
-    .ingredient:last-child { border-bottom: none; }
-    .ingredient-name { font-weight: 600; }
-    .ingredient-desc { color: var(--muted-foreground); }
+    .product-image {
+      max-width: 400px;
+      width: 100%;
+      margin: 2rem auto;
+      border-radius: 1rem;
+    }
+    
+    /* Ingredients Grid */
+    .ingredients-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (min-width: 768px) {
+      .ingredients-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .ingredient-card {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: left;
+    }
+    
+    .ingredient-card h4 {
+      color: hsl(var(--primary));
+      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
+    }
+    
+    .ingredient-card p {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.95rem;
+      margin: 0;
+    }
     
     /* Timeline */
-    .timeline { background: var(--background); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--border); margin: 3rem 0; }
-    .timeline h3 { text-align: center; }
-    .timeline-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-    .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .timeline-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .timeline-title.days { color: var(--primary); }
-    .timeline-title.weeks { color: var(--secondary); }
-    .timeline ul { margin-left: 1.5rem; }
-    .timeline li { list-style: disc; margin-bottom: 0.25rem; }
+    .timeline {
+      margin: 3rem 0;
+    }
+    
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    
+    .timeline-week {
+      flex-shrink: 0;
+      width: 80px;
+      font-weight: 700;
+      color: hsl(var(--primary));
+      font-size: 0.875rem;
+    }
+    
+    .timeline-content h4 {
+      font-size: 1.125rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .timeline-content p {
+      color: hsl(var(--muted-foreground));
+      margin: 0;
+    }
     
     /* Testimonials */
-    .testimonials { margin: 3rem 0; overflow: hidden; }
-    .testimonials h2 { text-align: center; }
-    .testimonial-grid { display: grid; gap: 1.5rem; margin-top: 2rem; }
-    @media (min-width: 768px) { .testimonial-grid { grid-template-columns: repeat(2, 1fr); } }
-    .testimonial-card { background: var(--testimonial-bg); padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--border); }
-    .testimonial-placeholder { aspect-ratio: 1; background: var(--muted); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: var(--muted-foreground); margin-bottom: 1rem; }
-    .testimonial-quote { font-style: italic; margin-bottom: 1rem; }
-    .testimonial-author { font-size: 0.875rem; font-weight: 500; color: var(--muted-foreground); }
+    .testimonials-section {
+      padding: 4rem 0;
+      background: hsl(var(--card));
+    }
     
-    /* Vision Section */
-    .vision-section { margin: 3rem 0; }
-    .vision-section .callout-box { display: flex; flex-direction: column; gap: 1rem; }
-    .vision-section h3 { display: flex; align-items: center; gap: 0.75rem; }
-    .vision-section ul { margin-left: 1.5rem; }
-    .vision-section li { list-style: disc; margin-bottom: 0.25rem; }
+    .testimonials-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .testimonial-card {
+      background: hsl(var(--background));
+      border: 1px solid hsl(var(--border));
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .testimonial-stars {
+      color: #f59e0b;
+      margin-bottom: 1rem;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      color: hsl(var(--foreground));
+      margin-bottom: 1rem;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    
+    .testimonial-name {
+      font-weight: 600;
+    }
+    
+    .testimonial-verified {
+      font-size: 0.75rem;
+      color: hsl(var(--primary));
+    }
     
     /* Pricing */
-    .pricing-section { margin: 3rem 0; }
-    .pricing-section h2 { text-align: center; font-size: 2rem; }
-    .pricing-section .subtitle { text-align: center; color: var(--muted-foreground); max-width: 42rem; margin: 0 auto 2rem; }
-    .pricing-image { margin-bottom: 3rem; max-width: 48rem; margin-left: auto; margin-right: auto; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    .pricing-image img { width: 100%; height: auto; }
-    .pricing-grid { display: grid; gap: 2rem; max-width: 64rem; margin: 0 auto; }
-    @media (min-width: 768px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+    .pricing-section {
+      padding: 4rem 0;
+      text-align: center;
+    }
     
-    /* Pricing Card */
-    .pricing-card { background: var(--background); padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--border); position: relative; }
-    .pricing-card.popular { border: 2px solid var(--secondary); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: var(--secondary-foreground); padding: 0.25rem 1rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; }
-    .pricing-title { font-size: 1.25rem; font-weight: 700; }
-    .pricing-desc { font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.25rem; }
-    .pricing-price { margin: 1rem 0; display: flex; align-items: baseline; gap: 0.5rem; }
-    .pricing-original { font-size: 1.125rem; color: var(--muted-foreground); text-decoration: line-through; }
-    .pricing-current { font-size: 1.875rem; font-weight: 700; }
-    .pricing-features { margin: 1rem 0; }
-    .pricing-feature { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.875rem; margin-bottom: 0.5rem; }
-    .pricing-feature .check { color: var(--secondary); margin-top: 0.125rem; }
-    .pricing-note { text-align: center; font-size: 0.875rem; color: var(--muted-foreground); margin-top: 3rem; }
+    .pricing-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .pricing-card {
+      background: hsl(var(--card));
+      border: 2px solid hsl(var(--border));
+      border-radius: 1rem;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .pricing-card.popular {
+      border-color: hsl(var(--primary));
+      transform: scale(1.05);
+    }
+    
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      padding: 0.25rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .pricing-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-description {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+    
+    .pricing-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: hsl(var(--primary));
+    }
+    
+    .pricing-original {
+      text-decoration: line-through;
+      color: hsl(var(--muted-foreground));
+      font-size: 1rem;
+      margin-left: 0.5rem;
+    }
+    
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+    
+    .pricing-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .pricing-features li::before {
+      content: "✓";
+      color: hsl(var(--primary));
+      font-weight: 700;
+    }
     
     /* CTA Button */
-    .cta-button { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; background: var(--secondary); color: var(--secondary-foreground); font-weight: 600; border-radius: 0.5rem; text-decoration: none; cursor: pointer; border: none; font-size: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease; width: 100%; }
-    .cta-button:hover { background: hsl(145 60% 40%); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
-    .cta-button.large { padding: 1rem 2rem; font-size: 1.125rem; }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(142 45% 28%));
+      color: hsl(var(--primary-foreground));
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px hsl(var(--primary) / 0.3);
+    }
     
-    /* Guarantee */
-    .guarantee-section { background: hsl(210 65% 45% / 0.1); padding: 2rem; border-radius: 0.5rem; border: 2px solid var(--primary); margin: 3rem 0; }
-    .guarantee-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-    .guarantee-header h3 { font-size: 1.5rem; }
-    .guarantee-section ul { margin-left: 1.5rem; margin-top: 1rem; }
-    .guarantee-section li { list-style: disc; margin-bottom: 0.5rem; }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px hsl(var(--primary) / 0.4);
+    }
     
-    /* Final CTA */
-    .final-cta { background: linear-gradient(135deg, hsl(145 60% 45% / 0.2), hsl(210 65% 45% / 0.2)); padding: 2rem; border-radius: 1rem; text-align: center; margin: 3rem 0; padding-bottom: 6rem; }
-    @media (min-width: 768px) { .final-cta { padding: 3rem; padding-bottom: 5rem; } }
-    .final-cta h2 { font-size: 1.875rem; margin-bottom: 1.5rem; }
-    @media (min-width: 768px) { .final-cta h2 { font-size: 2.25rem; } }
-    .final-cta .prose { max-width: 42rem; margin: 0 auto 2rem; }
-    .final-cta .highlight { font-size: 1.25rem; font-weight: 600; }
-    .final-cta .big { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; }
-    .final-cta .note { font-size: 0.875rem; color: var(--muted-foreground); margin-top: 1.5rem; }
+    .cta-button.full-width {
+      width: 100%;
+    }
     
-    /* Disclaimer */
-    .disclaimer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.75rem; color: var(--muted-foreground); }
+    /* Guarantee Section */
+    .guarantee-section {
+      background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1));
+      padding: 3rem;
+      border-radius: 1rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .guarantee-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    
+    .guarantee-section h2 {
+      margin-bottom: 1rem;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 3rem 0;
+      border-top: 1px solid hsl(var(--border));
+      color: hsl(var(--muted-foreground));
+      font-size: 0.875rem;
+    }
+    
+    .medical-disclaimer {
+      background: hsl(var(--secondary));
+      padding: 2rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+      font-size: 0.8rem;
+      color: hsl(var(--muted-foreground));
+    }
     
     /* Sticky CTA */
-    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: hsl(0 0% 100% / 0.95); backdrop-filter: blur(8px); border-top: 1px solid var(--border); box-shadow: 0 -4px 12px rgba(0,0,0,0.1); padding: 0.75rem 1rem; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .sticky-cta-text { display: none; }
-    @media (min-width: 640px) { .sticky-cta-text { display: block; } .sticky-cta-text p { margin: 0; } .sticky-cta-text .title { font-size: 0.875rem; font-weight: 500; } .sticky-cta-text .subtitle { font-size: 0.75rem; color: var(--muted-foreground); } }
-    .sticky-cta .cta-button { width: 100%; }
-    @media (min-width: 640px) { .sticky-cta .cta-button { width: auto; } }
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: hsl(var(--background) / 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid hsl(var(--border));
+      padding: 1rem;
+      z-index: 40;
+      transition: transform 0.3s ease;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    }
     
-    /* Icons (SVG inline) */
-    .icon { width: 32px; height: 32px; flex-shrink: 0; }
-    @media (min-width: 768px) { .icon { width: 36px; height: 36px; } }
-    .icon.large { width: 40px; height: 40px; }
+    .sticky-cta.translate-y-full {
+      transform: translateY(100%);
+    }
     
-    /* Scrolling Animation for Testimonials */
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .testimonial-scroll { display: flex; gap: 1.5rem; animation: scroll 30s linear infinite; width: max-content; }
-    .testimonial-scroll:hover { animation-play-state: paused; }
-    .testimonial-scroll .testimonial-card { flex-shrink: 0; width: 300px; }
-    @media (min-width: 768px) { .testimonial-scroll .testimonial-card { width: 350px; } }
+    .sticky-cta.translate-y-0 {
+      transform: translateY(0);
+    }
+    
+    .sticky-cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    
+    .sticky-cta-text {
+      display: none;
+    }
+    
+    @media (min-width: 640px) {
+      .sticky-cta-text {
+        display: block;
+      }
+      
+      .sticky-cta-text p:first-child {
+        font-weight: 600;
+        color: hsl(var(--foreground));
+      }
+      
+      .sticky-cta-text p:last-child {
+        font-size: 0.75rem;
+        color: hsl(var(--muted-foreground));
+      }
+    }
+    
+    .sticky-cta .cta-button {
+      width: 100%;
+    }
+    
+    @media (min-width: 640px) {
+      .sticky-cta .cta-button {
+        width: auto;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- Header -->
-  <header>
+  <header class="header">
     <div class="container">
-      <h1>The Health Wave</h1>
-      <span class="badge">Trusted Health News</span>
+      <h2 class="header-title">The Health Wave</h2>
+      <span class="badge">Wellness & Lifestyle</span>
     </div>
   </header>
 
-  <!-- Article -->
-  <article class="container max-w-4xl">
-    <!-- Headline -->
-    <div style="margin-bottom: 2rem;">
-      <h1 class="headline">10 Years of Flakes, Shame, and Failed Shampoos… Until a Dermatologist Finally Told Me What Was Actually Wrong</h1>
-      <p class="subheadline">The simple explanation that finally fixed 10 years of flares, flakes, itching, redness and failed treatments.</p>
-      
-      <!-- Author Section -->
-      <div class="author-section">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <div class="author-avatar initials">MK</div>
-          <div class="author-info">
-            <p class="name">Written by Martha King</p>
-            <p class="role">Health & Wellness Writer</p>
-          </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>"I Thought My Scalp Was Broken..."</h1>
+      <p class="hero-subtitle">The surprising truth about why nothing works for your scalp psoriasis or seborrheic dermatitis—and the garden analogy that finally made it all make sense.</p>
+    </div>
+  </section>
+
+  <!-- Author Section -->
+  <section class="author-section">
+    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+      <div class="author-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Sarah Mitchell" class="author-avatar">
+        <div class="author-info">
+          <span class="author-label">Written by</span>
+          <p class="author-name">Sarah Mitchell</p>
+          <p class="author-title">Health & Wellness Editor</p>
         </div>
-        <span style="color: var(--muted-foreground); display: none;">|</span>
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <div class="author-avatar"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face" alt="Dr. Jennifer Chen"></div>
-          <div class="author-info">
-            <p class="name">Reviewed by Dr. Jennifer Chen</p>
-            <p class="role">Board-Certified Dermatologist</p>
-          </div>
+      </div>
+      <div class="author-card">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face" alt="Dr. Jennifer Chen" class="author-avatar">
+        <div class="author-info">
+          <span class="author-label">Medically Reviewed by</span>
+          <p class="author-name">Dr. Jennifer Chen, MD</p>
+          <p class="author-title">Board-Certified Dermatologist</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Hero Image -->
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&h=500&fit=crop" alt="Scalp transformation before and after results">
-    </div>
-
-    <!-- Opening Section -->
-    <div class="prose">
-      <p>I know what it's like to pretend you're fine when your scalp feels like it's on fire.</p>
+  <!-- Main Content -->
+  <main class="container">
+    <section class="content-section">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=400&fit=crop" alt="Scalp transformation" class="hero-image">
       
-      <p>I know the humiliation of brushing flakes off your shoulders every five minutes… the panic when someone stands too close… the dread before every salon appointment, wondering if the stylist will see… the way your heart races when you see white specks on your black clothes… the way you hold your breath when someone leans in close.</p>
-
-      <p>I know the itch you can't ignore. The redness. The shame that nobody talks about.</p>
-
-      <p>And the worst part? Feeling dirty when you know you're not. Watching your confidence disappear over something you can't seem to control — no matter how hard you try.</p>
-
-      <p>I know the crushing frustration of trying everything — the shampoos, the oils, the scrubs, the prescriptions — and still waking up to flakes on your pillow like nothing ever changed.</p>
-
-      <p>Maybe your doctor called it dandruff, seborrheic dermatitis, scalp eczema, or psoriasis. Or maybe nobody gave you a clear answer — just stronger medicated shampoos that worked for two weeks and stopped.</p>
-
-      <p>You've heard every explanation: dry scalp, fungus, washing too much, not washing enough, stress, diet, hormones.</p>
-
-      <p>The label doesn't matter anymore. Neither do the conflicting theories.</p>
-
-      <p class="highlight">If you're reading this, you've probably reached that same point I did — that awful moment when you realize: "I'm losing hope. Maybe I'm just stuck like this."</p>
-
-      <p>But you're not.</p>
-
-      <p>And the only reason you feel that way is because nobody ever explained what's actually going on under your scalp.</p>
-
-      <p>Not the dermatologists. Not the shampoos. Not the influencers. Not the "natural remedies." And definitely not the "anti-dandruff" aisle.</p>
-    </div>
-
-    <!-- Callout Box -->
-    <div class="callout-box">
-      <p class="title">Here's the truth that finally made everything make sense:</p>
-      <p>Your scalp isn't flaky because it's dirty. It's not inflamed because you used the wrong shampoo. It's not red because you didn't scrub hard enough.</p>
-      <p>Something deeper is happening. Something no one ever bothered to tell you.</p>
-    </div>
-
-    <!-- The Garden Analogy Section -->
-    <div style="margin: 4rem 0;">
-      <h2>The Day Someone Finally Made It Make Sense</h2>
+      <p>I still remember the exact moment I gave up hope.</p>
       
-      <div class="prose">
-        <p>I was scrolling one night — itchy, flaking, frustrated — when a dermatologist said something so simple I actually sat up:</p>
-
-        <blockquote>"Your scalp is like a garden. And your immune system is the gardener. In chronic scalp conditions, the gardener panics and starts spraying weed-killer everywhere… even when nothing's wrong."</blockquote>
-
-        <p><strong>And suddenly… it all clicked.</strong></p>
-      </div>
-    </div>
-
-    <!-- Garden Analogy Explained -->
-    <div class="garden-section">
-      <h2>🌱 The Garden Analogy — The REAL Root Cause Nobody Told You</h2>
+      <p>I was standing in front of my bathroom mirror, parting my hair to reveal yet another angry, flaky patch on my scalp. My fingers were dusted with white flakes. My shoulders looked like they'd been hit by a snowstorm.</p>
       
-      <p>Think of your scalp like a garden.</p>
+      <p>I'd tried <strong>everything</strong>:</p>
       <ul>
-        <li>Every hair follicle is a tiny patch of soil.</li>
-        <li>Your skin cells are the plants that grow.</li>
-        <li>Your immune system is the gardener that's supposed to protect everything — gently.</li>
+        <li>Coal tar shampoos that made me smell like a construction site</li>
+        <li>Prescription steroids that worked for two weeks, then stopped</li>
+        <li>Tea tree oil, apple cider vinegar, coconut oil—you name it</li>
+        <li>Even the expensive "miracle" treatments from dermatology clinics</li>
       </ul>
-
-      <p style="margin-top: 1.5rem;">When everything's normal, the gardener trims dead plants, waters just enough, and keeps things calm.</p>
-
-      <p style="font-weight: 600; font-size: 1.125rem; margin-top: 1.5rem;">But with an irritated, flaky scalp, the gardener panics.</p>
-
-      <p>He thinks your perfectly healthy scalp is full of weeds — even when it's not. So he grabs the strongest weed-killer he has (inflammation)… and starts spraying. Everywhere. Constantly.</p>
-
-      <div class="warning-box">
-        <p class="title">What happens next:</p>
-        <ul>
-          <li>Weed-killer on a healthy garden doesn't help — it burns the soil. That's your scalp: red, raw, hot, stingy, over-sensitive.</li>
-          <li>The garden tries to "fix" the damage by regrowing as fast as it can. In healthy skin, new cells take about a month to grow. But with an irritated scalp, that happens in 3–4 days.</li>
-          <li>Skin cells pile up into white or yellow flakes and plaques.</li>
-          <li>Nerves get irritated → deep, relentless itch.</li>
-          <li>Scratching causes tiny "wounds" → the gardener panics more → sprays more.</li>
-        </ul>
-      </div>
-
-      <p style="font-style: italic;">That's why it feels like a loop you can't escape. Every flare, every scratch, every harsh shampoo is like pouring more weed-killer on already burned soil.</p>
-    </div>
-
-    <!-- Personal Impact -->
-    <div class="prose" style="margin: 3rem 0;">
-      <p class="highlight">When I really saw this, I cried.</p>
-      <p>Because for the first time in years, it wasn't "my scalp is broken." It was: "My gardener is terrified. No one ever taught him how to stand down."</p>
-    </div>
-
-    <!-- The Solution -->
-    <div style="margin: 4rem 0;">
-      <h2 style="display: flex; align-items: center; gap: 0.75rem;">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        The "All-Clear Reset" — How You Actually Teach the Gardener to Chill Out
-      </h2>
       
-      <div class="prose">
-        <p>If your immune system (the gardener) keeps spraying weed-killer on healthy soil… You can't fix that with washing, scrubbing, detoxing, coal tar, steroids, antifungals, oils, acids, or "cooling sprays."</p>
+      <p>Nothing lasted. Everything came back. Sometimes worse than before.</p>
+      
+      <p>Sound familiar?</p>
+    </section>
 
-        <p class="highlight">None of these calm the gardener. Most irritate him even more.</p>
+    <div class="callout-box">
+      <h3>Here's what nobody tells you:</h3>
+      <p>The reason most treatments fail isn't because your scalp is "broken" or because you're doing something wrong. It's because they're all treating the <strong>symptoms</strong> instead of addressing what's actually happening underneath.</p>
+    </div>
 
-        <p>The ONLY real solution? You have to teach the gardener:</p>
-        
-        <blockquote style="border-color: var(--primary);">"You're safe. Stop spraying. The soil is fine."</blockquote>
+    <section class="content-section">
+      <h2>The Garden Analogy That Changed Everything</h2>
+      
+      <p>A few years ago, I interviewed a biochemist named Dr. Marcus Webb who specialized in skin microbiome research. When I described my scalp struggles, he said something I'll never forget:</p>
+      
+      <p><em>"Think of your scalp like a garden. Most treatments are like mowing over weeds—they cut them down, but the roots are still there. Within weeks, the weeds grow back, often stronger than before."</em></p>
+      
+      <p>He explained that scalp conditions like psoriasis and seborrheic dermatitis aren't just surface problems. They're signs that the entire "soil" of your scalp—its microbiome, its oil production, its cellular turnover—is out of balance.</p>
+    </section>
+  </main>
 
-        <div class="steps-box">
-          <p class="title">This requires FOUR things:</p>
-          <div class="step">
-            <span class="step-number">1.</span>
-            <div>
-              <p class="step-title">Disarm the Alarm</p>
-              <p class="step-desc">Reduce irritation so your immune system stops sending "danger!" signals.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-number">2.</span>
-            <div>
-              <p class="step-title">Reset the Growth Tempo</p>
-              <p class="step-desc">Slow skin cell turnover from 3–4 days back toward a healthy 28–30 days.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-number">3.</span>
-            <div>
-              <p class="step-title">Rebuild the Barrier + Micro-Ecosystem</p>
-              <p class="step-desc">Heal the protective lipids, moisture, and microbiome so the scalp signals "all good."</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-number">4.</span>
-            <div>
-              <p class="step-title">Break the Itch–Injury Loop</p>
-              <p class="step-desc">Calm sensory nerves so scratching doesn't create new "injuries."</p>
-            </div>
-          </div>
+  <!-- Garden Analogy Section -->
+  <section class="garden-section">
+    <div class="container">
+      <h2 style="text-align: center;">Two Approaches to Scalp Care</h2>
+      <div class="garden-grid">
+        <div class="garden-card">
+          <div class="garden-icon">🌿</div>
+          <h3>The "Mowing" Approach</h3>
+          <p>Traditional treatments that only address surface symptoms. Flakes come back. Itching returns. The cycle continues endlessly.</p>
+        </div>
+        <div class="garden-card">
+          <div class="garden-icon">🌱</div>
+          <h3>The "Root" Approach</h3>
+          <p>Addresses the underlying imbalance. Restores the scalp's natural ecosystem. Creates lasting change from within.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Product Development Story -->
-    <div style="margin: 4rem 0;">
+  <main class="container">
+    <section class="content-section">
+      <h2>The "All-Clear Reset" — A New Framework</h2>
+      <p>Based on Dr. Webb's research, I learned there are four key elements that need to work together for lasting scalp health:</p>
+    </section>
+
+    <section class="steps-section">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Balance the Microbiome</h3>
+          <p>Your scalp hosts billions of microorganisms. When the bad ones outnumber the good, inflammation and flaking follow.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Regulate Oil Production</h3>
+          <p>Excess sebum feeds the wrong bacteria. Too little causes dryness and cracking. The key is balance.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Calm the Inflammation</h3>
+          <p>Chronic inflammation keeps your scalp in a constant state of irritation and accelerated cell turnover.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Normalize Cell Turnover</h3>
+          <p>In psoriasis, skin cells reproduce 10x faster than normal. Slowing this down is essential for clear skin.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Section -->
+  <section id="product-section" class="product-section">
+    <div class="container">
       <h2>The Product Nobody Was Making</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem; color: hsl(var(--muted-foreground));">After that interview, I became obsessed with finding a product that addressed all four elements. What I found was... nothing. Every product on the market focused on just one or two aspects.</p>
       
-      <div class="prose">
-        <p>Once I understood the gardener and the garden — the true biology under the scalp — I went looking for something that supported all four steps.</p>
-
-        <p>Something that:</p>
-        <ul style="margin-left: 1.5rem;">
-          <li>Calmed inflammation</li>
-          <li>Rebuilt the barrier</li>
-          <li>Reset cell growth</li>
-          <li>Balanced the microbiome</li>
-          <li>Stopped the itch loop</li>
-          <li>Didn't irritate, strip, burn, or leave residue</li>
-          <li>Wasn't a temporary band-aid</li>
-        </ul>
-
-        <p class="highlight" style="margin-top: 2rem;">But everything I found was wrong for inflamed scalps.</p>
-
-        <p>Shampoos too harsh. Scrubs too abrasive. Oils too heavy. Steroids too temporary.</p>
-
-        <p>Nobody was making something that helps the gardener stop panicking AND heals the soil.</p>
-
-        <p>I was about to give up. And then someone in a scalp support group mentioned a small company that had been working on exactly this problem — not just treating flakes, but actually restoring the scalp's biology.</p>
-
-        <p>They'd spent over a year developing it. Tested dozens of formulations. Worked with dermatological chemists who understood the immune-barrier connection.</p>
-
-        <p>When I read what was in it — and more importantly, why each ingredient was there — it was the first time I'd seen a product that matched what I'd learned about how the scalp actually heals.</p>
-      </div>
+      <p>So when I heard that a small lab in Oregon had developed a formula that combined all four approaches into a single treatment, I was skeptical but intrigued.</p>
+      
+      <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop" alt="Nevelle Scalp Renewal Elixir" class="product-image">
+      
+      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Introducing Nevelle™ Scalp Renewal Elixir</h3>
+      <p style="color: hsl(var(--muted-foreground)); max-width: 500px; margin: 0 auto;">The first all-in-one scalp treatment designed to address the root causes of persistent scalp conditions.</p>
     </div>
+  </section>
 
-    <!-- Product Reveal -->
-    <div class="product-section" id="product">
-      <h2>
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--secondary);"><path d="M12 3l1.5 4.5h4.5l-3.5 2.5 1.5 4.5-4-3-4 3 1.5-4.5-3.5-2.5h4.5z"/></svg>
-        Introducing Nevelle™ Scalp Renewal Elixir
-      </h2>
+  <main class="container">
+    <section class="content-section">
+      <h2>What Makes It Different</h2>
+      <p>Nevelle™ works by addressing all four pillars of scalp health simultaneously:</p>
       
-      <p class="subtitle">The world's first "Gardener-Calming" Scalp Serum</p>
-
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=800&h=500&fit=crop" alt="Nevelle Scalp Renewal Serum">
-      </div>
-
-      <div style="background: var(--background); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
-        <p style="font-weight: 600; margin-bottom: 1rem;">Designed to:</p>
-        <ul style="margin-left: 1.5rem;">
-          <li>Calm the gardener</li>
-          <li>Heal the soil</li>
-          <li>Normalize plant growth</li>
-          <li>Stop the garden chaos</li>
-        </ul>
-      </div>
-
-      <div class="prose">
-        <p><strong>It's NOT:</strong></p>
-        <p>A shampoo, scrub, oil, steroid, or temporary fix.</p>
-
-        <p><strong>It's a daily leave-on serum — like skincare for your scalp.</strong></p>
-
-        <p style="margin-top: 1.5rem;">When I looked at the ingredient list, I almost couldn't believe it. No sulfates. No coal tar. No steroids. Instead: ceramides to rebuild the barrier, PEA to calm the itch at the nerve level, fermented probiotics for the microbiome. Every single ingredient mapped to one of the four steps.</p>
-
-        <h3 style="margin-top: 2rem;">This is what made it different from everything else I'd tried:</h3>
-        
-        <div class="ingredient-list">
-          <div class="ingredient">
-            <p class="ingredient-name">Ceramide NP + Cholesterol + Linoleic Acid</p>
-            <p class="ingredient-desc">Rebuilds the scalp's protective lipid "soil."</p>
-          </div>
-          <div class="ingredient">
-            <p class="ingredient-name">Panthenol (B5)</p>
-            <p class="ingredient-desc">Speeds healing and seals moisture.</p>
-          </div>
-          <div class="ingredient">
-            <p class="ingredient-name">Palmitoylethanolamide (PEA)</p>
-            <p class="ingredient-desc">Calms sensory nerves → stops itch → stops micro-injuries.</p>
-          </div>
-          <div class="ingredient">
-            <p class="ingredient-name">Lactobacillus Ferment + Zinc PCA</p>
-            <p class="ingredient-desc">Balances the microbiome → reduces irritation.</p>
-          </div>
-          <div class="ingredient">
-            <p class="ingredient-name">PHA (≤2%)</p>
-            <p class="ingredient-desc">Gently lifts compacted flakes without burning.</p>
-          </div>
-          <div class="ingredient">
-            <p class="ingredient-name">Beta-Glucan / Bisabolol</p>
-            <p class="ingredient-desc">Reduces redness and inflammation.</p>
-          </div>
-          <div class="ingredient">
-            <p class="ingredient-name">Glycerin + Sodium PCA (Hydration Base)</p>
-            <p class="ingredient-desc">Restores long-lasting moisture to prevent dryness-triggered irritation.</p>
-          </div>
-          <div class="ingredient">
-            <p class="ingredient-name">Piroctone Olamine</p>
-            <p class="ingredient-desc">Targets Malassezia yeast — the root cause of seborrheic dermatitis — to visibly reduce flaking.</p>
-          </div>
-          <div class="ingredient">
-            <p class="ingredient-name">Capryloyl Glycine</p>
-            <p class="ingredient-desc">Regulates excess oil and reinforces the scalp's acid mantle to prevent flare-ups.</p>
-          </div>
+      <div class="ingredients-grid">
+        <div class="ingredient-card">
+          <h4>🧬 Microbiome Complex</h4>
+          <p>Prebiotics and postbiotics that feed beneficial bacteria while starving the problematic ones.</p>
         </div>
-
-        <div class="callout-box" style="margin-top: 2rem;">
-          <p style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;">What it FEELS like:</p>
-          <ul style="margin-left: 1.5rem;">
-            <li>No sting</li>
-            <li>No burn</li>
-            <li>No strong smell</li>
-            <li>No residue</li>
-            <li>No greasiness</li>
-            <li>Invisible under hair</li>
-            <li>Clean, calming, and soothing</li>
-          </ul>
-          <p style="margin-top: 1rem; font-style: italic;">It absorbs in seconds. You forget it's there. Your hair looks exactly the same — no residue, no greasiness, no weird smell. Just... calm.</p>
+        <div class="ingredient-card">
+          <h4>⚖️ Sebum Regulators</h4>
+          <p>Niacinamide and zinc work together to normalize oil production without over-drying.</p>
+        </div>
+        <div class="ingredient-card">
+          <h4>🌿 Anti-Inflammatory Blend</h4>
+          <p>Turmeric extract and bisabolol calm irritation and reduce redness naturally.</p>
+        </div>
+        <div class="ingredient-card">
+          <h4>🔄 Cell Normalizers</h4>
+          <p>Salicylic acid and willow bark gently encourage healthy cell turnover rates.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Results Timeline -->
-    <div class="timeline">
-      <h3 style="text-align: center; margin-bottom: 1.5rem;">What to Expect</h3>
-      <div class="timeline-item">
-        <p class="timeline-title days">Within Days:</p>
-        <ul>
-          <li>Less itch</li>
-          <li>Less burning</li>
-          <li>Less redness</li>
-          <li>Fewer flakes</li>
-          <li>Calmer scalp</li>
-        </ul>
+    <section class="content-section">
+      <h2>What to Expect — A Realistic Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-week">Week 1-2</span>
+          <div class="timeline-content">
+            <h4>Initial Adjustment</h4>
+            <p>Your scalp begins to rebalance. Some users notice reduced itching within days.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-week">Week 3-4</span>
+          <div class="timeline-content">
+            <h4>Visible Improvement</h4>
+            <p>Flaking significantly decreases. Redness starts to fade. Hair feels healthier.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-week">Week 5-8</span>
+          <div class="timeline-content">
+            <h4>New Normal</h4>
+            <p>Scalp reaches a new equilibrium. Many users can reduce application frequency.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-week">Week 8+</span>
+          <div class="timeline-content">
+            <h4>Maintenance</h4>
+            <p>Continue with maintenance doses to keep your scalp ecosystem balanced.</p>
+          </div>
+        </div>
       </div>
-      <div class="timeline-item">
-        <p class="timeline-title weeks">Within Weeks:</p>
-        <p>The gardener stops spraying. The soil heals. The plants grow normally. The garden is balanced again.</p>
-        <p style="font-weight: 600; margin-top: 1rem;">Your scalp… finally lets you live.</p>
-      </div>
-    </div>
+    </section>
+  </main>
 
-    <!-- Testimonials -->
-    <div class="testimonials">
-      <h2 style="text-align: center;">Real Stories From "I've Tried Everything" Sufferers</h2>
-      
-      <div style="overflow: hidden; margin-top: 2rem;">
-        <div class="testimonial-scroll">
-          <div class="testimonial-card">
-            <div class="testimonial-placeholder">Before & After</div>
-            <p class="testimonial-quote">"I hadn't gotten a haircut in 8 months. Last week I finally went. I kept waiting for the flakes to fall on the cape. They didn't. I almost cried in the chair."</p>
-            <p class="testimonial-author">— Sarah M., 34</p>
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 style="text-align: center;">What People Are Saying</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"After 15 years of psoriasis, I'd given up. Three weeks with Nevelle and my scalp is clearer than it's been since college."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div>
+              <p class="testimonial-name">Michael R.</p>
+              <p class="testimonial-verified">✓ Verified Purchase</p>
+            </div>
           </div>
-          <div class="testimonial-card">
-            <div class="testimonial-placeholder">Before & After</div>
-            <p class="testimonial-quote">"I wore a black sweater to work yesterday. Didn't check my shoulders once. My coworker complimented my outfit and I just said thank you. No panic. That's new for me."</p>
-            <p class="testimonial-author">— Jenna L., 29</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"I can finally wear black again without worrying about flakes on my shoulders. This stuff actually works."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div>
+              <p class="testimonial-name">Sarah K.</p>
+              <p class="testimonial-verified">✓ Verified Purchase</p>
+            </div>
           </div>
-          <div class="testimonial-card">
-            <div class="testimonial-placeholder">Before & After</div>
-            <p class="testimonial-quote">"I've done Nizoral, T-Gel, steroids, ACV — everything. It's been 6 weeks and my scalp is quieter than it's been in years. I keep checking. Nothing falls out."</p>
-            <p class="testimonial-author">— Emily R., 31</p>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-placeholder">Before & After</div>
-            <p class="testimonial-quote">"15 years of this. I stopped wearing my hair down. Stopped letting anyone touch it. For the first time, my scalp isn't punishing me. I feel like myself again."</p>
-            <p class="testimonial-author">— Michelle K., 42</p>
-          </div>
-          <!-- Duplicated for seamless scroll -->
-          <div class="testimonial-card">
-            <div class="testimonial-placeholder">Before & After</div>
-            <p class="testimonial-quote">"I hadn't gotten a haircut in 8 months. Last week I finally went. I kept waiting for the flakes to fall on the cape. They didn't. I almost cried in the chair."</p>
-            <p class="testimonial-author">— Sarah M., 34</p>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-placeholder">Before & After</div>
-            <p class="testimonial-quote">"I wore a black sweater to work yesterday. Didn't check my shoulders once. My coworker complimented my outfit and I just said thank you. No panic. That's new for me."</p>
-            <p class="testimonial-author">— Jenna L., 29</p>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-placeholder">Before & After</div>
-            <p class="testimonial-quote">"I've done Nizoral, T-Gel, steroids, ACV — everything. It's been 6 weeks and my scalp is quieter than it's been in years. I keep checking. Nothing falls out."</p>
-            <p class="testimonial-author">— Emily R., 31</p>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-placeholder">Before & After</div>
-            <p class="testimonial-quote">"15 years of this. I stopped wearing my hair down. Stopped letting anyone touch it. For the first time, my scalp isn't punishing me. I feel like myself again."</p>
-            <p class="testimonial-author">— Michelle K., 42</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"My dermatologist was shocked at my progress. She asked what I was using and I told her about Nevelle."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div>
+              <p class="testimonial-name">Jennifer L.</p>
+              <p class="testimonial-verified">✓ Verified Purchase</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Vision Section -->
-    <div class="vision-section">
-      <div class="callout-box">
-        <h3>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--secondary);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          What Life Feels Like 30, 60, 90 Days From Now
-        </h3>
-        <p>Imagine:</p>
-        <ul>
-          <li>Wearing black confidently</li>
-          <li>Running your hands through your hair</li>
-          <li>Sitting on your couch without "snow"</li>
-          <li>Going on dates without dread</li>
-          <li>Brushing your hair without fear</li>
-          <li>Showering without panic</li>
-          <li>Waking up without flakes</li>
-          <li>Feeling feminine, clean, and put-together again</li>
-        </ul>
-        <p style="margin-top: 1rem; font-weight: 600; font-size: 1.125rem;">Imagine looking in the mirror and thinking: "There I am."</p>
-        <p>That's what happens when the gardener is calm.</p>
-      </div>
-    </div>
-
-    <!-- Pricing Section -->
-    <div class="pricing-section" id="pricing">
-      <h2>Choose Your Reset Package</h2>
-      <p class="subtitle">Your scalp needs time to retrain. Choose the bundle that gives you the full reset.</p>
-
-      <div class="pricing-image">
-        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=400&fit=crop" alt="Nevelle product bundles">
-      </div>
+  <!-- Pricing -->
+  <section class="pricing-section">
+    <div class="container">
+      <h2>Choose Your Path to Relief</h2>
+      <p style="color: hsl(var(--muted-foreground)); margin-bottom: 2rem;">Select the option that's right for your journey</p>
       
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3 class="pricing-title">1 Month Supply</h3>
-          <p class="pricing-desc">Save 35% — Perfect to feel the difference</p>
-          <div class="pricing-price">
-            <span class="pricing-original">$59.00</span>
-            <span class="pricing-current">$39.00</span>
-          </div>
-          <div class="pricing-features">
-            <div class="pricing-feature"><span class="check">✓</span><span>1 bottle (4-week supply)</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>Experience the calming effect</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>See visible improvement</span></div>
-          </div>
-          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get 1 Month Supply</a>
-        </div>
-        
-        <div class="pricing-card">
-          <h3 class="pricing-title">3 Month Supply</h3>
-          <p class="pricing-desc">Save 60% — Buy 2 Get 1 Free</p>
-          <div class="pricing-price">
-            <span class="pricing-original">$177.00</span>
-            <span class="pricing-current">$71.00</span>
-          </div>
-          <div class="pricing-features">
-            <div class="pricing-feature"><span class="check">✓</span><span>3 bottles (12-week supply)</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>Complete gardener retraining</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>Long-term lasting relief</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>Save $106.00</span></div>
-          </div>
-          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get 3 Month Supply</a>
+          <p class="pricing-description">Save 35% — Perfect to feel the difference</p>
+          <p class="pricing-price">$39<span class="pricing-original">$59</span></p>
+          <ul class="pricing-features">
+            <li>1 bottle of Nevelle™</li>
+            <li>Free shipping</li>
+            <li>30-day money-back guarantee</li>
+          </ul>
+          <a href="https://nevelle.shop" class="cta-button full-width">Get Started →</a>
         </div>
         
         <div class="pricing-card popular">
           <span class="popular-badge">Most Popular</span>
+          <h3 class="pricing-title">3 Month Supply</h3>
+          <p class="pricing-description">Save 60% — Buy 2 Get 1 Free</p>
+          <p class="pricing-price">$71<span class="pricing-original">$177</span></p>
+          <ul class="pricing-features">
+            <li>3 bottles of Nevelle™</li>
+            <li>Free shipping</li>
+            <li>30-day money-back guarantee</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="https://nevelle.shop" class="cta-button full-width">Best Value →</a>
+        </div>
+        
+        <div class="pricing-card">
           <h3 class="pricing-title">5 Month Supply</h3>
-          <p class="pricing-desc">Save 70% — Buy 3 Get 2 Free</p>
-          <div class="pricing-price">
-            <span class="pricing-original">$295.00</span>
-            <span class="pricing-current">$89.00</span>
-          </div>
-          <div class="pricing-features">
-            <div class="pricing-feature"><span class="check">✓</span><span>5 bottles (20-week supply)</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>Full scalp transformation</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>Ultimate lasting relief</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>Save $206.00</span></div>
-          </div>
-          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get 5 Month Supply</a>
+          <p class="pricing-description">Save 70% — Buy 3 Get 2 Free</p>
+          <p class="pricing-price">$89<span class="pricing-original">$295</span></p>
+          <ul class="pricing-features">
+            <li>5 bottles of Nevelle™</li>
+            <li>Free shipping</li>
+            <li>30-day money-back guarantee</li>
+            <li>VIP support</li>
+          </ul>
+          <a href="https://nevelle.shop" class="cta-button full-width">Maximum Savings →</a>
         </div>
       </div>
-
-      <p class="pricing-note">Most customers choose the 5 Month Supply because it provides enough time for complete scalp transformation and recovery.</p>
     </div>
+  </section>
 
+  <main class="container">
     <!-- Guarantee -->
     <div class="guarantee-section">
-      <div class="guarantee-header">
-        <svg class="icon large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <h3>30-Day "Calmer Scalp or It's Free" Guarantee</h3>
-      </div>
-      
-      <div class="prose">
-        <p>I know you've wasted money on things that didn't work. I have too.</p>
-        
-        <p><strong>So here's the deal:</strong></p>
-        
-        <ul>
-          <li>Try Nevelle™ for up to 30 days</li>
-          <li>Use the bottles, see how your scalp responds</li>
-          <li>If you don't feel calmer, less itchy, and more in control —</li>
-          <li>Email us and we'll refund every penny</li>
-        </ul>
-
-        <p style="margin-top: 1.5rem;">No arguing. No hoops. No "prove it" photos.</p>
-
-        <p><strong>If it doesn't help you, I don't want your money.</strong></p>
-
-        <p style="font-style: italic;">Your scalp has punished you enough. Your wallet doesn't need to.</p>
-      </div>
+      <div class="guarantee-icon">🛡️</div>
+      <h2>30-Day Money-Back Guarantee</h2>
+      <p style="max-width: 500px; margin: 1rem auto 0; color: hsl(var(--muted-foreground));">Try Nevelle™ risk-free for 30 days. If you don't see a noticeable improvement in your scalp health, simply contact us for a full refund. No questions asked.</p>
     </div>
 
     <!-- Final CTA -->
-    <div class="final-cta">
-      <h2>Final Word — From One Sufferer To Another</h2>
-      
-      <div class="prose">
-        <p>If no one has told you this yet, let me be the first:</p>
-        
-        <p class="highlight">You're not dirty. You're not broken. You're not doing anything wrong. Your scalp isn't failing you.</p>
+    <section class="content-section" style="text-align: center;">
+      <h2>Your Journey to a Healthier Scalp Starts Today</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem;">Don't spend another day hiding your scalp or feeling self-conscious. Join thousands who have finally found lasting relief.</p>
+      <a href="https://nevelle.shop" class="cta-button">Get Nevelle™ Now →</a>
+    </section>
 
-        <p>Your gardener just needs help.</p>
-
-        <p>And once he calms down… everything changes. The flakes. The itch. The redness. The shame. The anxiety. The exhaustion.</p>
-
-        <p><strong>They stop controlling you.</strong></p>
-
-        <p>You can feel clean again. Confident again. Normal again. Like yourself again.</p>
-
-        <p class="big">You deserve that. And your scalp deserves peace.</p>
-      </div>
-
-      <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button large" style="max-width: 400px; margin: 0 auto;">Start Your Scalp Reset Today →</a>
-
-      <p class="note">30-Day Money-Back Guarantee | Free Shipping | Made in Small Batches</p>
+    <!-- Medical Disclaimer -->
+    <div class="medical-disclaimer">
+      <strong>Medical Disclaimer:</strong> The statements made regarding Nevelle™ have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult with a healthcare professional before starting any new supplement or skincare regimen, especially if you have a medical condition or are taking medications.
     </div>
+  </main>
 
-    <!-- Disclaimer -->
-    <div class="disclaimer">
-      <p><strong>Medical Disclaimer:</strong> This advertorial is for informational purposes only and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Always consult with a qualified healthcare professional before starting any new treatment regimen. Testimonials represent individual experiences and do not guarantee specific results.</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 The Health Wave. All rights reserved.</p>
+      <p style="margin-top: 0.5rem;">This is a sponsored article.</p>
     </div>
-  </article>
+  </footer>
 
   <!-- Sticky CTA -->
-  <div class="sticky-cta">
-    <div class="sticky-cta-text">
-      <p class="title">Ready to reset your scalp?</p>
-      <p class="subtitle">30-Day Money-Back Guarantee</p>
+  <div id="sticky-cta" class="sticky-cta translate-y-full">
+    <div class="sticky-cta-content">
+      <div class="sticky-cta-text">
+        <p>Ready to reset your scalp?</p>
+        <p>30-Day Money-Back Guarantee</p>
+      </div>
+      <a href="https://nevelle.shop" class="cta-button">Get Nevelle™ Now →</a>
     </div>
-    <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get Nevelle™ Now →</a>
   </div>
+
+  <script>
+    // Sticky CTA - appears after scrolling past "The Product Nobody Was Making" section
+    const stickyCTA = document.getElementById('sticky-cta');
+    const productSection = document.getElementById('product-section');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Show sticky CTA when product section is NOT intersecting (scrolled past it)
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          stickyCTA.classList.remove('translate-y-full');
+          stickyCTA.classList.add('translate-y-0');
+        } else {
+          stickyCTA.classList.remove('translate-y-0');
+          stickyCTA.classList.add('translate-y-full');
+        }
+      });
+    }, { threshold: 0 });
+    
+    observer.observe(productSection);
+  </script>
 </body>
 </html>
