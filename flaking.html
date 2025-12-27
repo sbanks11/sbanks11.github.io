@@ -188,8 +188,7 @@
     .disclaimer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.75rem; color: var(--muted-foreground); }
     
     /* Sticky CTA */
-    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: hsl(0 0% 100% / 0.95); backdrop-filter: blur(8px); border-top: 1px solid var(--border); box-shadow: 0 -4px 12px rgba(0,0,0,0.1); padding: 0.75rem 1rem; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; transform: translateY(100%); transition: transform 0.3s ease; }
-    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: hsl(0 0% 100% / 0.95); backdrop-filter: blur(8px); border-top: 1px solid var(--border); box-shadow: 0 -4px 12px rgba(0,0,0,0.1); padding: 0.75rem 1rem; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .sticky-cta-text { display: none; }
     @media (min-width: 640px) { .sticky-cta-text { display: block; } .sticky-cta-text p { margin: 0; } .sticky-cta-text .title { font-size: 0.875rem; font-weight: 500; } .sticky-cta-text .subtitle { font-size: 0.75rem; color: var(--muted-foreground); } }
     .sticky-cta .cta-button { width: 100%; }
@@ -209,7 +208,7 @@
   </style>
 </head>
 <body>
-
+  <!-- Header -->
   <header>
     <div class="container">
       <h1>The Health Wave</h1>
@@ -217,37 +216,41 @@
     </div>
   </header>
 
+  <!-- Article -->
   <article class="container max-w-4xl">
-    
-    <header>
+    <!-- Headline -->
+    <div style="margin-bottom: 2rem;">
       <h1 class="headline">10 Years of Flakes, Shame, and Failed Shampoos… Until a Dermatologist Finally Told Me What Was Actually Wrong</h1>
       <p class="subheadline">The simple explanation that finally fixed 10 years of flares, flakes, itching, redness and failed treatments.</p>
       
+      <!-- Author Section -->
       <div class="author-section">
-        <div class="author-avatar initials">
-          <span>MK</span>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div class="author-avatar initials">MK</div>
+          <div class="author-info">
+            <p class="name">Written by Martha King</p>
+            <p class="role">Health & Wellness Writer</p>
+          </div>
         </div>
-        <div class="author-info">
-          <p class="name">Written by Martha King</p>
-          <p class="role">Health & Wellness Writer</p>
-        </div>
-        <span>|</span>
-        <div class="author-avatar">
-          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face" alt="Dr. Jennifer Chen">
-        </div>
-        <div class="author-info">
-          <p class="name">Reviewed by Dr. Jennifer Chen</p>
-          <p class="role">Board-Certified Dermatologist</p>
+        <span style="color: var(--muted-foreground); display: none;">|</span>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div class="author-avatar"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face" alt="Dr. Jennifer Chen"></div>
+          <div class="author-info">
+            <p class="name">Reviewed by Dr. Jennifer Chen</p>
+            <p class="role">Board-Certified Dermatologist</p>
+          </div>
         </div>
       </div>
-    </header>
-
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&h=600&fit=crop" alt="Woman with healthy hair">
     </div>
 
-    <section class="prose">
-      <p class="highlight">I know what it's like to pretend you're fine when your scalp feels like it's on fire.</p>
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&h=500&fit=crop" alt="Scalp transformation before and after results">
+    </div>
+
+    <!-- Opening Section -->
+    <div class="prose">
+      <p>I know what it's like to pretend you're fine when your scalp feels like it's on fire.</p>
       
       <p>I know the humiliation of brushing flakes off your shoulders every five minutes… the panic when someone stands too close… the dread before every salon appointment, wondering if the stylist will see… the way your heart races when you see white specks on your black clothes… the way you hold your breath when someone leans in close.</p>
 
@@ -263,32 +266,37 @@
 
       <p>The label doesn't matter anymore. Neither do the conflicting theories.</p>
 
-      <p>If you're reading this, you've probably reached that same point I did — that awful moment when you realize: "I'm losing hope. Maybe I'm just stuck like this."</p>
+      <p class="highlight">If you're reading this, you've probably reached that same point I did — that awful moment when you realize: "I'm losing hope. Maybe I'm just stuck like this."</p>
 
       <p>But you're not.</p>
 
       <p>And the only reason you feel that way is because nobody ever explained what's actually going on under your scalp.</p>
 
       <p>Not the dermatologists. Not the shampoos. Not the influencers. Not the "natural remedies." And definitely not the "anti-dandruff" aisle.</p>
-    </section>
+    </div>
 
-    <section class="callout-box">
+    <!-- Callout Box -->
+    <div class="callout-box">
       <p class="title">Here's the truth that finally made everything make sense:</p>
       <p>Your scalp isn't flaky because it's dirty. It's not inflamed because you used the wrong shampoo. It's not red because you didn't scrub hard enough.</p>
       <p>Something deeper is happening. Something no one ever bothered to tell you.</p>
-    </section>
+    </div>
 
-    <section class="prose">
+    <!-- The Garden Analogy Section -->
+    <div style="margin: 4rem 0;">
       <h2>The Day Someone Finally Made It Make Sense</h2>
       
-      <blockquote>
+      <div class="prose">
         <p>I was scrolling one night — itchy, flaking, frustrated — when a dermatologist said something so simple I actually sat up:</p>
-        <p>"Your scalp is like a garden. And your immune system is the gardener. In chronic scalp conditions, the gardener panics and starts spraying weed-killer everywhere… even when nothing's wrong."</p>
-        <p>And suddenly… it all clicked.</p>
-      </blockquote>
-    </section>
 
-    <section class="garden-section">
+        <blockquote>"Your scalp is like a garden. And your immune system is the gardener. In chronic scalp conditions, the gardener panics and starts spraying weed-killer everywhere… even when nothing's wrong."</blockquote>
+
+        <p><strong>And suddenly… it all clicked.</strong></p>
+      </div>
+    </div>
+
+    <!-- Garden Analogy Explained -->
+    <div class="garden-section">
       <h2>🌱 The Garden Analogy — The REAL Root Cause Nobody Told You</h2>
       
       <p>Think of your scalp like a garden.</p>
@@ -298,9 +306,9 @@
         <li>Your immune system is the gardener that's supposed to protect everything — gently.</li>
       </ul>
 
-      <p>When everything's normal, the gardener trims dead plants, waters just enough, and keeps things calm.</p>
+      <p style="margin-top: 1.5rem;">When everything's normal, the gardener trims dead plants, waters just enough, and keeps things calm.</p>
 
-      <p>But with an irritated, flaky scalp, the gardener panics.</p>
+      <p style="font-weight: 600; font-size: 1.125rem; margin-top: 1.5rem;">But with an irritated, flaky scalp, the gardener panics.</p>
 
       <p>He thinks your perfectly healthy scalp is full of weeds — even when it's not. So he grabs the strongest weed-killer he has (inflammation)… and starts spraying. Everywhere. Constantly.</p>
 
@@ -315,65 +323,74 @@
         </ul>
       </div>
 
-      <p>That's why it feels like a loop you can't escape. Every flare, every scratch, every harsh shampoo is like pouring more weed-killer on already burned soil.</p>
-    </section>
+      <p style="font-style: italic;">That's why it feels like a loop you can't escape. Every flare, every scratch, every harsh shampoo is like pouring more weed-killer on already burned soil.</p>
+    </div>
 
-    <section class="prose">
-      <h3>When I really saw this, I cried.</h3>
+    <!-- Personal Impact -->
+    <div class="prose" style="margin: 3rem 0;">
+      <p class="highlight">When I really saw this, I cried.</p>
       <p>Because for the first time in years, it wasn't "my scalp is broken." It was: "My gardener is terrified. No one ever taught him how to stand down."</p>
-    </section>
+    </div>
 
-    <section class="steps-box">
-      <h3 class="title">🔄 The "All-Clear Reset" — How You Actually Teach the Gardener to Chill Out</h3>
+    <!-- The Solution -->
+    <div style="margin: 4rem 0;">
+      <h2 style="display: flex; align-items: center; gap: 0.75rem;">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        The "All-Clear Reset" — How You Actually Teach the Gardener to Chill Out
+      </h2>
       
-      <p>If your immune system (the gardener) keeps spraying weed-killer on healthy soil… You can't fix that with washing, scrubbing, detoxing, coal tar, steroids, antifungals, oils, acids, or "cooling sprays."</p>
-      <p>None of these calm the gardener. Most irritate him even more.</p>
-      <p>The ONLY real solution? You have to teach the gardener:</p>
-      
-      <blockquote>"You're safe. Stop spraying. The soil is fine."</blockquote>
-      
-      <p><strong>This requires FOUR things:</strong></p>
-      
-      <div class="step">
-        <span class="step-number">1.</span>
-        <div>
-          <p class="step-title">Disarm the Alarm</p>
-          <p class="step-desc">Reduce irritation so your immune system stops sending "danger!" signals.</p>
-        </div>
-      </div>
-      
-      <div class="step">
-        <span class="step-number">2.</span>
-        <div>
-          <p class="step-title">Reset the Growth Tempo</p>
-          <p class="step-desc">Slow skin cell turnover from 3–4 days back toward a healthy 28–30 days.</p>
-        </div>
-      </div>
-      
-      <div class="step">
-        <span class="step-number">3.</span>
-        <div>
-          <p class="step-title">Rebuild the Barrier + Micro-Ecosystem</p>
-          <p class="step-desc">Heal the protective lipids, moisture, and microbiome so the scalp signals "all good."</p>
-        </div>
-      </div>
-      
-      <div class="step">
-        <span class="step-number">4.</span>
-        <div>
-          <p class="step-title">Break the Itch–Injury Loop</p>
-          <p class="step-desc">Calm sensory nerves so scratching doesn't create new "injuries."</p>
-        </div>
-      </div>
-    </section>
+      <div class="prose">
+        <p>If your immune system (the gardener) keeps spraying weed-killer on healthy soil… You can't fix that with washing, scrubbing, detoxing, coal tar, steroids, antifungals, oils, acids, or "cooling sprays."</p>
 
-    <section class="product-section" id="product-section">
+        <p class="highlight">None of these calm the gardener. Most irritate him even more.</p>
+
+        <p>The ONLY real solution? You have to teach the gardener:</p>
+        
+        <blockquote style="border-color: var(--primary);">"You're safe. Stop spraying. The soil is fine."</blockquote>
+
+        <div class="steps-box">
+          <p class="title">This requires FOUR things:</p>
+          <div class="step">
+            <span class="step-number">1.</span>
+            <div>
+              <p class="step-title">Disarm the Alarm</p>
+              <p class="step-desc">Reduce irritation so your immune system stops sending "danger!" signals.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">2.</span>
+            <div>
+              <p class="step-title">Reset the Growth Tempo</p>
+              <p class="step-desc">Slow skin cell turnover from 3–4 days back toward a healthy 28–30 days.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">3.</span>
+            <div>
+              <p class="step-title">Rebuild the Barrier + Micro-Ecosystem</p>
+              <p class="step-desc">Heal the protective lipids, moisture, and microbiome so the scalp signals "all good."</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">4.</span>
+            <div>
+              <p class="step-title">Break the Itch–Injury Loop</p>
+              <p class="step-desc">Calm sensory nerves so scratching doesn't create new "injuries."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Development Story -->
+    <div style="margin: 4rem 0;">
       <h2>The Product Nobody Was Making</h2>
       
       <div class="prose">
         <p>Once I understood the gardener and the garden — the true biology under the scalp — I went looking for something that supported all four steps.</p>
-        <p><strong>Something that:</strong></p>
-        <ul>
+
+        <p>Something that:</p>
+        <ul style="margin-left: 1.5rem;">
           <li>Calmed inflammation</li>
           <li>Rebuilt the barrier</li>
           <li>Reset cell growth</li>
@@ -383,7 +400,7 @@
           <li>Wasn't a temporary band-aid</li>
         </ul>
 
-        <p>But everything I found was wrong for inflamed scalps.</p>
+        <p class="highlight" style="margin-top: 2rem;">But everything I found was wrong for inflamed scalps.</p>
 
         <p>Shampoos too harsh. Scrubs too abrasive. Oils too heavy. Steroids too temporary.</p>
 
@@ -395,19 +412,24 @@
 
         <p>When I read what was in it — and more importantly, why each ingredient was there — it was the first time I'd seen a product that matched what I'd learned about how the scalp actually heals.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="product-section">
-      <h2>✨ Introducing Nevelle™ Scalp Renewal Elixir</h2>
+    <!-- Product Reveal -->
+    <div class="product-section" id="product">
+      <h2>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--secondary);"><path d="M12 3l1.5 4.5h4.5l-3.5 2.5 1.5 4.5-4-3-4 3 1.5-4.5-3.5-2.5h4.5z"/></svg>
+        Introducing Nevelle™ Scalp Renewal Elixir
+      </h2>
+      
       <p class="subtitle">The world's first "Gardener-Calming" Scalp Serum</p>
 
       <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=500&fit=crop" alt="Nevelle Scalp Renewal Elixir">
+        <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=800&h=500&fit=crop" alt="Nevelle Scalp Renewal Serum">
       </div>
 
-      <div class="callout-box">
-        <p><strong>Designed to:</strong></p>
-        <ul>
+      <div style="background: var(--background); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
+        <p style="font-weight: 600; margin-bottom: 1rem;">Designed to:</p>
+        <ul style="margin-left: 1.5rem;">
           <li>Calm the gardener</li>
           <li>Heal the soil</li>
           <li>Normalize plant growth</li>
@@ -415,15 +437,15 @@
         </ul>
       </div>
 
-      <div class="callout-box">
+      <div class="prose">
         <p><strong>It's NOT:</strong></p>
         <p>A shampoo, scrub, oil, steroid, or temporary fix.</p>
 
-        <p>It's a daily leave-on serum — like skincare for your scalp.</p>
+        <p><strong>It's a daily leave-on serum — like skincare for your scalp.</strong></p>
 
-        <p>When I looked at the ingredient list, I almost couldn't believe it. No sulfates. No coal tar. No steroids. Instead: ceramides to rebuild the barrier, PEA to calm the itch at the nerve level, fermented probiotics for the microbiome. Every single ingredient mapped to one of the four steps.</p>
+        <p style="margin-top: 1.5rem;">When I looked at the ingredient list, I almost couldn't believe it. No sulfates. No coal tar. No steroids. Instead: ceramides to rebuild the barrier, PEA to calm the itch at the nerve level, fermented probiotics for the microbiome. Every single ingredient mapped to one of the four steps.</p>
 
-        <p><strong>This is what made it different from everything else I'd tried:</strong></p>
+        <h3 style="margin-top: 2rem;">This is what made it different from everything else I'd tried:</h3>
         
         <div class="ingredient-list">
           <div class="ingredient">
@@ -464,9 +486,9 @@
           </div>
         </div>
 
-        <div class="callout-box" style="margin-top: 1.5rem;">
-          <p><strong>What it FEELS like:</strong></p>
-          <ul>
+        <div class="callout-box" style="margin-top: 2rem;">
+          <p style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;">What it FEELS like:</p>
+          <ul style="margin-left: 1.5rem;">
             <li>No sting</li>
             <li>No burn</li>
             <li>No strong smell</li>
@@ -475,13 +497,14 @@
             <li>Invisible under hair</li>
             <li>Clean, calming, and soothing</li>
           </ul>
-          <p>It absorbs in seconds. You forget it's there. Your hair looks exactly the same — no residue, no greasiness, no weird smell. Just... calm.</p>
+          <p style="margin-top: 1rem; font-style: italic;">It absorbs in seconds. You forget it's there. Your hair looks exactly the same — no residue, no greasiness, no weird smell. Just... calm.</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="timeline">
-      <h3>What to Expect</h3>
+    <!-- Results Timeline -->
+    <div class="timeline">
+      <h3 style="text-align: center; margin-bottom: 1.5rem;">What to Expect</h3>
       <div class="timeline-item">
         <p class="timeline-title days">Within Days:</p>
         <ul>
@@ -495,80 +518,69 @@
       <div class="timeline-item">
         <p class="timeline-title weeks">Within Weeks:</p>
         <p>The gardener stops spraying. The soil heals. The plants grow normally. The garden is balanced again.</p>
-        <p><strong>Your scalp… finally lets you live.</strong></p>
+        <p style="font-weight: 600; margin-top: 1rem;">Your scalp… finally lets you live.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="testimonials">
-      <h2>Real Stories From "I've Tried Everything" Sufferers</h2>
+    <!-- Testimonials -->
+    <div class="testimonials">
+      <h2 style="text-align: center;">Real Stories From "I've Tried Everything" Sufferers</h2>
       
-      <div class="testimonial-scroll">
-        <div class="testimonial-card">
-          <div class="testimonial-placeholder">
-            <span>Before & After</span>
+      <div style="overflow: hidden; margin-top: 2rem;">
+        <div class="testimonial-scroll">
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">Before & After</div>
+            <p class="testimonial-quote">"I hadn't gotten a haircut in 8 months. Last week I finally went. I kept waiting for the flakes to fall on the cape. They didn't. I almost cried in the chair."</p>
+            <p class="testimonial-author">— Sarah M., 34</p>
           </div>
-          <p class="testimonial-quote">"I hadn't gotten a haircut in 8 months. Last week I finally went. I kept waiting for the flakes to fall on the cape. They didn't. I almost cried in the chair."</p>
-          <p class="testimonial-author">— Sarah M., 34</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-placeholder">
-            <span>Before & After</span>
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">Before & After</div>
+            <p class="testimonial-quote">"I wore a black sweater to work yesterday. Didn't check my shoulders once. My coworker complimented my outfit and I just said thank you. No panic. That's new for me."</p>
+            <p class="testimonial-author">— Jenna L., 29</p>
           </div>
-          <p class="testimonial-quote">"I wore a black sweater to work yesterday. Didn't check my shoulders once. My coworker complimented my outfit and I just said thank you. No panic. That's new for me."</p>
-          <p class="testimonial-author">— Jenna L., 29</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-placeholder">
-            <span>Before & After</span>
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">Before & After</div>
+            <p class="testimonial-quote">"I've done Nizoral, T-Gel, steroids, ACV — everything. It's been 6 weeks and my scalp is quieter than it's been in years. I keep checking. Nothing falls out."</p>
+            <p class="testimonial-author">— Emily R., 31</p>
           </div>
-          <p class="testimonial-quote">"I've done Nizoral, T-Gel, steroids, ACV — everything. It's been 6 weeks and my scalp is quieter than it's been in years. I keep checking. Nothing falls out."</p>
-          <p class="testimonial-author">— Emily R., 31</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-placeholder">
-            <span>Before & After</span>
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">Before & After</div>
+            <p class="testimonial-quote">"15 years of this. I stopped wearing my hair down. Stopped letting anyone touch it. For the first time, my scalp isn't punishing me. I feel like myself again."</p>
+            <p class="testimonial-author">— Michelle K., 42</p>
           </div>
-          <p class="testimonial-quote">"15 years of this. I stopped wearing my hair down. Stopped letting anyone touch it. For the first time, my scalp isn't punishing me. I feel like myself again."</p>
-          <p class="testimonial-author">— Michelle K., 42</p>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-placeholder">
-            <span>Before & After</span>
+          <!-- Duplicated for seamless scroll -->
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">Before & After</div>
+            <p class="testimonial-quote">"I hadn't gotten a haircut in 8 months. Last week I finally went. I kept waiting for the flakes to fall on the cape. They didn't. I almost cried in the chair."</p>
+            <p class="testimonial-author">— Sarah M., 34</p>
           </div>
-          <p class="testimonial-quote">"I hadn't gotten a haircut in 8 months. Last week I finally went. I kept waiting for the flakes to fall on the cape. They didn't. I almost cried in the chair."</p>
-          <p class="testimonial-author">— Sarah M., 34</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-placeholder">
-            <span>Before & After</span>
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">Before & After</div>
+            <p class="testimonial-quote">"I wore a black sweater to work yesterday. Didn't check my shoulders once. My coworker complimented my outfit and I just said thank you. No panic. That's new for me."</p>
+            <p class="testimonial-author">— Jenna L., 29</p>
           </div>
-          <p class="testimonial-quote">"I wore a black sweater to work yesterday. Didn't check my shoulders once. My coworker complimented my outfit and I just said thank you. No panic. That's new for me."</p>
-          <p class="testimonial-author">— Jenna L., 29</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-placeholder">
-            <span>Before & After</span>
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">Before & After</div>
+            <p class="testimonial-quote">"I've done Nizoral, T-Gel, steroids, ACV — everything. It's been 6 weeks and my scalp is quieter than it's been in years. I keep checking. Nothing falls out."</p>
+            <p class="testimonial-author">— Emily R., 31</p>
           </div>
-          <p class="testimonial-quote">"I've done Nizoral, T-Gel, steroids, ACV — everything. It's been 6 weeks and my scalp is quieter than it's been in years. I keep checking. Nothing falls out."</p>
-          <p class="testimonial-author">— Emily R., 31</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-placeholder">
-            <span>Before & After</span>
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">Before & After</div>
+            <p class="testimonial-quote">"15 years of this. I stopped wearing my hair down. Stopped letting anyone touch it. For the first time, my scalp isn't punishing me. I feel like myself again."</p>
+            <p class="testimonial-author">— Michelle K., 42</p>
           </div>
-          <p class="testimonial-quote">"15 years of this. I stopped wearing my hair down. Stopped letting anyone touch it. For the first time, my scalp isn't punishing me. I feel like myself again."</p>
-          <p class="testimonial-author">— Michelle K., 42</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="vision-section">
+    <!-- Vision Section -->
+    <div class="vision-section">
       <div class="callout-box">
         <h3>
-          🔮 What Life Feels Like 30, 60, 90 Days From Now
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--secondary);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          What Life Feels Like 30, 60, 90 Days From Now
         </h3>
-        <p><strong>Imagine:</strong></p>
+        <p>Imagine:</p>
         <ul>
           <li>Wearing black confidently</li>
           <li>Running your hands through your hair</li>
@@ -579,17 +591,18 @@
           <li>Waking up without flakes</li>
           <li>Feeling feminine, clean, and put-together again</li>
         </ul>
-        <p><strong>Imagine looking in the mirror and thinking: "There I am."</strong></p>
+        <p style="margin-top: 1rem; font-weight: 600; font-size: 1.125rem;">Imagine looking in the mirror and thinking: "There I am."</p>
         <p>That's what happens when the gardener is calm.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="pricing-section">
+    <!-- Pricing Section -->
+    <div class="pricing-section" id="pricing">
       <h2>Choose Your Reset Package</h2>
       <p class="subtitle">Your scalp needs time to retrain. Choose the bundle that gives you the full reset.</p>
 
       <div class="pricing-image">
-        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1200&h=600&fit=crop" alt="Nevelle product lineup">
+        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=400&fit=crop" alt="Nevelle product bundles">
       </div>
       
       <div class="pricing-grid">
@@ -601,20 +614,11 @@
             <span class="pricing-current">$39.00</span>
           </div>
           <div class="pricing-features">
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>1 bottle (4-week supply)</span>
-            </div>
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>Experience the calming effect</span>
-            </div>
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>See visible improvement</span>
-            </div>
+            <div class="pricing-feature"><span class="check">✓</span><span>1 bottle (4-week supply)</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>Experience the calming effect</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>See visible improvement</span></div>
           </div>
-          <a href="#" class="cta-button">Get 1 Month Supply</a>
+          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get 1 Month Supply</a>
         </div>
         
         <div class="pricing-card">
@@ -625,24 +629,12 @@
             <span class="pricing-current">$71.00</span>
           </div>
           <div class="pricing-features">
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>3 bottles (12-week supply)</span>
-            </div>
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>Complete gardener retraining</span>
-            </div>
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>Long-term lasting relief</span>
-            </div>
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>Save $106.00</span>
-            </div>
+            <div class="pricing-feature"><span class="check">✓</span><span>3 bottles (12-week supply)</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>Complete gardener retraining</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>Long-term lasting relief</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>Save $106.00</span></div>
           </div>
-          <a href="#" class="cta-button">Get 3 Month Supply</a>
+          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get 3 Month Supply</a>
         </div>
         
         <div class="pricing-card popular">
@@ -654,55 +646,47 @@
             <span class="pricing-current">$89.00</span>
           </div>
           <div class="pricing-features">
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>5 bottles (20-week supply)</span>
-            </div>
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>Full scalp transformation</span>
-            </div>
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>Ultimate lasting relief</span>
-            </div>
-            <div class="pricing-feature">
-              <span class="check">✓</span>
-              <span>Save $206.00</span>
-            </div>
+            <div class="pricing-feature"><span class="check">✓</span><span>5 bottles (20-week supply)</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>Full scalp transformation</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>Ultimate lasting relief</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>Save $206.00</span></div>
           </div>
-          <a href="#" class="cta-button">Get 5 Month Supply</a>
+          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get 5 Month Supply</a>
         </div>
       </div>
 
       <p class="pricing-note">Most customers choose the 5 Month Supply because it provides enough time for complete scalp transformation and recovery.</p>
-    </section>
+    </div>
 
-    <section class="guarantee-section">
+    <!-- Guarantee -->
+    <div class="guarantee-section">
       <div class="guarantee-header">
-        <span class="icon large">🛡️</span>
+        <svg class="icon large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <h3>30-Day "Calmer Scalp or It's Free" Guarantee</h3>
       </div>
       
-      <p>I know you've wasted money on things that didn't work. I have too.</p>
-      
-      <p><strong>So here's the deal:</strong></p>
-      
-      <ul>
-        <li>Try Nevelle™ for up to 30 days</li>
-        <li>Use the bottles, see how your scalp responds</li>
-        <li>If you don't feel calmer, less itchy, and more in control —</li>
-        <li>Email us and we'll refund every penny</li>
-      </ul>
+      <div class="prose">
+        <p>I know you've wasted money on things that didn't work. I have too.</p>
+        
+        <p><strong>So here's the deal:</strong></p>
+        
+        <ul>
+          <li>Try Nevelle™ for up to 30 days</li>
+          <li>Use the bottles, see how your scalp responds</li>
+          <li>If you don't feel calmer, less itchy, and more in control —</li>
+          <li>Email us and we'll refund every penny</li>
+        </ul>
 
-      <p>No arguing. No hoops. No "prove it" photos.</p>
+        <p style="margin-top: 1.5rem;">No arguing. No hoops. No "prove it" photos.</p>
 
-      <p>If it doesn't help you, I don't want your money.</p>
+        <p><strong>If it doesn't help you, I don't want your money.</strong></p>
 
-      <p>Your scalp has punished you enough. Your wallet doesn't need to.</p>
-    </section>
+        <p style="font-style: italic;">Your scalp has punished you enough. Your wallet doesn't need to.</p>
+      </div>
+    </div>
 
-    <section class="final-cta">
+    <!-- Final CTA -->
+    <div class="final-cta">
       <h2>Final Word — From One Sufferer To Another</h2>
       
       <div class="prose">
@@ -710,58 +694,35 @@
         
         <p class="highlight">You're not dirty. You're not broken. You're not doing anything wrong. Your scalp isn't failing you.</p>
 
-        <p><strong>Your gardener just needs help.</strong></p>
+        <p>Your gardener just needs help.</p>
 
         <p>And once he calms down… everything changes. The flakes. The itch. The redness. The shame. The anxiety. The exhaustion.</p>
 
-        <p>They stop controlling you.</p>
+        <p><strong>They stop controlling you.</strong></p>
 
         <p>You can feel clean again. Confident again. Normal again. Like yourself again.</p>
 
         <p class="big">You deserve that. And your scalp deserves peace.</p>
       </div>
 
-      <a href="#" class="cta-button large">Start Your Scalp Reset Today →</a>
+      <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button large" style="max-width: 400px; margin: 0 auto;">Start Your Scalp Reset Today →</a>
 
       <p class="note">30-Day Money-Back Guarantee | Free Shipping | Made in Small Batches</p>
-    </section>
+    </div>
 
-    <footer class="disclaimer">
-      <p>Medical Disclaimer: This advertorial is for informational purposes only and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Always consult with a qualified healthcare professional before starting any new treatment regimen. Testimonials represent individual experiences and do not guarantee specific results.</p>
-    </footer>
-
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      <p><strong>Medical Disclaimer:</strong> This advertorial is for informational purposes only and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Always consult with a qualified healthcare professional before starting any new treatment regimen. Testimonials represent individual experiences and do not guarantee specific results.</p>
+    </div>
   </article>
 
-  <div class="sticky-cta" id="sticky-cta">
+  <!-- Sticky CTA -->
+  <div class="sticky-cta">
     <div class="sticky-cta-text">
       <p class="title">Ready to reset your scalp?</p>
       <p class="subtitle">30-Day Money-Back Guarantee</p>
     </div>
-    <a href="#" class="cta-button">Get Nevelle™ Now →</a>
+    <a href="https://nevelle.co/products/scalp-renewal-elixr" class="cta-button">Get Nevelle™ Now →</a>
   </div>
-
-  <script>
-    // Show sticky CTA only after scrolling past the product section
-    const stickyCta = document.getElementById('sticky-cta');
-    const productSection = document.getElementById('product-section');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-          // User has scrolled past the product section
-          stickyCta.classList.add('visible');
-        } else {
-          // Product section is still visible or user scrolled back up
-          stickyCta.classList.remove('visible');
-        }
-      });
-    }, {
-      threshold: 0,
-      rootMargin: '0px'
-    });
-
-    observer.observe(productSection);
-  </script>
-
 </body>
 </html>
