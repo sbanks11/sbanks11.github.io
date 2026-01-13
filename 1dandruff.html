@@ -32,17 +32,19 @@
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
     }
-    .nav-icon {
-      width: 32px;
-      height: 32px;
-      background: rgba(255,255,255,0.2);
+    .nav-logo {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
+      background: white;
+      overflow: hidden;
+    }
+    .nav-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .nav-title {
       font-size: 18px;
@@ -54,7 +56,7 @@
       opacity: 0.7;
     }
     header {
-      padding: 48px 24px 48px;
+      padding: 48px 24px;
       border-bottom: 1px solid #e5e7eb;
     }
     .header-inner {
@@ -81,11 +83,12 @@
       color: #4b5563;
       margin-bottom: 32px;
     }
+    
+    /* Author Section - Mobile First */
     .author-section {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
+      flex-direction: column;
+      gap: 16px;
       padding: 24px 0;
     }
     .author-item {
@@ -96,6 +99,8 @@
     .author-avatar {
       width: 40px;
       height: 40px;
+      min-width: 40px;
+      min-height: 40px;
       border-radius: 50%;
       background: #e5e7eb;
       border: 2px dashed #d1d5db;
@@ -104,6 +109,7 @@
       justify-content: center;
       color: #9ca3af;
       font-size: 12px;
+      flex-shrink: 0;
     }
     .author-info {
       text-align: left;
@@ -111,6 +117,7 @@
     .author-info p {
       font-size: 14px;
       color: #111827;
+      margin: 0;
     }
     .author-info .label {
       color: #6b7280;
@@ -122,12 +129,12 @@
     .author-info .role {
       font-size: 12px;
       color: #6b7280;
+      margin: 0;
     }
     .divider {
-      width: 1px;
-      height: 40px;
-      background: #d1d5db;
+      display: none;
     }
+    
     .hero-placeholder {
       margin-top: 32px;
       background: #f3f4f6;
@@ -696,20 +703,70 @@
       font-size: 14px;
       color: #6b7280;
     }
+    
+    /* Sticky CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1a365d;
+      padding: 10px 16px;
+      box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.1);
+      z-index: 50;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-cta.visible {
+      transform: translateY(0);
+    }
+    .sticky-cta-inner {
+      max-width: 896px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sticky-cta-btn {
+      background: #fbbf24;
+      color: #111827;
+      font-weight: bold;
+      padding: 8px 24px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .sticky-cta-btn:hover {
+      background: #fcd34d;
+      transform: scale(1.05);
+    }
+    
+    /* Desktop styles for author section */
+    @media (min-width: 641px) {
+      .author-section {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+      }
+      .divider {
+        display: block;
+        width: 1px;
+        height: 40px;
+        background: #d1d5db;
+      }
+    }
+    
     @media (max-width: 768px) {
       h1 {
         font-size: 1.875rem;
       }
-      .author-section {
-        flex-direction: column;
-        gap: 16px;
-      }
-      .divider {
-        width: 40px;
-        height: 1px;
-      }
       .nav-subtitle {
         display: none;
+      }
+      header {
+        padding: 32px 20px;
       }
     }
   </style>
@@ -719,9 +776,12 @@
   <nav class="nav">
     <div class="nav-inner">
       <div class="nav-brand">
-        <div class="nav-icon">🌊</div>
+        <div class="nav-logo">
+          <!-- Replace with your logo image -->
+          <img src="YOUR_LOGO_URL_HERE" alt="The Health Wave Logo">
+        </div>
         <div>
-          <h1 class="nav-title">The Health Wave</h1>
+          <div class="nav-title">The Health Wave</div>
         </div>
       </div>
       <span class="nav-subtitle">Trusted Health News</span>
@@ -735,7 +795,7 @@
       <h1>The Little Mistake That Keeps Your Dandruff Coming Back</h1>
       <p class="subtitle">The "Panicked Gardener" Problem — And Why Nothing You've Tried Has Lasted</p>
       
-      <!-- Author Info -->
+      <!-- Author Section -->
       <div class="author-section">
         <div class="author-item">
           <div class="author-avatar">📷</div>
@@ -744,7 +804,9 @@
             <p class="role">Health & Wellness Writer</p>
           </div>
         </div>
+        
         <div class="divider"></div>
+        
         <div class="author-item">
           <div class="author-avatar">📷</div>
           <div class="author-info">
@@ -754,7 +816,7 @@
         </div>
       </div>
       
-      <!-- Hero Image Placeholder -->
+      <!-- Hero Image -->
       <div class="hero-placeholder">
         <div class="placeholder-content">
           <div class="icon">🖼️</div>
@@ -767,13 +829,13 @@
   <!-- Article Content -->
   <article>
     <div class="article-inner">
-      <p style="font-size: 1.25rem;">If you clicked here because of the "panicked gardener" — you're in the right place.</p>
+      <p>If you clicked here because of the "panicked gardener" — you're in the right place.</p>
       
       <p>Maybe they called it dandruff, seb derm, eczema, or psoriasis. Maybe nobody gave you a clear answer — just stronger shampoos that worked for two weeks and stopped.</p>
       
       <div class="callout-amber">If you're reading this, you've probably reached that awful point I did: "Maybe I'm just stuck like this."</div>
       
-      <p style="font-size: 1.25rem; font-weight: 600;">But you're not.</p>
+      <p><strong>But you're not.</strong></p>
       
       <p>The reason nothing's worked is because nobody ever explained what's actually happening under your scalp — the hidden trigger that keeps restarting the cycle.</p>
       
@@ -785,12 +847,11 @@
       
       <div class="callout-blue">"Your scalp is like a garden. And your immune system is the gardener. In chronic scalp conditions, the gardener panics and starts spraying weed-killer everywhere… even when nothing's wrong."</div>
       
-      <p style="font-size: 1.25rem; font-weight: 600;">And suddenly… it all clicked.</p>
+      <p>And suddenly… it all clicked.</p>
       
       <div class="garden-box">
-        <p style="font-weight: 600; margin-bottom: 16px;">Think of your scalp like a garden.</p>
+        <p><strong>Think of your scalp like a garden.</strong></p>
         
-        <!-- Garden Metaphor Image Placeholder -->
         <div class="hero-placeholder" style="margin: 24px 0;">
           <div class="placeholder-content">
             <div class="icon">🖼️</div>
@@ -804,11 +865,11 @@
           <li>Your immune system is the gardener that's supposed to protect everything — gently.</li>
         </ul>
         
-        <p style="margin-top: 24px;">When everything's normal, the gardener trims dead plants, waters just enough, and keeps things calm.</p>
+        <p>When everything's normal, the gardener trims dead plants, waters just enough, and keeps things calm.</p>
         
-        <p class="highlight-text" style="margin-top: 16px;">But with an irritated, flaky scalp, the gardener panics.</p>
+        <p>But with an irritated, flaky scalp, <strong>the gardener panics.</strong></p>
         
-        <p style="margin-top: 16px;">He thinks your perfectly healthy scalp is full of weeds — even when it's not. So he grabs the strongest weed-killer he has (inflammation)… and starts spraying. Everywhere. Constantly.</p>
+        <p>He thinks your perfectly healthy scalp is full of weeds — even when it's not. So he grabs the strongest weed-killer he has (inflammation)… and starts spraying. Everywhere. Constantly.</p>
       </div>
       
       <h3>What happens next:</h3>
@@ -853,39 +914,43 @@
         </div>
       </div>
       
-      <div class="callout-red">That's why it feels like a loop you can't escape. Every flare, every scratch, every harsh shampoo is like pouring more weed-killer on already burned soil.</div>
+      <div class="callout-red">
+        That's why it feels like a loop you can't escape. Every flare, every scratch, every harsh shampoo is like pouring more weed-killer on already burned soil.
+      </div>
       
-      <p style="font-style: italic; font-size: 18px;">When I really saw this, I cried.</p>
+      <p><em>When I really saw this, I cried.</em></p>
       
       <p>Because for the first time in years, it wasn't "my scalp is broken." It was: <strong>"My gardener is terrified. No one ever taught him how to stand down."</strong></p>
 
       <h2>Here's What Made Me Furious</h2>
       
-      <p class="highlight-text" style="font-size: 1.25rem;">The entire scalp care industry is designed to manage symptoms — not fix them.</p>
+      <p><strong class="highlight-text">The entire scalp care industry is designed to manage symptoms — not fix them.</strong></p>
       
       <p>Every "anti-dandruff" shampoo strips flakes from the surface. Works for two weeks, then stops. So you buy another bottle. And another.</p>
       
-      <p style="font-weight: 600;">Head & Shoulders makes over $400 million a year. They're not trying to heal you. They're creating lifetime customers.</p>
+      <p><strong>Head & Shoulders makes over $400 million a year.</strong> They're not trying to heal you. They're creating lifetime customers.</p>
       
       <p>The doctors aren't better. Twelve minutes per appointment and a prescription pad. I spent $3,200 on dermatologists and treatments over 11 years. Not one person explained the gardener.</p>
       
-      <p style="font-style: italic;">All those years feeling broken. Feeling dirty. Feeling like I was failing at something everyone else managed fine.</p>
+      <p><em>All those years feeling broken. Feeling dirty. Feeling like I was failing at something everyone else managed fine.</em></p>
       
-      <p style="font-size: 1.25rem; font-weight: 600; margin-top: 24px;">It wasn't my fault. It was never my fault.</p>
+      <p><strong>It wasn't my fault. It was never my fault.</strong></p>
       
-      <div class="gray-box">The system isn't designed to help you heal. It's designed to help you manage — forever.</div>
+      <div class="gray-box">
+        The system isn't designed to help you heal. It's designed to help you manage — forever.
+      </div>
 
       <h2>The "All-Clear Reset" — How You Actually Teach the Gardener to Chill Out</h2>
       
       <p>If your immune system (the gardener) keeps spraying weed-killer on healthy soil… You can't fix that with washing, scrubbing, detoxing, coal tar, steroids, antifungals, oils, acids, or "cooling sprays."</p>
       
-      <p style="font-weight: 600;">None of these calm the gardener. Most irritate him even more.</p>
+      <p><strong>None of these calm the gardener. Most irritate him even more.</strong></p>
       
       <p class="highlight-text" style="font-size: 1.25rem; margin: 24px 0;">The ONLY real solution? You have to teach the gardener:</p>
       
-      <div style="text-align: center; font-size: 1.5rem; font-weight: bold; font-style: italic; color: #1a365d; margin: 32px 0;">"You're safe. Stop spraying. The soil is fine."</div>
+      <div class="callout-blue" style="text-align: center; font-size: 1.5rem; font-weight: bold;">"You're safe. Stop spraying. The soil is fine."</div>
       
-      <p style="font-weight: 600; margin-bottom: 24px;">This requires FOUR things:</p>
+      <p><strong>This requires FOUR things:</strong></p>
       
       <div class="step-box">
         <div class="step-number">1</div>
@@ -924,7 +989,8 @@
       <p>Once I understood the gardener and the garden — the true biology under the scalp — I went looking for something that supported all four steps.</p>
       
       <p>Something that:</p>
-      <ul style="margin-left: 24px; margin-bottom: 24px;">
+      
+      <ul>
         <li>Calmed inflammation</li>
         <li>Rebuilt the barrier</li>
         <li>Reset cell growth</li>
@@ -934,37 +1000,39 @@
         <li>Wasn't a temporary band-aid</li>
       </ul>
       
-      <p style="font-weight: 600; margin-top: 24px;">But everything I found was wrong for inflamed scalps.</p>
+      <p><strong>But everything I found was wrong for inflamed scalps.</strong></p>
       
       <p>Shampoos too harsh. Scrubs too abrasive. Oils too heavy. Steroids too temporary.</p>
       
-      <p style="font-size: 18px; font-style: italic;">Nobody was making something that helps the gardener stop panicking AND heals the soil.</p>
+      <p><em>Nobody was making something that helps the gardener stop panicking AND heals the soil.</em></p>
       
       <p>I was about to give up. And then someone in a scalp support group mentioned a small company that had been working on exactly this problem — not just treating flakes, but actually restoring the scalp's biology.</p>
       
       <p>They'd spent over a year developing it. Tested dozens of formulations. Worked with dermatological chemists who understood the immune-barrier connection.</p>
       
       <p>When I read what was in it — and more importantly, why each ingredient was there — it was the first time I'd seen a product that matched what I'd learned about how the scalp actually heals.</p>
+    </div>
+  </article>
 
-      <!-- Product Introduction -->
-      <div class="product-intro">
-        <h2>Introducing Nevelle™ Scalp Renewal Elixir</h2>
-        
-        <div class="product-image">
-          <!-- Replace with actual image -->
-          <div class="hero-placeholder" style="aspect-ratio: 1; border-radius: 16px;">
-            <div class="placeholder-content">
-              <div class="icon">🖼️</div>
-              <p>Product Image</p>
-            </div>
-          </div>
+  <!-- Product Introduction -->
+  <div class="product-intro" id="product-section">
+    <h2>Introducing Nevelle™ Scalp Renewal Elixir</h2>
+    
+    <div class="product-image">
+      <div class="hero-placeholder" style="aspect-ratio: 3/4;">
+        <div class="placeholder-content">
+          <div class="icon">🖼️</div>
+          <p>Product Image</p>
         </div>
-        
-        <p style="font-size: 18px; color: #374151; margin-bottom: 24px;">When I read the formula, it was the first time I'd seen a product that mapped to everything I'd learned.</p>
-        
-        <p class="highlight-text">Every ingredient addressed one of the four steps. Nothing extra. Nothing irritating.</p>
       </div>
-      
+    </div>
+    
+    <p>When I read the formula, it was the first time I'd seen a product that mapped to everything I'd learned.</p>
+    <p><strong class="highlight-text">Every ingredient addressed one of the four steps. Nothing extra. Nothing irritating.</strong></p>
+  </div>
+
+  <article>
+    <div class="article-inner">
       <h3>What it does:</h3>
       
       <div class="check-item">
@@ -1001,14 +1069,14 @@
       
       <div class="gray-box">
         <p><strong>What it's NOT:</strong> A shampoo, scrub, oil, steroid, or temporary fix.</p>
-        <p style="margin-top: 8px;"><strong>What it IS:</strong> A daily leave-on serum — like skincare for your scalp.</p>
+        <p><strong>What it IS:</strong> A daily leave-on serum — like skincare for your scalp.</p>
       </div>
       
       <p>You apply once daily. Absorbs in seconds. No residue, no greasiness, no smell. Your hair looks exactly the same.</p>
       
-      <p class="highlight-text" style="font-size: 18px; margin-top: 16px;">The only thing you notice is what's missing: the burn, the tightness, the immediate itch.</p>
+      <p><strong class="highlight-text">The only thing you notice is what's missing: the burn, the tightness, the immediate itch.</strong></p>
       
-      <p style="font-size: 1.25rem; font-style: italic; margin-top: 16px;">For the first time, my scalp felt quiet.</p>
+      <p><em>For the first time, my scalp felt quiet.</em></p>
 
       <h2>The Science Inside</h2>
       
@@ -1060,39 +1128,33 @@
       <h2>What to Expect</h2>
       
       <div class="timeline-item">
-        <div class="timeline-badge">Week 1</div>
+        <span class="timeline-badge">Week 1</span>
         <p>Itch reduction (often within 2-3 days). Less scratching.</p>
       </div>
+      
       <div class="timeline-item">
-        <div class="timeline-badge">Week 2-3</div>
+        <span class="timeline-badge">Week 2-3</span>
         <p>Visible flake reduction. No more white dust on shoulders.</p>
       </div>
+      
       <div class="timeline-item">
-        <div class="timeline-badge">Week 4-6</div>
+        <span class="timeline-badge">Week 4-6</span>
         <p>Flakes mostly gone. Can wear black without panicking.</p>
       </div>
+      
       <div class="timeline-item">
-        <div class="timeline-badge">Week 8-12</div>
+        <span class="timeline-badge">Week 8-12</span>
         <p>Scalp feels truly healed. Stop thinking about it constantly.</p>
       </div>
       
       <div class="blue-callout">
-        With continuous use, the gardener stops spraying. The soil heals. The plants grow normally. The garden is balanced again.
-        <br><br>
-        <strong>Your scalp finally lets you live.</strong>
-      </div>
-
-      <!-- Image Placeholder -->
-      <div class="hero-placeholder">
-        <div class="placeholder-content">
-          <div class="icon">🖼️</div>
-          <p>Image</p>
-        </div>
+        <p>With continuous use, the gardener stops spraying. The soil heals. The plants grow normally. The garden is balanced again.</p>
+        <p><strong>Your scalp finally lets you live.</strong></p>
       </div>
 
       <h2>Real Stories From "I've Tried Everything" Sufferers</h2>
       
-      <div class="testimonial-section" id="testimonialCarousel">
+      <div class="testimonial-section">
         <div class="testimonial-container">
           <div class="testimonial-card">
             <div class="testimonial-image">
@@ -1151,7 +1213,7 @@
 
       <h2>What Life Feels Like 30, 60, 90 Days From Now</h2>
       
-      <p style="font-weight: 600; margin-bottom: 16px;">Imagine:</p>
+      <p>Imagine:</p>
       
       <ul class="life-list">
         <li>✓ Wearing black confidently</li>
@@ -1164,9 +1226,9 @@
         <li>✓ Feeling feminine, clean, and put-together again</li>
       </ul>
       
-      <p class="highlight-text" style="font-size: 1.25rem; margin-top: 24px;">Imagine looking in the mirror and thinking: "There I am."</p>
+      <p><strong class="highlight-text">Imagine looking in the mirror and thinking: "There I am."</strong></p>
       
-      <p style="font-size: 18px; margin-top: 16px;">That's what happens when the gardener is calm.</p>
+      <p>That's what happens when the gardener is calm.</p>
     </div>
   </article>
 
@@ -1177,17 +1239,17 @@
         <h2>Choose Your Reset Package</h2>
         <p>Your scalp needs time to retrain. Choose the bundle that gives you the full reset.</p>
         
-        <!-- Product Image Placeholder -->
-        <div class="hero-placeholder" style="max-width: 672px; margin: 32px auto 0;">
-          <div class="placeholder-content">
-            <div class="icon">🖼️</div>
-            <p>Product Image</p>
+        <div class="product-image" style="max-width: 200px;">
+          <div class="hero-placeholder" style="aspect-ratio: 1/1;">
+            <div class="placeholder-content">
+              <div class="icon">🖼️</div>
+              <p>Product Image</p>
+            </div>
           </div>
         </div>
       </div>
       
       <div class="pricing-grid">
-        <!-- 1 Month -->
         <div class="pricing-card">
           <h3>1 Month Supply</h3>
           <p class="save-text">Save 35% — Perfect to feel the difference</p>
@@ -1200,10 +1262,9 @@
             <li>✓ Experience the calming effect</li>
             <li>✓ See visible improvement</li>
           </ul>
-          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="pricing-btn pricing-btn-light">View 1 Month Supply</a>
+          <a href="https://nevelle.co/products/scalp-renewal-elixr?fbclid={fbclid}&_fbp={_fbp}&_fbc={_fbc}" class="pricing-btn pricing-btn-light">View 1 Month Supply</a>
         </div>
         
-        <!-- 3 Month -->
         <div class="pricing-card">
           <h3>3 Month Supply</h3>
           <p class="save-text">Save 60% — Buy 2 Get 1 Free</p>
@@ -1219,13 +1280,12 @@
             <li>✓ $23.67 per month</li>
             <li>✓ $0.79 per day</li>
           </ul>
-          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="pricing-btn pricing-btn-light">View 3 Month Supply</a>
+          <a href="https://nevelle.co/products/scalp-renewal-elixr?fbclid={fbclid}&_fbp={_fbp}&_fbc={_fbc}" class="pricing-btn pricing-btn-light">View 3 Month Supply</a>
         </div>
         
-        <!-- 5 Month - Most Popular -->
         <div class="pricing-card featured">
-          <div class="most-popular-badge">Most Popular</div>
-          <h3 style="margin-top: 8px;">5 Month Supply</h3>
+          <span class="most-popular-badge">Most Popular</span>
+          <h3>5 Month Supply</h3>
           <p class="save-text">Save 70% — Buy 3 Get 2 Free</p>
           <div class="price">
             <span class="old">$295.00</span>
@@ -1239,11 +1299,11 @@
             <li>✓ $17.80 per month</li>
             <li>✓ $0.59 per day</li>
           </ul>
-          <a href="https://nevelle.co/products/scalp-renewal-elixr" class="pricing-btn pricing-btn-gold">View 5 Month Supply</a>
+          <a href="https://nevelle.co/products/scalp-renewal-elixr?fbclid={fbclid}&_fbp={_fbp}&_fbc={_fbc}" class="pricing-btn pricing-btn-gold">View 5 Month Supply</a>
         </div>
       </div>
       
-      <p style="text-align: center; color: #6b7280; margin-top: 32px; font-size: 14px;">Most customers choose the 5 Month Supply because it provides enough time for complete scalp transformation and recovery.</p>
+      <p style="text-align: center; margin-top: 32px; color: #6b7280;">Most customers choose the 5 Month Supply because it provides enough time for complete scalp transformation and recovery.</p>
     </div>
   </section>
 
@@ -1252,18 +1312,18 @@
     <div class="guarantee-inner">
       <div class="guarantee-icon">🛡️</div>
       <h2>30-Day "Calmer Scalp or It's Free" Guarantee</h2>
-      <p style="color: #4b5563; margin-bottom: 24px;">I know you've wasted money on things that didn't work. I have too.</p>
+      <p>I know you've wasted money on things that didn't work. I have too.</p>
       <div class="guarantee-box">
-        <p style="font-weight: 600;">So here's the deal:</p>
+        <p><strong>So here's the deal:</strong></p>
         <ul>
           <li>→ Try Nevelle™ for up to 30 days</li>
           <li>→ Use the bottles, see how your scalp responds</li>
-          <li>→ If you don't feel calmer, less itchy, and more in control —</li>
+          <li class="bold-li">→ If you don't feel calmer, less itchy, and more in control —</li>
           <li class="bold-li">→ Email Nevelle and they will refund every penny</li>
         </ul>
       </div>
-      <p class="highlight-text" style="font-size: 18px; margin-top: 24px;">No arguing. No hoops. No "prove it" photos.</p>
-      <p style="color: #4b5563; margin-top: 16px;">Your scalp has punished you enough. Your wallet doesn't need to.</p>
+      <p style="margin-top: 24px;"><strong class="highlight-text">No arguing. No hoops. No "prove it" photos.</strong></p>
+      <p>Your scalp has punished you enough. Your wallet doesn't need to.</p>
     </div>
   </section>
 
@@ -1273,7 +1333,7 @@
       <h2>Questions I Had Before I Tried It</h2>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"I've tried everything — why would this be different?"</span>
           <span>+</span>
         </button>
@@ -1281,7 +1341,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"What if it works for a few weeks, then stops like everything else?"</span>
           <span>+</span>
         </button>
@@ -1289,7 +1349,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"How is this different from natural products that didn't work?"</span>
           <span>+</span>
         </button>
@@ -1297,7 +1357,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"I'm exhausted by complicated routines."</span>
           <span>+</span>
         </button>
@@ -1305,7 +1365,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"Will it make my hair greasy?"</span>
           <span>+</span>
         </button>
@@ -1313,7 +1373,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"I've wasted so much money already — why spend more?"</span>
           <span>+</span>
         </button>
@@ -1321,7 +1381,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"How soon will I see results?"</span>
           <span>+</span>
         </button>
@@ -1329,7 +1389,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"Will this work with my hair type?"</span>
           <span>+</span>
         </button>
@@ -1337,7 +1397,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"Can I use this with my medicated shampoo?"</span>
           <span>+</span>
         </button>
@@ -1345,7 +1405,7 @@
       </div>
       
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           <span>"What if I'm the one person this doesn't work for?"</span>
           <span>+</span>
         </button>
@@ -1355,35 +1415,34 @@
   </section>
 
   <!-- Final Section -->
-  <section class="final-section">
+  <section class="final-section" id="final-section">
     <div class="final-inner">
       <h2>Final Word — From One Sufferer To Another</h2>
       
       <p>If no one has told you this yet, let me be the first:</p>
       
-      <p style="font-size: 1.25rem; font-weight: 600;">You're not dirty. You're not broken. You're not doing anything wrong. Your scalp isn't failing you.</p>
+      <p><strong>You're not dirty. You're not broken. You're not doing anything wrong. Your scalp isn't failing you.</strong></p>
       
-      <p>Your gardener just needs help.</p>
+      <p class="highlight">Your gardener just needs help.</p>
       
       <p>And once he calms down… everything changes. The flakes. The itch. The redness. The shame. The anxiety. The exhaustion.</p>
       
-      <p class="highlight">They stop controlling you.</p>
+      <p><strong>They stop controlling you.</strong></p>
       
       <p>You can feel clean again. Confident again. Normal again. Like yourself again.</p>
       
-      <p style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">You deserve that. And your scalp deserves peace.</p>
+      <p><strong>You deserve that. And your scalp deserves peace.</strong></p>
       
       <div class="final-cta-image">
-        <!-- Replace with actual image -->
-        <div class="hero-placeholder" style="aspect-ratio: 1; border-radius: 16px; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
-          <div class="placeholder-content" style="color: rgba(255,255,255,0.6);">
+        <div class="hero-placeholder" style="aspect-ratio: 3/4;">
+          <div class="placeholder-content">
             <div class="icon">🖼️</div>
             <p>Product Image</p>
           </div>
         </div>
       </div>
       
-      <a href="https://nevelle.co/products/scalp-renewal-elixr" class="final-btn">Start Your Scalp Reset Today →</a>
+      <a href="https://nevelle.co/products/scalp-renewal-elixr?fbclid={fbclid}&_fbp={_fbp}&_fbc={_fbc}" class="final-btn">Start Your Scalp Reset Today →</a>
       
       <p class="final-disclaimer">30-Day Money-Back Guarantee | Made in Small Batches</p>
     </div>
@@ -1391,57 +1450,38 @@
 
   <!-- Footer -->
   <footer>
-    <p><strong>Medical Disclaimer:</strong> This advertorial is for informational purposes only and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Always consult with a qualified healthcare professional before starting any new treatment regimen. Testimonials represent individual experiences and do not guarantee specific results.</p>
+    <p>Medical Disclaimer: This advertorial is for informational purposes only and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Always consult with a qualified healthcare professional before starting any new treatment regimen. Testimonials represent individual experiences and do not guarantee specific results.</p>
   </footer>
 
+  <!-- Sticky CTA -->
+  <div class="sticky-cta" id="sticky-cta">
+    <div class="sticky-cta-inner">
+      <a href="https://nevelle.co/products/scalp-renewal-elixr?fbclid={fbclid}&_fbp={_fbp}&_fbc={_fbc}" class="sticky-cta-btn">Get Nevelle Now →</a>
+    </div>
+  </div>
+
   <script>
-    function toggleFaq(button) {
-      const faqItem = button.parentElement;
-      const isOpen = faqItem.classList.contains('open');
+    // Sticky CTA visibility logic
+    const stickyCta = document.getElementById('sticky-cta');
+    const productSection = document.getElementById('product-section');
+    const finalSection = document.getElementById('final-section');
+
+    function handleScroll() {
+      const productRect = productSection.getBoundingClientRect();
+      const finalRect = finalSection.getBoundingClientRect();
       
-      // Close all FAQ items
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('open');
-        item.querySelector('.faq-question span:last-child').textContent = '+';
-      });
+      const hasPassedProduct = productRect.top <= window.innerHeight;
+      const hasReachedFinal = finalRect.top <= window.innerHeight;
       
-      // Open clicked one if it wasn't already open
-      if (!isOpen) {
-        faqItem.classList.add('open');
-        button.querySelector('span:last-child').textContent = '−';
+      if (hasPassedProduct && !hasReachedFinal) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
       }
     }
-    
-    // Testimonial carousel drag scroll
-    const carousel = document.getElementById('testimonialCarousel');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    
-    carousel.addEventListener('mousedown', (e) => {
-      isDown = true;
-      carousel.style.cursor = 'grabbing';
-      startX = e.pageX - carousel.offsetLeft;
-      scrollLeft = carousel.scrollLeft;
-    });
-    
-    carousel.addEventListener('mouseleave', () => {
-      isDown = false;
-      carousel.style.cursor = 'grab';
-    });
-    
-    carousel.addEventListener('mouseup', () => {
-      isDown = false;
-      carousel.style.cursor = 'grab';
-    });
-    
-    carousel.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - carousel.offsetLeft;
-      const walk = (x - startX) * 1;
-      carousel.scrollLeft = scrollLeft - walk;
-    });
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
   </script>
 </body>
 </html>
