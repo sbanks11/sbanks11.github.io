@@ -1,625 +1,1004 @@
 <html lang="en">
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <link rel="icon" type="image/png" href="/d4rEH4U.png">
-      <link rel="apple-touch-icon" href="/d4rEH4U.png">
-      <title>Freecash - Download App</title>
-      <style>
-          :root{
-              --bg: #05050A;
-              --text: #f0f6ff;
-              --muted: #9AA0AE;
-              --brand: #00ff88;
-              --brand2: #00d175;
-              --accent-red: #ff4757;
-              --bg-card: #0E0E14;
-              --border: #1a1a27;
-              --brand-glow: rgba(0,255,136,0.25);
-          }
-  
-          *{box-sizing:border-box}
-          html,body{margin:0;height:100%}
-          body{
-              color:var(--text);
-              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-              overflow-x:hidden;
-              min-height:100vh;
-              line-height:1.47059;
-              font-weight:400;
-              letter-spacing:-.022em;
-              background-color: var(--bg);
-              background-image:
-                  radial-gradient(circle at 10% 80%, rgba(0,255,136,.08) 0%, transparent 45%),
-                  radial-gradient(circle at 90% 20%, rgba(0,255,136,.05) 0%, transparent 45%),
-                  linear-gradient(to top, rgba(0,0,0,0.1), transparent);
-              position: relative;
-          }
-  
-          .bg-orb{
-              position:fixed;
-              border-radius:50%;
-              filter:blur(80px);
-              opacity:.3;
-              pointer-events:none;
-              z-index:0;
-          }
-          .orb1{
-              width:400px;height:400px;
-              background:radial-gradient(circle, rgba(0,255,136,.4), transparent);
-              top:-100px;left:-100px;
-              animation:float1 20s ease-in-out infinite;
-          }
-          .orb2{
-              width:300px;height:300px;
-              background:radial-gradient(circle, rgba(0,213,117,.3), transparent);
-              bottom:-50px;right:-50px;
-              animation:float2 15s ease-in-out infinite;
-          }
-  
-          @keyframes float1{
-              0%, 100%{transform:translate(0,0) scale(1);}
-              50%{transform:translate(50px,50px) scale(1.1);}
-          }
-          @keyframes float2{
-              0%, 100%{transform:translate(0,0) scale(1);}
-              50%{transform:translate(-30px,-40px) scale(1.15);}
-          }
-  
-          .container {
-              max-width: 480px;
-              margin: 0 auto;
-              padding: 60px 20px 40px;
-              text-align: center;
-              position: relative;
-              z-index: 1;
-          }
-  
-          .logo-wrapper{
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              gap: 16px;
-              margin:0 auto 20px;
-          }
-          
-          .logo-container {
-              width:70px;
-              height:70px;
-              border-radius:20px;
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              background:rgba(0,255,136,.1);
-              border:1px solid rgba(0,255,136,.3);
-              box-shadow:0 10px 40px rgba(0,255,136,.4);
-              transition: transform 0.3s ease;
-          }
-          
-          .logo-container:hover {
-              transform: scale(1.05);
-          }
-          
-          .logo{
-              width:70px;
-              height:70px;
-              object-fit:cover;
-              border-radius:20px;
-          }
-          
-          .partnership-x {
-              font-size: 32px;
-              font-weight: 900;
-              background: linear-gradient(135deg, #fff 0%, var(--brand) 100%);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              text-shadow: 0 2px 8px rgba(0,255,136,.5);
-              animation: pulse-x 2s ease-in-out infinite;
-              user-select: none;
-          }
-          
-          @keyframes pulse-x {
-              0%, 100% { 
-                  transform: scale(1);
-                  filter: drop-shadow(0 0 8px rgba(0,255,136,.4));
-              }
-              50% { 
-                  transform: scale(1.1);
-                  filter: drop-shadow(0 0 16px rgba(0,255,136,.6));
-              }
-          }
-  
-          .section {
-              opacity: 1;
-              transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-          }
-  
-          .section.fade-out {
-              opacity: 0;
-              transform: translateY(-20px);
-          }
-  
-          .section.hidden {
-              display: none;
-          }
-  
-          .section.fade-in {
-              animation: fadeIn 0.5s ease-out forwards;
-          }
-  
-          @keyframes fadeIn {
-              from {
-                  opacity: 0;
-                  transform: translateY(20px);
-              }
-              to {
-                  opacity: 1;
-                  transform: translateY(0);
-              }
-          }
-  
-          .main-title {
-              font-size: 56px;
-              font-weight: 900;
-              line-height: 1.1;
-              margin: 30px 0 20px;
-              background: linear-gradient(90deg, var(--text), var(--brand));
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              text-shadow: 0 2px 4px rgba(0,0,0,.3);
-          }
-  
-          .question-subtitle {
-              font-size: 15px;
-              color: var(--muted);
-              margin-bottom: 40px;
-              line-height: 1.5;
-          }
-  
-          .age-buttons {
-              display: flex;
-              flex-direction: column;
-              gap: 20px;
-              max-width: 400px;
-              margin: 0 auto;
-          }
-  
-          .age-btn {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              padding: 18px 24px;
-              background: #1a1d29;
-              border: 2px solid #2a2d39;
-              border-radius: 12px;
-              cursor: pointer;
-              transition: all 0.3s ease;
-              text-decoration: none;
-          }
-  
-          .age-btn-title {
-              font-size: 18px;
-              font-weight: 700;
-              margin-bottom: 4px;
-              color: var(--text);
-          }
-  
-          .age-btn-subtitle {
-              font-size: 12px;
-              color: #787c89;
-              font-weight: 500;
-              line-height: 1.4;
-              opacity: 0.8;
-          }
-  
-          .age-btn.primary {
-              background: var(--brand);
-              border-color: var(--brand);
-              box-shadow: 0 8px 30px rgba(0,255,136,.4);
-          }
-  
-          .age-btn.primary .age-btn-title {
-              color: #000;
-          }
-  
-          .age-btn.primary .age-btn-subtitle {
-              color: #004d2e;
-              opacity: 0.7;
-          }
-  
-          .age-btn:hover {
-              transform: translateY(-3px);
-              box-shadow: 0 12px 35px rgba(0,255,136,.2);
-          }
-  
-          .age-btn.primary:hover {
-              background: #00ff88;
-              box-shadow: 0 12px 40px rgba(0,255,136,.5);
-          }
-  
-          .age-btn:active {
-              transform: translateY(-1px);
-          }
-  
-          .youre-in-section {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: 16px;
-              margin: 30px 0 20px;
-          }
-          .check-circle {
-              width: 60px;
-              height: 60px;
-              background: var(--brand);
-              border-radius: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              flex-shrink: 0;
-              box-shadow: 0 0 20px var(--brand-glow);
-          }
-          .check-circle svg {
-              width: 32px;
-              height: 32px;
-              color: var(--bg);
-          }
-          .youre-in-text {
-              font-size: 52px;
-              font-weight: 900;
-              line-height: 1;
-              background: linear-gradient(90deg, var(--text), var(--brand));
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              text-shadow: 0 2px 4px rgba(0,0,0,.3);
-          }
-          .text-neon { color: var(--brand); }
-  
-          .subtitle{
-              font-size:15px;
-              color:var(--muted);
-              line-height:1.5;
-              margin-bottom:30px;
-              padding:0 10px;
-          }
-  
-          .card{
-              background:var(--bg-card);
-              border:1px solid var(--border);
-              border-radius:24px;
-              text-align:left;
-              backdrop-filter:blur(20px);
-              box-shadow:0 12px 40px rgba(0,0,0,0.8), 0 0 30px var(--brand-glow);
-              position:relative;
-              padding: 0;
-              margin-top: 40px;
-          }
-  
-          .section-title{
-              font-size:14px;
-              font-weight:700;
-              text-align:center;
-              margin-top:0;
-              margin-bottom:0;
-              padding: 24px 0;
-              color: var(--muted);
-              text-shadow: none;
-              font-family: 'Inter', sans-serif;
-              letter-spacing: 1px;
-              text-transform: uppercase;
-          }
-  
-          .li{
-              display:flex;gap:16px;
-              padding:20px 24px;
-              border-bottom:1px solid var(--border);
-              align-items:flex-start;
-              text-align: left;
-              background: transparent;
-          }
-          .li:first-of-type {
-               border-top: 1px solid var(--border);
-           }
-          .li:last-child{border-bottom:0}
-  
-          .check{
-              display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;
-              border-radius:50%;
-              background:var(--brand);
-              font-size:14px;font-weight:700;color:var(--bg);flex-shrink:0;
-              box-shadow:0 0 10px var(--brand-glow);
-          }
-          .li b{
-              display:block;
-              color:var(--text);
-              font-size:16px;
-              margin-bottom:4px;
-              font-weight:700;
-          }
-          .muted-text{
-              color:var(--muted);
-              font-size:13px;
-              line-height:1.4;
-          }
-  
-          .cta{
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              gap:12px;
-              width:100%;
-              background:linear-gradient(135deg, var(--brand), var(--brand2));
-              color:var(--bg) !important;
-              font-weight:800;
-              font-size:17px;
-              text-transform:uppercase;
-              letter-spacing:.5px;
-              border:0;
-              border-radius:16px;
-              padding:20px;
-              margin-top:30px;
-              margin-bottom: 40px;
-              text-decoration:none;
-              cursor:pointer;
-              position:relative;
-              overflow:hidden;
-              box-shadow:0 10px 30px var(--brand-glow);
-              transition: all 0.3s ease;
-              animation: pulse 3s ease-in-out infinite;
-          }
-          .cta-icon{
-              width:24px;
-              height:24px;
-              flex-shrink:0;
-          }
-          .cta::before{
-              content:'';
-              position:absolute;
-              top:0;left:-100%;
-              width:100%;height:100%;
-              background:linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
-              transition:left 0.5s;
-          }
-          .cta:hover{
-              transform:translateY(-2px);
-              box-shadow:0 15px 40px rgba(0,255,136,.5);
-          }
-          .cta:hover::before{left:100%;}
-  
-          .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:16px;opacity:.7;}
-  
-          .activation-notice {
-              background: linear-gradient(135deg, #1a0f0a 0%, #0f1419 100%);
-              border: 2px solid var(--accent-red);
-              border-radius: 16px;
-              padding: 20px;
-              margin-top: 24px;
-              text-align: left;
-              box-shadow: 0 0 30px rgba(255,71,87,.3);
-              animation: glow-border 2s ease-in-out infinite;
-              position: relative;
-          }
-  
-          .activation-notice::before{
-              content:'⚠️ IMPORTANT';
-              position:absolute;
-              top:-1px;
-              right:20px;
-              background:var(--accent-red);
-              color:#fff;
-              font-size:10px;
-              font-weight:800;
-              padding:4px 12px;
-              border-radius:0 0 8px 8px;
-              letter-spacing:.5px;
-          }
-  
-          @keyframes glow-border {
-              0%, 100% { 
-                  box-shadow: 0 0 20px rgba(255,71,87,.3);
-                  border-color: var(--accent-red);
-              }
-              50% { 
-                  box-shadow: 0 0 35px rgba(255,71,87,.5);
-                  border-color: #ff6b7a;
-              }
-          }
-  
-          .activation-header {
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              margin-bottom: 12px;
-          }
-  
-          .lock-icon {
-              font-size: 20px;
-              line-height: 1;
-              flex-shrink: 0;
-          }
-  
-          .activation-title {
-              font-size: 16px;
-              font-weight: 700;
-              color: var(--text);
-              flex: 1;
-          }
-  
-          .activation-text {
-              font-size: 14px;
-              color: var(--muted);
-              line-height: 1.5;
-              margin: 0;
-          }
-  
-          .highlight-green {
-              color: var(--brand);
-              font-weight: 700;
-          }
-  
-          @keyframes pulse {
-              0%, 100% { box-shadow:0 10px 30px var(--brand-glow); }
-              50% { box-shadow:0 15px 40px rgba(0,255,136,.6);}
-          }
-  
-          .debug-banner {
-              position:fixed;
-              top:0;left:0;right:0;
-              background:#1a1a2e;
-              border-bottom:2px solid #00ff88;
-              padding:12px 16px;
-              z-index:9999;
-              font-family:monospace;
-              font-size:12px;
-          }
-  
-          @media (max-width: 600px) {
-              .container { padding: 100px 16px 32px; }
-              .main-title { font-size: 46px; }
-              .youre-in-text { font-size: 42px; }
-              .li { padding-left: 16px; padding-right: 16px; }
-              .age-btn-title { font-size: 18px; }
-          }
-      </style>
-  </head>
-  <body>
-      
-      <div class="bg-orb orb1"></div>
-      <div class="bg-orb orb2"></div>
-  
-      <div class="container">
-          <!-- FIRST STEP: Age Selection -->
-          <section class="section" id="firstStep">
-              <div class="logo-wrapper">
-                  <div class="logo-container">
-                      <img class="logo" src="images/logo-do-tik-tok_578229-290.webp" alt="TikTok Logo">
-                  </div>
-                  <span class="partnership-x">×</span>
-                  <div class="logo-container">
-                      <img class="logo" src="images/d4rEH4U.webp" alt="Freecash Logo">
-                  </div>
-              </div>
-  
-              <h1 class="main-title">Get Paid to Scroll</h1>
-              <p class="question-subtitle">Join thousands earning daily by watching TikTok videos<br>and cashing out instantly.</p>
-  
-              <div class="age-buttons">
-                  <button class="age-btn primary" onclick="selectAge('over21', 'https://www.phef6trk.com/HCZ3GL/2TMR6KR/?sub1=f1')">
-                      <div class="age-btn-title">I'm over 21</div>
-                      <div class="age-btn-subtitle">Instant Payouts: PayPal, CashApp, Venmo, Crypto &amp; Wire</div>
-                  </button>
-                  <button class="age-btn" onclick="selectAge('under21', 'https://www.phef6trk.com/HCZ3GL/2TMR6KR/?sub1=f1')">
-                      <div class="age-btn-title">I'm under 21</div>
-                      <div class="age-btn-subtitle">Limited Payouts: Wire Transfer Only</div>
-                  </button>
-              </div>
-          </section>
-  
-          <!-- SECOND STEP: You're In! -->
-          <section class="section hidden" id="secondStep">
-              <div class="logo-wrapper">
-                  <div class="logo-container">
-                      <img class="logo" src="images/logo-do-tik-tok_578229-290.webp" alt="TikTok Logo">
-                  </div>
-                  <span class="partnership-x">×</span>
-                  <div class="logo-container">
-                      <img class="logo" src="images/d4rEH4U.webp" alt="Freecash Logo">
-                  </div>
-              </div>
-  
-              <div class="youre-in-section">
-                  <div class="check-circle">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                  </div>
-                  <div class="youre-in-text">
-                      You're <span class="text-neon">In!</span>
-                  </div>
-              </div>
-  
-              <p class="subtitle" style="margin-bottom: 32px; padding: 0;">
-                  Your account is pre-qualified for higher payouts. Download the app to activate full access.
-              </p>
-  
-              <div class="card">
-                  <div class="section-title">YOUR EARNING JOURNEY</div>
-                  <div class="li">
-                      <span class="check">1</span>
-                      <div>
-                          <b>Download the Freecash App</b>
-                          <div class="muted-text">Available on iOS &amp; Android - Takes less than 60 seconds</div>
-                      </div>
-                  </div>
-                  <div class="li">
-                      <span class="check">2</span>
-                      <div>
-                          <b>Complete 2-3 games or offers to unlock the TikTok scroll option</b>
-                          <div class="muted-text">Test apps &amp; games, or take surveys!</div>
-                      </div>
-                  </div>
-                  <div class="li" style="border-bottom: none;">
-                      <span class="check">3</span>
-                      <div>
-                          <b>Scroll TikTok & Cash Out Your Earnings</b>
-                          <div class="muted-text">Instant Payouts: PayPal, Zelle, CashApp, Venmo, Crypto &amp; Wire</div>
-                      </div>
-                  </div>
-              </div>
-            
-     <button id="cta" class="cta" onclick="handleClick(event)">
-                  <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor" />
-                  Download Now
-              </button>
-            
-              <div class="activation-notice">
-                  <div class="activation-header">
-                      <span class="lock-icon">🔒</span>
-                      <span class="activation-title">Activation Required</span>
-                  </div>
-                  <p class="activation-text">
-                      New users: Complete <span class="highlight-green">2 quick offers</span> to unlock full access and start earning with TikTok videos.
-                  </p>
-              </div>
-  
-              <div class="foot">Trusted by over 500,000 users earning money daily</div>
-          </section>
-      </div>
-  
-  <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const campid = urlParams.get('campid');
-  
-  let selectedAge = '';
-  let selectedLink = '';
-  
-  function selectAge(age, link) {
-      selectedAge = age;
-      selectedLink = link;
-      
-      const firstStep = document.getElementById('firstStep');
-      const secondStep = document.getElementById('secondStep');
-      
-      firstStep.classList.add('fade-out');
-      
-      setTimeout(() => {
-          firstStep.classList.add('hidden');
-          secondStep.classList.remove('hidden');
-          void secondStep.offsetWidth;
-          secondStep.classList.add('fade-in');
-      }, 400);
-  }
-  
-  function handleClick(event) {
-      event.preventDefault();
-      let finalUrl = selectedLink;
-      if (campid) {
-          finalUrl += encodeURIComponent(campid);
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreeCash - Get Paid to Scroll!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #111827;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Background decorative elements */
+    .bg-decoration {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: float 15s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0);
       }
-      window.location.href = finalUrl;
+      50% {
+        transform: translate(30px, -30px);
+      }
+    }
+
+    .glow-1 { top: 80px; left: 40px; width: 200px; height: 200px; background: rgba(16, 185, 129, 0.25); animation-delay: 0s; }
+    .glow-2 { top: 160px; right: 40px; width: 250px; height: 250px; background: rgba(52, 211, 153, 0.25); animation-delay: 5s; }
+    .glow-3 { bottom: 80px; left: 25%; width: 220px; height: 220px; background: rgba(5, 150, 105, 0.2); animation-delay: 10s; }
+    .glow-4 { top: 50%; right: 25%; width: 180px; height: 180px; background: rgba(34, 197, 94, 0.25); animation-delay: 7s; }
+
+    .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Snowfall Animation */
+    .snowfall {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      font-size: 1em;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) translateX(50px) rotate(360deg);
+        opacity: 0.3;
+      }
+    }
+
+    /* Banner with countdown */
+    .banner {
+      background: linear-gradient(to right, #10b981, #059669, #10b981);
+      text-align: center;
+      padding: 14px 16px;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-text {
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+    }
+
+    /* Logo */
+    .logo {
+      position: absolute;
+      top: 64px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      animation: fadeInDown 0.6s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    .logo img {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.5);
+      border: 2px solid rgba(52, 211, 153, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      padding-top: 112px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: #d1d5db;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Trustpilot-style Rating */
+    .trustpilot-section {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .trustpilot-text {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .trustpilot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(52, 211, 153, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .trustpilot-badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(52, 211, 153, 0.3);
+      border-color: rgba(52, 211, 153, 0.5);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .trustpilot-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .trustpilot-star-icon {
+      width: 20px;
+      height: 20px;
+      fill: #34d399;
+    }
+
+    .trustpilot-text-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #34d399;
+    }
+
+    .trustpilot-stars {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .star-icon {
+      width: 22px;
+      height: 22px;
+      fill: #34d399;
+    }
+
+    .rating-count {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-left: 0.5rem;
+    }
+
+    /* CTA Button */
+    .cta-button {
+      width: 100%;
+      background: linear-gradient(to right, #10b981, #059669);
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      box-shadow: 0 20px 25px -5px rgba(5, 150, 105, 0.6);
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #34d399, #10b981);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cta-button:hover::before {
+      opacity: 1;
+    }
+
+    .cta-button span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button:hover {
+      box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.7);
+      transform: translateY(-2px);
+    }
+
+    /* Pro Tip Section */
+    .pro-tip {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%);
+      border: 2px solid #d4af37;
+      border-radius: 12px;
+      padding: 1rem 0.9rem;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto 20px;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .pro-tip:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.15);
+    }
+
+    .pro-tip-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #d4af37;
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.5px;
+    }
+
+    .pro-tip-text {
+      font-size: 0.85rem;
+      color: #e0e0e0;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    .pro-tip-highlight {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #d4af37;
+      margin-top: 0.4rem;
+    }
+
+    /* Offers Section */
+    .offers-section {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      animation: fadeInUp 0.8s ease-out 0.5s both;
+    }
+
+    .offer-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .offer-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(52, 211, 153, 0.3);
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .offer-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.1) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .offer-card:hover {
+      border-color: #34d399;
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(52, 211, 153, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .offer-card:hover::before {
+      opacity: 1;
+    }
+
+    .offer-card.featured {
+      border-color: #34d399;
+      box-shadow: 0 8px 25px rgba(52, 211, 153, 0.3);
+    }
+
+    .offer-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      border-radius: 12px;
+    }
+
+    .offer-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-desc {
+      font-size: 0.85rem;
+      color: #d1d5db;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #10b981;
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-rating {
+      font-size: 0.9rem;
+      color: #fbbf24;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* How to Get Started Card */
+    .steps-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      padding: 24px;
+      border: 2px solid rgba(52, 211, 153, 0.5);
+      box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.5);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+      transition: all 0.3s ease;
+    }
+
+    .steps-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 60px -12px rgba(16, 185, 129, 0.6);
+    }
+
+    .glow-effect {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent, rgba(52, 211, 153, 0.1), transparent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .steps-title {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(to right, #a7f3d0, white, #a7f3d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .steps-list {
+      position: relative;
+      z-index: 10;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      transition: transform 0.3s;
+    }
+
+    .step:hover {
+      transform: translateX(4px);
+    }
+
+    .step-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #34d399, #10b981, #059669);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.6);
+      border: 2px solid rgba(52, 211, 153, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .step:hover .step-icon {
+      box-shadow: 0 20px 25px -5px rgba(52, 211, 153, 0.7);
+      transform: scale(1.1);
+    }
+
+    .step-icon svg {
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+
+    .step-content {
+      flex: 1;
+      padding-top: 4px;
+    }
+
+    .step-title {
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .step-description {
+      color: #d1fae5;
+      font-size: 14px;
+    }
+
+    /* Feature badges */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding-top: 4px;
+      animation: fadeInUp 0.8s ease-out 0.7s both;
+    }
+
+    .feature-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #d1d5db;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 8px 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .feature-badge:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(52, 211, 153, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      width: 16px;
+      height: 16px;
+      color: #6ee7b7;
+    }
+
+    @media (min-width: 768px) {
+      .banner-text {
+        font-size: 16px;
+      }
+      .hero-title {
+        font-size: 56px;
+      }
+      .hero-subtitle {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .trustpilot-text {
+        font-size: 0.85rem;
+      }
+
+      .trustpilot-badge {
+        padding: 0.85rem 1.2rem;
+      }
+
+      .trustpilot-text-logo {
+        font-size: 1rem;
+      }
+
+      .star-icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      .pro-tip {
+        padding: 0.85rem 0.75rem;
+      }
+
+      .pro-tip-title {
+        font-size: 0.9rem;
+      }
+
+      .pro-tip-text {
+        font-size: 0.8rem;
+      }
+
+      .pro-tip-highlight {
+        font-size: 0.85rem;
+      }
+
+      .offer-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+      }
+
+      .offer-card {
+        padding: 1rem 0.5rem;
+      }
+
+      .offer-logo {
+        width: 45px;
+        height: 45px;
+      }
+
+      .offer-name {
+        font-size: 0.85rem;
+      }
+
+      .offer-desc {
+        font-size: 0.7rem;
+      }
+
+      .offer-price {
+        font-size: 1rem;
+      }
+
+      .offer-rating {
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .trustpilot-text {
+        font-size: 0.8rem;
+      }
+
+      .trustpilot-badge {
+        padding: 0.75rem 1rem;
+        gap: 0.5rem;
+      }
+
+      .trustpilot-text-logo {
+        font-size: 0.9rem;
+      }
+
+      .trustpilot-star-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      .star-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      .pro-tip {
+        padding: 0.75rem 0.65rem;
+      }
+
+      .pro-tip-title {
+        font-size: 0.85rem;
+      }
+
+      .pro-tip-text {
+        font-size: 0.75rem;
+      }
+
+      .pro-tip-highlight {
+        font-size: 0.8rem;
+      }
+
+      .offer-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+      }
+
+      .offer-card {
+        padding: 0.75rem 0.4rem;
+      }
+
+      .offer-logo {
+        width: 35px;
+        height: 35px;
+      }
+
+      .offer-name {
+        font-size: 0.75rem;
+      }
+
+      .offer-desc {
+        font-size: 0.65rem;
+      }
+
+      .offer-price {
+        font-size: 0.9rem;
+      }
+
+      .offer-rating {
+        font-size: 0.7rem;
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(17, 24, 39, 0.8);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #10b981, #059669);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #34d399, #10b981);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Background decorative elements -->
+    <div class="bg-decoration">
+      <div class="glow-orb glow-1"></div>
+      <div class="glow-orb glow-2"></div>
+      <div class="glow-orb glow-3"></div>
+      <div class="glow-orb glow-4"></div>
+      <div class="grid-pattern"></div>
+    </div>
+
+    <!-- Snowfall Animation -->
+    <div class="snowfall" id="snowfall"></div>
+
+    <!-- Sign-Up Bonus Countdown Banner -->
+    <div class="banner">
+      <p class="banner-text">⏰ Sign-Up Bonus for the next <span id="timer">30:00</span>!</p>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo">
+      <img src="freecash-logo.png" alt="FreeCash Logo">
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Get Paid to Scroll!</h1>
+
+        <p class="hero-subtitle">Turn your gaming time into real money. Join thousands earning daily rewards.</p>
+
+        <!-- Trustpilot-style Rating -->
+        <div class="trustpilot-section">
+          <p class="trustpilot-text">See our 50,000+ reviews on</p>
+          <div class="trustpilot-badge">
+            <div class="trustpilot-logo">
+              <svg class="trustpilot-star-icon" viewBox="0 0 24 24" />
+              <span class="trustpilot-text-logo">Trustpilot</span>
+            </div>
+            <div class="trustpilot-stars">
+              <svg class="star-icon" viewBox="0 0 24 24" />
+              <svg class="star-icon" viewBox="0 0 24 24" />
+              <svg class="star-icon" viewBox="0 0 24 24" />
+              <svg class="star-icon" viewBox="0 0 24 24" />
+              <svg class="star-icon" viewBox="0 0 24 24" />
+            </div>
+            <span class="rating-count">(4.8)</span>
+          </div>
+        </div>
+
+        <button class="cta-button">
+          <span>Start Earning Now!</span>
+        </button>
+
+        <!-- Pro Tip Section -->
+        <div class="pro-tip">
+          <div class="pro-tip-title">PRO TIP: Unlock Scroll Offers</div>
+          <div class="pro-tip-text">Unlock scroll offers by completing 2-3 starter offers!</div>
+          <div class="pro-tip-highlight">Boost Payouts by $200-$300/week!</div>
+        </div>
+
+        <!-- Offers Section -->
+        <div class="offers-section">
+          <div class="offer-cards">
+            <div class="offer-card">
+              <img src="netflix-logo.png" alt="Netflix" class="offer-logo">
+              <h4 class="offer-name">Netflix</h4>
+              <p class="offer-desc">Start a trial month</p>
+              <div class="offer-price">$35.00</div>
+              <div class="offer-rating">★ 5.0</div>
+            </div>
+            <div class="offer-card featured">
+              <img src="vf9cwYy.png" alt="Dice Dreams" class="offer-logo">
+              <h4 class="offer-name">Dice Dreams</h4>
+              <p class="offer-desc">Reach level 10</p>
+              <div class="offer-price">$2,000.00</div>
+              <div class="offer-rating">★ 5.0</div>
+            </div>
+            <div class="offer-card">
+              <img src="tiktok-logo.png" alt="TikTok" class="offer-logo">
+              <h4 class="offer-name">TikTok</h4>
+              <p class="offer-desc">Scroll for 1 hour</p>
+              <div class="offer-price">$75.00</div>
+              <div class="offer-rating">★ 5.0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- How to Get Started Section -->
+        <div class="steps-card">
+          <div class="glow-effect"></div>
+          
+          <h3 class="steps-title">How to Get Started</h3>
+
+          <div class="steps-list">
+            <div class="step">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </div>
+              <div class="step-content">
+                <p class="step-title">Download the app</p>
+                <p class="step-description">Available on iOS &amp; Android</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </div>
+              <div class="step-content">
+                <p class="step-title">Create your account</p>
+                <p class="step-description">Sign up in under 30 seconds</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </div>
+              <div class="step-content">
+                <p class="step-title">Start playing &amp; earning</p>
+                <p class="step-description">Get paid for every game you play</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="feature-badge">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <span>Instant Payouts</span>
+          </div>
+          <div class="feature-badge">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <span>100+ Games</span>
+          </div>
+          <div class="feature-badge">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <span>Daily Bonuses</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+<script>
+// Countdown timer
+let timeRemaining = 30 * 60;
+
+function updateTimer() {
+  const minutes = Math.floor(timeRemaining / 60);
+  const seconds = timeRemaining % 60;
+  const timerDisplay = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  const timerElement = document.getElementById('timer');
+  if (timerElement) {
+    timerElement.textContent = timerDisplay;
   }
-  </script>
-  </body>
-  </html>
+
+  if (timeRemaining > 0) {
+    timeRemaining--;
+    setTimeout(updateTimer, 1000);
+  } else {
+    if (timerElement) {
+      timerElement.textContent = '0:00';
+    }
+  }
+}
+
+updateTimer();
+
+// Snowfall effect
+function createSnowflake() {
+  const snowfall = document.getElementById('snowfall');
+  if (!snowfall) return;
+  
+  const snowflake = document.createElement('div');
+  snowflake.className = 'snowflake';
+  snowflake.innerHTML = '❄';
+  
+  // Random horizontal position
+  snowflake.style.left = Math.random() * 100 + '%';
+  
+  // Random size
+  const size = Math.random() * 0.5 + 0.5; // 0.5 to 1
+  snowflake.style.fontSize = size + 'em';
+  
+  // Random animation duration (slower = more realistic)
+  const duration = Math.random() * 10 + 10; // 10 to 20 seconds
+  snowflake.style.animationDuration = duration + 's';
+  
+  // Random delay
+  snowflake.style.animationDelay = Math.random() * 5 + 's';
+  
+  // Random opacity
+  snowflake.style.opacity = Math.random() * 0.6 + 0.4; // 0.4 to 1
+  
+  snowfall.appendChild(snowflake);
+  
+  // Remove snowflake after animation completes
+  setTimeout(() => {
+    snowflake.remove();
+  }, (duration + 5) * 1000);
+}
+
+// Create initial snowflakes
+for (let i = 0; i < 50; i++) {
+  setTimeout(createSnowflake, Math.random() * 5000);
+}
+
+// Continuously create new snowflakes
+setInterval(createSnowflake, 400);
+
+// CTA button redirect with s2 parameter
+(function() {
+  function applyCtaRedirect() {
+    var btn = document.querySelector('button.cta-button');
+    if (!btn) return;
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var s2 = params.get('s2');
+      var sub1 = s2 ? s2 : 'none';
+      var target = 'https://www.phef6trk.com/R42XQZ/2SB9BPD/?source_id=krazzy&sub1=' + encodeURIComponent(sub1);
+      btn.onclick = function(e) {
+        e.preventDefault();
+        window.location.href = target;
+      };
+    } catch (err) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        window.location.href = 'https://www.phef6trk.com/R42XQZ/2SB9BPD/?source_id=krazzy&sub1=';
+      };
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyCtaRedirect);
+  } else {
+    applyCtaRedirect();
+  }
+})();
+</script>
+</body>
+</html>
