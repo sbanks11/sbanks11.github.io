@@ -1,26 +1,220 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project">
-    <meta name="author" content="Lovable">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apple Cash</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App">
-    <meta property="og:description" content="Lovable Generated Project">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="images/id-preview-025bc5ba--895a20d5-cbe2-41ac-904f-e71c537a1c02.lovable.app-1769741475558.png">
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      background: #f5f5f5;
+    }
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@Lovable">
-    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/532c6b6a-199e-485a-a235-61ab5a49dd90/id-preview-025bc5ba--895a20d5-cbe2-41ac-904f-e71c537a1c02.lovable.app-1769741475558.png">
-    <script type="module" crossorigin="" src="js/index-M-zxVcvh.js"></script>
-    <link rel="stylesheet" crossorigin="" href="css/index-DLSZOGqp.css">
-  <script defer="" src="js/~flock.js" data-proxy-url="https://applerewards-hub.lovable.app/~api/analytics"></script></head>
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-  <body>
-    <div id="root"></div>
-  
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+      max-width: 384px;
+      padding: 48px 24px;
+    }
 
-</body></html>
+    .card {
+      width: 100%;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    .card h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
+
+    .steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #0A84FF;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 15px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .get-started-btn {
+      margin-top: 24px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 9999px;
+      background: #0A84FF;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      transition: transform 0.15s;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .get-started-btn:hover {
+      transform: scale(1.02);
+    }
+
+    .get-started-btn:active {
+      transform: scale(0.98);
+    }
+
+    .stats-card {
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    .stat-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: #1a1a1a;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0A84FF;
+    }
+
+    .verified-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border-radius: 9999px;
+      padding: 8px 16px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+  <img src="apple-cards-bg.jpg" alt="" class="bg-image" />
+
+  <div class="content">
+    <!-- Steps Card -->
+    <div class="card">
+      <h1>Follow the steps below</h1>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-number">1</span>
+          <span class="step-text">Click the button below</span>
+        </li>
+        <li class="step">
+          <span class="step-number">2</span>
+          <span class="step-text">Enter your email &amp; basic info</span>
+        </li>
+        <li class="step">
+          <span class="step-number">3</span>
+          <span class="step-text">Complete 3-5 deals</span>
+        </li>
+        <li class="step">
+          <span class="step-number">4</span>
+          <span class="step-text">Claim your Apple Cash!</span>
+        </li>
+      </ol>
+      <a href="https://t.afftrackr.com/?TTT=ZGtCBvU3mT7vKlxLb0WzLokPw9h7v%2BPWvQJDRoz7h5U%3D&s1=ap1" target="_blank" rel="noopener noreferrer" class="get-started-btn">Get Started</a>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-card">
+      <div class="stat-row">
+        <span class="stat-value" id="paid-out">$764,393</span>
+        <span class="stat-label">Total Amount Paid Out</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-value">4,578</span>
+        <span class="stat-label">People Online</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-value">92%</span>
+        <span class="stat-label">Users Completing</span>
+      </div>
+    </div>
+
+    <!-- Verified Badge -->
+    <div class="verified-badge">
+      ✅ Verified by Tiktok
+    </div>
+  </div>
+
+  <script>
+    let amount = 764393;
+    setInterval(() => {
+      amount += Math.floor(Math.random() * 3) + 1;
+      document.getElementById('paid-out').textContent = '$' + amount.toLocaleString();
+    }, 2000);
+  </script>
+</body>
+</html>
