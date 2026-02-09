@@ -92,7 +92,7 @@
     .trustpilot .score { font-size: 14px; font-weight: 700; }
     .trustpilot .meta { font-size: 12px; color: hsl(220, 9%, 70%); }
 
-    .bottom-cta { display: block; width: 100%; text-align: center; text-decoration: none; background: linear-gradient(to right, hsl(160, 84%, 39%), hsl(160, 84%, 45%)); color: white; font-size: 18px; font-weight: 700; padding: 20px; border-radius: 16px; border: 1px solid hsla(158, 64%, 52%, 0.3); box-shadow: 0 20px 25px -5px hsla(160, 84%, 39%, 0.5); transition: all 0.3s; animation: fadeInUp 0.8s ease-out 0.7s both; }
+    .bottom-cta { display: block; width: 100%; text-align: center; cursor: pointer; background: linear-gradient(to right, hsl(160, 84%, 39%), hsl(160, 84%, 45%)); color: white; font-size: 18px; font-weight: 700; padding: 20px; border-radius: 16px; border: 1px solid hsla(158, 64%, 52%, 0.3); box-shadow: 0 20px 25px -5px hsla(160, 84%, 39%, 0.5); transition: all 0.3s; animation: fadeInUp 0.8s ease-out 0.7s both; -webkit-touch-callout: none; }
     .bottom-cta:hover { transform: translateY(-2px); box-shadow: 0 25px 50px -12px hsla(160, 84%, 39%, 0.6); }
     .bottom-cta span { display: flex; align-items: center; justify-content: center; gap: 8px; }
 
@@ -148,19 +148,19 @@
           <div class="offer-row">
             <img src="images/netflix-logo.png" alt="Netflix">
             <div class="offer-info"><div class="name-row"><h4>Netflix</h4></div><p>Start a free trial month</p></div>
-            <div class="offer-price"><div class="amount">€35.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
+            <div class="offer-price"><div class="amount">$35.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div class="offer-row featured">
             <img src="images/vf9cwYy.png" alt="Dice Dreams">
             <div class="offer-info"><div class="name-row"><h4>Dice Dreams</h4><span class="hot">HOT</span></div><p>Reach level 10</p></div>
-            <div class="offer-price"><div class="amount">€2,000.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
+            <div class="offer-price"><div class="amount">$2,000.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div class="offer-row">
             <img src="images/tiktok-logo.png" alt="TikTok">
             <div class="offer-info"><div class="name-row"><h4>TikTok</h4></div><p>Scroll for 1 hour</p></div>
-            <div class="offer-price"><div class="amount">€75.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
+            <div class="offer-price"><div class="amount">$75.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
         </div>
@@ -172,7 +172,7 @@
             <div class="pro-tip-text">
               <h3>PRO TIP: Unlock TikTok "Scroll"</h3>
               <p>Complete 2-3 starter offers to unlock TikTok earnings!</p>
-              <p class="highlight">Earn €200 - €300 MORE per week!</p>
+              <p class="highlight">Earn $200 - $300 MORE per week!</p>
             </div>
           </div>
         </div>
@@ -213,9 +213,9 @@
           <span class="meta">on Trustpilot · 50,000+ reviews</span>
         </div>
 
-        <a href="https://tryburnpeak.org/FC1LP?xxx=TikTok" class="bottom-cta">
+        <div class="bottom-cta" onclick="window.location.href=atob('aHR0cHM6Ly9tb250cms0LmNvLnVrLz9hPTI2Mjg0JmM9NTQzOTQmczE9ZnIx')">
           <span>Start Earning Now! <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </a>
+        </div>
       </div>
     </main>
   </div>
