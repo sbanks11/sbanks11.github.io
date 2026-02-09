@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/click/:offer/:subid",
-      "destination": "https://tryburnpeak.org/:offer?xxx=:subid"
+      "destination": "https://tryburnpeak.org/:offer?s1=:subid"
     }
   ]
 }
