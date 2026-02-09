@@ -1,8 +1,9 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/click/:offer/:subid",
-      "destination": "https://tryburnpeak.org/:offer?s1=:subid"
+      "destination": "https://tryburnpeak.org/:offer?s1=:subid",
+      "statusCode": 308
     }
   ]
 }
