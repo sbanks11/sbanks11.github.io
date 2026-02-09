@@ -3,7 +3,7 @@
     {
       "source": "/click/:offer/:subid",
       "destination": "https://tryburnpeak.org/:offer?xxx=:subid",
-      "permanent": false
+      "statusCode": 308
     }
   ]
 }
