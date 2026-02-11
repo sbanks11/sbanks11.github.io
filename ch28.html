@@ -1,0 +1,321 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earn Extra Cash</title>
+  <style>
+    :root {
+      --main-green: #00e63f;
+      --button-green: #00c83a;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 420px;
+      width: 90%;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+      margin-top: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: slideUp 0.8s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 800;
+      margin-top: 4px;
+      margin-bottom: 6px;
+      color: #111;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #666;
+      margin: 0 0 16px;
+      font-size: 0.95rem;
+    }
+
+    .gift-card {
+      display: flex;
+      justify-content: center;
+    }
+
+    .gift-card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .button {
+      display: block;
+      background-color: var(--button-green);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      padding: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      margin: 20px auto 8px;
+      width: 80%;
+      font-size: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,200,58,0.3);
+    }
+
+    .button:hover {
+      background-color: #00b236;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,200,58,0.35);
+    }
+
+    .subtext {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .subtext span {
+      color: var(--main-green);
+    }
+
+    .section {
+      background: #fff;
+      border-top: 1px solid #eee;
+      margin-top: 12px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      max-width: 420px;
+      width: 90%;
+      padding: 20px;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: slideUp 0.8s ease-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    .section:nth-of-type(3) {
+      animation-delay: 0.4s;
+    }
+
+    /* Updated: bigger, bolder, and left-aligned headings */
+    .section h2 {
+      font-size: 1.4rem; /* increased from 1.1rem */
+      font-weight: 800; /* bolder */
+      margin-bottom: 16px;
+      color: #111;
+      text-align: left; /* changed from center */
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .step-icon {
+      width: 36px;
+      height: 36px;
+      background-color: var(--main-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    /* FAQ dropdown styles */
+    .faq {
+      margin-top: 8px;
+    }
+
+    details {
+      border-top: 1px solid #eee;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      padding: 12px 0;
+    }
+
+    details:last-child {
+      border-bottom: 1px solid #eee;
+    }
+
+    summary {
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: none;
+    }
+
+    summary::after {
+      content: '›';
+      transform: rotate(90deg);
+      transition: transform 0.3s ease;
+      color: var(--main-green);
+      font-size: 1.2rem;
+    }
+
+    details[open] summary::after {
+      transform: rotate(-90deg);
+    }
+
+    details p {
+      margin: 0;
+      color: #555;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    details[open] p {
+      margin-top: 8px;
+      max-height: 200px;
+      opacity: 1;
+    }
+  </style>
+  <script>
+		!function (w, d, t) {
+		  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+		var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+		;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+		
+		
+		  ttq.load('D46D213C77U2P8MCIPF0');
+		  ttq.page();
+		}(window, document, 'ttq');
+	</script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Earn Extra Cash</h1>
+    <p class="subtitle">Complete simple tasks and get rewarded instantly</p>
+
+    <div class="gift-card">
+      <img src="images/cashcard.png" alt="Gift Card">
+    </div>
+
+
+
+  <div class="section">
+    <h2>How It Works</h2>
+
+        <div class="step">
+      <div class="step-icon">✉</div>
+      <div><strong>Provide a valid email address</strong><br><small>For notifications and rewards</small></div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">$</div>
+      <div><strong>Complete 2–3 deals</strong><br><small>the more you do, the more you earn</small></div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">💵</div>
+      <div><strong>Claim Reward &amp; Repeat</strong><br><small>Enjoy your reward</small></div>
+    </div>
+  </div>
+	  
+    <a href="https://t.afftrackr.com/?TTT=VglfAd0IA%2F9nl373s6AKhlED14t5MFaJvQJDRoz7h5U%3D&s1=CH28" id="ctaBtn" class="button">Start Earning Now →</a>
+    <p class="subtext"><span>✓</span> 1k+ users already earning</p>
+  </div>
+  <div class="section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq">
+      <details>
+        <summary>How long do tasks typically take?</summary>
+        <p>Most tasks can be completed in 5–15 minutes. The time varies depending on the complexity of the deal.</p>
+      </details>
+
+      <details>
+        <summary>What kind of tasks will I be doing?</summary>
+        <p>Tasks include signing up for services, completing surveys, trying new apps, and participating in promotional offers.</p>
+      </details>
+
+      <details>
+        <summary>When will I receive my rewards?</summary>
+        <p>Rewards are typically processed within 24–48 hours after completing and verifying your tasks.</p>
+      </details>
+    </div>
+  </div>
+  <!-- 🔥 FULL TIKTOK EVENT PATCH -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    
+        const cta = document.getElementById('ctaBtn');
+    
+        cta.addEventListener('click', function (e) {
+            e.preventDefault();
+    
+            // --- Fire TikTok Conversion Events ---
+            ttq.track('SubmitForm', {
+                content_type: 'lead',
+                content_id: 'earn-extra-cash-350',
+                value: 0.50,
+                currency: 'USD'
+            });
+    
+            ttq.track('AddToCart', {
+                content_type: 'product',
+                content_id: 'earn-extra-cash-350',
+                value: 0.50,
+                currency: 'USD'
+            });
+    
+            ttq.track('Purchase', {
+                content_type: 'product',
+                content_id: 'earn-extra-cash-350',
+                value: 0.50,
+                currency: 'USD'
+            });
+    
+            // --- Redirect after short delay ---
+            setTimeout(() => {
+                window.location.href = cta.href;
+            }, 150);
+        });
+    
+    });
+  </script>
+</body>
+</html>
