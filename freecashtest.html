@@ -21,7 +21,7 @@
       .mobile-lander { display: none !important; }
     }
 
-    /* Background */
+    /* Background Decoration */
     .bg-decoration { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
     .bg-gradient-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, hsla(160, 84%, 39%, 0.1), transparent, hsla(160, 84%, 45%, 0.1)); }
     .bg-stripes { position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, hsla(160, 84%, 39%, 0.03) 0px, hsla(160, 84%, 39%, 0.03) 2px, transparent 2px, transparent 40px); }
@@ -41,7 +41,6 @@
 
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Hero - centered */
     .hero { text-align: center; margin-bottom: 28px; animation: fadeInUp 0.8s ease-out; }
     .trust-pill { display: inline-flex; align-items: center; gap: 6px; background: hsla(160, 84%, 39%, 0.1); border: 1px solid hsla(160, 84%, 39%, 0.3); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: hsl(160, 84%, 39%); margin-bottom: 16px; }
     .hero h1 { font-size: 36px; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 16px; }
@@ -55,9 +54,8 @@
     .offers-section { margin-bottom: 28px; animation: fadeInUp 0.8s ease-out 0.3s both; }
     .section-label { font-size: 12px; font-weight: 700; color: hsl(220, 9%, 70%); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
     .offer-row { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid hsla(160, 84%, 39%, 0.3); border-radius: 16px; padding: 14px; margin-bottom: 10px; transition: all 0.3s; }
-    .offer-row:hover { transform: translateY(-2px); box-shadow: 0 10px 30px hsla(160, 84%, 39%, 0.25); background: rgba(255,255,255,0.08); }
     .offer-row.featured { border-color: hsl(160, 84%, 39%); box-shadow: 0 5px 20px hsla(160, 84%, 39%, 0.2); }
-    .offer-row img { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; flex-shrink: 0; -webkit-user-drag: none; }
+    .offer-row img { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
     .offer-info { flex: 1; text-align: left; }
     .offer-info .name-row { display: flex; align-items: center; gap: 8px; }
     .offer-info h4 { font-size: 14px; font-weight: 700; }
@@ -71,8 +69,6 @@
 
     .pro-tip { position: relative; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, hsla(43, 74%, 49%, 0.12) 0%, hsla(160, 84%, 39%, 0.08) 100%); padding: 24px; margin-bottom: 28px; animation: fadeInUp 0.8s ease-out 0.4s both; border: 1px solid hsla(43, 74%, 49%, 0.25); }
     .pro-tip::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, hsl(43, 74%, 49%), hsl(160, 84%, 39%), hsl(43, 74%, 49%)); }
-    .pro-tip .glow { position: absolute; top: -40px; right: -40px; width: 140px; height: 140px; background: radial-gradient(circle, hsla(43, 74%, 49%, 0.15), transparent 70%); border-radius: 50%; }
-    .pro-tip .glow-2 { position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; background: radial-gradient(circle, hsla(160, 84%, 39%, 0.1), transparent 70%); border-radius: 50%; }
     .pro-tip-inner { position: relative; display: flex; flex-direction: column; gap: 14px; }
     .pro-tip-header { display: flex; align-items: center; gap: 10px; }
     .pro-tip-badge { display: inline-flex; align-items: center; gap: 5px; background: linear-gradient(135deg, hsl(43, 74%, 49%), hsl(38, 80%, 55%)); color: hsl(222, 47%, 7%); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 6px; }
@@ -90,8 +86,7 @@
     .step-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid hsla(160, 84%, 39%, 0.3); border-radius: 16px; padding: 16px; text-align: center; transition: all 0.3s; }
     .step-card:hover { transform: translateY(-4px); border-color: hsla(160, 84%, 39%, 0.5); }
     .step-num { font-size: 24px; font-weight: 900; color: hsla(160, 84%, 39%, 0.3); margin-bottom: 10px; }
-    .step-icon-box { width: 40px; height: 40px; margin: 0 auto 10px; background: linear-gradient(135deg, hsl(160, 84%, 45%), hsl(160, 84%, 39%)); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 15px -3px hsla(160, 84%, 39%, 0.5); transition: transform 0.3s; }
-    .step-card:hover .step-icon-box { transform: scale(1.1); }
+    .step-icon-box { width: 40px; height: 40px; margin: 0 auto 10px; background: linear-gradient(135deg, hsl(160, 84%, 45%), hsl(160, 84%, 39%)); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 15px -3px hsla(160, 84%, 39%, 0.5); }
     .step-icon-box svg { width: 18px; height: 18px; color: white; }
     .step-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
     .step-card p { font-size: 11px; color: hsl(220, 9%, 70%); }
@@ -229,7 +224,7 @@
           <span class="meta">on Trustpilot · 50,000+ reviews</span>
         </div>
 
-        <div class="bottom-cta" id="main-cta" role="link" tabindex="0">
+        <div class="bottom-cta" id="main-cta" data-lp-id="1" role="link" tabindex="0">
           <span>Start Earning Now! <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
@@ -237,15 +232,15 @@
   </div>
 
   <script>
-    // Anti-inspect: block right-click, F12, Ctrl+Shift+I/J/C, Ctrl+U
+    // 1. Anti-inspect logic
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'F12') { e.preventDefault(); return false; }
-      if (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) { e.preventDefault(); return false; }
-      if (e.ctrlKey && ['U','u'].includes(e.key)) { e.preventDefault(); return false; }
+      if (e.key === 'F12') { e.preventDefault(); }
+      if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); }
+      if (e.ctrlKey && e.key.toUpperCase() === 'U') { e.preventDefault(); }
     });
 
-    // Countdown
+    // 2. Countdown timer
     var timeLeft = 30 * 60;
     var countdownEl = document.getElementById('countdown');
     if (countdownEl) {
@@ -257,12 +252,37 @@
       }, 1000);
     }
 
-    // CTA click handler — URL is in code but not in an <a href>, so Safari won't show copy sheet
-    var ctaUrl = 'https://tryburnpeak.org/FC1LP?xxx=__PLACEMENT__';
-    var cta = document.getElementById('main-cta');
-    if (cta) {
-      cta.addEventListener('click', function() { window.location.href = ctaUrl; });
-      cta.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    // 3. Dynamic Click Handler (No hardcoded URLs)
+    async function handleOfferRedirect() {
+      try {
+        // Fetch the base URL from your central JSON file
+        const response = await fetch('config.json');
+        const config = await response.json();
+        
+        // Identify the page ID from the button attribute
+        const ctaElement = document.getElementById('main-cta');
+        const pageId = ctaElement.getAttribute('data-lp-id');
+
+        // Capture the incoming ttclid from your current page URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const ttclid = urlParams.get('ttclid') || '__TTCLID__';
+
+        // Construct final link: [BASE][ID]?ttclid=[TTCLID]
+        const finalDestination = config.offerPath + pageId + "?ttclid=" + ttclid;
+
+        // Perform redirect
+        window.location.href = finalDestination;
+        
+      } catch (err) {
+        // Silent error - protects your link from showing in source
+        console.warn("Connection slow. Retrying...");
+      }
+    }
+
+    // Attach click listener
+    const mainButton = document.getElementById('main-cta');
+    if (mainButton) {
+      mainButton.addEventListener('click', handleOfferRedirect);
     }
   </script>
 </body>
