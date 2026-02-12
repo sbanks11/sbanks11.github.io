@@ -1,3 +1,4 @@
 var globalOfferConfig = {
-  "path": "https://tryburnpeak.org/LPFC?v_id=code1&lp="
+  "path": "https://tryburnpeak.org/LPFC",
+  "key": "code1"
 };
