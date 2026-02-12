@@ -1,4 +1,4 @@
 var globalOfferConfig = {
-  "path": "https://tryburnpeak.org/LPFC",
+  "path": "https://nyverna.com/LPFC",
   "key": "code1"
 };
