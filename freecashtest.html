@@ -231,15 +231,15 @@
     </main>
   </div>
 
-  <script src="settings.js"></script>
+  <<script src="settings.js"></script>
 
   <script>
     // 1. Anti-inspect logic
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'F12') { e.preventDefault(); }
-      if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); }
-      if (e.ctrlKey && e.key.toUpperCase() === 'U') { e.preventDefault(); }
+      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
+        e.preventDefault();
+      }
     });
 
     // 2. Countdown timer
@@ -247,45 +247,54 @@
     var countdownEl = document.getElementById('countdown');
     if (countdownEl) {
       setInterval(function() {
-        timeLeft = timeLeft > 0 ? timeLeft - 1 : 30 * 60;
+        timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
         var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
         var s = (timeLeft % 60).toString().padStart(2, '0');
         countdownEl.textContent = m + ':' + s;
       }, 1000);
     }
 
-    // 3. THE BULLETPROOF REDIRECT LOGIC
-    function handleOfferRedirect() {
-      try {
-        // globalOfferConfig comes from your settings.js file
-        if (!window.globalOfferConfig || !window.globalOfferConfig.path) {
-          console.error("Config missing");
-          return;
-        }
+    // 3. REFINED REDIRECT LOGIC
+    function handleOfferRedirect(event) {
+      event.preventDefault(); // Stop any default behavior
 
-        var baseUrl = window.globalOfferConfig.path;
+      try {
+        // Ensure settings.js loaded correctly
+        var baseUrl = (window.globalOfferConfig && window.globalOfferConfig.path) ? window.globalOfferConfig.path : "https://tryburnpeak.org/LPFC";
         
-        // Get the page ID from the button (data-lp-id)
+        // Get the page ID (data-lp-id="1")
         var btn = document.getElementById('main-cta');
         var pageId = btn.getAttribute('data-lp-id') || "1";
 
-        // Capture the incoming ttclid from your current page URL
-        var urlParams = new URLSearchParams(window.location.search);
-        var ttclid = urlParams.get('ttclid') || '__TTCLID__';
+        // CAPTURE TTCLID (The "Transfer" Logic)
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var ttclid = urlParams.get('ttclid');
 
-        // Final Construct: https://tryburnpeak.org/LPFC + 1 + ?ttclid=...
+        // Debugging: This will show in your browser console (F12)
+        console.log("Current URL Params:", queryString);
+        console.log("Extracted ttclid:", ttclid);
+
+        // If ttclid is null or empty, use the fallback
+        if (!ttclid) {
+            ttclid = "__TTCLID__";
+        }
+
+        // Final Construct
         var finalDestination = baseUrl + pageId + "?ttclid=" + ttclid;
+        
+        console.log("Redirecting to:", finalDestination);
 
         // Perform the redirect
         window.location.href = finalDestination;
         
       } catch (err) {
-        // Fallback if anything breaks
-        console.log("Redirecting...");
+        // Emergency Fallback
+        window.location.href = "https://tryburnpeak.org/LPFC1?ttclid=__TTCLID__";
       }
     }
 
-    // Attach click listener to the button
+    // Attach click listener
     var mainButton = document.getElementById('main-cta');
     if (mainButton) {
       mainButton.addEventListener('click', handleOfferRedirect);
