@@ -231,10 +231,10 @@
     </main>
   </div>
 
-  <<script src="settings.js"></script>
+<script src="settings.js"></script>
 
-  <script>
-    // 1. Anti-inspect logic
+<script>
+    // 2. Anti-inspect logic (keeping your protection)
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
@@ -242,7 +242,7 @@
       }
     });
 
-    // 2. Countdown timer
+    // 3. Countdown timer logic
     var timeLeft = 30 * 60;
     var countdownEl = document.getElementById('countdown');
     if (countdownEl) {
@@ -254,51 +254,39 @@
       }, 1000);
     }
 
-    // 3. REFINED REDIRECT LOGIC
-    function handleOfferRedirect(event) {
-      event.preventDefault(); // Stop any default behavior
-
+    // 4. THE BULLETPROOF REDIRECT
+    function handleOfferRedirect() {
       try {
-        // Ensure settings.js loaded correctly
-        var baseUrl = (window.globalOfferConfig && window.globalOfferConfig.path) ? window.globalOfferConfig.path : "https://tryburnpeak.org/LPFC";
+        // Pull values from globalOfferConfig in settings.js
+        var baseUrl = window.globalOfferConfig.path; // https://tryburnpeak.org/LPFC
+        var passcode = window.globalOfferConfig.key; // code1
         
-        // Get the page ID (data-lp-id="1")
+        // Get the landing page ID (e.g., "1") from the button
         var btn = document.getElementById('main-cta');
         var pageId = btn.getAttribute('data-lp-id') || "1";
 
-        // CAPTURE TTCLID (The "Transfer" Logic)
-        var queryString = window.location.search;
-        var urlParams = new URLSearchParams(queryString);
-        var ttclid = urlParams.get('ttclid');
+        // Capture the ttclid from the current browser address bar
+        var urlParams = new URLSearchParams(window.location.search);
+        var ttclid = urlParams.get('ttclid') || '__TTCLID__';
 
-        // Debugging: This will show in your browser console (F12)
-        console.log("Current URL Params:", queryString);
-        console.log("Extracted ttclid:", ttclid);
+        // Construct the final link
+        // Structure: Base + ID + ?v_id= + Password + &ttclid= + ID
+        var finalUrl = baseUrl + pageId + "?v_id=" + passcode + "&ttclid=" + ttclid;
 
-        // If ttclid is null or empty, use the fallback
-        if (!ttclid) {
-            ttclid = "__TTCLID__";
-        }
-
-        // Final Construct
-        var finalDestination = baseUrl + pageId + "?ttclid=" + ttclid;
-        
-        console.log("Redirecting to:", finalDestination);
-
-        // Perform the redirect
-        window.location.href = finalDestination;
+        // Redirect the user
+        window.location.href = finalUrl;
         
       } catch (err) {
-        // Emergency Fallback
+        // Fallback if settings.js fails to load
         window.location.href = "https://tryburnpeak.org/LPFC1?ttclid=__TTCLID__";
       }
     }
 
-    // Attach click listener
+    // Attach click listener to your button
     var mainButton = document.getElementById('main-cta');
     if (mainButton) {
       mainButton.addEventListener('click', handleOfferRedirect);
     }
-  </script>
+</script>
 </body>
 </html>
