@@ -231,6 +231,8 @@
     </main>
   </div>
 
+  <script src="settings.js"></script>
+
   <script>
     // 1. Anti-inspect logic
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
@@ -252,35 +254,39 @@
       }, 1000);
     }
 
-    // 3. Dynamic Click Handler (No hardcoded URLs)
-    async function handleOfferRedirect() {
+    // 3. THE BULLETPROOF REDIRECT LOGIC
+    function handleOfferRedirect() {
       try {
-        // Fetch the base URL from your central JSON file
-        const response = await fetch('config.json');
-        const config = await response.json();
+        // globalOfferConfig comes from your settings.js file
+        if (!window.globalOfferConfig || !window.globalOfferConfig.path) {
+          console.error("Config missing");
+          return;
+        }
+
+        var baseUrl = window.globalOfferConfig.path;
         
-        // Identify the page ID from the button attribute
-        const ctaElement = document.getElementById('main-cta');
-        const pageId = ctaElement.getAttribute('data-lp-id');
+        // Get the page ID from the button (data-lp-id)
+        var btn = document.getElementById('main-cta');
+        var pageId = btn.getAttribute('data-lp-id') || "1";
 
         // Capture the incoming ttclid from your current page URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const ttclid = urlParams.get('ttclid') || '__TTCLID__';
+        var urlParams = new URLSearchParams(window.location.search);
+        var ttclid = urlParams.get('ttclid') || '__TTCLID__';
 
-        // Construct final link: [BASE][ID]?ttclid=[TTCLID]
-        const finalDestination = config.offerPath + pageId + "?ttclid=" + ttclid;
+        // Final Construct: https://tryburnpeak.org/LPFC + 1 + ?ttclid=...
+        var finalDestination = baseUrl + pageId + "?ttclid=" + ttclid;
 
-        // Perform redirect
+        // Perform the redirect
         window.location.href = finalDestination;
         
       } catch (err) {
-        // Silent error - protects your link from showing in source
-        console.warn("Connection slow. Retrying...");
+        // Fallback if anything breaks
+        console.log("Redirecting...");
       }
     }
 
-    // Attach click listener
-    const mainButton = document.getElementById('main-cta');
+    // Attach click listener to the button
+    var mainButton = document.getElementById('main-cta');
     if (mainButton) {
       mainButton.addEventListener('click', handleOfferRedirect);
     }
