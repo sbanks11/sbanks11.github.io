@@ -249,31 +249,17 @@
       }, 1000);
     }
 
-    // 4. THE BULLETPROOF REDIRECT
-    function handleOfferRedirect() {
+function handleOfferRedirect() {
       try {
-        // Pull values from globalOfferConfig in settings.js
-        var baseUrl = window.globalOfferConfig.path; // https://tryburnpeak.org/LPFC
-        var passcode = window.globalOfferConfig.key; // code1
-        
-        // Get the landing page ID (e.g., "1") from the button
-        var btn = document.getElementById('main-cta');
-        var pageId = btn.getAttribute('data-lp-id') || "1";
-
-        // Capture the ttclid from the current browser address bar
-        var urlParams = new URLSearchParams(window.location.search);
-        var ttclid = urlParams.get('ttclid') || '__TTCLID__';
-
-        // Construct the final link
-        // Structure: Base + ID + ?v_id= + Password + &ttclid= + ID
-        var finalUrl = baseUrl + pageId + "?v_id=" + passcode + "&ttclid=" + ttclid;
-
-        // Redirect the user
-        window.location.href = finalUrl;
-        
+        var a = window.globalOfferConfig.path; 
+        var b = window.globalOfferConfig.key; 
+        var c = document.getElementById('main-cta');
+        var d = c.getAttribute('data-lp-id') || "1";
+        var e = new URLSearchParams(window.location.search);
+        var f = e.get('ttclid') || '__TTCLID__';
+        window.location.href = a + d + "?v_id=" + b + "&ttclid=" + f;
       } catch (err) {
-        // Fallback if settings.js fails to load
-        window.location.href = "https://tryburnpeak.org/LPFC1?ttclid=__TTCLID__";
+        window.location.href = "https://appreviewings.com/";
       }
     }
 
