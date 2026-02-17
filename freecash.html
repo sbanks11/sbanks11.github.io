@@ -257,7 +257,8 @@ function handleOfferRedirect() {
         var d = c.getAttribute('data-lp-id') || "1";
         var e = new URLSearchParams(window.location.search);
         var f = e.get('ttclid') || '__TTCLID__';
-        window.location.href = a + d + "?v_id=" + b + "&ttclid=" + f;
+        var g = e.get('campaign_name') || '__CAMPAIGN_NAME__';
+        window.location.href = a + d + "?v_id=" + b + "&ttclid=" + f + "&campaign_name=" + g;
       } catch (err) {
         window.location.href = "https://appreviewings.com/";
       }
