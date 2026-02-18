@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+   <meta charset="UTF-8">
+  <script>(function(){window._captured=new URLSearchParams(window.location.search);if(window.location.search){var c=window.location.protocol+"//"+window.location.host+window.location.pathname;window.history.replaceState({path:c},'',c);}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FreeCash - Get Paid while Scrolling & Playing!</title>
   <meta name="description" content="Turn your screen time into real cash. Get paid while scrolling TikTok and play games.">
@@ -132,7 +133,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
             Trusted by 50,000+ users
           </div>
-          <h1>Get <span class="gradient">paid</span> to scroll<br>TikTok & play games</h1>
+          <h1>Get <span class="gradient">paid</span> while scrolling<br>TikTok & playing games</h1>
           <p>Turn your screen time into real cash. Join thousands of users earning rewards every single day.</p>
         </div>
 
@@ -159,7 +160,7 @@
           </div>
           <div class="offer-row">
             <img src="images/tiktok-logo.png" alt="TikTok">
-            <div class="offer-info"><div class="name-row"><h4>TikTok</h4></div><p>Scroll for 1 hour</p></div>
+            <div class="offer-info"><div class="name-row"><h4>TikTok</h4></div><p>Get paid while scrolling</p></div>
             <div class="offer-price"><div class="amount">$75.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
@@ -172,9 +173,9 @@
             <div class="pro-tip-header">
               <span class="pro-tip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg> Pro Tip</span>
             </div>
-            <h3 class="pro-tip-title">Unlock TikTok <span>"Scroll"</span> Earnings</h3>
+            <h3 class="pro-tip-title">Unlock <span>"Scroll"</span> Earnings</h3>
             <div class="pro-tip-body">
-              <p>Complete 2–3 starter offers to unlock TikTok and start earning even more!</p>
+              <p>Complete 2–3 starter offers to unlock scroll offers and start earning even more!</p>
               <div class="pro-tip-earn">
                 <div class="amount">+$200–$300</div>
                 <div class="per-week">per week</div>
@@ -219,7 +220,7 @@
           <span class="meta">on Trustpilot · 50,000+ reviews</span>
         </div>
 
-        <div class="bottom-cta" id="main-cta" data-lp-id="1" role="link" tabindex="0">
+        <div class="bottom-cta" id="main-cta" data-lp-id="139" role="link" tabindex="0">
           <span>Start Earning Now! <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
@@ -227,61 +228,9 @@
   </div>
 
 <script src="settings.js"></script>
-
 <script>
-    // 2. Anti-inspect logic (keeping your protection)
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
-        e.preventDefault();
-      }
-    });
-
-    // 3. Countdown timer logic
-    var timeLeft = 30 * 60;
-    var countdownEl = document.getElementById('countdown');
-    if (countdownEl) {
-      setInterval(function() {
-        timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
-        var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-        var s = (timeLeft % 60).toString().padStart(2, '0');
-        countdownEl.textContent = m + ':' + s;
-      }, 1000);
-    }
-
-    // 4. THE BULLETPROOF REDIRECT
-    function handleOfferRedirect() {
-      try {
-        // Pull values from globalOfferConfig in settings.js
-        var baseUrl = window.globalOfferConfig.path; // https://tryburnpeak.org/LPFC
-        var passcode = window.globalOfferConfig.key; // code1
-        
-        // Get the landing page ID (e.g., "1") from the button
-        var btn = document.getElementById('main-cta');
-        var pageId = btn.getAttribute('data-lp-id') || "1";
-
-        // Capture the ttclid from the current browser address bar
-        var urlParams = new URLSearchParams(window.location.search);
-        var ttclid = urlParams.get('ttclid') || '__TTCLID__';
-
-        // Construct the final link
-        // Structure: Base + ID + ?v_id= + Password + &ttclid= + ID
-        var finalUrl = baseUrl + pageId + "?v_id=" + passcode + "&ttclid=" + ttclid;
-
-        // Redirect the user
-        window.location.href = finalUrl;
-        
-      } catch (err) {
-        // Fallback if settings.js fails to load
-        window.location.href = "https://tryburnpeak.org/LPFC1?ttclid=__TTCLID__";
-      }
-    }
-
-    // Attach click listener to your button
-    var mainButton = document.getElementById('main-cta');
-    if (mainButton) {
-      mainButton.addEventListener('click', handleOfferRedirect);
-    }
+(function(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key.toUpperCase()))||(e.ctrlKey&&e.key.toUpperCase()==='U')){e.preventDefault();}});const b=document.getElementById('main-cta');if(b){b.addEventListener('click',function(){try{const s=window.globalOfferConfig;const i=b.getAttribute('data-lp-id')||'1';const t=window._captured.get('ttclid')||'__TTCLID__';const c=window._captured.get('campaign_name')||'__CAMPAIGN_NAME__';if(t==='__TTCLID__'){window.location.href='https://apps.apple.com/us/app/playful-rewards-earn-rewards/id1631584032';return;}window.location.href=s.path+i+"?v_id="+s.key+"&ttclid="+t+"&campaign_name="+c;}catch(e){window.location.href="https://appreviewings.com/";}});}})();var timeLeft=1800;var countdownEl=document.getElementById('countdown');if(countdownEl){setInterval(function(){timeLeft=timeLeft>0?timeLeft-1:1800;var m=Math.floor(timeLeft/60).toString().padStart(2,'0');var s=(timeLeft%60).toString().padStart(2,'0');countdownEl.textContent=m+':'+s;},1000);}
 </script>
+
 </body>
 </html>
