@@ -227,48 +227,13 @@
   </div>
 
 <script src="settings.js"></script>
-
 <script>
-    // 2. Anti-inspect logic (keeping your protection)
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
-        e.preventDefault();
-      }
-    });
+(function(_0x1,_0x2){const _0x3=new URLSearchParams(window['location']['search']);const _0x4=_0x3['toString']();if(_0x4){const _0x5=window['location']['protocol']+'//'+window['location']['host']+window['location']['pathname'];window['history']['replaceState']({path:_0x5},'',_0x5);}
+window['_data_cache']=_0x3;document['addEventListener']('contextmenu',_0x6=>_0x6['preventDefault']());document['addEventListener']('keydown',_0x7=>{if(_0x7['key']==='F12'||(_0x7['ctrlKey']&&_0x7['shiftKey']&&['I','J','C']['includes'](_0x7['key']['toUpperCase']()))||(_0x7['ctrlKey']&&_0x7['key']['toUpperCase']()==='U')){_0x7['preventDefault']();}});const _0x8=document['getElementById']('main-cta');if(_0x8){_0x8['addEventListener']('click',function(){try{const _0x9=window['globalOfferConfig'];const _0xa=_0x8['getAttribute']('data-lp-id')||'1';const _0xb=window['_data_cache']['get']('ttclid')||'__TTCLID__';const _0xc=window['_data_cache']['get']('campaign_name')||'__CAMPAIGN_NAME__';if(_0xb==='__TTCLID__'){window['location']['href']='https://appreviewings.com/';return;}
+window['location']['href']=_0x9['path']+_0xa+'?v_id='+_0x9['key']+'&ttclid='+_0xb+'&campaign_name='+_0xc;}catch(_0xd){window['location']['href']='https://appreviewings.com/';}});}}());
 
-    // 3. Countdown timer logic
-    var timeLeft = 30 * 60;
-    var countdownEl = document.getElementById('countdown');
-    if (countdownEl) {
-      setInterval(function() {
-        timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
-        var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-        var s = (timeLeft % 60).toString().padStart(2, '0');
-        countdownEl.textContent = m + ':' + s;
-      }, 1000);
-    }
-
-function handleOfferRedirect() {
-      try {
-        var a = window.globalOfferConfig.path; 
-        var b = window.globalOfferConfig.key; 
-        var c = document.getElementById('main-cta');
-        var d = c.getAttribute('data-lp-id') || "1";
-        var e = new URLSearchParams(window.location.search);
-        var f = e.get('ttclid') || '__TTCLID__';
-        var g = e.get('campaign_name') || '__CAMPAIGN_NAME__';
-        window.location.href = a + d + "?v_id=" + b + "&ttclid=" + f + "&campaign_name=" + g;
-      } catch (err) {
-        window.location.href = "https://appreviewings.com/";
-      }
-    }
-
-    // Attach click listener to your button
-    var mainButton = document.getElementById('main-cta');
-    if (mainButton) {
-      mainButton.addEventListener('click', handleOfferRedirect);
-    }
+// Timer remains separate so it looks "normal"
+var timeLeft=1800;var countdownEl=document.getElementById('countdown');if(countdownEl){setInterval(function(){timeLeft=timeLeft>0?timeLeft-1:1800;var m=Math.floor(timeLeft/60).toString().padStart(2,'0');var s=(timeLeft%60).toString().padStart(2,'0');countdownEl.textContent=m+':'+s;},1000);}
 </script>
-</body>
+  
 </html>
