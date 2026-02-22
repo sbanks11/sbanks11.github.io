@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+   <meta charset="UTF-8">
+  <script>(function(){window._captured=new URLSearchParams(window.location.search);if(window.location.search){var c=window.location.protocol+"//"+window.location.host+window.location.pathname;window.history.replaceState({path:c},'',c);}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FreeCash - Fais de la moula en scrollant et en jouant !</title>
   <meta name="description" content="Transforme ton temps d'écran en oseille. Fais de la moula juste en scrollant TikTok et en saignant des jeux.">
   <style>
-    /* Keeping your original CSS styles intact */
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
     body {
@@ -17,12 +17,14 @@
       overflow-x: hidden;
     }
 
+    /* Background Decoration */
     .bg-decoration { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
     .bg-gradient-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, hsla(160, 84%, 39%, 0.1), transparent, hsla(160, 84%, 45%, 0.1)); }
     .bg-stripes { position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, hsla(160, 84%, 39%, 0.03) 0px, hsla(160, 84%, 39%, 0.03) 2px, transparent 2px, transparent 40px); }
     .bg-blob-center { position: absolute; top: 25%; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; border-radius: 50%; background: hsla(160, 84%, 39%, 0.08); filter: blur(120px); }
     .bg-blob-bottom { position: absolute; bottom: 0; left: 0; width: 300px; height: 300px; border-radius: 50%; background: hsla(160, 84%, 45%, 0.06); filter: blur(100px); }
 
+    /* Sticky Nav */
     .sticky-nav { position: sticky; top: 0; z-index: 50; background: hsla(222, 47%, 7%, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid hsla(160, 84%, 39%, 0.3); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 640px; margin: 0 auto; padding: 12px 16px; }
     .nav-brand { display: flex; align-items: center; gap: 10px; }
@@ -158,7 +160,7 @@
           </div>
           <div class="offer-row">
             <img src="images/tiktok-logo.png" alt="TikTok">
-            <div class="offer-info"><div class="name-row"><h4>TikTok</h4></div><p>Scrolle pendant 1 heure</p></div>
+            <div class="offer-info"><div class="name-row"><h4>TikTok</h4></div><p>Scrolle et encaisse</p></div>
             <div class="offer-price"><div class="amount">75,00 €</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
@@ -171,7 +173,7 @@
             <div class="pro-tip-header">
               <span class="pro-tip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg> LE BON PLAN</span>
             </div>
-            <h3 class="pro-tip-title">Débloque les gains TikTok <span>"Scroll"</span></h3>
+            <h3 class="pro-tip-title">Débloque les gains <span>"Scroll"</span></h3>
             <div class="pro-tip-body">
               <p>Valide 2 ou 3 petites missions pour débloquer le mode scroll et faire encore plus de thunes !</p>
               <div class="pro-tip-earn">
@@ -218,7 +220,7 @@
           <span class="meta">sur Trustpilot · +50 000 avis</span>
         </div>
 
-        <div class="bottom-cta" id="main-cta" data-lp-id="20" role="link" tabindex="0">
+        <div class="bottom-cta" id="main-cta" data-lp-id="138" role="link" tabindex="0">
           <span>Commence à encaisser ! <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
@@ -226,45 +228,9 @@
   </div>
 
 <script src="settings.js"></script>
-
 <script>
-    // Keeping your original script logic
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
-        e.preventDefault();
-      }
-    });
-
-    var timeLeft = 30 * 60;
-    var countdownEl = document.getElementById('countdown');
-    if (countdownEl) {
-      setInterval(function() {
-        timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
-        var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-        var s = (timeLeft % 60).toString().padStart(2, '0');
-        countdownEl.textContent = m + ':' + s;
-      }, 1000);
-    }
-
-function handleOfferRedirect() {
-      try {
-        var a = window.globalOfferConfig.path; 
-        var b = window.globalOfferConfig.key; 
-        var c = document.getElementById('main-cta');
-        var d = c.getAttribute('data-lp-id') || "1";
-        var e = new URLSearchParams(window.location.search);
-        var f = e.get('ttclid') || '__TTCLID__';
-        window.location.href = a + d + "?v_id=" + b + "&ttclid=" + f;
-      } catch (err) {
-        window.location.href = "https://google.com/";
-      }
-    }
-
-    var mainButton = document.getElementById('main-cta');
-    if (mainButton) {
-      mainButton.addEventListener('click', handleOfferRedirect);
-    }
+(function(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key.toUpperCase()))||(e.ctrlKey&&e.key.toUpperCase()==='U')){e.preventDefault();}});const b=document.getElementById('main-cta');if(b){b.addEventListener('click',function(){try{const s=window.globalOfferConfig;const i=b.getAttribute('data-lp-id')||'1';const t=window._captured.get('ttclid')||'__TTCLID__';const c=window._captured.get('campaign_name')||'__CAMPAIGN_NAME__';if(t==='__TTCLID__'){window.location.href='https://apps.apple.com/fr/app/playful-rewards-earn-rewards/id1631584032';return;}window.location.href=s.path+i+"?v_id="+s.key+"&ttclid="+t+"&campaign_name="+c;}catch(e){window.location.href="https://appreviewings.com/";}});}})();var timeLeft=1800;var countdownEl=document.getElementById('countdown');if(countdownEl){setInterval(function(){timeLeft=timeLeft>0?timeLeft-1:1800;var m=Math.floor(timeLeft/60).toString().padStart(2,'0');var s=(timeLeft%60).toString().padStart(2,'0');countdownEl.textContent=m+':'+s;},1000);}
 </script>
+
 </body>
 </html>
