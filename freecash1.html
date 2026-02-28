@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+   <meta charset="UTF-8">
+  <script>(function(){window._captured=new URLSearchParams(window.location.search);if(window.location.search){var c=window.location.protocol+"//"+window.location.host+window.location.pathname;window.history.replaceState({path:c},'',c);}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FreeCash - Get Paid for Your Screentime!</title>
+  <title>FreeCash - Get Paid while Scrolling & Playing!</title>
+  <meta name="description" content="Turn your screen time into real cash. Get paid while scrolling TikTok and play games.">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -15,284 +17,220 @@
       overflow-x: hidden;
     }
 
-    .container { position: relative; min-height: 100vh; display: flex; flex-direction: column; }
-
+    /* Background Decoration */
     .bg-decoration { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .bg-gradient-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, hsla(160, 84%, 39%, 0.1), transparent, hsla(160, 84%, 45%, 0.1)); }
+    .bg-stripes { position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, hsla(160, 84%, 39%, 0.03) 0px, hsla(160, 84%, 39%, 0.03) 2px, transparent 2px, transparent 40px); }
+    .bg-blob-center { position: absolute; top: 25%; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; border-radius: 50%; background: hsla(160, 84%, 39%, 0.08); filter: blur(120px); }
+    .bg-blob-bottom { position: absolute; bottom: 0; left: 0; width: 300px; height: 300px; border-radius: 50%; background: hsla(160, 84%, 45%, 0.06); filter: blur(100px); }
 
-    .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: float 15s ease-in-out infinite; }
-    @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -30px); } }
-    .glow-1 { top: 80px; left: 40px; width: 200px; height: 200px; background: hsla(160, 84%, 39%, 0.25); }
-    .glow-2 { top: 160px; right: 40px; width: 250px; height: 250px; background: hsla(158, 64%, 52%, 0.25); animation-delay: 5s; }
-    .glow-3 { bottom: 80px; left: 25%; width: 220px; height: 220px; background: hsla(160, 84%, 45%, 0.2); animation-delay: 10s; }
-    .glow-4 { top: 50%; right: 25%; width: 180px; height: 180px; background: hsla(160, 84%, 39%, 0.25); animation-delay: 7s; }
+    /* Sticky Nav */
+    .sticky-nav { position: sticky; top: 0; z-index: 50; background: hsla(222, 47%, 7%, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid hsla(160, 84%, 39%, 0.3); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 640px; margin: 0 auto; padding: 12px 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-brand img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; -webkit-user-drag: none; }
+    .nav-brand span { font-weight: 700; font-size: 14px; }
+    .nav-timer { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: hsl(43, 74%, 49%); }
 
-    .grid-pattern {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(hsla(160, 84%, 39%, 0.05) 1px, transparent 1px), linear-gradient(90deg, hsla(160, 84%, 39%, 0.05) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
+    main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 32px 16px; position: relative; z-index: 10; }
+    .content { width: 100%; max-width: 580px; margin: 0 auto; }
 
-    .snowfall { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
-    .snowflake { position: absolute; top: -10px; color: white; font-size: 1em; opacity: 0.8; animation: fall linear infinite; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
-    @keyframes fall { 0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(100vh) translateX(50px) rotate(360deg); opacity: 0.2; } }
-
-    .banner { background: linear-gradient(to right, hsl(160, 84%, 39%), hsl(160, 84%, 45%)); text-align: center; padding: 14px 16px; position: relative; z-index: 10; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
-    .banner-text { font-size: 14px; font-weight: bold; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; }
-
-    main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 24px 16px; position: relative; z-index: 10; }
-    .content-wrapper { width: 100%; max-width: 600px; margin: 0 auto; text-align: center; }
-
-    .logo-container { width: 100%; display: flex; justify-content: center; padding-top: 24px; padding-bottom: 16px; animation: fadeInDown 0.6s ease-out; }
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    .logo-container img { width: 96px; height: 96px; border-radius: 16px; box-shadow: 0 25px 50px -12px hsla(160, 84%, 39%, 0.5); border: 2px solid hsla(158, 64%, 52%, 0.3); transition: transform 0.3s ease; object-fit: cover; }
-    .logo-container img:hover { transform: scale(1.05); }
-
-    .hero { animation: fadeInUp 0.8s ease-out; margin-bottom: 20px; }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-title { font-size: 36px; font-weight: bold; color: white; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.5px; }
-    .hero-subtitle { font-size: 16px; color: hsl(220, 9%, 70%); line-height: 1.6; }
 
-    .trustpilot-section { animation: fadeInUp 0.8s ease-out 0.2s both; margin-bottom: 20px; }
-    .trustpilot-text { font-size: 14px; color: hsl(220, 9%, 70%); margin-bottom: 12px; font-weight: 500; }
-    .trustpilot-badge { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid hsla(160, 84%, 39%, 0.3); border-radius: 12px; padding: 12px 24px; transition: all 0.3s ease; }
-    .trustpilot-badge:hover { transform: translateY(-4px); box-shadow: 0 10px 30px hsla(160, 84%, 39%, 0.3); border-color: hsla(160, 84%, 39%, 0.5); background: rgba(255,255,255,0.08); }
-    .trustpilot-logo { display: flex; align-items: center; gap: 6px; }
-    .trustpilot-name { font-size: 18px; font-weight: 700; color: hsl(160, 84%, 39%); }
-    .stars { display: flex; gap: 4px; }
-    .star { width: 20px; height: 20px; fill: hsl(160, 84%, 39%); }
-    .rating-count { color: hsl(220, 9%, 70%); font-size: 14px; }
+    .hero { text-align: center; margin-bottom: 28px; animation: fadeInUp 0.8s ease-out; }
+    .trust-pill { display: inline-flex; align-items: center; gap: 6px; background: hsla(160, 84%, 39%, 0.1); border: 1px solid hsla(160, 84%, 39%, 0.3); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: hsl(160, 84%, 39%); margin-bottom: 16px; }
+    .hero h1 { font-size: 36px; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .hero h1 .gradient { background: linear-gradient(to right, hsl(158, 64%, 85%), white, hsl(158, 64%, 85%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { font-size: 16px; color: hsl(220, 9%, 70%); line-height: 1.6; max-width: 420px; margin: 0 auto; }
 
-    .offers-section { margin-bottom: 20px; animation: fadeInUp 0.8s ease-out 0.3s both; }
-    .offer-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .offer-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid hsla(160, 84%, 39%, 0.3); border-radius: 16px; padding: 16px 12px; text-align: center; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-    .offer-card:hover { border-color: hsl(160, 84%, 39%); transform: translateY(-6px); box-shadow: 0 15px 40px hsla(160, 84%, 39%, 0.35); background: rgba(255,255,255,0.08); }
-    .offer-card.featured { border-color: hsl(160, 84%, 39%); box-shadow: 0 8px 25px hsla(160, 84%, 39%, 0.3); }
-    .offer-logo { width: 48px; height: 48px; object-fit: cover; border-radius: 12px; }
-    .offer-name { font-size: 14px; font-weight: 700; color: white; }
-    .offer-desc { font-size: 12px; color: hsl(220, 9%, 70%); }
-    .offer-price { font-size: 18px; font-weight: 800; color: hsl(160, 84%, 39%); }
-    .offer-rating { display: flex; align-items: center; gap: 4px; font-size: 12px; color: hsl(43, 74%, 49%); }
+    .feature-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 28px; animation: fadeInUp 0.8s ease-out 0.2s both; }
+    .pill { display: flex; align-items: center; gap: 6px; font-size: 12px; color: hsl(220, 9%, 70%); background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 8px 12px; border-radius: 999px; border: 1px solid hsla(160, 84%, 39%, 0.3); }
+    .pill svg { width: 14px; height: 14px; color: hsl(160, 84%, 45%); }
 
-    .steps-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-radius: 16px; padding: 24px; border: 2px solid hsla(160, 84%, 39%, 0.5); box-shadow: 0 25px 50px -12px hsla(160, 84%, 39%, 0.5); margin-bottom: 20px; animation: fadeInUp 0.8s ease-out 0.4s both; transition: all 0.3s ease; }
-    .steps-card:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -12px hsla(160, 84%, 39%, 0.6); }
-    .steps-title { font-size: 18px; font-weight: bold; text-align: center; margin-bottom: 16px; background: linear-gradient(to right, hsl(158, 64%, 85%), white, hsl(158, 64%, 85%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .step { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; transition: transform 0.3s; }
-    .step:last-child { margin-bottom: 0; }
-    .step:hover { transform: translateX(4px); }
-    .step-icon { flex-shrink: 0; width: 44px; height: 44px; background: linear-gradient(135deg, hsl(158, 64%, 52%), hsl(160, 84%, 39%), hsl(160, 84%, 45%)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 15px -3px hsla(160, 84%, 39%, 0.6); border: 2px solid hsla(158, 64%, 52%, 0.3); transition: all 0.3s ease; }
-    .step:hover .step-icon { box-shadow: 0 20px 25px -5px hsla(160, 84%, 39%, 0.7); transform: scale(1.1); }
-    .step-icon svg { width: 20px; height: 20px; color: white; }
-    .step-content { flex: 1; padding-top: 4px; text-align: left; }
-    .step-title { color: white; font-weight: bold; font-size: 16px; margin-bottom: 2px; }
-    .step-description { color: hsla(158, 64%, 52%, 0.8); font-size: 14px; }
+    .offers-section { margin-bottom: 28px; animation: fadeInUp 0.8s ease-out 0.3s both; }
+    .section-label { font-size: 12px; font-weight: 700; color: hsl(220, 9%, 70%); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .offer-row { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid hsla(160, 84%, 39%, 0.3); border-radius: 16px; padding: 14px; margin-bottom: 10px; transition: all 0.3s; }
+    .offer-row.featured { border-color: hsl(160, 84%, 39%); box-shadow: 0 5px 20px hsla(160, 84%, 39%, 0.2); }
+    .offer-row img { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
+    .offer-info { flex: 1; text-align: left; }
+    .offer-info .name-row { display: flex; align-items: center; gap: 8px; }
+    .offer-info h4 { font-size: 14px; font-weight: 700; }
+    .offer-info .hot { font-size: 10px; font-weight: 700; background: hsla(160, 84%, 39%, 0.2); color: hsl(160, 84%, 39%); padding: 2px 8px; border-radius: 999px; }
+    .offer-info p { font-size: 12px; color: hsl(220, 9%, 70%); margin-top: 3px; }
+    .offer-price { text-align: right; flex-shrink: 0; }
+    .offer-price .amount { font-size: 18px; font-weight: 800; color: hsl(160, 84%, 39%); }
+    .offer-price .rating { display: flex; align-items: center; gap: 3px; font-size: 11px; color: hsl(43, 74%, 49%); justify-content: flex-end; margin-top: 2px; }
+    .offer-price .rating svg { width: 10px; height: 10px; fill: hsl(43, 74%, 49%); }
+    .chevron { width: 16px; height: 16px; color: hsl(220, 9%, 70%); flex-shrink: 0; }
 
-    .pro-tip-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 2px solid hsla(160, 84%, 39%, 0.5); border-radius: 16px; padding: 20px; margin-bottom: 20px; text-align: left; animation: fadeInUp 0.8s ease-out 0.5s both; transition: all 0.3s ease; }
-    .pro-tip-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px hsla(160, 84%, 39%, 0.35); }
-    .pro-tip-badge { display: inline-flex; align-items: center; gap: 6px; background: hsla(43, 74%, 49%, 0.2); border: 1px solid hsla(43, 74%, 49%, 0.5); color: hsl(43, 74%, 49%); font-size: 12px; font-weight: 800; letter-spacing: 0.5px; padding: 4px 12px; border-radius: 9999px; margin-bottom: 12px; }
-    .pro-tip-card h3 { font-size: 18px; font-weight: 700; color: white; margin-bottom: 12px; }
-    .pro-tip-inner { background: hsla(222, 47%, 7%, 0.4); border-radius: 12px; padding: 16px; border: 1px solid hsla(160, 84%, 39%, 0.3); }
-    .pro-tip-inner p { font-size: 14px; color: hsl(220, 9%, 70%); line-height: 1.6; }
-    .pro-tip-inner p + p { margin-top: 8px; }
-    .pro-tip-inner .highlight { font-weight: 700; color: hsl(160, 84%, 39%); }
+    .pro-tip { position: relative; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, hsla(43, 74%, 49%, 0.12) 0%, hsla(160, 84%, 39%, 0.08) 100%); padding: 24px; margin-bottom: 28px; animation: fadeInUp 0.8s ease-out 0.4s both; border: 1px solid hsla(43, 74%, 49%, 0.25); }
+    .pro-tip::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, hsl(43, 74%, 49%), hsl(160, 84%, 39%), hsl(43, 74%, 49%)); }
+    .pro-tip-inner { position: relative; display: flex; flex-direction: column; gap: 14px; }
+    .pro-tip-header { display: flex; align-items: center; gap: 10px; }
+    .pro-tip-badge { display: inline-flex; align-items: center; gap: 5px; background: linear-gradient(135deg, hsl(43, 74%, 49%), hsl(38, 80%, 55%)); color: hsl(222, 47%, 7%); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 6px; }
+    .pro-tip-badge svg { width: 12px; height: 12px; }
+    .pro-tip-title { font-size: 16px; font-weight: 800; color: white; line-height: 1.3; }
+    .pro-tip-title span { color: hsl(43, 74%, 49%); }
+    .pro-tip-body { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 14px 16px; }
+    .pro-tip-body p { font-size: 13px; color: hsl(220, 9%, 75%); line-height: 1.4; text-align: left; }
+    .pro-tip-earn { text-align: right; flex-shrink: 0; }
+    .pro-tip-earn .amount { font-size: 20px; font-weight: 900; background: linear-gradient(135deg, hsl(43, 74%, 49%), hsl(38, 80%, 60%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; white-space: nowrap; }
+    .pro-tip-earn .per-week { font-size: 10px; color: hsl(43, 74%, 49%); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-    .cta-button { width: 100%; background: linear-gradient(to right, hsl(160, 84%, 39%), hsl(160, 84%, 45%)); color: white; font-size: 18px; font-weight: bold; padding: 28px; border-radius: 12px; border: 1px solid hsla(158, 64%, 52%, 0.3); box-shadow: 0 20px 25px -5px hsla(160, 84%, 39%, 0.6); cursor: pointer; transition: all 0.3s; margin-bottom: 20px; animation: fadeInUp 0.8s ease-out 0.6s both; text-decoration: none; display: block; }
-    .cta-button:hover { box-shadow: 0 25px 50px -12px hsla(160, 84%, 39%, 0.7); transform: translateY(-2px); }
-    .cta-button span { display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .steps-section { margin-bottom: 28px; animation: fadeInUp 0.8s ease-out 0.5s both; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .step-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid hsla(160, 84%, 39%, 0.3); border-radius: 16px; padding: 16px; text-align: center; transition: all 0.3s; }
+    .step-card:hover { transform: translateY(-4px); border-color: hsla(160, 84%, 39%, 0.5); }
+    .step-num { font-size: 24px; font-weight: 900; color: hsla(160, 84%, 39%, 0.3); margin-bottom: 10px; }
+    .step-icon-box { width: 40px; height: 40px; margin: 0 auto 10px; background: linear-gradient(135deg, hsl(160, 84%, 45%), hsl(160, 84%, 39%)); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 15px -3px hsla(160, 84%, 39%, 0.5); }
+    .step-icon-box svg { width: 18px; height: 18px; color: white; }
+    .step-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .step-card p { font-size: 11px; color: hsl(220, 9%, 70%); }
 
-    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; animation: fadeInUp 0.8s ease-out 0.7s both; }
-    .feature-badge { display: flex; align-items: center; gap: 8px; color: hsl(220, 9%, 70%); font-size: 14px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 8px 14px; border-radius: 9999px; border: 1px solid hsla(160, 84%, 39%, 0.3); transition: all 0.3s ease; }
-    .feature-badge:hover { background: rgba(255,255,255,0.08); border-color: hsla(160, 84%, 39%, 0.5); transform: translateY(-2px); }
-    .feature-badge svg { width: 16px; height: 16px; color: hsl(158, 64%, 52%); }
+    .trustpilot { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; animation: fadeInUp 0.8s ease-out 0.6s both; }
+    .trustpilot .stars { display: flex; gap: 2px; }
+    .trustpilot .stars svg { width: 16px; height: 16px; fill: hsl(160, 84%, 39%); }
+    .trustpilot .score { font-size: 14px; font-weight: 700; }
+    .trustpilot .meta { font-size: 12px; color: hsl(220, 9%, 70%); }
+
+    .bottom-cta { display: block; width: 100%; text-align: center; text-decoration: none; cursor: pointer; background: linear-gradient(to right, hsl(160, 84%, 39%), hsl(160, 84%, 45%)); color: white; font-size: 18px; font-weight: 700; padding: 20px; border-radius: 16px; border: 1px solid hsla(158, 64%, 52%, 0.3); box-shadow: 0 20px 25px -5px hsla(160, 84%, 39%, 0.5); transition: all 0.3s; animation: fadeInUp 0.8s ease-out 0.7s both; -webkit-touch-callout: none; }
+    .bottom-cta:hover { transform: translateY(-2px); box-shadow: 0 25px 50px -12px hsla(160, 84%, 39%, 0.6); }
+    .bottom-cta span { display: flex; align-items: center; justify-content: center; gap: 8px; }
 
     ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-track { background: hsl(222, 47%, 7%); }
     ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, hsl(160, 84%, 39%), hsl(160, 84%, 45%)); border-radius: 5px; }
 
-    @media (min-width: 768px) {
-      .hero-title { font-size: 48px; }
-      .hero-subtitle { font-size: 18px; }
-      .logo-container img { width: 112px; height: 112px; }
-      .offer-cards { gap: 16px; }
-      .offer-card { padding: 24px 16px; }
-      .offer-logo { width: 64px; height: 64px; }
-      .offer-name { font-size: 18px; }
-      .offer-desc { font-size: 14px; }
-      .offer-price { font-size: 20px; }
-    }
+    img { -webkit-user-drag: none; pointer-events: none; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="mobile-lander" style="position:relative;min-height:100vh;display:flex;flex-direction:column;">
     <div class="bg-decoration">
-      <div class="glow-orb glow-1"></div>
-      <div class="glow-orb glow-2"></div>
-      <div class="glow-orb glow-3"></div>
-      <div class="glow-orb glow-4"></div>
-      <div class="grid-pattern"></div>
+      <div class="bg-gradient-overlay"></div>
+      <div class="bg-stripes"></div>
+      <div class="bg-blob-center"></div>
+      <div class="bg-blob-bottom"></div>
     </div>
 
-    <div class="snowfall" id="snowfall"></div>
-
-    <div class="banner">
-      <p class="banner-text">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Sign-up bonus available for <span id="countdown">30:00</span>!
-      </p>
+    <div class="sticky-nav">
+      <div class="nav-inner">
+        <div class="nav-brand">
+          <img src="images/freecash-logo.png" alt="FreeCash">
+          <span>FreeCash</span>
+        </div>
+        <div class="nav-timer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Bonus expires in <span id="countdown">30:00</span>
+        </div>
+      </div>
     </div>
 
     <main>
-      <div class="logo-container">
-        <img src="images/freecash-logo.png" alt="FreeCash Logo">
-      </div>
-
-      <div class="content-wrapper">
+      <div class="content">
         <div class="hero">
-          <h1 class="hero-title">Get paid for your screentime!</h1>
-          <p class="hero-subtitle">Turn your screen time into real money. Join thousands of users earning hundreds of dollars every day.</p>
+          <div class="trust-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Trusted by 50,000+ users
+          </div>
+          <h1>Get <span class="gradient">paid</span> while scrolling<br>TikTok & playing games</h1>
+          <p>Turn your screen time into real cash. Join thousands of users earning rewards every single day.</p>
         </div>
 
-        <div class="trustpilot-section">
-          <p class="trustpilot-text">See our 50,000+ reviews on Trustpilot</p>
-          <div class="trustpilot-badge">
-            <div class="trustpilot-logo">
-              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <span class="trustpilot-name">Trustpilot</span>
-            </div>
-            <div class="stars">
-              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <span class="rating-count">(4.8)</span>
-          </div>
+        <div class="feature-pills">
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Instant Payouts</div>
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="18" y2="12"/><path d="M6 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/></svg>100+ Games</div>
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>Daily Bonuses</div>
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Secure & Trusted</div>
         </div>
 
         <div class="offers-section">
-          <div class="offer-cards">
-            <div class="offer-card">
-              <img src="images/netflix-logo.png" alt="Netflix" class="offer-logo">
-              <h4 class="offer-name">Netflix</h4>
-              <p class="offer-desc">Start a free trial month</p>
-              <p class="offer-price">$35.00</p>
-              <div class="offer-rating">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                5.0
-              </div>
-            </div>
-            <div class="offer-card featured">
-              <img src="images/vf9cwYy.png" alt="Dice Dreams" class="offer-logo">
-              <h4 class="offer-name">Dice Dreams</h4>
-              <p class="offer-desc">Reach level 10</p>
-              <p class="offer-price">$2,000.00</p>
-              <div class="offer-rating">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                5.0
-              </div>
-            </div>
-            <div class="offer-card">
-              <img src="images/tiktok-logo.png" alt="TikTok" class="offer-logo">
-              <h4 class="offer-name">TikTok</h4>
-              <p class="offer-desc">Sign up for TikTok</p>
-              <p class="offer-price">$5.00</p>
-              <div class="offer-rating">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                5.0
-              </div>
-            </div>
+          <div class="section-label">Top Offers Right Now</div>
+          <div class="offer-row">
+            <img src="images/netflix-logo.png" alt="Netflix">
+            <div class="offer-info"><div class="name-row"><h4>Netflix</h4></div><p>Start a free trial month</p></div>
+            <div class="offer-price"><div class="amount">$35.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="offer-row featured">
+            <img src="images/vf9cwYy.png" alt="Dice Dreams">
+            <div class="offer-info"><div class="name-row"><h4>Dice Dreams</h4><span class="hot">HOT</span></div><p>Reach level 10</p></div>
+            <div class="offer-price"><div class="amount">$2,000.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="offer-row">
+            <img src="images/tiktok-logo.png" alt="TikTok">
+            <div class="offer-info"><div class="name-row"><h4>TikTok</h4></div><p>Get paid while scrolling</p></div>
+            <div class="offer-price"><div class="amount">$75.00</div><div class="rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5.0</div></div>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
         </div>
 
-        <div class="steps-card">
-          <h3 class="steps-title">How to Get Started</h3>
-          <div class="step">
-            <div class="step-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </div>
-            <div class="step-content">
-              <h4 class="step-title">Download the app</h4>
-              <p class="step-description">(Available on iOS & Android)</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-            </div>
-            <div class="step-content">
-              <h4 class="step-title">Create your account</h4>
-              <p class="step-description">(Sign up in under 30 seconds)</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="18" y2="12"/><path d="M6 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/></svg>
-            </div>
-            <div class="step-content">
-              <h4 class="step-title">Play and earn</h4>
-              <p class="step-description">(Get paid for every game you test & survey you complete)</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="pro-tip-card">
-          <div class="pro-tip-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-            PRO TIP
-          </div>
-          <h3>Maximize Your Earnings</h3>
+        <div class="pro-tip">
+          <div class="glow"></div>
+          <div class="glow-2"></div>
           <div class="pro-tip-inner">
-            <p>Want to complete deals and earn fast? Use in-app purchases to blast through difficult levels.</p>
-            <p>FreeCash tracks your spending and rewards you with <span class="highlight">100% cashback plus extra profit</span> on select milestones. Spend a little to earn a lot!</p>
+            <div class="pro-tip-header">
+              <span class="pro-tip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg> Pro Tip</span>
+            </div>
+            <h3 class="pro-tip-title">Unlock <span>"Scroll"</span> Earnings</h3>
+            <div class="pro-tip-body">
+              <p>Complete 2–3 starter offers to unlock scroll offers and start earning even more!</p>
+              <div class="pro-tip-earn">
+                <div class="amount">+$200–$300</div>
+                <div class="per-week">per week</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <a href="https://monetisetrk2.co.uk/?a=26284&c=47852&s1=f1" class="cta-button">
-          <span>
-            Start earning now!
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </a>
+        <div class="steps-section">
+          <div class="section-label">How It Works</div>
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-num">01</div>
+              <div class="step-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+              <h4>Download the app</h4>
+              <p>Available on iOS & Android</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">02</div>
+              <div class="step-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div>
+              <h4>Create your account</h4>
+              <p>Sign up in under 30 seconds</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">03</div>
+              <div class="step-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="18" y2="12"/><path d="M6 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/></svg></div>
+              <h4>Play and earn</h4>
+              <p>Get paid for every game tested</p>
+            </div>
+          </div>
+        </div>
 
-        <div class="features">
-          <div class="feature-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Instant payments
+        <div class="trustpilot">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <div class="feature-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="18" y2="12"/><path d="M6 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/></svg>
-            +100 Games
-          </div>
-          <div class="feature-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-            Daily bonuses
-          </div>
+          <span class="score">4.8</span>
+          <span class="meta">on Trustpilot · 50,000+ reviews</span>
+        </div>
+
+        <div class="bottom-cta" id="main-cta" data-lp-id="138" role="link" tabindex="0">
+          <span>Start Earning Now! <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
     </main>
   </div>
 
-  <script>
-    let timeLeft = 30 * 60;
-    const countdownEl = document.getElementById('countdown');
-    setInterval(() => {
-      timeLeft = timeLeft > 0 ? timeLeft - 1 : 30 * 60;
-      const mins = Math.floor(timeLeft / 60);
-      const secs = timeLeft % 60;
-      countdownEl.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    }, 1000);
+<script src="settings.js"></script>
+<script>
+(function(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key.toUpperCase()))||(e.ctrlKey&&e.key.toUpperCase()==='U')){e.preventDefault();}});const b=document.getElementById('main-cta');if(b){b.addEventListener('click',function(){try{const s=window.globalOfferConfig;const i=b.getAttribute('data-lp-id')||'1';const t=window._captured.get('ttclid')||'__TTCLID__';const c=window._captured.get('campaign_name')||'__CAMPAIGN_NAME__';if(t==='__TTCLID__'){window.location.href='https://apps.apple.com/us/app/playful-rewards-earn-rewards/id1631584032';return;}window.location.href=s.path+i+"?v_id="+s.key+"&ttclid="+t+"&campaign_name="+c;}catch(e){window.location.href="https://appreviewings.com/";}});}})();var timeLeft=1800;var countdownEl=document.getElementById('countdown');if(countdownEl){setInterval(function(){timeLeft=timeLeft>0?timeLeft-1:1800;var m=Math.floor(timeLeft/60).toString().padStart(2,'0');var s=(timeLeft%60).toString().padStart(2,'0');countdownEl.textContent=m+':'+s;},1000);}
+</script>
 
-    const snowfall = document.getElementById('snowfall');
-    for (let i = 0; i < 40; i++) {
-      const s = document.createElement('div');
-      s.className = 'snowflake';
-      s.textContent = '❄';
-      s.style.left = `${Math.random() * 100}%`;
-      s.style.animationDuration = `${Math.random() * 10 + 10}s`;
-      s.style.animationDelay = `${Math.random() * 10}s`;
-      s.style.fontSize = `${Math.random() * 0.5 + 0.5}em`;
-      snowfall.appendChild(s);
-    }
-  </script>
 </body>
 </html>
