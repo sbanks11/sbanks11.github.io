@@ -367,60 +367,38 @@
   </div>
 
   <script src="settings.js"></script>
-  <script>
-    (function(){
-      document.addEventListener('contextmenu', e => e.preventDefault());
-      document.addEventListener('keydown', e => {
-        if(e.key==='F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase()==='U')){
-          e.preventDefault();
-        }
-      });
-
-      const b = document.getElementById('main-cta');
-      if(b){
-        b.addEventListener('click', function(){
-          
-          // ADD THIS LINE HERE:
-          ttq.track('Lead');
-
-          try {
-            const s = window.globalOfferConfig;
-            const i = b.getAttribute('data-lp-id') || '1';
-            const c = window._captured.get('campaign_name') || '__CAMPAIGN_NAME__';
-
-         
-            window.location.href = s.path + i + "?v_id=" + s.key + "&campaign_name=" + c;
-          } catch(e) {
-            window.location.href = "https://google.com/";
-          }
-        });
-
-        b.addEventListener('keypress', e => {
-            if (e.key === 'Enter') b.click();
-        });
+<script>
+(function(){
+  document.addEventListener('contextmenu',e=>e.preventDefault());
+  document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key.toUpperCase()))||(e.ctrlKey&&e.key.toUpperCase()==='U')){e.preventDefault();}});
+  
+  const b=document.getElementById('main-cta');
+  if(b){
+    b.addEventListener('click',function(){
+      try {
+        const s=window.globalOfferConfig;
+        const i=b.getAttribute('data-lp-id')||'1';
+        const c=window._captured.get('campaign_name')||'__CAMPAIGN_NAME__';
+        
+        // Final destination without ttclid
+        window.location.href=s.path+i+"?v_id="+s.key+"&campaign_name="+c;
+      } catch(e) {
+        window.location.href="https://appreviewings.com/";
       }
+    });
+  }
+})();
 
-      let timeLeft = 30 * 60;
-      const timerEl = document.getElementById('timer');
-      setInterval(() => {
-        timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
-        const mins = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-        const secs = (timeLeft % 60).toString().padStart(2, '0');
-        if(timerEl) timerEl.textContent = mins + ':' + secs;
-      }, 1000);
-
-      const container = document.getElementById('snowflakes');
-      for (let i = 0; i < 50; i++) {
-        const flake = document.createElement('div');
-        flake.className = 'snowflake';
-        flake.textContent = '❄';
-        flake.style.left = Math.random() * 100 + '%';
-        flake.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        flake.style.animationDelay = (Math.random() * 10) + 's';
-        flake.style.fontSize = (Math.random() * 0.5 + 0.5) + 'em';
-        if(container) container.appendChild(flake);
-      }
-    })();
-  </script>
+var timeLeft=1800;
+var countdownEl=document.getElementById('countdown');
+if(countdownEl){
+  setInterval(function(){
+    timeLeft=timeLeft>0?timeLeft-1:1800;
+    var m=Math.floor(timeLeft/60).toString().padStart(2,'0');
+    var s=(timeLeft%60).toString().padStart(2,'0');
+    countdownEl.textContent=m+':'+s;
+  },1000);
+}
+</script>
 </body>
 </html>
