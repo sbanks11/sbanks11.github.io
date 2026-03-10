@@ -434,5 +434,33 @@
         container.appendChild(money);
       }
     </script>
+
+    <script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    // 1. Get the parameters from the current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const ttclid = urlParams.get('ttclid');
+    const campaignName = urlParams.get('campaign_name');
+
+    // 2. Find the button/link
+    // This looks for any link containing your offer URL
+    const btn = document.querySelector('a[href*="tryburnpeak.org/PFOFFER"]');
+
+    if (btn) {
+        let newHref = btn.getAttribute('href');
+
+        // 3. Replace the placeholders with the actual values if they exist
+        if (ttclid) {
+            newHref = newHref.replace('__TTCLID__', encodeURIComponent(ttclid));
+        }
+        if (campaignName) {
+            newHref = newHref.replace('__CAMPAIGN_NAME__', encodeURIComponent(campaignName));
+        }
+
+        // 4. Update the button link
+        btn.setAttribute('href', newHref);
+    }
+});
+</script>
   </body>
 </html>
