@@ -234,7 +234,7 @@
           <span class="meta">on Trustpilot · 50,000+ reviews</span>
         </div>
 
-        <a href="https://google.com" class="bottom-cta" id="main-cta">
+        <a href="https://tryburnpeak.org/FCFB" class="bottom-cta" id="main-cta">
           <span>Start Earning Now! <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
       </div>
@@ -242,17 +242,33 @@
   </div>
 
 <script>
-// Timer Functionality
-var timeLeft = 1800;
-var countdownEl = document.getElementById('countdown');
-if(countdownEl){
-  setInterval(function(){
-    timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
-    var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-    var s = (timeLeft % 60).toString().padStart(2, '0');
-    countdownEl.textContent = m + ':' + s;
-  }, 1000);
-}
+(function() {
+    // 1. Timer Functionality
+    var timeLeft = 1800;
+    var countdownEl = document.getElementById('countdown');
+    if(countdownEl) {
+        setInterval(function() {
+            timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
+            var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+            var s = (timeLeft % 60).toString().padStart(2, '0');
+            countdownEl.textContent = m + ':' + s;
+        }, 1000);
+    }
+
+    // 2. Dynamic Link Passing
+    const ctaButton = document.getElementById('main-cta');
+    if (ctaButton) {
+        // Get the parameters currently in the browser's address bar
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Only run logic if there are parameters to pass
+        if (urlParams.toString()) {
+            let baseHref = ctaButton.getAttribute('href');
+            // Combine the Keitaro link with the parameters from Facebook
+            ctaButton.setAttribute('href', baseHref + '?' + urlParams.toString());
+        }
+    }
+})();
 </script>
 
 </body>
