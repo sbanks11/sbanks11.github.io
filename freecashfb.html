@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeCash - Get Paid while Scrolling & Playing!</title>
     <meta name="description" content="Turn your screen time into real cash. Get paid while scrolling Reels and play games.">
+    
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1570150510952516');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1570150510952516&ev=PageView&noscript=1"
+    /></noscript>
     <style>
         /* --- GLOBAL STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -59,7 +75,7 @@
         .age-secondary { background-color: #171717; border: 1px solid #404040; }
 
         /* --- MAIN LANDER STYLES --- */
-        #main-lander { display: none; } /* Hidden until age is clicked */
+        #main-lander { display: none; }
 
         .bg-decoration { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
         .bg-gradient-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, hsla(160, 84%, 39%, 0.1), transparent, hsla(160, 84%, 45%, 0.1)); }
@@ -86,7 +102,6 @@
 
         .feature-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 28px; animation: fadeInUp 0.8s ease-out 0.2s both; }
         .pill { display: flex; align-items: center; gap: 6px; font-size: 12px; color: hsl(220, 9%, 70%); background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 8px 12px; border-radius: 999px; border: 1px solid hsla(160, 84%, 39%, 0.3); }
-        .pill svg { width: 14px; height: 14px; color: hsl(160, 84%, 45%); }
 
         .offers-section { margin-bottom: 28px; animation: fadeInUp 0.8s ease-out 0.3s both; }
         .section-label { font-size: 12px; font-weight: 700; color: hsl(220, 9%, 70%); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
@@ -233,7 +248,7 @@
                     <span style="color:#a3a3a3; font-size:12px;">on Trustpilot</span>
                 </div>
 
-                <a href="https://tryburnpeak.org/FCFB" class="bottom-cta" id="main-cta">
+                <a href="https://tryburnpeak.org/FCFB" class="bottom-cta" id="main-cta" onclick="fireLead()">
                     <span>Start Earning Now! <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
                 </a>
             </div>
@@ -241,15 +256,22 @@
     </div>
 
     <script>
-        // 1. AGE VERIFICATION TRANSITION
+        // --- 1. TRANSITION FROM AGE GATE TO LANDER ---
         function initLanding() {
             document.getElementById('prelander').style.display = 'none';
             document.getElementById('main-lander').style.display = 'block';
             window.scrollTo(0, 0);
         }
 
+        // --- 2. FIRE META LEAD EVENT ---
+        function fireLead() {
+            if(typeof fbq !== 'undefined') {
+                fbq('track', 'Lead');
+            }
+        }
+
         (function() {
-            // 2. TIMER LOGIC
+            // --- 3. COUNTDOWN TIMER ---
             var timeLeft = 1800;
             var countdownEl = document.getElementById('countdown');
             if(countdownEl) {
@@ -261,7 +283,7 @@
                 }, 1000);
             }
 
-            // 3. KEITARO PARAMETER PASSING
+            // --- 4. KEITARO URL PARAMETER PASSING ---
             const ctaButton = document.getElementById('main-cta');
             if (ctaButton) {
                 const urlParams = new URLSearchParams(window.location.search);
