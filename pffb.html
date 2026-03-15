@@ -288,26 +288,35 @@
         }
 
         (function() {
-            var timeLeft = 1800;
-            var countdownEl = document.getElementById('countdown');
-            if(countdownEl) {
-                setInterval(function() {
-                    timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
-                    var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-                    var s = (timeLeft % 60).toString().padStart(2, '0');
-                    countdownEl.textContent = m + ':' + s;
-                }, 1000);
-            }
+    // 1. Countdown Timer Logic
+    var timeLeft = 1800;
+    var countdownEl = document.getElementById('countdown');
+    if(countdownEl) {
+        setInterval(function() {
+            timeLeft = timeLeft > 0 ? timeLeft - 1 : 1800;
+            var m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+            var s = (timeLeft % 60).toString().padStart(2, '0');
+            countdownEl.textContent = m + ':' + s;
+        }, 1000);
+    }
 
-            const ctaButton = document.getElementById('main-cta');
-            if (ctaButton) {
-                const urlParams = new URLSearchParams(window.location.search);
-                if (urlParams.toString()) {
-                    let baseHref = ctaButton.getAttribute('href');
-                    ctaButton.setAttribute('href', baseHref + (baseHref.includes('?') ? '&' : '?') + urlParams.toString());
-                }
-            }
-        })();
+    // 2. Optimized URL Parameter Passing
+    const ctaButton = document.getElementById('main-cta');
+    if (ctaButton) {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Ensure fbclid is also mapped to fbc for Keitaro
+        if (urlParams.has('fbclid')) {
+            urlParams.set('fbc', urlParams.get('fbclid'));
+        }
+
+        if (urlParams.toString()) {
+            let baseHref = ctaButton.getAttribute('href');
+            // This combines your existing params and adds fbc automatically
+            ctaButton.setAttribute('href', baseHref + (baseHref.includes('?') ? '&' : '?') + urlParams.toString());
+        }
+    }
+})();
     </script>
 
 </body>
