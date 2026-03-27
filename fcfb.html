@@ -230,39 +230,50 @@
     </div>
   </div>
 
-  <script>
-    function getAffiliateLink() {
-      var params = new URLSearchParams(window.location.search);
-      var q = new URLSearchParams({
-        fbclid: params.get('fbclid') || '',
-        utm_campaign: params.get('utm_campaign') || '',
-        utm_source: params.get('utm_source') || '',
-        utm_placement: params.get('utm_placement') || '',
-        campaign_id: params.get('campaign_id') || '',
-        ad_name: params.get('ad_name') || '',
-        ad_id: params.get('ad_id') || '',
-        adset_name: params.get('adset_name') || '',
-        pixel: '1570150510952516',
-        adset_id: params.get('adset_id') || '',
-        fbc: params.get('fbc') || ''
-      });
-      return 'https://tryburnpeak.org/FB?' + q.toString();
+ <script>
+  // 1. Helper to build your affiliate URL with tracking params
+  function getAffiliateLink() {
+    var params = new URLSearchParams(window.location.search);
+    var q = new URLSearchParams({
+      fbclid: params.get('fbclid') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_source: params.get('utm_source') || '',
+      utm_placement: params.get('utm_placement') || '',
+      campaign_id: params.get('campaign_id') || '',
+      ad_name: params.get('ad_name') || '',
+      ad_id: params.get('ad_id') || '',
+      adset_name: params.get('adset_name') || '',
+      pixel: '1570150510952516',
+      adset_id: params.get('adset_id') || '',
+      fbc: params.get('fbc') || ''
+    });
+    return 'https://tryburnpeak.org/FB?' + q.toString();
+  }
+
+  // 2. Navigation functions
+  function passAgeGate() {
+    document.getElementById('age-gate').classList.add('hidden');
+    document.getElementById('landing').classList.remove('hidden');
+  }
+
+  function showReminder() {
+    document.getElementById('reminder-modal').classList.remove('hidden');
+  }
+
+  // 3. The FIXED Meta Tracking Function
+  function confirmAndRedirect() {
+    // Fire the Lead event immediately
+    if (typeof fbq === 'function') { 
+      fbq('track', 'Lead'); 
+      console.log("Meta Pixel: Lead event fired."); 
     }
 
-    function passAgeGate() {
-      document.getElementById('age-gate').classList.add('hidden');
-      document.getElementById('landing').classList.remove('hidden');
-    }
-
-    function showReminder() {
-      document.getElementById('reminder-modal').classList.remove('hidden');
-    }
-
-    function confirmAndRedirect() {
-      if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+    // Wait 250ms to ensure the pixel fires before redirecting
+    setTimeout(function() {
       window.open(getAffiliateLink(), '_blank', 'noopener,noreferrer');
       document.getElementById('reminder-modal').classList.add('hidden');
-    }
-  </script>
+    }, 250); 
+  }
+</script>
 </body>
 </html>
