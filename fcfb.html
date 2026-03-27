@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freecash - Get Paid to Scroll Reels</title>
+  <meta name="description" content="Real cash for your phone time. $5 just for signing up. Instant cashout.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1570150510952516');
+    fbq('track', 'PageView');
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --background: hsl(150 10% 5%);
+      --foreground: hsl(0 0% 92%);
+      --card: hsl(150 8% 10%);
+      --card-foreground: hsl(0 0% 92%);
+      --primary: hsl(155 100% 45%);
+      --primary-foreground: hsl(150 10% 5%);
+      --muted-foreground: hsl(150 5% 50%);
+      --border: hsl(150 8% 16%);
+      --accent: hsl(155 100% 45%);
+      --accent-foreground: hsl(150 10% 5%);
+      --highlight: hsl(155 100% 45%);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+    }
+
+    .page { position: relative; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 2rem 1rem; }
+    .content { position: relative; z-index: 10; width: 100%; max-width: 24rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .logo { height: 4rem; width: 4rem; border-radius: 1rem; }
+    .center { display: flex; justify-content: center; }
+    .text-center { text-align: center; }
+
+    .trending { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--highlight); }
+    h1 { font-size: 1.875rem; font-weight: 800; line-height: 1.2; }
+    .highlight { color: var(--highlight); }
+    .subtitle { margin-top: 0.5rem; font-size: 0.875rem; color: var(--muted-foreground); }
+
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .stat-card { display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 0.75rem; border: 1px solid var(--border); background: var(--card); padding: 1rem; }
+    .stat-value { font-size: 1.125rem; font-weight: 700; }
+    .stat-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground); }
+
+    .steps { display: flex; flex-direction: column; gap: 0.75rem; }
+    .step { display: flex; align-items: flex-start; gap: 1rem; border-radius: 0.75rem; border: 1px solid var(--border); background: var(--card); padding: 1rem; }
+    .step-num { display: flex; height: 2rem; width: 2rem; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 50%; background: var(--primary); color: var(--primary-foreground); font-size: 0.875rem; font-weight: 700; }
+    .step-title { font-weight: 700; }
+    .step-desc { margin-top: 0.25rem; font-size: 0.875rem; color: var(--muted-foreground); }
+
+    .cta-btn {
+      display: block; width: 100%; border: none; border-radius: 1rem; background: var(--primary); padding: 1rem; text-align: center;
+      font-size: 1.125rem; font-weight: 700; color: var(--primary-foreground); cursor: pointer; transition: opacity 0.2s;
+      animation: glow-breathe 2.5s ease-in-out infinite;
+    }
+    .cta-btn:hover { opacity: 0.9; }
+
+    .games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .game-card { display: flex; flex-direction: column; align-items: center; border-radius: 0.75rem; border: 1px solid var(--border); background: var(--card); padding: 0.75rem; }
+    .game-card.hot { border: 2px solid var(--accent); box-shadow: 0 0 12px hsl(155 100% 45% / 0.3); position: relative; }
+    .hot-badge { position: absolute; top: -0.625rem; background: var(--accent); color: var(--accent-foreground); padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 800; }
+    .game-img { height: 4rem; width: 4rem; border-radius: 0.75rem; }
+    .game-name { margin-top: 0.5rem; font-size: 0.75rem; font-weight: 700; text-align: center; }
+    .game-earn { font-size: 0.625rem; color: var(--accent); text-align: center; }
+
+    /* Modal */
+    .modal-overlay { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); padding: 1.5rem; }
+    .modal { width: 100%; max-width: 24rem; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); padding: 1.5rem; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+    .modal-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--highlight); }
+    .modal h2 { margin-top: 0.75rem; font-size: 1.25rem; font-weight: 800; }
+    .modal p { margin-top: 0.5rem; font-size: 0.875rem; color: var(--muted-foreground); }
+    .modal .cta-btn { margin-top: 1.25rem; }
+
+    /* Age Gate */
+    .age-gate { display: flex; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; background: var(--background); padding: 1rem; }
+    .age-gate-inner { display: flex; flex-direction: column; align-items: center; gap: 2rem; width: 100%; max-width: 24rem; }
+    .age-gate h1 { font-size: 1.5rem; font-weight: 800; }
+    .age-gate p { font-size: 0.875rem; color: var(--muted-foreground); }
+    .age-buttons { width: 100%; display: flex; flex-direction: column; gap: 0.75rem; }
+    .age-btn-secondary { display: block; width: 100%; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); padding: 1rem; text-align: center; font-size: 1.125rem; font-weight: 700; color: var(--foreground); cursor: pointer; transition: opacity 0.2s; }
+    .age-btn-secondary:hover { opacity: 0.8; }
+
+    /* Orbs */
+    .orbs { pointer-events: none; position: fixed; inset: 0; overflow: hidden; }
+    .orb1 { position: absolute; left: -5rem; top: -5rem; height: 18rem; width: 18rem; border-radius: 50%; background: hsl(155 100% 45% / 0.15); filter: blur(48px); animation: orb1 8s ease-in-out infinite; }
+    .orb2 { position: absolute; bottom: -8rem; right: -5rem; height: 20rem; width: 20rem; border-radius: 50%; background: hsl(155 100% 45% / 0.1); filter: blur(48px); animation: orb2 10s ease-in-out infinite; }
+    .orb3 { position: absolute; left: 50%; top: 33%; height: 14rem; width: 14rem; border-radius: 50%; background: hsl(155 100% 45% / 0.1); filter: blur(48px); animation: orb3 12s ease-in-out infinite; }
+
+    @keyframes glow-breathe {
+      0%, 100% { box-shadow: 0 0 15px 2px hsl(155 100% 45% / 0.4), 0 0 30px 4px hsl(155 100% 45% / 0.2); }
+      50% { box-shadow: 0 0 25px 6px hsl(155 100% 45% / 0.6), 0 0 50px 12px hsl(155 100% 45% / 0.3); }
+    }
+    @keyframes orb1 { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(60px,80px) scale(1.1); } 66% { transform: translate(-30px,40px) scale(0.95); } }
+    @keyframes orb2 { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(-50px,-60px) scale(1.15); } 66% { transform: translate(40px,-30px) scale(0.9); } }
+    @keyframes orb3 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,50px) scale(1.1); } }
+
+    .star { display: inline-block; width: 1rem; height: 1rem; fill: var(--accent); color: var(--accent); vertical-align: middle; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1570150510952516&ev=PageView&noscript=1"/></noscript>
+
+  <!-- Age Gate -->
+  <div id="age-gate" class="age-gate">
+    <div class="age-gate-inner">
+      <img src="https://download-freecash.lovable.app/assets/logo-new-C3asZv1d.png" alt="Freecash" class="logo" />
+      <div class="text-center" style="display:flex;flex-direction:column;gap:0.5rem;">
+        <h1>How old are you?</h1>
+        <p>Please confirm your age to continue</p>
+      </div>
+      <div class="age-buttons">
+        <button class="cta-btn" onclick="passAgeGate()">I am 21+</button>
+        <button class="age-btn-secondary" onclick="passAgeGate()">I am below 21</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Landing Page -->
+  <div id="landing" class="page hidden">
+    <div class="orbs">
+      <div class="orb1"></div>
+      <div class="orb2"></div>
+      <div class="orb3"></div>
+    </div>
+
+    <div class="content">
+      <div class="center">
+        <img src="https://download-freecash.lovable.app/assets/logo-new-C3asZv1d.png" alt="Freecash" class="logo" />
+      </div>
+
+      <div class="text-center">
+        <span class="trending">● Trending in the US</span>
+      </div>
+
+      <div class="text-center">
+        <h1>Get Paid<br><span class="highlight">to Scroll Reels</span></h1>
+        <p class="subtitle">Real cash for your phone time. $5 just for signing up. Instant cashout.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <span class="stat-value">$200–$500+</span>
+          <span class="stat-label">Weekly Earnings</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">500K+</span>
+          <span class="stat-label">Members</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">4.7 <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+          <span class="stat-label">App Store</span>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title">Download Freecash, sign up & select 21+</div>
+            <p class="step-desc">Scroll rewards only unlock for 21+ members. Select it at signup to access everything.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title">Complete 2 offers to activate scrolling</div>
+            <p class="step-desc">A quick game or survey. Activates scroll earning & all high-paying offers. You earn doing them.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title">Get paid</div>
+            <p class="step-desc">Scroll runs in the background. Cash out to PayPal, Visa, Bank Account, Zelle, Cashapp or Crypto. No minimum.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="cta-btn" onclick="showReminder()">Start Earning Now →</button>
+
+      <div class="games">
+        <div class="game-card">
+          <img src="https://download-freecash.lovable.app/assets/domino-dreams-BGqZsQTy.png" alt="Domino Dreams" class="game-img" />
+          <p class="game-name">Domino Dreams</p>
+          <p class="game-earn">Earn up to $380</p>
+        </div>
+        <div class="game-card hot">
+          <span class="hot-badge">HOT</span>
+          <img src="https://download-freecash.lovable.app/assets/monopoly-go-Dq5IxMui.png" alt="Monopoly Go" class="game-img" />
+          <p class="game-name">Monopoly Go</p>
+          <p class="game-earn">Earn up to $420</p>
+        </div>
+        <div class="game-card">
+          <img src="https://download-freecash.lovable.app/assets/bingo-blitz-DjjGr8Bg.png" alt="Bingo Blitz" class="game-img" />
+          <p class="game-name">Bingo Blitz</p>
+          <p class="game-earn">Earn up to $350</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reminder Modal -->
+  <div id="reminder-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <p class="modal-tag">Before you go</p>
+      <h2>Select <span class="highlight">21+</span> when you sign up</h2>
+      <p>This unlocks the scroll earning feature and all high-paying offers on Freecash.</p>
+      <button class="cta-btn" onclick="confirmAndRedirect()">Got it →</button>
+    </div>
+  </div>
+
+  <script>
+    function getAffiliateLink() {
+      var params = new URLSearchParams(window.location.search);
+      var q = new URLSearchParams({
+        fbclid: params.get('fbclid') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_source: params.get('utm_source') || '',
+        utm_placement: params.get('utm_placement') || '',
+        campaign_id: params.get('campaign_id') || '',
+        ad_name: params.get('ad_name') || '',
+        ad_id: params.get('ad_id') || '',
+        adset_name: params.get('adset_name') || '',
+        pixel: '1570150510952516',
+        adset_id: params.get('adset_id') || '',
+        fbc: params.get('fbc') || ''
+      });
+      return 'https://tryburnpeak.org/FB?' + q.toString();
+    }
+
+    function passAgeGate() {
+      document.getElementById('age-gate').classList.add('hidden');
+      document.getElementById('landing').classList.remove('hidden');
+    }
+
+    function showReminder() {
+      document.getElementById('reminder-modal').classList.remove('hidden');
+    }
+
+    function confirmAndRedirect() {
+      if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+      window.open(getAffiliateLink(), '_blank', 'noopener,noreferrer');
+      document.getElementById('reminder-modal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
