@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const access_token = "YOUR_ACCESS_TOKEN";
+  const access_token = "EAAQqVn2GyuQBRLgTZASGkPthJPC2lvxPwksqXvXPAS6x2gXIUcZAoC4j5k2ORYZBgZCRLNUjPtHxQHmHpPo9akHIRL0gDoZB0SXa7rcKSvMZADI3HzJ3FXzzzXADvU56VPcthFnn55NFutTpJvjLFX0OUgZCY5P9DiZAvjoviK9KAB3kHzLb0EtEsxcKtUqYdwZDZD";
   const pixel_id = "947070334637228";
 
   const { subid, revenue, fbc, fbp } = req.query;
