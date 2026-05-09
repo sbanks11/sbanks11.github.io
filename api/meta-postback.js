@@ -16,7 +16,7 @@ export default async function handler(req, res) {
           event_name: "Subscribe",
           event_time: Math.floor(Date.now() / 1000),
           action_source: "website",
-          event_source_url: "https://nyverna.com",
+          event_source_url: "https://scalersunite.com",
           custom_data: {
             currency: "USD",
             value: revenue
