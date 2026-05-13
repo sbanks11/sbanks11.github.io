@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const access_token = "EAAQqVn2GyuQBRLgTZASGkPthJPC2lvxPwksqXvXPAS6x2gXIUcZAoC4j5k2ORYZBgZCRLNUjPtHxQHmHpPo9akHIRL0gDoZB0SXa7rcKSvMZADI3HzJ3FXzzzXADvU56VPcthFnn55NFutTpJvjLFX0OUgZCY5P9DiZAvjoviK9KAB3kHzLb0EtEsxcKtUqYdwZDZD";
+  const access_token = "EAAXT96OQXXABRbzqRMkiZCGvBT9X6fEyXpyju5aKjZAk7gAQHGta9XuCGDU892wR3ZBZABhfw1WUV9UylyZBz0blL0ZCSWATVXpQKykOw0Uowia8qAvVz1UdE4g6zOVpbpEdTCpaMt8ZBfwR29ZAbXzntA8ZBpuUoS2DZASk8h7kplQwAOuaycstCFM1ULjFKJ3AZDZD";
   const pixel_id = "947070334637228";
 
   const { subid, revenue, fbc, fbp } = req.query;
